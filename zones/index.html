@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <title>All 34 Miami-Dade Multifamily Investment Zones | Cap Rates, Rents & Data</title>
+    <meta name="description" content="Explore all 34 multifamily investment zones in Miami-Dade County. Compare cap rates, rents, insurance costs, appreciation, and investment signals across every submarket.">
+    <meta name="keywords" content="Miami-Dade multifamily zones, Miami investment zones, Miami cap rates by neighborhood, Miami-Dade rent data, Miami multifamily map, South Florida multifamily investing">
+    <link rel="canonical" href="https://miamimultifamilydata.com/zones/">
+    <meta property="og:title" content="All 34 Miami-Dade Multifamily Investment Zones">
+    <meta property="og:description" content="Compare cap rates, rents, insurance, and appreciation across all 34 Miami-Dade multifamily zones.">
+    <meta property="og:url" content="https://miamimultifamilydata.com/zones/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary-dark: #0a1628; --primary-navy: #1a2744; --accent-green: #00C853;
+            --white: #ffffff; --light-gray: #f8f9fa; --text-dark: #1a2744; --text-muted: #718096;
+        }
+        body { font-family: 'Inter', sans-serif; background: var(--light-gray); color: var(--text-dark); line-height: 1.6; }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(10,22,40,0.98); backdrop-filter: blur(10px); z-index: 1000; padding: 1rem 2rem; border-bottom: 1px solid rgba(0,200,83,0.1); }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 600; color: var(--white); text-decoration: none; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; list-style: none; }
+        .nav-links a { color: var(--white); text-decoration: none; font-size: 0.95rem; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .btn-primary-nav { background: var(--accent-green); color: var(--primary-dark); padding: 0.75rem 1.5rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; }
+
+        .hero { background: linear-gradient(135deg, #0a1628 0%, #1a2744 100%); color: var(--white); padding: 7rem 2rem 3rem; margin-top: 4rem; text-align: center; }
+        h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
+        .subtitle { font-size: 1.15rem; color: rgba(255,255,255,0.75); max-width: 700px; margin: 0 auto 2rem; }
+        .hero-stats { display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap; }
+        .hero-stat-value { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--accent-green); }
+        .hero-stat-label { font-size: 0.8rem; text-transform: uppercase; color: rgba(255,255,255,0.6); letter-spacing: 0.5px; }
+
+        .controls { max-width: 1400px; margin: 2rem auto; padding: 0 2rem; display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; }
+        .filter-btn { padding: 0.6rem 1.1rem; border: 2px solid #d0d5dd; background: var(--white); border-radius: 2rem; cursor: pointer; font-weight: 500; font-size: 0.85rem; transition: all 0.3s; color: var(--text-dark); }
+        .filter-btn.active { background: var(--accent-green); color: var(--primary-dark); border-color: var(--accent-green); }
+        .filter-btn:hover { border-color: var(--accent-green); }
+        .sort-select { padding: 0.6rem 1rem; border: 2px solid #d0d5dd; border-radius: 0.5rem; background: var(--white); font-size: 0.85rem; cursor: pointer; margin-left: auto; }
+
+        .grid { max-width: 1400px; margin: 0 auto 3rem; padding: 0 2rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.25rem; }
+        .zone-card { background: var(--white); border: 1px solid #e0e0e0; border-radius: 0.75rem; padding: 1.5rem; text-decoration: none; color: var(--text-dark); transition: all 0.3s; display: block; }
+        .zone-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); border-color: var(--accent-green); }
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
+        .zone-card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 1rem; }
+        .signal-badge { display: inline-block; padding: 0.25rem 0.65rem; border-radius: 1rem; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
+        .signal-badge.buy-strong { background: rgba(0,200,83,0.15); color: #00C853; }
+        .signal-badge.buy { background: rgba(76,175,80,0.15); color: #4CAF50; }
+        .signal-badge.hold { background: rgba(255,152,0,0.15); color: #FF9800; }
+        .signal-badge.caution { background: rgba(244,67,54,0.15); color: #f44336; }
+        .signal-badge.speculative { background: rgba(156,39,176,0.15); color: #9C27B0; }
+        .signal-badge.trophy { background: rgba(255,215,0,0.15); color: #FFD700; }
+        .zone-type-tag { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+        .card-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+        .metric { text-align: center; padding: 0.5rem; background: var(--light-gray); border-radius: 0.5rem; }
+        .metric-value { display: block; font-weight: 700; font-size: 0.95rem; color: var(--text-dark); }
+        .metric-label { display: block; font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; margin-top: 0.15rem; }
+
+        .seo-text { max-width: 1400px; margin: 0 auto 3rem; padding: 0 2rem; }
+        .seo-text p { font-size: 1rem; line-height: 1.8; color: #4a5568; margin-bottom: 1rem; }
+
+        .cta-bar { background: var(--accent-green); padding: 1.5rem 2rem; text-align: center; }
+        .cta-bar a { color: var(--primary-dark); font-weight: 700; font-size: 1.1rem; text-decoration: none; }
+        footer { background: var(--primary-dark); color: rgba(255,255,255,0.6); padding: 2rem; text-align: center; font-size: 0.85rem; }
+        footer a { color: var(--accent-green); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .hero { padding: 6rem 1.5rem 2rem; }
+            .nav-links { display: none; }
+            .controls { flex-direction: column; }
+            .sort-select { margin-left: 0; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Miami-Dade Multifamily Investment Zones",
+    "description": "Complete directory of all 34 multifamily investment zones in Miami-Dade County with cap rates, rents, and investment data.",
+    "url": "https://miamimultifamilydata.com/zones/",
+    "numberOfItems": 34,
+    "publisher": { "@type": "Organization", "name": "Miami Dade Intelligence" }
+}
+</script>
+
+<nav>
+    <div class="nav-container">
+        <a href="/" class="nav-logo">Miami Invest</a>
+        <ul class="nav-links">
+            <li><a href="/#prueba">Zones</a></li>
+            <li><a href="/#ranking">Rankings</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+        </ul>
+        <a href="/#pricing" class="btn-primary-nav">Get Full Report</a>
+    </div>
+</nav>
+
+<div class="hero">
+    <h1>34 Miami-Dade Multifamily Investment Zones</h1>
+    <p class="subtitle">Cap rates, rents, insurance costs, appreciation, and investment signals for every investable submarket in the county.</p>
+    <div class="hero-stats">
+        <div><div class="hero-stat-value">34</div><div class="hero-stat-label">Zones Tracked</div></div>
+        <div><div class="hero-stat-value">3.8%-7.5%</div><div class="hero-stat-label">Cap Rate Range</div></div>
+        <div><div class="hero-stat-value">$110K-$700K</div><div class="hero-stat-label">Price/Unit Range</div></div>
+        <div><div class="hero-stat-value">$1,400-$4,200</div><div class="hero-stat-label">Rent Range</div></div>
+    </div>
+</div>
+
+<div class="controls">
+    <button class="filter-btn active" onclick="filterZones('all')">All (34)</button>
+    <button class="filter-btn" onclick="filterZones('buy-strong')">Strong Buy</button>
+    <button class="filter-btn" onclick="filterZones('buy')">Buy</button>
+    <button class="filter-btn" onclick="filterZones('hold')">Hold</button>
+    <button class="filter-btn" onclick="filterZones('caution')">Caution</button>
+    <button class="filter-btn" onclick="filterZones('speculative')">Speculative</button>
+    <select class="sort-select" onchange="sortZones(this.value)">
+        <option value="name">Sort: A-Z</option>
+        <option value="cap-desc">Sort: Highest Cap Rate</option>
+        <option value="rent-desc">Sort: Highest Rent</option>
+        <option value="growth-desc">Sort: Highest Rent Growth</option>
+        <option value="price-asc">Sort: Lowest Entry Price</option>
+        <option value="aprec-desc">Sort: Most Appreciation</option>
+    </select>
+</div>
+
+<div class="grid" id="zoneGrid">
+
+            <a href="/zones/allapattah.html" class="zone-card" data-signal="buy" data-type="urban core">
+                <div class="card-header">
+                    <span class="signal-badge buy">Buy</span>
+                    <span class="zone-type-tag">Urban Core</span>
+                </div>
+                <h3>Allapattah</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">5.5-6.3%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$1,750</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">+7.1%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$170K-$240K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/aventura.html" class="zone-card" data-signal="buy" data-type="suburban">
+                <div class="card-header">
+                    <span class="signal-badge buy">Buy</span>
+                    <span class="zone-type-tag">Suburban</span>
+                </div>
+                <h3>Aventura</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">4.8-5.2%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$2,600</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">+1.8%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$280K-$360K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/brickell-financial-district.html" class="zone-card" data-signal="hold" data-type="urban core">
+                <div class="card-header">
+                    <span class="signal-badge hold">Hold</span>
+                    <span class="zone-type-tag">Urban Core</span>
+                </div>
+                <h3>Brickell / Financial District</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">4.5-4.8%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$3,585</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">+2.1%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$380K-$450K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/coconut-grove.html" class="zone-card" data-signal="hold" data-type="suburban premium">
+                <div class="card-header">
+                    <span class="signal-badge hold">Hold</span>
+                    <span class="zone-type-tag">Suburban Premium</span>
+                </div>
+                <h3>Coconut Grove</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">4.3-4.7%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$3,200</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">+1.5%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$400K-$500K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/coral-gables.html" class="zone-card" data-signal="hold" data-type="suburban premium">
+                <div class="card-header">
+                    <span class="signal-badge hold">Hold</span>
+                    <span class="zone-type-tag">Suburban Premium</span>
+                </div>
+                <h3>Coral Gables</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">4.2-4.6%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$3,100</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">+2%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$420K-$520K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/doral.html" class="zone-card" data-signal="caution" data-type="suburban">
+                <div class="card-header">
+                    <span class="signal-badge caution">Caution</span>
+                    <span class="zone-type-tag">Suburban</span>
+                </div>
+                <h3>Doral</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">5-5.5%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$2,400</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">+2.5%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$260K-$340K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/downtown-miami.html" class="zone-card" data-signal="caution" data-type="urban core">
+                <div class="card-header">
+                    <span class="signal-badge caution">Caution</span>
+                    <span class="zone-type-tag">Urban Core</span>
+                </div>
+                <h3>Downtown Miami</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">4.6-5%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$3,286</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">+0.5%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$320K-$400K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/edgewater.html" class="zone-card" data-signal="buy" data-type="urban core">
+                <div class="card-header">
+                    <span class="signal-badge buy">Buy</span>
+                    <span class="zone-type-tag">Urban Core</span>
+                </div>
+                <h3>Edgewater</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">4.7-5.1%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$3,058</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">+3.2%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$340K-$420K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/florida-city.html" class="zone-card" data-signal="speculative" data-type="exurban">
+                <div class="card-header">
+                    <span class="signal-badge speculative">Speculative</span>
+                    <span class="zone-type-tag">Exurban</span>
+                </div>
+                <h3>Florida City</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">6.5-7.5%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$1,400</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">+6%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$110K-$160K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/hialeah.html" class="zone-card" data-signal="buy" data-type="suburban">
+                <div class="card-header">
+                    <span class="signal-badge buy">Buy</span>
+                    <span class="zone-type-tag">Suburban</span>
+                </div>
+                <h3>Hialeah</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">5.5-6.2%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$1,800</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">+4.2%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$180K-$260K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/hialeah-gardens.html" class="zone-card" data-signal="buy" data-type="suburban">
+                <div class="card-header">
+                    <span class="signal-badge buy">Buy</span>
+                    <span class="zone-type-tag">Suburban</span>
+                </div>
+                <h3>Hialeah Gardens</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">5.6-6.3%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$1,750</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">+3.5%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$170K-$240K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/homestead.html" class="zone-card" data-signal="buy-strong" data-type="exurban">
+                <div class="card-header">
+                    <span class="signal-badge buy-strong">Strong Buy</span>
+                    <span class="zone-type-tag">Exurban</span>
+                </div>
+                <h3>Homestead</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">6-7%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$1,600</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">+5.5%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$140K-$200K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/kendall-the-crossings.html" class="zone-card" data-signal="hold" data-type="suburban">
+                <div class="card-header">
+                    <span class="signal-badge hold">Hold</span>
+                    <span class="zone-type-tag">Suburban</span>
+                </div>
+                <h3>Kendall / The Crossings</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">5.2-5.7%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$2,200</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">+2%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$240K-$310K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/key-biscayne.html" class="zone-card" data-signal="trophy" data-type="coastal premium">
+                <div class="card-header">
+                    <span class="signal-badge trophy">Trophy Asset</span>
+                    <span class="zone-type-tag">Coastal Premium</span>
+                </div>
+                <h3>Key Biscayne</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">3.8-4.2%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$4,200</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">+0.8%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$600K-$700K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/liberty-city-brownsville.html" class="zone-card" data-signal="speculative" data-type="urban">
+                <div class="card-header">
+                    <span class="signal-badge speculative">Speculative</span>
+                    <span class="zone-type-tag">Urban</span>
+                </div>
+                <h3>Liberty City / Brownsville</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">6-7%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$1,500</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">+4.5%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$120K-$180K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/little-haiti-upper-east-side.html" class="zone-card" data-signal="buy-strong" data-type="urban">
+                <div class="card-header">
+                    <span class="signal-badge buy-strong">Strong Buy</span>
+                    <span class="zone-type-tag">Urban</span>
+                </div>
+                <h3>Little Haiti / Upper East Side</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">5.2-5.8%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$2,200</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">+5.5%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$230K-$310K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/little-havana.html" class="zone-card" data-signal="buy-strong" data-type="urban core">
+                <div class="card-header">
+                    <span class="signal-badge buy-strong">Strong Buy</span>
+                    <span class="zone-type-tag">Urban Core</span>
+                </div>
+                <h3>Little Havana</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">5.5-6.2%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$1,850</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">+6.2%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$180K-$250K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/medley-hialeah-industrial.html" class="zone-card" data-signal="hold" data-type="industrial">
+                <div class="card-header">
+                    <span class="signal-badge hold">N/A</span>
+                    <span class="zone-type-tag">Industrial</span>
+                </div>
+                <h3>Medley / Hialeah Industrial</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">0-0%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$0</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">0%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$0K-$0K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/miami-beach-south-beach.html" class="zone-card" data-signal="hold" data-type="coastal">
+                <div class="card-header">
+                    <span class="signal-badge hold">Hold</span>
+                    <span class="zone-type-tag">Coastal</span>
+                </div>
+                <h3>Miami Beach / South Beach</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">4.8-5.3%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$3,400</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">-1.2%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$350K-$450K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/miami-gardens.html" class="zone-card" data-signal="buy" data-type="suburban">
+                <div class="card-header">
+                    <span class="signal-badge buy">Buy</span>
+                    <span class="zone-type-tag">Suburban</span>
+                </div>
+                <h3>Miami Gardens</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">5.8-6.5%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$1,900</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">+3.8%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$170K-$240K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/miami-lakes.html" class="zone-card" data-signal="hold" data-type="suburban">
+                <div class="card-header">
+                    <span class="signal-badge hold">Hold</span>
+                    <span class="zone-type-tag">Suburban</span>
+                </div>
+                <h3>Miami Lakes</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">5-5.5%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$2,300</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">+2.2%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$250K-$320K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/midtown-miami.html" class="zone-card" data-signal="buy" data-type="urban core">
+                <div class="card-header">
+                    <span class="signal-badge buy">Buy</span>
+                    <span class="zone-type-tag">Urban Core</span>
+                </div>
+                <h3>Midtown Miami</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">4.9-5.3%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$2,800</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">+2.8%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$280K-$350K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/north-miami.html" class="zone-card" data-signal="buy" data-type="suburban">
+                <div class="card-header">
+                    <span class="signal-badge buy">Buy</span>
+                    <span class="zone-type-tag">Suburban</span>
+                </div>
+                <h3>North Miami</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">5.3-5.8%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$2,100</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">+3.5%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$220K-$300K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/north-miami-beach.html" class="zone-card" data-signal="buy" data-type="suburban">
+                <div class="card-header">
+                    <span class="signal-badge buy">Buy</span>
+                    <span class="zone-type-tag">Suburban</span>
+                </div>
+                <h3>North Miami Beach</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">5.5-6%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$2,000</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">+4%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$200K-$280K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/opa-locka.html" class="zone-card" data-signal="speculative" data-type="suburban">
+                <div class="card-header">
+                    <span class="signal-badge speculative">Speculative</span>
+                    <span class="zone-type-tag">Suburban</span>
+                </div>
+                <h3>Opa-locka</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">6.5-7.5%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$1,350</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">+3%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$100K-$150K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/overtown.html" class="zone-card" data-signal="speculative" data-type="urban core">
+                <div class="card-header">
+                    <span class="signal-badge speculative">Speculative</span>
+                    <span class="zone-type-tag">Urban Core</span>
+                </div>
+                <h3>Overtown</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">5.8-6.5%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$1,650</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">+5.8%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$150K-$220K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/palmetto-bay-cutler-bay.html" class="zone-card" data-signal="hold" data-type="suburban">
+                <div class="card-header">
+                    <span class="signal-badge hold">Hold</span>
+                    <span class="zone-type-tag">Suburban</span>
+                </div>
+                <h3>Palmetto Bay / Cutler Bay</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">5.3-5.8%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$2,100</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">+2.5%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$230K-$300K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/pinecrest.html" class="zone-card" data-signal="hold" data-type="suburban premium">
+                <div class="card-header">
+                    <span class="signal-badge hold">N/A</span>
+                    <span class="zone-type-tag">Suburban Premium</span>
+                </div>
+                <h3>Pinecrest</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">4-4.5%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$3,500</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">+1%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$450K-$600K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/south-miami.html" class="zone-card" data-signal="hold" data-type="suburban">
+                <div class="card-header">
+                    <span class="signal-badge hold">Hold</span>
+                    <span class="zone-type-tag">Suburban</span>
+                </div>
+                <h3>South Miami</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">5-5.5%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$2,300</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">+2%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$260K-$330K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/sunny-isles-beach.html" class="zone-card" data-signal="hold" data-type="coastal">
+                <div class="card-header">
+                    <span class="signal-badge hold">Hold</span>
+                    <span class="zone-type-tag">Coastal</span>
+                </div>
+                <h3>Sunny Isles Beach</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">4.5-5%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$3,000</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">+1.2%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$320K-$420K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/surfside-bal-harbour.html" class="zone-card" data-signal="trophy" data-type="coastal premium">
+                <div class="card-header">
+                    <span class="signal-badge trophy">Trophy Asset</span>
+                    <span class="zone-type-tag">Coastal Premium</span>
+                </div>
+                <h3>Surfside / Bal Harbour</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">4-4.5%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$3,800</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">+0.5%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$500K-$650K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/sweetwater-fiu-area.html" class="zone-card" data-signal="buy" data-type="suburban">
+                <div class="card-header">
+                    <span class="signal-badge buy">Buy</span>
+                    <span class="zone-type-tag">Suburban</span>
+                </div>
+                <h3>Sweetwater / FIU Area</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">5.5-6%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$1,700</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">+5%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$160K-$230K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/westchester-tamiami.html" class="zone-card" data-signal="buy" data-type="suburban">
+                <div class="card-header">
+                    <span class="signal-badge buy">Buy</span>
+                    <span class="zone-type-tag">Suburban</span>
+                </div>
+                <h3>Westchester / Tamiami</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">5.5-6%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$1,800</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">+3%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$180K-$250K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/zones/wynwood-design-district.html" class="zone-card" data-signal="buy" data-type="urban core">
+                <div class="card-header">
+                    <span class="signal-badge buy">Buy</span>
+                    <span class="zone-type-tag">Urban Core</span>
+                </div>
+                <h3>Wynwood / Design District</h3>
+                <div class="card-metrics">
+                    <div class="metric">
+                        <span class="metric-value">4.8-5.2%</span>
+                        <span class="metric-label">Cap Rate</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$2,950</span>
+                        <span class="metric-label">Avg Rent</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">+4.5%</span>
+                        <span class="metric-label">Rent Growth</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">$300K-$380K</span>
+                        <span class="metric-label">Price/Unit</span>
+                    </div>
+                </div>
+            </a>
+</div>
+
+<div class="seo-text">
+    <p>Miami-Dade County is one of the most dynamic multifamily investment markets in the United States, with 34 distinct submarkets that range from ultra-premium coastal zones like Key Biscayne and Miami Beach to high-yield workforce housing areas like Homestead and Florida City. Cap rates across the county span from 3.8% in trophy locations to 7.5% in emerging submarkets, while insurance costs — the hidden variable that defines South Florida investing — range from $1,100 per unit inland to over $3,200 per unit in high-risk flood zones.</p>
+    <p>Each zone page above provides a complete breakdown of financial metrics (cap rates, rents, rent growth, appreciation), expense analysis (insurance, millage rates, taxes, operating expenses), risk factors (FEMA flood zones, pipeline pressure, vacancy), and demographic data (population, income, walkability, crime, schools). Understanding these variables at the zone level is what separates investors who find deals from those who overpay.</p>
+</div>
+
+<div class="cta-bar">
+    <a href="/#pricing">Want the complete analysis with investment signals? Get the full 34-zone report &rarr;</a>
+</div>
+
+<footer>
+    <p>&copy; 2026 Miami Dade Intelligence. <a href="/">miamimultifamilydata.com</a></p>
+</footer>
+
+<script>
+function filterZones(signal) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    document.querySelectorAll('.zone-card').forEach(card => {
+        if (signal === 'all' || card.dataset.signal === signal) {
+            card.style.display = '';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+function sortZones(by) {
+    const grid = document.getElementById('zoneGrid');
+    const cards = [...grid.querySelectorAll('.zone-card')];
+    cards.sort((a, b) => {
+        const aMetrics = a.querySelectorAll('.metric-value');
+        const bMetrics = b.querySelectorAll('.metric-value');
+        switch(by) {
+            case 'name': return a.querySelector('h3').textContent.localeCompare(b.querySelector('h3').textContent);
+            case 'cap-desc': return parseFloat(bMetrics[0].textContent) - parseFloat(aMetrics[0].textContent);
+            case 'rent-desc': return parseInt(bMetrics[1].textContent.replace(/[$,]/g,'')) - parseInt(aMetrics[1].textContent.replace(/[$,]/g,''));
+            case 'growth-desc': return parseFloat(bMetrics[2].textContent) - parseFloat(aMetrics[2].textContent);
+            case 'price-asc': return parseInt(aMetrics[3].textContent.replace(/[$K\-]/g,'')) - parseInt(bMetrics[3].textContent.replace(/[$K\-]/g,''));
+            case 'aprec-desc': return 0;
+            default: return 0;
+        }
+    });
+    cards.forEach(c => grid.appendChild(c));
+}
+</script>
+
+</body>
+</html>
