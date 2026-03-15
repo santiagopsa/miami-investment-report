@@ -1,0 +1,57 @@
+[
+  {
+    "date": "2026-03-14",
+    "thread": "Looking to expand my portfolio from condos and homes to multi family and apartments",
+    "url": "https://www.biggerpockets.com/forums/432/topics/1281472-looking-to-expand-my-portfolio-from-condos-and-homes-to-multi-family-and-apartments#post_7190331",
+    "op": "Cory Johnson",
+    "zones_referenced": ["general Miami-Dade (all 34 zones)", "Tampa-adjacent"],
+    "data_points": ["opex 38-48%", "insurance $1,400-$2,800/unit", "cap rates 5.0-6.5%", "millage 17-24"],
+    "length": "long",
+    "style": "comprehensive with numbered insights",
+    "opening": "Hey Cory — great question"
+  },
+  {
+    "date": "2026-03-14",
+    "thread": "Future Florida Multi-Unit Investor Looking to Connect",
+    "url": "https://www.biggerpockets.com/forums/432/topics/1279192-future-florida-multi-unit-investor-looking-to-connect#post_7190332",
+    "op": "Dineen Garcia",
+    "zones_referenced": ["Brickell", "Coconut Grove", "Coral Gables", "Allapattah", "Little Havana", "Homestead", "Treasure Coast", "Palm Beach"],
+    "data_points": ["cap rates 4.2-5.0% core", "Allapattah 5.8-6.5% caps, $1,850 rent, 72% 5yr appreciation", "Little Havana 5.5-6.2% caps, $1,750 rent", "Homestead 6.0-7.0% caps, $1,500 rent, $150-200K/unit", "insurance $1,400-$2,800/unit", "millage 17.5-24"],
+    "length": "long",
+    "style": "comprehensive with bold section headers",
+    "opening": "Hey Dineen and Evan — Miami-based multifamily investor here"
+  },
+  {
+    "date": "2026-03-15",
+    "thread": "Section 8 acquisition investment",
+    "url": "https://www.biggerpockets.com/forums/432/topics/1265721-section-8-acquisition-investment#post_7190333",
+    "op": "Biral Shah",
+    "zones_referenced": ["Miami Gardens", "Hialeah", "Homestead", "Liberty City / Brownsville"],
+    "data_points": ["FMR $2,000-$2,100/mo", "Miami Gardens rent $1,900, caps 5.8-6.5%, $170-240K/unit, pop 112K", "Hialeah rent $1,800, caps 5.5-6.2%, vacancy 3.5%, pop 221K", "Homestead rent $1,600, caps 6.0-7.0%, $140-200K/unit, +115% appreciation", "Liberty City rent $1,500, caps 6.0-7.0%, $120-180K/unit", "CoC 4-9% realistic", "opex 38-42%", "insurance $1,100-$1,500 inland", "millage 19-24"],
+    "length": "long",
+    "style": "numbered zones with bold headers, debunking claims",
+    "opening": "Hey Biral and Tejaswi — Miami-based multifamily data analyst here"
+  },
+  {
+    "date": "2026-03-15",
+    "thread": "Interesting multifamily deal flow and underwriting skillset",
+    "url": "https://www.biggerpockets.com/forums/432/topics/1274644-interesting-multifamily-deal-flow-and-underwriting-skillset#post_7190533",
+    "op": "Maria Freydell",
+    "zones_referenced": ["North Miami Beach", "Sweetwater / FIU Area"],
+    "data_points": ["NMB caps 5.5-6.0%, rent growth 4%, $200-280K/unit", "Sweetwater $160-230K/unit, 5.5-6.0% caps, 58K students", "FEMA X insurance $1,100/unit vs coastal $2,200-2,800"],
+    "length": "medium",
+    "style": "casual flowing, reference to another replier, no headers",
+    "opening": "Jason's point about capital being the gating factor is real"
+  },
+  {
+    "date": "2026-03-15",
+    "thread": "Owner-Occupant Looking to House Hack a Duplex-Quad (Off-Market/Wholesale Focus)",
+    "url": "https://www.biggerpockets.com/forums/12/topics/1275647-owner-occupant-looking-to-house-hack-a-duplex-quad-off-market-wholesale-focus",
+    "op": "Kaley Kallman",
+    "zones_referenced": ["Hialeah Gardens", "Sweetwater / FIU Area"],
+    "data_points": ["Hialeah Gardens $170-240K/unit, insurance $1,100, millage 18.9", "Sweetwater $160-230K/unit, vacancy 4%", "coastal insurance $2,200-2,800/unit, +$4,400-6,800/yr on fourplex"],
+    "length": "short",
+    "style": "data-first, no headers, practical advice",
+    "opening": "One thing that hasn't come up yet"
+  }
+]
