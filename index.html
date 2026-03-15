@@ -1172,6 +1172,7 @@
                 <button class="filter-btn" data-filter="hold" data-i18n="signal_hold">HOLD</button>
                 <button class="filter-btn" data-filter="caution" data-i18n="signal_caution">CAUTION</button>
                 <button class="filter-btn" data-filter="speculative" data-i18n="signal_speculative">SPECULATIVE</button>
+                <button class="filter-btn" data-filter="trophy" data-i18n="signal_trophy">TROPHY</button>
             </div>
 
             <div class="zones-grid" id="zonesGrid">
@@ -1699,39 +1700,40 @@
 
         // Zone data
         const zonesData = [
-            { name: "Downtown Miami", type: "Urban Core", signal: "buy-strong", avgRent: "$2,450", growth: "+8.5%", futureScore: "9.2/10" },
-            { name: "Brickell", type: "Financial Hub", signal: "buy-strong", avgRent: "$2,650", growth: "+7.2%", futureScore: "8.9/10" },
-            { name: "Wynwood", type: "Trendy", signal: "buy", avgRent: "$1,850", growth: "+6.8%", futureScore: "8.5/10" },
-            { name: "Allapattah", type: "Emerging", signal: "buy", avgRent: "$1,350", growth: "+9.3%", futureScore: "8.7/10" },
-            { name: "Little Havana", type: "Cultural", signal: "hold", avgRent: "$1,450", growth: "+3.2%", futureScore: "7.2/10" },
-            { name: "Coconut Grove", type: "Residential", signal: "hold", avgRent: "$2,150", growth: "+2.1%", futureScore: "6.8/10" },
-            { name: "Buena Vista", type: "Diverse", signal: "buy", avgRent: "$1,650", growth: "+7.5%", futureScore: "8.2/10" },
-            { name: "Midtown Miami", type: "Mixed-Use", signal: "buy-strong", avgRent: "$2,350", growth: "+8.1%", futureScore: "8.8/10" },
-            { name: "Design District", type: "Luxury", signal: "caution", avgRent: "$3,150", growth: "+1.5%", futureScore: "6.2/10" },
-            { name: "Shenandoah", type: "Affordable", signal: "buy", avgRent: "$1,250", growth: "+5.9%", futureScore: "7.9/10" },
-            { name: "Edgewater", type: "Waterfront", signal: "speculative", avgRent: "$2,900", growth: "+12.3%", futureScore: "7.5/10" },
-            { name: "Overtown", type: "Revitalization", signal: "hold", avgRent: "$1,100", growth: "+4.2%", futureScore: "6.9/10" },
-            { name: "Civic Center", type: "Institutional", signal: "hold", avgRent: "$1,550", growth: "+2.8%", futureScore: "6.4/10" },
-            { name: "Doral", type: "Commercial", signal: "buy", avgRent: "$1,750", growth: "+6.4%", futureScore: "8.1/10" },
-            { name: "Westchester", type: "Suburban", signal: "caution", avgRent: "$1,600", growth: "+1.2%", futureScore: "5.9/10" },
-            { name: "Kendall", type: "Sprawl", signal: "caution", avgRent: "$1,450", growth: "+0.8%", futureScore: "5.5/10" },
-            { name: "Palmetto", type: "Emerging", signal: "buy", avgRent: "$1,300", growth: "+7.8%", futureScore: "8.3/10" },
-            { name: "Coral Gables", type: "Affluent", signal: "hold", avgRent: "$2,800", growth: "+1.9%", futureScore: "6.7/10" },
-            { name: "Perrine", type: "South County", signal: "hold", avgRent: "$1,200", growth: "+3.5%", futureScore: "6.8/10" },
-            { name: "Homestead", type: "South County", signal: "speculative", avgRent: "$1,050", growth: "+11.2%", futureScore: "7.6/10" },
-            { name: "Florida City", type: "Gateway", signal: "speculative", avgRent: "$950", growth: "+13.1%", futureScore: "7.8/10" },
-            { name: "Tamiami", type: "Diverse", signal: "hold", avgRent: "$1,400", growth: "+2.3%", futureScore: "6.5/10" },
-            { name: "Model City", type: "Affordable", signal: "buy", avgRent: "$1,100", growth: "+8.9%", futureScore: "8.4/10" },
-            { name: "Virginia Gardens", type: "Mini City", signal: "caution", avgRent: "$1,700", growth: "+0.5%", futureScore: "5.2/10" },
-            { name: "Sweetwater", type: "Diverse", signal: "buy", avgRent: "$1,280", growth: "+6.7%", futureScore: "8.0/10" },
-            { name: "Olympia Heights", type: "Residential", signal: "hold", avgRent: "$1,500", growth: "+2.9%", futureScore: "6.6/10" },
-            { name: "Sunset", type: "Inner City", signal: "buy", avgRent: "$1,400", growth: "+7.1%", futureScore: "8.2/10" },
-            { name: "Buena Vista East", type: "Industrial", signal: "buy", avgRent: "$1,350", growth: "+6.8%", futureScore: "8.0/10" },
-            { name: "Allapattah North", type: "Mixed", signal: "buy", avgRent: "$1,450", growth: "+7.9%", futureScore: "8.3/10" },
-            { name: "Banyan Grove", type: "Emerging", signal: "buy-strong", avgRent: "$1,550", growth: "+9.2%", futureScore: "8.6/10" },
-            { name: "Iron Horse", type: "Trendy", signal: "buy", avgRent: "$1,900", growth: "+8.4%", futureScore: "8.5/10" },
-            { name: "Flagami", type: "Residential", signal: "hold", avgRent: "$1,300", growth: "+3.1%", futureScore: "6.7/10" },
-            { name: "Wynwood Arts District", type: "Arts & Culture", signal: "buy-strong", avgRent: "$2,200", growth: "+9.5%", futureScore: "8.9/10" }
+            { name: "Brickell / Financial District", type: "Urban Core", signal: "hold", avgRent: "$3,585", growth: "+2.1%", futureScore: "52" },
+            { name: "Downtown Miami", type: "Urban Core", signal: "caution", avgRent: "$3,286", growth: "+0.5%", futureScore: "40" },
+            { name: "Edgewater", type: "Urban Core", signal: "buy", avgRent: "$3,058", growth: "+3.2%", futureScore: "76" },
+            { name: "Wynwood / Design District", type: "Urban Core", signal: "buy", avgRent: "$2,950", growth: "+4.5%", futureScore: "78" },
+            { name: "Midtown Miami", type: "Urban Core", signal: "buy", avgRent: "$2,800", growth: "+2.8%", futureScore: "65" },
+            { name: "Little Havana", type: "Urban Core", signal: "buy-strong", avgRent: "$1,850", growth: "+6.2%", futureScore: "80" },
+            { name: "Overtown", type: "Urban Core", signal: "speculative", avgRent: "$1,650", growth: "+5.8%", futureScore: "58" },
+            { name: "Allapattah", type: "Urban Core", signal: "buy", avgRent: "$1,750", growth: "+7.1%", futureScore: "82" },
+            { name: "Miami Beach / South Beach", type: "Coastal", signal: "hold", avgRent: "$3,400", growth: "-1.2%", futureScore: "35" },
+            { name: "Coconut Grove", type: "Suburban Premium", signal: "hold", avgRent: "$3,200", growth: "+1.5%", futureScore: "42" },
+            { name: "Coral Gables", type: "Suburban Premium", signal: "hold", avgRent: "$3,100", growth: "+2%", futureScore: "40" },
+            { name: "Key Biscayne", type: "Coastal Premium", signal: "trophy", avgRent: "$4,200", growth: "+0.8%", futureScore: "25" },
+            { name: "Aventura", type: "Suburban", signal: "buy", avgRent: "$2,600", growth: "+1.8%", futureScore: "60" },
+            { name: "Sunny Isles Beach", type: "Coastal", signal: "hold", avgRent: "$3,000", growth: "+1.2%", futureScore: "38" },
+            { name: "North Miami", type: "Suburban", signal: "buy", avgRent: "$2,100", growth: "+3.5%", futureScore: "67" },
+            { name: "North Miami Beach", type: "Suburban", signal: "buy", avgRent: "$2,000", growth: "+4%", futureScore: "72" },
+            { name: "Miami Gardens", type: "Suburban", signal: "buy", avgRent: "$1,900", growth: "+3.8%", futureScore: "68" },
+            { name: "Hialeah", type: "Suburban", signal: "buy", avgRent: "$1,800", growth: "+4.2%", futureScore: "73" },
+            { name: "Hialeah Gardens", type: "Suburban", signal: "buy", avgRent: "$1,750", growth: "+3.5%", futureScore: "62" },
+            { name: "Doral", type: "Suburban", signal: "caution", avgRent: "$2,400", growth: "+2.5%", futureScore: "55" },
+            { name: "Sweetwater / FIU Area", type: "Suburban", signal: "buy", avgRent: "$1,700", growth: "+5%", futureScore: "70" },
+            { name: "Kendall / The Crossings", type: "Suburban", signal: "hold", avgRent: "$2,200", growth: "+2%", futureScore: "48" },
+            { name: "Pinecrest", type: "Suburban Premium", signal: "hold", avgRent: "$3,500", growth: "+1%", futureScore: "N/A" },
+            { name: "Palmetto Bay / Cutler Bay", type: "Suburban", signal: "hold", avgRent: "$2,100", growth: "+2.5%", futureScore: "45" },
+            { name: "Homestead", type: "Exurban", signal: "buy-strong", avgRent: "$1,600", growth: "+5.5%", futureScore: "75" },
+            { name: "Florida City", type: "Exurban", signal: "speculative", avgRent: "$1,400", growth: "+6%", futureScore: "52" },
+            { name: "Liberty City / Brownsville", type: "Urban", signal: "speculative", avgRent: "$1,500", growth: "+4.5%", futureScore: "55" },
+            { name: "Little Haiti / Upper East Side", type: "Urban", signal: "buy-strong", avgRent: "$2,200", growth: "+5.5%", futureScore: "85" },
+            { name: "Opa-locka", type: "Suburban", signal: "speculative", avgRent: "$1,350", growth: "+3%", futureScore: "42" },
+            { name: "Surfside / Bal Harbour", type: "Coastal Premium", signal: "trophy", avgRent: "$3,800", growth: "+0.5%", futureScore: "30" },
+            { name: "South Miami", type: "Suburban", signal: "hold", avgRent: "$2,300", growth: "+2%", futureScore: "47" },
+            { name: "Westchester / Tamiami", type: "Suburban", signal: "buy", avgRent: "$1,800", growth: "+3%", futureScore: "63" },
+            { name: "Miami Lakes", type: "Suburban", signal: "hold", avgRent: "$2,300", growth: "+2.2%", futureScore: "50" },
+            { name: "Medley / Hialeah Industrial", type: "Industrial", signal: "hold", avgRent: "$0", growth: "0%", futureScore: "N/A" }
         ];
 
         function slugifyZone(name) {
