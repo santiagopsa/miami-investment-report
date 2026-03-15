@@ -1834,9 +1834,10 @@
                     </div>
                     <div class="future-score">${zone.futureScore}</div>
                     <a href="/zones/${slugifyZone(zone.name)}.html" class="zone-free-link" onclick="event.stopPropagation()">Free Zone Data &rarr;</a>
+                    <a href="#" class="zone-cta" data-i18n="zone_card_view">${translations[currentLanguage].zone_card_view}</a>
                 `;
 
-                card.addEventListener('click', () => window.location.href = '/zones/' + slugifyZone(zone.name) + '.html');
+                card.addEventListener('click', () => openPaywall(zone.name));
                 zonesGrid.appendChild(card);
             });
 
