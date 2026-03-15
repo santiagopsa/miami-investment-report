@@ -465,37 +465,379 @@
             letter-spacing: 0.3px;
         }
 
-        .professional-benefits {
-            background: linear-gradient(180deg, rgba(245, 158, 11, 0.08) 0%, rgba(245, 158, 11, 0.04) 100%);
-            border-top: 2px solid #f59e0b;
-            padding: 2rem 3rem;
+        /* PRO TOOLS SECTION */
+        .pro-tool {
+            background: #ffffff;
+            border-top: 4px solid #b45309;
+            padding: 2.5rem 3rem;
             margin: 2rem 0;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
         }
 
-        .benefit-list {
+        .pro-tool::before {
+            content: "PRO EXCLUSIVE";
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            background: #b45309;
+            color: #ffffff;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .pro-tool h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #1a2744;
+            margin-bottom: 0.5rem;
+            margin-top: 0;
+        }
+
+        .pro-tool > p:first-of-type {
+            color: #4a5568;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .tool-form {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
+            margin-bottom: 2rem;
         }
 
-        .benefit-item {
+        .form-group {
             display: flex;
-            gap: 1rem;
-            padding: 1rem;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            color: #1a2744;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
             background: #ffffff;
-            border-radius: 8px;
-            border-left: 3px solid #f59e0b;
-        }
-
-        .benefit-icon {
-            color: #f59e0b;
-            font-weight: 700;
-            min-width: 20px;
-        }
-
-        .benefit-text {
             color: #1a2744;
             font-size: 0.9rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #1a6b4a;
+            box-shadow: 0 0 0 3px rgba(26, 107, 74, 0.1);
+        }
+
+        .calculate-btn,
+        .analyze-btn {
+            background: #1a6b4a;
+            color: #ffffff;
+            border: none;
+            padding: 0.875rem 2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(26, 107, 74, 0.2);
+            align-self: flex-start;
+        }
+
+        .calculate-btn:hover,
+        .analyze-btn:hover {
+            background: #155340;
+            box-shadow: 0 4px 12px rgba(26, 107, 74, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .result-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #1a6b4a;
+        }
+
+        .result-card.negative {
+            border-left-color: #dc2626;
+        }
+
+        .result-card.highlight {
+            background: linear-gradient(135deg, rgba(26, 107, 74, 0.05) 0%, rgba(180, 83, 9, 0.05) 100%);
+            border-left-color: #b45309;
+        }
+
+        .result-label {
+            color: #4a5568;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a2744;
+        }
+
+        .result-value.positive {
+            color: #059669;
+        }
+
+        .result-value.negative {
+            color: #dc2626;
+        }
+
+        .result-value.highlight {
+            color: #b45309;
+        }
+
+        .scenario-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .scenario-table th {
+            background: #1a6b4a;
+            color: #ffffff;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .scenario-table td {
+            padding: 0.875rem 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            color: #1a2744;
+        }
+
+        .scenario-table tbody tr:hover {
+            background: #f8f9fa;
+        }
+
+        .scenario-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .scenario-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .scenario-column h3.conservative {
+            border-bottom-color: #6b7280;
+        }
+
+        .scenario-column h3.base {
+            border-bottom-color: #1a6b4a;
+        }
+
+        .scenario-column h3.optimistic {
+            border-bottom-color: #b45309;
+        }
+
+        .equity-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            height: 150px;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .equity-bar {
+            flex: 1;
+            background: #1a6b4a;
+            border-radius: 4px 4px 0 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .equity-bar:hover {
+            opacity: 0.8;
+            transform: translateY(-4px);
+        }
+
+        .equity-bar.conservative {
+            background: #6b7280;
+        }
+
+        .equity-bar.optimistic {
+            background: #b45309;
+        }
+
+        .equity-label {
+            position: absolute;
+            bottom: -25px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #1a2744;
+        }
+
+        .equity-value {
+            position: absolute;
+            top: -25px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #1a2744;
+        }
+
+        .deal-verdict {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid #1a6b4a;
+            margin-top: 2rem;
+        }
+
+        .verdict-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .verdict-title.good {
+            color: #059669;
+            border-left-color: #059669;
+        }
+
+        .verdict-title.fair {
+            color: #b45309;
+            border-left-color: #b45309;
+        }
+
+        .verdict-title.overpriced {
+            color: #dc2626;
+            border-left-color: #dc2626;
+        }
+
+        .comparison-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .comparison-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .comparison-list li:last-child {
+            border-bottom: none;
+        }
+
+        .comparison-list strong {
+            color: #1a2744;
+            font-weight: 600;
+        }
+
+        .comparison-list .value {
+            color: #4a5568;
+        }
+
+        .comparison-list .badge {
+            background: #e8f5e9;
+            color: #059669;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .comparison-list .badge.negative {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .risk-factors {
+            background: #fff3cd;
+            border-left: 4px solid #f59e0b;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 1.5rem;
+        }
+
+        .risk-factors h4 {
+            color: #b8860b;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .risk-factors ul {
+            margin-left: 1.5rem;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        .risk-factors li {
+            margin-bottom: 0.5rem;
+        }
+
+        .investment-thesis {
+            background: #eff6ff;
+            border-left: 4px solid #1a6b4a;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+
+        .investment-thesis h4 {
+            color: #1a6b4a;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .investment-thesis p {
+            color: #4a5568;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .hidden {
+            display: none;
         }
 
         /* Gradient Bars */
@@ -599,8 +941,28 @@
             }
 
             .zone-selector-section,
-            .professional-benefits {
+            .pro-tool {
                 padding: 2rem 1.5rem;
+                padding-top: 3rem;
+            }
+
+            .pro-tool::before {
+                right: 1rem;
+                top: 0.75rem;
+                font-size: 0.65rem;
+            }
+
+            .tool-form {
+                grid-template-columns: 1fr;
+            }
+
+            .scenario-comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .equity-chart {
+                height: 200px;
+                margin-bottom: 2rem;
             }
 
             .summary-grid {
@@ -871,43 +1233,198 @@
         </div>
     </section>
 
-    <!-- Professional Benefits Section -->
-    <section class="professional-benefits">
-        <h2 class="benefits-title">Tus Beneficios Profesionales</h2>
-        <p class="benefits-subtitle">Acceso exclusivo a herramientas y recursos premium para potenciar tu análisis de inversiones</p>
+    <!-- PRO TOOL 1: Investment Calculator -->
+    <section class="pro-tool" id="investCalc">
+        <h2>Investment Calculator</h2>
+        <p>Analyze any multifamily deal in Miami-Dade with professional metrics and projections.</p>
 
-        <div class="benefits-grid">
-            <!-- Benefit 1: Excel Template -->
-            <div class="benefit-card">
-                <span class="benefit-icon">📊</span>
-                <h3>Template Excel T-12</h3>
-                <p>Descarga tu template para evaluar cualquier deal en Miami-Dade con análisis profesional</p>
-                <a href="#" class="benefit-link" download>Descargar Template</a>
+        <div class="tool-form" id="calcForm">
+            <div class="form-group">
+                <label>Purchase Price per Unit ($)</label>
+                <input type="number" id="purchasePrice" value="300000" step="10000">
+            </div>
+            <div class="form-group">
+                <label>Number of Units</label>
+                <input type="number" id="numUnits" value="10" min="1">
+            </div>
+            <div class="form-group">
+                <label>Down Payment (%)</label>
+                <input type="number" id="downPaymentPct" value="25" min="0" max="100" step="1">
+            </div>
+            <div class="form-group">
+                <label>Interest Rate (%)</label>
+                <input type="number" id="interestRate" value="7.0" step="0.1" min="0">
+            </div>
+            <div class="form-group">
+                <label>Loan Term (years)</label>
+                <input type="number" id="loanTerm" value="30" min="1" step="1">
+            </div>
+            <div class="form-group">
+                <label>Monthly Rent per Unit ($)</label>
+                <input type="number" id="monthlyRent" value="2500" step="100">
+            </div>
+            <div class="form-group">
+                <label>Vacancy Rate (%)</label>
+                <input type="number" id="vacancyRate" value="5" min="0" max="100" step="1">
+            </div>
+            <div class="form-group">
+                <label>OpEx per Unit/Year ($)</label>
+                <input type="number" id="opexPerUnit" value="12000" step="1000">
+            </div>
+        </div>
+
+        <button class="calculate-btn" onclick="calculateInvestment()">Calculate Investment Metrics</button>
+
+        <div id="calcResults" class="results-grid hidden">
+            <div class="result-card">
+                <div class="result-label">Total Purchase Price</div>
+                <div class="result-value" id="totalPurchase">$0</div>
+            </div>
+            <div class="result-card">
+                <div class="result-label">Down Payment</div>
+                <div class="result-value" id="downPayment">$0</div>
+            </div>
+            <div class="result-card">
+                <div class="result-label">Loan Amount</div>
+                <div class="result-value" id="loanAmount">$0</div>
+            </div>
+            <div class="result-card">
+                <div class="result-label">Monthly Mortgage</div>
+                <div class="result-value" id="monthlyMortgage">$0</div>
+            </div>
+            <div class="result-card">
+                <div class="result-label">Gross Annual Rent</div>
+                <div class="result-value" id="grossRent">$0</div>
+            </div>
+            <div class="result-card">
+                <div class="result-label">Effective Rental Income</div>
+                <div class="result-value" id="effectiveRent">$0</div>
+            </div>
+            <div class="result-card">
+                <div class="result-label">Total OpEx/Year</div>
+                <div class="result-value" id="totalOpex">$0</div>
+            </div>
+            <div class="result-card">
+                <div class="result-label">Net Operating Income</div>
+                <div class="result-value highlight" id="noi">$0</div>
+            </div>
+            <div class="result-card">
+                <div class="result-label">Annual Debt Service</div>
+                <div class="result-value" id="annualDebtService">$0</div>
+            </div>
+            <div class="result-card">
+                <div class="result-label">Cash Flow Before Tax</div>
+                <div class="result-value" id="cfbt">$0</div>
+            </div>
+            <div class="result-card highlight">
+                <div class="result-label">Cap Rate</div>
+                <div class="result-value highlight" id="capRate">0%</div>
+            </div>
+            <div class="result-card highlight">
+                <div class="result-label">Cash-on-Cash Return</div>
+                <div class="result-value highlight" id="cashOnCash">0%</div>
+            </div>
+            <div class="result-card highlight">
+                <div class="result-label">Debt Service Coverage</div>
+                <div class="result-value highlight" id="dscr">0x</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRO TOOL 2: Scenario Comparator -->
+    <section class="pro-tool" id="scenarioComp">
+        <h2>Scenario Comparator</h2>
+        <p>Project 5-year performance across Conservative, Base Case, and Optimistic scenarios using calculator inputs as the base.</p>
+
+        <div class="scenario-comparison" id="scenarioInputs">
+            <div class="scenario-column">
+                <h3 class="conservative">Conservative Case</h3>
+                <div class="form-group">
+                    <label>Rent Growth/Year (%)</label>
+                    <input type="number" class="scenario-rent" data-scenario="conservative" value="2.0" step="0.5">
+                </div>
+                <div class="form-group">
+                    <label>Appreciation/Year (%)</label>
+                    <input type="number" class="scenario-apprec" data-scenario="conservative" value="3.0" step="0.5">
+                </div>
+                <div class="form-group">
+                    <label>Vacancy Change (%)</label>
+                    <input type="number" class="scenario-vacancy" data-scenario="conservative" value="1" step="0.5">
+                </div>
             </div>
 
-            <!-- Benefit 2: Quarterly Updates -->
-            <div class="benefit-card">
-                <span class="benefit-icon">📅</span>
-                <h3>Actualizaciones Trimestrales</h3>
-                <p>Recibirás updates Q2, Q3, Q4 2026 con nuevos datos de mercado y análisis</p>
-                <a href="mailto:santiagopsa@gmail.com?subject=Confirmar%20Suscripción%20Actualizaciones" class="benefit-link">Confirmar Suscripción</a>
+            <div class="scenario-column">
+                <h3 class="base">Base Case</h3>
+                <div class="form-group">
+                    <label>Rent Growth/Year (%)</label>
+                    <input type="number" class="scenario-rent" data-scenario="base" value="4.0" step="0.5">
+                </div>
+                <div class="form-group">
+                    <label>Appreciation/Year (%)</label>
+                    <input type="number" class="scenario-apprec" data-scenario="base" value="5.0" step="0.5">
+                </div>
+                <div class="form-group">
+                    <label>Vacancy Change (%)</label>
+                    <input type="number" class="scenario-vacancy" data-scenario="base" value="0" step="0.5">
+                </div>
             </div>
 
-            <!-- Benefit 3: WhatsApp Group -->
-            <div class="benefit-card">
-                <span class="benefit-icon">💬</span>
-                <h3>Grupo WhatsApp</h3>
-                <p>Únete al grupo privado de inversionistas para discusiones en tiempo real</p>
-                <a href="https://wa.me/?text=Solicito%20acceso%20al%20grupo%20de%20inversionistas" class="benefit-link" target="_blank">Unirse Grupo</a>
+            <div class="scenario-column">
+                <h3 class="optimistic">Optimistic Case</h3>
+                <div class="form-group">
+                    <label>Rent Growth/Year (%)</label>
+                    <input type="number" class="scenario-rent" data-scenario="optimistic" value="6.0" step="0.5">
+                </div>
+                <div class="form-group">
+                    <label>Appreciation/Year (%)</label>
+                    <input type="number" class="scenario-apprec" data-scenario="optimistic" value="8.0" step="0.5">
+                </div>
+                <div class="form-group">
+                    <label>Vacancy Change (%)</label>
+                    <input type="number" class="scenario-vacancy" data-scenario="optimistic" value="-1" step="0.5">
+                </div>
             </div>
+        </div>
 
-            <!-- Benefit 4: Personal Consultation -->
-            <div class="benefit-card">
-                <span class="benefit-icon">📧</span>
-                <h3>Consulta con Santiago</h3>
-                <p>15 minutos de consulta personalizada vía email sobre tu estrategia de inversión</p>
-                <a href="mailto:santiagopsa@gmail.com?subject=Agendar%20Consulta%20Profesional" class="benefit-link">Agendar Consulta</a>
+        <button class="calculate-btn" onclick="runScenarioComparison()">Project 5-Year Scenarios</button>
+
+        <div id="scenarioResults" class="hidden">
+            <div id="scenarioTables"></div>
+            <div style="margin-top: 2rem; padding: 1.5rem; background: #f8f9fa; border-radius: 8px;">
+                <h3 style="margin-bottom: 1rem;">5-Year Equity Comparison</h3>
+                <div class="equity-chart" id="equityChart"></div>
             </div>
+        </div>
+    </section>
+
+    <!-- PRO TOOL 3: Deal Analyzer -->
+    <section class="pro-tool" id="dealAnalyzer">
+        <h2>Deal Analyzer</h2>
+        <p>Evaluate a specific property against your zone's benchmark data and market averages.</p>
+
+        <div class="tool-form" id="dealForm">
+            <div class="form-group">
+                <label>Select Zone</label>
+                <select id="dealZone">
+                    <option value="">-- Choose a zone --</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Asking Price per Unit ($)</label>
+                <input type="number" id="dealPrice" value="350000" step="10000">
+            </div>
+            <div class="form-group">
+                <label>Actual Rent per Unit ($)</label>
+                <input type="number" id="dealRent" value="2800" step="100">
+            </div>
+        </div>
+
+        <button class="analyze-btn" onclick="analyzeDeal()">Analyze Deal</button>
+
+        <div id="dealResults" class="hidden">
+            <div class="deal-verdict" id="dealVerdict"></div>
+            <div class="results-grid" id="dealComparison"></div>
+            <div id="dealRisks"></div>
         </div>
     </section>
 
@@ -4035,7 +4552,325 @@ document.addEventListener('DOMContentLoaded', () => {
   populateRanking();
   populateGuide();
   setupModalEvents();
+  initProTools();
 });
+
+// ========== PRO TOOLS LOGIC ==========
+
+let lastCalculationData = null;
+
+function initProTools() {
+  // Populate zone dropdown for Deal Analyzer
+  const zoneSelect = document.getElementById('dealZone');
+  if (zoneSelect && typeof zones !== 'undefined') {
+    zones.forEach(zone => {
+      const option = document.createElement('option');
+      option.value = zone.id;
+      option.textContent = zone.name;
+      zoneSelect.appendChild(option);
+    });
+  }
+}
+
+// Format currency
+function formatCurrency(value) {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0
+  }).format(value);
+}
+
+// Format percentage
+function formatPercent(value) {
+  return (Math.round(value * 10) / 10).toFixed(1) + '%';
+}
+
+// Amortization formula for monthly mortgage payment
+function calculateMortgagePayment(principal, annualRate, years) {
+  const monthlyRate = annualRate / 100 / 12;
+  const numPayments = years * 12;
+  if (monthlyRate === 0) return principal / numPayments;
+  const payment = principal * (monthlyRate * Math.pow(1 + monthlyRate, numPayments)) /
+                  (Math.pow(1 + monthlyRate, numPayments) - 1);
+  return payment;
+}
+
+// TOOL 1: Investment Calculator
+function calculateInvestment() {
+  const purchasePrice = parseFloat(document.getElementById('purchasePrice').value) || 300000;
+  const numUnits = parseFloat(document.getElementById('numUnits').value) || 10;
+  const downPaymentPct = parseFloat(document.getElementById('downPaymentPct').value) || 25;
+  const interestRate = parseFloat(document.getElementById('interestRate').value) || 7.0;
+  const loanTerm = parseFloat(document.getElementById('loanTerm').value) || 30;
+  const monthlyRent = parseFloat(document.getElementById('monthlyRent').value) || 2500;
+  const vacancyRate = parseFloat(document.getElementById('vacancyRate').value) || 5;
+  const opexPerUnit = parseFloat(document.getElementById('opexPerUnit').value) || 12000;
+
+  // Calculations
+  const totalPurchase = purchasePrice * numUnits;
+  const downPaymentAmt = totalPurchase * (downPaymentPct / 100);
+  const loanAmt = totalPurchase - downPaymentAmt;
+  const monthlyMortgage = calculateMortgagePayment(loanAmt, interestRate, loanTerm);
+  const grossAnnualRent = monthlyRent * numUnits * 12;
+  const effectiveRent = grossAnnualRent * (1 - vacancyRate / 100);
+  const totalOpex = opexPerUnit * numUnits;
+  const noi = effectiveRent - totalOpex;
+  const annualDebtService = monthlyMortgage * 12;
+  const cfbt = noi - annualDebtService;
+  const capRate = (noi / totalPurchase) * 100;
+  const cashOnCash = (cfbt / downPaymentAmt) * 100;
+  const dscr = noi / annualDebtService;
+
+  // Store for scenario comparator
+  lastCalculationData = {
+    purchasePrice,
+    numUnits,
+    downPaymentPct,
+    interestRate,
+    loanTerm,
+    monthlyRent,
+    vacancyRate,
+    opexPerUnit,
+    monthlyMortgage,
+    totalPurchase,
+    noi,
+    annualDebtService
+  };
+
+  // Display results
+  document.getElementById('totalPurchase').textContent = formatCurrency(totalPurchase);
+  document.getElementById('downPayment').textContent = formatCurrency(downPaymentAmt);
+  document.getElementById('loanAmount').textContent = formatCurrency(loanAmt);
+  document.getElementById('monthlyMortgage').textContent = formatCurrency(monthlyMortgage);
+  document.getElementById('grossRent').textContent = formatCurrency(grossAnnualRent);
+  document.getElementById('effectiveRent').textContent = formatCurrency(effectiveRent);
+  document.getElementById('totalOpex').textContent = formatCurrency(totalOpex);
+  document.getElementById('noi').textContent = formatCurrency(noi);
+  document.getElementById('annualDebtService').textContent = formatCurrency(annualDebtService);
+
+  const cfbtEl = document.getElementById('cfbt');
+  cfbtEl.textContent = formatCurrency(cfbt);
+  cfbtEl.classList.toggle('positive', cfbt >= 0);
+  cfbtEl.classList.toggle('negative', cfbt < 0);
+
+  document.getElementById('capRate').textContent = formatPercent(capRate);
+  document.getElementById('cashOnCash').textContent = formatPercent(cashOnCash);
+  document.getElementById('dscr').textContent = dscr.toFixed(2) + 'x';
+
+  document.getElementById('calcResults').classList.remove('hidden');
+  document.getElementById('calcResults').scrollIntoView({ behavior: 'smooth' });
+}
+
+// TOOL 2: Scenario Comparator
+function runScenarioComparison() {
+  if (!lastCalculationData) {
+    alert('Please run the Investment Calculator first to establish base values.');
+    return;
+  }
+
+  const scenarios = {
+    conservative: {
+      rentGrowth: parseFloat(document.querySelector('[data-scenario="conservative"].scenario-rent').value) || 2.0,
+      appreciation: parseFloat(document.querySelector('[data-scenario="conservative"].scenario-apprec').value) || 3.0,
+      vacancyChange: parseFloat(document.querySelector('[data-scenario="conservative"].scenario-vacancy').value) || 1
+    },
+    base: {
+      rentGrowth: parseFloat(document.querySelector('[data-scenario="base"].scenario-rent').value) || 4.0,
+      appreciation: parseFloat(document.querySelector('[data-scenario="base"].scenario-apprec').value) || 5.0,
+      vacancyChange: parseFloat(document.querySelector('[data-scenario="base"].scenario-vacancy').value) || 0
+    },
+    optimistic: {
+      rentGrowth: parseFloat(document.querySelector('[data-scenario="optimistic"].scenario-rent').value) || 6.0,
+      appreciation: parseFloat(document.querySelector('[data-scenario="optimistic"].scenario-apprec').value) || 8.0,
+      vacancyChange: parseFloat(document.querySelector('[data-scenario="optimistic"].scenario-vacancy').value) || -1
+    }
+  };
+
+  const data = lastCalculationData;
+  const tablesHtml = [];
+  const equityYear5 = {};
+
+  Object.entries(scenarios).forEach(([scenarioKey, scenario]) => {
+    let currentRent = data.monthlyRent;
+    let currentVacancy = data.vacancyRate + scenario.vacancyChange;
+    let propertyValue = data.totalPurchase;
+    let totalEquity = data.downPaymentPct * data.totalPurchase / 100;
+    let loanBalance = data.totalPurchase - totalEquity;
+    let tableRows = '';
+
+    for (let year = 1; year <= 5; year++) {
+      currentRent = currentRent * (1 + scenario.rentGrowth / 100);
+      propertyValue = propertyValue * (1 + scenario.appreciation / 100);
+      const effectiveRent = currentRent * data.numUnits * 12 * (1 - Math.max(0, currentVacancy) / 100);
+      const noi = effectiveRent - (data.opexPerUnit * data.numUnits);
+      const cashFlow = noi - data.monthlyMortgage * 12;
+      loanBalance = Math.max(0, loanBalance - (noi * 0.3)); // Simplified principal paydown
+      totalEquity = propertyValue - loanBalance;
+
+      tableRows += `
+        <tr>
+          <td>Year ${year}</td>
+          <td>${formatCurrency(propertyValue)}</td>
+          <td>${formatCurrency(effectiveRent)}</td>
+          <td>${formatCurrency(noi)}</td>
+          <td>${formatCurrency(cashFlow)}</td>
+          <td>${formatCurrency(totalEquity)}</td>
+        </tr>
+      `;
+    }
+
+    equityYear5[scenarioKey] = totalEquity;
+
+    const scenarioLabel = { conservative: 'Conservative', base: 'Base Case', optimistic: 'Optimistic' }[scenarioKey];
+    tablesHtml.push(`
+      <h3 style="margin-top: 2rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0;">${scenarioLabel} Scenario</h3>
+      <table class="scenario-table">
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Property Value</th>
+            <th>Annual Rent</th>
+            <th>NOI</th>
+            <th>Cash Flow</th>
+            <th>Total Equity</th>
+          </tr>
+        </thead>
+        <tbody>${tableRows}</tbody>
+      </table>
+    `);
+  });
+
+  document.getElementById('scenarioTables').innerHTML = tablesHtml.join('');
+
+  // Create equity comparison chart
+  const maxEquity = Math.max(...Object.values(equityYear5));
+  const chartHtml = Object.entries(equityYear5).map(([scenario, equity]) => {
+    const height = (equity / maxEquity) * 100;
+    const barClass = scenario === 'conservative' ? 'conservative' : scenario === 'optimistic' ? 'optimistic' : '';
+    return `
+      <div class="equity-bar ${barClass}" style="height: ${height}%;">
+        <div class="equity-value">${formatCurrency(equity)}</div>
+        <div class="equity-label">${scenario.charAt(0).toUpperCase() + scenario.slice(1)}</div>
+      </div>
+    `;
+  }).join('');
+
+  document.getElementById('equityChart').innerHTML = chartHtml;
+  document.getElementById('scenarioResults').classList.remove('hidden');
+  document.getElementById('scenarioResults').scrollIntoView({ behavior: 'smooth' });
+}
+
+// TOOL 3: Deal Analyzer
+function analyzeDeal() {
+  const zoneId = document.getElementById('dealZone').value;
+  const dealPrice = parseFloat(document.getElementById('dealPrice').value) || 350000;
+  const dealRent = parseFloat(document.getElementById('dealRent').value) || 2800;
+
+  if (!zoneId) {
+    alert('Please select a zone.');
+    return;
+  }
+
+  const zone = zones.find(z => z.id == zoneId);
+  if (!zone) {
+    alert('Zone not found.');
+    return;
+  }
+
+  // Comparisons
+  const priceVsAvg = ((dealPrice - (zone.priceMin + zone.priceMax) / 2) / ((zone.priceMin + zone.priceMax) / 2)) * 100;
+  const rentVsAvg = ((dealRent - zone.rentAvg) / zone.rentAvg) * 100;
+  const dealCapRate = (dealRent * 12 / dealPrice) * 100;
+  const zoneCapRateAvg = (zone.capRateMin + zone.capRateMax) / 2;
+  const capRateDiff = dealCapRate - zoneCapRateAvg;
+
+  // Verdict logic
+  let verdict = 'FAIR DEAL';
+  let verdictColor = 'fair';
+
+  if (priceVsAvg > 15 || dealCapRate < zone.capRateMin - 0.5) {
+    verdict = 'OVERPRICED';
+    verdictColor = 'overpriced';
+  } else if (priceVsAvg < -10 && rentVsAvg >= 0) {
+    verdict = 'GOOD DEAL';
+    verdictColor = 'good';
+  } else if (rentVsAvg > 5 && priceVsAvg < 5) {
+    verdict = 'GOOD DEAL';
+    verdictColor = 'good';
+  }
+
+  // Comparison cards
+  const compHtml = `
+    <div class="result-card">
+      <div class="result-label">Price vs Zone Average</div>
+      <div class="result-value ${priceVsAvg < 0 ? 'positive' : 'negative'}">${formatPercent(Math.abs(priceVsAvg))} ${priceVsAvg < 0 ? 'below' : 'above'}</div>
+    </div>
+    <div class="result-card">
+      <div class="result-label">Rent vs Zone Average</div>
+      <div class="result-value ${rentVsAvg > 0 ? 'positive' : 'negative'}">${formatPercent(Math.abs(rentVsAvg))} ${rentVsAvg > 0 ? 'above' : 'below'}</div>
+    </div>
+    <div class="result-card highlight">
+      <div class="result-label">Deal Cap Rate</div>
+      <div class="result-value highlight">${formatPercent(dealCapRate)}</div>
+    </div>
+    <div class="result-card highlight">
+      <div class="result-label">Zone Cap Rate Range</div>
+      <div class="result-value highlight">${formatPercent(zone.capRateMin)} - ${formatPercent(zone.capRateMax)}</div>
+    </div>
+  `;
+
+  document.getElementById('dealComparison').innerHTML = compHtml;
+
+  // Risk factors and thesis
+  const riskHtml = `
+    <div class="risk-factors">
+      <h4>Key Risk Factors</h4>
+      <ul>
+        <li><strong>Flood Risk:</strong> ${zone.flood}</li>
+        <li><strong>Pipeline Supply:</strong> ${zone.pipeline} units in dev pipeline</li>
+        <li><strong>Vacancy Rate:</strong> ${zone.vacancy}%</li>
+        <li><strong>Insurance Risk:</strong> ${zone.insuranceRisk}</li>
+      </ul>
+    </div>
+    <div class="investment-thesis">
+      <h4>Zone Investment Thesis</h4>
+      <p>${zone.investmentThesis || 'No thesis available for this zone.'}</p>
+    </div>
+  `;
+
+  document.getElementById('dealRisks').innerHTML = riskHtml;
+
+  // Verdict
+  const verdictHtml = `
+    <h3 class="verdict-title ${verdictColor}">${verdict}</h3>
+    <ul class="comparison-list">
+      <li>
+        <strong>Price Analysis:</strong>
+        <span class="badge ${priceVsAvg < 0 ? '' : 'negative'}">
+          ${priceVsAvg < 0 ? '✓ ' : '✗ '}${Math.abs(priceVsAvg).toFixed(1)}% ${priceVsAvg < 0 ? 'below' : 'above'} average
+        </span>
+      </li>
+      <li>
+        <strong>Rent Analysis:</strong>
+        <span class="badge ${rentVsAvg > 0 ? '' : 'negative'}">
+          ${rentVsAvg > 0 ? '✓ ' : '✗ '}${Math.abs(rentVsAvg).toFixed(1)}% ${rentVsAvg > 0 ? 'above' : 'below'} average
+        </span>
+      </li>
+      <li>
+        <strong>Cap Rate vs Zone:</strong>
+        <span class="badge ${capRateDiff > 0.2 ? '' : 'negative'}">
+          ${capRateDiff > 0.2 ? '✓ ' : '✗ '}${capRateDiff.toFixed(2)}% ${capRateDiff > 0 ? 'above' : 'below'} zone average
+        </span>
+      </li>
+    </ul>
+  `;
+
+  document.getElementById('dealVerdict').innerHTML = verdictHtml;
+  document.getElementById('dealResults').classList.remove('hidden');
+  document.getElementById('dealResults').scrollIntoView({ behavior: 'smooth' });
+}
 
 </script>
 </body>
