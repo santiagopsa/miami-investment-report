@@ -1,0 +1,5140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miami-Dade Multifamily Investment Intelligence Q1 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1a2744;
+            background-color: #f8f9fa;
+            line-height: 1.6;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            letter-spacing: -1px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #1a2744;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 0.95rem;
+            color: #4a5568;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: rgba(26, 39, 68, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 200, 83, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 3rem;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #00C853;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: #e0e7ff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #00C853;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #00C853;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 600px;
+            margin-top: 70px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a2744 0%, #2d3e5f 50%, #1a2744 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(0, 200, 83, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 200, 83, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            max-width: 900px;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #00C853 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: #a0aec0;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        .hero-kpis {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .kpi-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 200, 83, 0.2);
+            padding: 1.5rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .kpi-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(0, 200, 83, 0.5);
+            transform: translateY(-5px);
+        }
+
+        .kpi-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #00C853;
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .kpi-label {
+            font-size: 0.85rem;
+            color: #cbd5e0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Zone Selector Section */
+        .zone-selector-section {
+            padding: 4rem 3rem;
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .zone-selector-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .filter-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            align-items: center;
+        }
+
+        .filter-label {
+            font-weight: 600;
+            color: #2d3748;
+            min-width: 100px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.2rem;
+            border: 2px solid #e2e8f0;
+            background: white;
+            color: #4a5568;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            border-color: #00C853;
+            color: #00C853;
+            background: rgba(0, 200, 83, 0.05);
+        }
+
+        .filter-btn.active {
+            background: #00C853;
+            color: white;
+            border-color: #00C853;
+        }
+
+        .search-input {
+            padding: 0.75rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 350px;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #00C853;
+            box-shadow: 0 0 0 3px rgba(0, 200, 83, 0.1);
+        }
+
+        /* Zone Cards Grid */
+        .zone-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .zone-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 5px solid #cbd5e0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+
+        .zone-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .zone-card-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .zone-card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1a2744;
+            margin-bottom: 0.5rem;
+        }
+
+        .signal-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .signal-buy-strong {
+            background: rgba(0, 200, 83, 0.15);
+            color: #00C853;
+            border-color: #00C853;
+        }
+
+        .signal-buy {
+            background: rgba(76, 211, 126, 0.15);
+            color: #4cd37e;
+            border-color: #4cd37e;
+        }
+
+        .signal-hold {
+            background: rgba(255, 159, 64, 0.15);
+            color: #ff9f40;
+            border-color: #ff9f40;
+        }
+
+        .signal-caution {
+            background: rgba(255, 71, 87, 0.15);
+            color: #ff4757;
+            border-color: #ff4757;
+        }
+
+        .signal-speculative {
+            background: rgba(164, 86, 221, 0.15);
+            color: #a456dd;
+            border-color: #a456dd;
+        }
+
+        .signal-trophy {
+            background: rgba(255, 193, 7, 0.15);
+            color: #ffc107;
+            border-color: #ffc107;
+        }
+
+        .zone-card-body {
+            padding: 1.5rem;
+        }
+
+        .zone-stat {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #f0f4f8;
+        }
+
+        .zone-stat:last-child {
+            border-bottom: none;
+        }
+
+        .zone-stat-label {
+            font-size: 0.8rem;
+            color: #718096;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        .zone-stat-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a2744;
+        }
+
+        .zone-card.signal-buy-strong {
+            border-left-color: #00C853;
+        }
+
+        .zone-card.signal-buy {
+            border-left-color: #4cd37e;
+        }
+
+        .zone-card.signal-hold {
+            border-left-color: #ff9f40;
+        }
+
+        .zone-card.signal-caution {
+            border-left-color: #ff4757;
+        }
+
+        .zone-card.signal-speculative {
+            border-left-color: #a456dd;
+        }
+
+        .zone-card.signal-trophy {
+            border-left-color: #ffc107;
+        }
+
+        /* Zone Modal */
+        .zone-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(26, 39, 68, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .zone-modal.active {
+            display: flex;
+        }
+
+        .zone-modal-content {
+            background: white;
+            border-radius: 12px;
+            max-width: 1100px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .zone-modal-header {
+            padding: 2rem;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            position: sticky;
+            top: 0;
+            z-index: 2001;
+        }
+
+        .zone-modal-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .zone-modal-title h2 {
+            margin: 0;
+            color: #1a2744;
+            font-size: 2rem;
+        }
+
+        .zone-modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #718096;
+            transition: color 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .zone-modal-close:hover {
+            color: #1a2744;
+        }
+
+        /* Tabs */
+        .tab-nav {
+            display: flex;
+            border-bottom: 2px solid #e2e8f0;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 2001;
+            padding: 0 2rem;
+        }
+
+        .tab-btn {
+            padding: 1.2rem 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #718096;
+            transition: all 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            color: #1a2744;
+        }
+
+        .tab-btn.active {
+            color: #00C853;
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #00C853;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 2rem;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Zone Comparison Section */
+        .zone-comparison-section {
+            padding: 4rem 3rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .zone-comparison-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .comparison-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .comparison-zone {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .comparison-zone-select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .comparison-zone-select:focus {
+            outline: none;
+            border-color: #00C853;
+        }
+
+        .comparison-stat {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #f0f4f8;
+        }
+
+        .comparison-stat:last-child {
+            border-bottom: none;
+        }
+
+        .comparison-stat-label {
+            font-weight: 600;
+            color: #4a5568;
+        }
+
+        .comparison-stat-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #00C853;
+        }
+
+        /* Ranking Table Section */
+        .ranking-section {
+            padding: 4rem 3rem;
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .ranking-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .ranking-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .ranking-table thead {
+            background: linear-gradient(135deg, #1a2744 0%, #2d3e5f 100%);
+            color: white;
+        }
+
+        .ranking-table th {
+            padding: 1.2rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.3s ease;
+        }
+
+        .ranking-table th:hover {
+            background: rgba(0, 200, 83, 0.2);
+        }
+
+        .ranking-table td {
+            padding: 1rem 1.2rem;
+            border-bottom: 1px solid #e2e8f0;
+            color: #4a5568;
+        }
+
+        .ranking-table tbody tr {
+            transition: all 0.3s ease;
+        }
+
+        .ranking-table tbody tr:hover {
+            background: rgba(0, 200, 83, 0.05);
+        }
+
+        .ranking-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .rank-number {
+            font-weight: 700;
+            color: #1a2744;
+            font-size: 1.1rem;
+        }
+
+        .zone-name-cell {
+            font-weight: 600;
+            color: #1a2744;
+        }
+
+        /* Buyer's Guide Section */
+        .buyers-guide-section {
+            padding: 4rem 3rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .buyers-guide-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .accordion-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .accordion-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .accordion-card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .accordion-header {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+
+        .accordion-header:hover {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f4f8 100%);
+            border-bottom-color: #00C853;
+        }
+
+        .accordion-header h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .accordion-toggle {
+            font-size: 1.5rem;
+            color: #00C853;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-card.active .accordion-toggle {
+            transform: rotate(180deg);
+        }
+
+        .accordion-body {
+            display: none;
+            padding: 1.5rem;
+            border-top: 1px solid #e2e8f0;
+            color: #4a5568;
+            line-height: 1.8;
+        }
+
+        .accordion-card.active .accordion-body {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                max-height: 0;
+            }
+            to {
+                opacity: 1;
+                max-height: 500px;
+            }
+        }
+
+        /* Methodology Section */
+        .methodology-section {
+            padding: 4rem 3rem;
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .methodology-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .sources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .source-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #00C853;
+            transition: all 0.3s ease;
+        }
+
+        .source-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .source-card h4 {
+            margin-bottom: 0.5rem;
+            color: #1a2744;
+        }
+
+        .source-card p {
+            font-size: 0.85rem;
+            color: #718096;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a2744;
+            color: white;
+            padding: 3rem;
+            text-align: center;
+            border-top: 1px solid rgba(0, 200, 83, 0.2);
+        }
+
+        footer p {
+            color: #a0aec0;
+            font-size: 0.85rem;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .stat-bar {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .stat-bar-label {
+            min-width: 100px;
+            font-weight: 600;
+            color: #4a5568;
+        }
+
+        .stat-bar-fill {
+            flex: 1;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .stat-bar-value {
+            height: 100%;
+            background: linear-gradient(90deg, #00C853 0%, #4cd37e 100%);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        .cost-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .cost-item {
+            background: #f0f4f8;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #00C853;
+        }
+
+        .cost-item-label {
+            font-weight: 600;
+            color: #4a5568;
+            margin-bottom: 0.5rem;
+        }
+
+        .cost-item-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #00C853;
+        }
+
+        .school-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .school-card:hover {
+            border-color: #00C853;
+            box-shadow: 0 4px 12px rgba(0, 200, 83, 0.1);
+        }
+
+        .school-card-name {
+            font-weight: 600;
+            color: #1a2744;
+            margin-bottom: 0.3rem;
+        }
+
+        .school-card-grade {
+            font-size: 0.85rem;
+            color: #718096;
+        }
+
+        .school-card-rating {
+            display: inline-block;
+            color: #ffc107;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .infra-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .infra-card:hover {
+            border-color: #00C853;
+            box-shadow: 0 4px 12px rgba(0, 200, 83, 0.1);
+        }
+
+        .infra-card-title {
+            font-weight: 600;
+            color: #1a2744;
+            margin-bottom: 0.5rem;
+        }
+
+        .infra-card-description {
+            font-size: 0.9rem;
+            color: #718096;
+            margin-bottom: 0.5rem;
+        }
+
+        .infra-card-timeline {
+            font-size: 0.8rem;
+            color: #a0aec0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cashflow-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .cashflow-table thead {
+            background: #f0f4f8;
+        }
+
+        .cashflow-table th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: #4a5568;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .cashflow-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .cashflow-table tbody tr:hover {
+            background: rgba(0, 200, 83, 0.05);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .zone-cards-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+
+            .comparison-container {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                padding: 0 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                height: 60px;
+                padding: 0 1rem;
+            }
+
+            .nav-logo {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-links a {
+                font-size: 0.8rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .hero {
+                height: 80vh;
+                margin-top: 60px;
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-kpis {
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+
+            .kpi-value {
+                font-size: 1.8rem;
+            }
+
+            .zone-selector-section,
+            .zone-comparison-section,
+            .ranking-section,
+            .buyers-guide-section,
+            .methodology-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .zone-cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .filter-buttons {
+                width: 100%;
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                font-size: 0.75rem;
+                padding: 0.5rem 1rem;
+            }
+
+            .search-input {
+                max-width: 100%;
+            }
+
+            .tab-nav {
+                padding: 0 1rem;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .tab-btn {
+                padding: 1rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .zone-modal-content {
+                max-height: 95vh;
+            }
+
+            .zone-modal-header {
+                padding: 1.5rem;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .zone-modal-title {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+
+            .zone-modal-close {
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+            }
+
+            .accordion-container {
+                grid-template-columns: 1fr;
+            }
+
+            .sources-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ranking-table {
+                font-size: 0.85rem;
+            }
+
+            .ranking-table th,
+            .ranking-table td {
+                padding: 0.75rem 0.5rem;
+            }
+
+            footer {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                flex-direction: column;
+                height: auto;
+                gap: 0.5rem;
+                padding: 0.5rem;
+            }
+
+            .nav-logo {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 0.5rem;
+                width: 100%;
+            }
+
+            .nav-links a {
+                padding: 0.5rem;
+            }
+
+            .hero {
+                height: 60vh;
+                margin-top: 0;
+            }
+
+            .hero-title {
+                font-size: 1.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .hero-kpis {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+
+            .kpi-card {
+                padding: 1rem;
+            }
+
+            .kpi-value {
+                font-size: 1.5rem;
+            }
+
+            .zone-selector-section,
+            .zone-comparison-section,
+            .ranking-section,
+            .buyers-guide-section,
+            .methodology-section {
+                padding: 1.5rem 1rem;
+            }
+
+            .zone-selector-section h2,
+            .zone-comparison-section h2,
+            .ranking-section h2,
+            .buyers-guide-section h2,
+            .methodology-section h2 {
+                font-size: 1.3rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .filter-buttons {
+                gap: 0.3rem;
+            }
+
+            .filter-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.7rem;
+            }
+
+            .ranking-table {
+                font-size: 0.75rem;
+            }
+
+            .ranking-table th,
+            .ranking-table td {
+                padding: 0.5rem 0.25rem;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            nav,
+            .zone-selector-section,
+            .zone-modal,
+            footer {
+                display: none;
+            }
+
+            body {
+                background: white;
+            }
+
+            .hero {
+                page-break-after: always;
+            }
+
+            .zone-card,
+            .accordion-card,
+            .source-card,
+            .ranking-table tbody tr {
+                page-break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #e2e8f0;
+            }
+
+            section {
+                page-break-inside: avoid;
+            }
+
+            h2 {
+                page-break-after: avoid;
+            }
+        }
+        /* === ADDITIONAL CLASSES FOR JS ENGINE === */
+
+        /* Zone Card Inner Elements */
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+
+        .card-header h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1a2744;
+            flex: 1;
+            margin-right: 0.5rem;
+        }
+
+        .card-type {
+            font-size: 0.8rem;
+            color: #718096;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-metric {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.4rem 0;
+            border-bottom: 1px solid #f0f4f8;
+        }
+
+        .card-metric:last-of-type {
+            border-bottom: none;
+        }
+
+        .card-metric label {
+            font-size: 0.82rem;
+            color: #718096;
+        }
+
+        .card-metric span {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #1a2744;
+        }
+
+        .card-footer {
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+        }
+
+        .future-score-badge {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .future-score-green {
+            background: rgba(0, 200, 83, 0.15);
+            color: #00C853;
+        }
+
+        .future-score-yellow {
+            background: rgba(255, 152, 0, 0.15);
+            color: #FF9800;
+        }
+
+        .future-score-red {
+            background: rgba(244, 67, 54, 0.15);
+            color: #f44336;
+        }
+
+        /* Modal Tab Sections */
+        .tab-section {
+            padding: 1.5rem 2rem;
+        }
+
+        .tab-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: #1a2744;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .tab-section h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin: 1.2rem 0 0.8rem;
+        }
+
+        .tab-section p {
+            color: #4a5568;
+            line-height: 1.7;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Metric Bars (used in Valorización, Demografía) */
+        .metric-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .metric-bar label, .metric-label {
+            min-width: 90px;
+            font-size: 0.85rem;
+            color: #718096;
+            flex-shrink: 0;
+        }
+
+        .bar-container {
+            flex: 1;
+            height: 24px;
+            background: #f0f4f8;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .bar {
+            height: 100%;
+            border-radius: 12px;
+            transition: width 0.6s ease;
+            min-width: 2px;
+        }
+
+        .metric-bar span, .metric-value {
+            min-width: 80px;
+            text-align: right;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #1a2744;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        /* Trend Bars (rent trend 5yr) */
+        .trend-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .trend-bar label {
+            min-width: 50px;
+            font-size: 0.8rem;
+            color: #718096;
+        }
+
+        /* Comps Table */
+        .comps-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        .comps-table thead {
+            background: #f0f4f8;
+        }
+
+        .comps-table th {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: #4a5568;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .comps-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #f0f4f8;
+            color: #2d3748;
+        }
+
+        .comps-table tbody tr:hover {
+            background: rgba(0, 200, 83, 0.04);
+        }
+
+        /* Cost Breakdown Bars */
+        .cost-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cost-bar label {
+            min-width: 100px;
+            font-size: 0.85rem;
+            color: #718096;
+        }
+
+        .cost-bar span {
+            min-width: 70px;
+            text-align: right;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #1a2744;
+        }
+
+        /* Schools Grid */
+        .schools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .school-card h4 {
+            margin: 0 0 0.3rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        /* Infrastructure Grid */
+        .infrastructure-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .infrastructure-card {
+            background: white;
+            padding: 1.2rem 1.5rem;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .infrastructure-card:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-color: #00C853;
+        }
+
+        .infrastructure-card h4 {
+            margin: 0 0 0.5rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .infrastructure-card .status-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Projection Table */
+        .projection-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.88rem;
+        }
+
+        .projection-table thead {
+            background: #1a2744;
+            color: white;
+        }
+
+        .projection-table th {
+            padding: 0.75rem;
+            text-align: right;
+            font-weight: 600;
+        }
+
+        .projection-table th:first-child {
+            text-align: left;
+        }
+
+        .projection-table td {
+            padding: 0.75rem;
+            text-align: right;
+            border-bottom: 1px solid #f0f4f8;
+        }
+
+        .projection-table td:first-child {
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .projection-table tbody tr:hover {
+            background: rgba(0, 200, 83, 0.04);
+        }
+
+        /* Comparison Section */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .comparison-metric {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #f0f4f8;
+        }
+
+        .comparison-metric label {
+            font-size: 0.85rem;
+            color: #718096;
+        }
+
+        .comparison-metric span {
+            font-weight: 600;
+            color: #1a2744;
+        }
+
+        .winner-badge {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #00C853;
+            margin-left: 0.3rem;
+        }
+
+        .winner span {
+            color: #00C853;
+        }
+
+        /* Guide/Accordion items from JS */
+        .guide-accordion {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1rem;
+        }
+
+        .guide-item {
+            background: white;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .guide-item:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .guide-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            color: #1a2744;
+            background: white;
+            transition: background 0.3s ease;
+        }
+
+        .guide-title:hover {
+            background: #f8f9fa;
+        }
+
+        .guide-toggle {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+            color: #00C853;
+        }
+
+        .guide-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            padding: 0 1.5rem;
+        }
+
+        .guide-item.open .guide-content {
+            max-height: 500px !important;
+            padding: 0 1.5rem 1.5rem !important;
+        }
+
+        .guide-item.open .guide-toggle {
+            transform: rotate(180deg);
+        }
+
+        .guide-item.open > div:last-child {
+            max-height: 300px !important;
+            padding: 0 1.25rem 1.25rem !important;
+        }
+
+        /* Ranking Row (JS-generated) */
+        .ranking-row {
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .ranking-row:hover {
+            background: rgba(0, 200, 83, 0.06);
+        }
+
+        .rank-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #1a2744;
+            color: white;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        /* Signal NA */
+        .signal-na {
+            background: rgba(153, 153, 153, 0.15);
+            color: #999;
+        }
+
+        /* Professional Tier Styles */
+        .professional-banner {
+            background: linear-gradient(135deg, #d4af37 0%, #c19a3f 50%, #8b7b2e 100%);
+            padding: 1.5rem;
+            text-align: center;
+            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1001;
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+        }
+
+        .professional-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .professional-banner-text {
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        /* Body padding adjustment for professional banner */
+        body.professional-tier {
+            padding-top: 60px;
+        }
+
+        body.professional-tier nav {
+            top: 60px;
+        }
+
+        body.professional-tier .hero {
+            margin-top: 0;
+        }
+
+        .professional-benefits {
+            background: linear-gradient(180deg, rgba(212, 175, 55, 0.08) 0%, rgba(212, 175, 55, 0.04) 100%);
+            border-top: 2px solid #d4af37;
+            border-bottom: 2px solid #d4af37;
+            padding: 3rem 2rem;
+            margin: 3rem 0;
+            position: relative;
+        }
+
+        .professional-benefits::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+        }
+
+        .professional-benefits::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+        }
+
+        .benefits-title {
+            font-size: 2rem;
+            color: #1a2744;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .benefits-subtitle {
+            font-size: 0.95rem;
+            color: #718096;
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .benefit-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-left: 4px solid #d4af37;
+            border-radius: 8px;
+            padding: 2rem 1.5rem;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .benefit-card:hover {
+            border-color: #d4af37;
+            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.15rem;
+            color: #1a2744;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+
+        .benefit-card p {
+            font-size: 0.9rem;
+            color: #4a5568;
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+        }
+
+        .benefit-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #d4af37 0%, #c19a3f 100%);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .professional-banner {
+                padding: 1rem;
+            }
+
+            .professional-banner-text {
+                font-size: 0.9rem;
+            }
+
+            .professional-badge {
+                font-size: 0.65rem;
+                padding: 0.3rem 0.8rem;
+            }
+
+            .benefits-title {
+                font-size: 1.5rem;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 0 1rem;
+            }
+
+            .benefit-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .benefit-icon {
+                font-size: 2rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .benefit-card h3 {
+                font-size: 1rem;
+            }
+
+            .benefit-card p {
+                font-size: 0.85rem;
+            }
+
+            body.professional-tier {
+                padding-top: 60px;
+            }
+
+            body.professional-tier nav {
+                top: 60px;
+            }
+
+            .professional-benefits {
+                padding: 2rem 1rem;
+                margin: 2rem 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+            .guide-accordion {
+                grid-template-columns: 1fr;
+            }
+            .schools-grid {
+                grid-template-columns: 1fr;
+            }
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+            .tab-section {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="professional-tier">
+    <!-- Professional Tier Banner -->
+    <div class="professional-banner">
+        <div class="professional-badge">ACCESO PROFESIONAL</div>
+        <div class="professional-banner-text">Bienvenido al nivel profesional. Tu acceso incluye beneficios exclusivos.</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-logo">MiamiDade Intelligence</div>
+        <ul class="nav-links">
+            <li><a href="#zones">Investment Zones</a></li>
+            <li><a href="#comparison">Comparison</a></li>
+            <li><a href="#ranking">Rankings</a></li>
+            <li><a href="#guide">Buyer's Guide</a></li>
+            <li><a href="#methodology">Methodology</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Miami-Dade Multifamily Investment Intelligence Q1 2026</h1>
+            <p class="hero-subtitle">Comprehensive market analysis, zone rankings, and investment guidance for multifamily assets in Miami-Dade County</p>
+            <div class="hero-kpis">
+                <div class="kpi-card">
+                    <div class="kpi-value">34</div>
+                    <div class="kpi-label">Investment Zones</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-value">$4.2B</div>
+                    <div class="kpi-label">Market Volume</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-value">6.8%</div>
+                    <div class="kpi-label">Avg Cap Rate</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-value">5-7Y</div>
+                    <div class="kpi-label">Hold Period</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Benefits Section -->
+    <section class="professional-benefits">
+        <h2 class="benefits-title">Tus Beneficios Profesionales</h2>
+        <p class="benefits-subtitle">Acceso exclusivo a herramientas y recursos premium para potenciar tu análisis de inversiones</p>
+
+        <div class="benefits-grid">
+            <!-- Benefit 1: Excel Template -->
+            <div class="benefit-card">
+                <span class="benefit-icon">📊</span>
+                <h3>Template Excel T-12</h3>
+                <p>Descarga tu template para evaluar cualquier deal en Miami-Dade con análisis profesional</p>
+                <a href="#" class="benefit-link" download>Descargar Template</a>
+            </div>
+
+            <!-- Benefit 2: Quarterly Updates -->
+            <div class="benefit-card">
+                <span class="benefit-icon">📅</span>
+                <h3>Actualizaciones Trimestrales</h3>
+                <p>Recibirás updates Q2, Q3, Q4 2026 con nuevos datos de mercado y análisis</p>
+                <a href="mailto:santiagopsa@gmail.com?subject=Confirmar%20Suscripción%20Actualizaciones" class="benefit-link">Confirmar Suscripción</a>
+            </div>
+
+            <!-- Benefit 3: WhatsApp Group -->
+            <div class="benefit-card">
+                <span class="benefit-icon">💬</span>
+                <h3>Grupo WhatsApp</h3>
+                <p>Únete al grupo privado de inversionistas para discusiones en tiempo real</p>
+                <a href="https://wa.me/?text=Solicito%20acceso%20al%20grupo%20de%20inversionistas" class="benefit-link" target="_blank">Unirse Grupo</a>
+            </div>
+
+            <!-- Benefit 4: Personal Consultation -->
+            <div class="benefit-card">
+                <span class="benefit-icon">📧</span>
+                <h3>Consulta con Santiago</h3>
+                <p>15 minutos de consulta personalizada vía email sobre tu estrategia de inversión</p>
+                <a href="mailto:santiagopsa@gmail.com?subject=Agendar%20Consulta%20Profesional" class="benefit-link">Agendar Consulta</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Zone Selector Section -->
+    <section id="zones" class="zone-selector-section">
+        <h2>Investment Zone Selector</h2>
+
+        <!-- Signal Filter -->
+        <div class="filter-row">
+            <span class="filter-label">Investment Signal:</span>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="signal" data-value="all">All</button>
+                <button class="filter-btn" data-filter="signal" data-value="buy-strong">BUY STRONG</button>
+                <button class="filter-btn" data-filter="signal" data-value="buy">BUY</button>
+                <button class="filter-btn" data-filter="signal" data-value="hold">HOLD</button>
+                <button class="filter-btn" data-filter="signal" data-value="caution">CAUTION</button>
+                <button class="filter-btn" data-filter="signal" data-value="speculative">SPECULATIVE</button>
+                <button class="filter-btn" data-filter="signal" data-value="trophy">TROPHY</button>
+            </div>
+        </div>
+
+        <!-- Budget Filter -->
+        <div class="filter-row">
+            <span class="filter-label">Budget Range:</span>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="budget" data-value="all">All</button>
+                <button class="filter-btn" data-filter="budget" data-value="<200K">&lt;$200K</button>
+                <button class="filter-btn" data-filter="budget" data-value="200-300K">$200-300K</button>
+                <button class="filter-btn" data-filter="budget" data-value="300-400K">$300-400K</button>
+                <button class="filter-btn" data-filter="budget" data-value="400K+">$400K+</button>
+            </div>
+        </div>
+
+        <!-- Search -->
+        <div class="filter-row">
+            <input type="text" class="search-input" id="zoneSearch" placeholder="Search zone by name...">
+        </div>
+
+        <!-- Zone Cards Grid -->
+        <div class="zone-cards-grid" id="zoneCards">
+            <!-- Cards populated by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Zone Detail Modal -->
+    <div id="zoneModal" class="zone-modal">
+        <div class="zone-modal-content">
+            <div class="zone-modal-header">
+                <div class="zone-modal-title">
+                    <h2 id="modalZoneName"></h2>
+                    <span id="modalSignalBadge" class="signal-badge"></span>
+                </div>
+                <button class="zone-modal-close" id="modalCloseBtn">&times;</button>
+            </div>
+
+            <div class="tab-nav">
+                <button class="tab-btn active" data-tab="valorizacion">Valorización</button>
+                <button class="tab-btn" data-tab="costos">Costos Fijos</button>
+                <button class="tab-btn" data-tab="demografia">Demografía</button>
+                <button class="tab-btn" data-tab="escuelas">Escuelas</button>
+                <button class="tab-btn" data-tab="infraestructura">Infraestructura</button>
+                <button class="tab-btn" data-tab="inversion">Inversión</button>
+            </div>
+
+            <div id="tab-valorizacion" class="tab-content active">
+                <!-- Content placeholder -->
+            </div>
+            <div id="tab-costos" class="tab-content">
+                <!-- Content placeholder -->
+            </div>
+            <div id="tab-demografia" class="tab-content">
+                <!-- Content placeholder -->
+            </div>
+            <div id="tab-escuelas" class="tab-content">
+                <!-- Content placeholder -->
+            </div>
+            <div id="tab-infraestructura" class="tab-content">
+                <!-- Content placeholder -->
+            </div>
+            <div id="tab-inversion" class="tab-content">
+                <!-- Content placeholder -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Zone Comparison Section -->
+    <section id="comparison" class="zone-comparison-section">
+        <h2>Comparador de Zonas</h2>
+        <p style="color:#718096;margin-bottom:1.5rem;">Selecciona dos zonas para comparar sus métricas lado a lado</p>
+        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:2rem;">
+            <select id="compareZone1" style="flex:1;min-width:200px;padding:0.75rem 1rem;border:1px solid #e2e8f0;border-radius:8px;font-size:0.95rem;background:white;cursor:pointer;">
+                <option value="">— Seleccionar Zona 1 —</option>
+            </select>
+            <select id="compareZone2" style="flex:1;min-width:200px;padding:0.75rem 1rem;border:1px solid #e2e8f0;border-radius:8px;font-size:0.95rem;background:white;cursor:pointer;">
+                <option value="">— Seleccionar Zona 2 —</option>
+            </select>
+        </div>
+        <div id="comparisonResults">
+            <!-- Comparison populated by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Ranking Table Section -->
+    <section id="ranking" class="ranking-section">
+        <h2>Ranking Completo de Zonas</h2>
+        <div id="rankingTable" style="overflow-x:auto;">
+            <!-- Table populated by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Buyer's Guide Section -->
+    <section id="guide" class="buyers-guide-section">
+        <h2>Guía del Comprador de Multifamily en Miami-Dade</h2>
+        <div id="buyersGuide">
+            <!-- Accordion cards populated by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Methodology Section -->
+    <section id="methodology" class="methodology-section">
+        <h2>Data Sources & Methodology</h2>
+        <div class="sources-grid">
+            <div class="source-card">
+                <h4>Market Data</h4>
+                <p>CoStar, CBRE, Real Capital Analytics, MLS historical pricing</p>
+            </div>
+            <div class="source-card">
+                <h4>Rental Market</h4>
+                <p>Zillow, Apartments.com, RPM Living, local property management surveys</p>
+            </div>
+            <div class="source-card">
+                <h4>Demographics</h4>
+                <p>U.S. Census Bureau, ESRI, Nielsen, American Community Survey</p>
+            </div>
+            <div class="source-card">
+                <h4>Economic Data</h4>
+                <p>Bureau of Labor Statistics, Federal Reserve, State of Florida Economic Data</p>
+            </div>
+            <div class="source-card">
+                <h4>Infrastructure</h4>
+                <p>Miami-Dade County Planning, Citplan, Public Records, Transit Authority</p>
+            </div>
+            <div class="source-card">
+                <h4>Schools & Services</h4>
+                <p>M-DCPS, GreatSchools.org, School Digger, Miami-Dade County Services</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            <strong>Disclaimer:</strong> This report is for informational purposes only and should not be considered as investment advice. All data is based on publicly available information as of Q1 2026. Past performance does not guarantee future results. Investors should conduct their own due diligence and consult with licensed real estate professionals, tax advisors, and legal counsel before making investment decisions. Market conditions are subject to rapid change. MiamiDade Intelligence makes no warranties regarding the accuracy or completeness of the information provided.
+        </p>
+    </footer>
+
+
+<script>
+const zoneData = [
+    {
+        id: 1,
+        name: "Brickell / Financial District",
+        type: "Urban Core",
+        signal: "HOLD",
+        aprec5yr: 85,
+        rentAvg: 3585,
+        rentGrowth: 2.1,
+        capRateMin: 4.5,
+        capRateMax: 4.8,
+        priceMin: 380,
+        priceMax: 450,
+        millage: 21.08,
+        taxPerUnit: 5200,
+        flood: "AE (Moderado)",
+        insurance: 1800,
+        insuranceRisk: "HIGH",
+        opex: 14500,
+        opexRatio: 32,
+        population: 35000,
+        income: 143114,
+        walk: 91,
+        transit: 89,
+        crime: "B+",
+        schools: "A-",
+        pipeline: 517,
+        vacancy: 7.5,
+        employers: "Microsoft LATAM, JP Morgan, Citadel, hedge funds, fintech startups",
+        amenities: "Brickell City Centre, waterfront, MetroMover, restaurants",
+        thesis: "Rentas top del condado pero cap rate comprimido limita yield. Supply limitado protege contra oversupply. Ideal para capital preservation, no para cash flow agresivo.",
+        futureScore: 52
+    },
+    {
+        id: 2,
+        name: "Downtown Miami",
+        type: "Urban Core",
+        signal: "CAUTION",
+        aprec5yr: 75,
+        rentAvg: 3286,
+        rentGrowth: 0.5,
+        capRateMin: 4.6,
+        capRateMax: 5.0,
+        priceMin: 320,
+        priceMax: 400,
+        millage: 21.08,
+        taxPerUnit: 4800,
+        flood: "AE (Alto)",
+        insurance: 2200,
+        insuranceRisk: "VERY HIGH",
+        opex: 15000,
+        opexRatio: 38,
+        population: 100000,
+        income: 62000,
+        walk: 95,
+        transit: 92,
+        crime: "C+",
+        schools: "B-",
+        pipeline: 8000,
+        vacancy: 9.0,
+        employers: "Miami WorldCenter, Brightline, cruise lines, hospitality",
+        amenities: "Bayside, AAA, Brightline Station, Perez Art Museum",
+        thesis: "OVERSUPPLY MASIVO. 8,000+ unidades entrando saturarán el mercado. Vacancia proyectada >11%. Solo considerar si price/unit cae 20%+ en 2026-2027.",
+        futureScore: 40
+    },
+    {
+        id: 3,
+        name: "Edgewater",
+        type: "Urban Core",
+        signal: "BUY",
+        aprec5yr: 110,
+        rentAvg: 3058,
+        rentGrowth: 3.2,
+        capRateMin: 4.7,
+        capRateMax: 5.1,
+        priceMin: 340,
+        priceMax: 420,
+        millage: 21.08,
+        taxPerUnit: 4600,
+        flood: "AE (Moderado)",
+        insurance: 1900,
+        insuranceRisk: "HIGH",
+        opex: 13800,
+        opexRatio: 34,
+        population: 18000,
+        income: 78000,
+        walk: 87,
+        transit: 78,
+        crime: "B",
+        schools: "B",
+        pipeline: 2500,
+        vacancy: 6.5,
+        employers: "Spillover from Brickell/Wynwood, creative agencies, tech",
+        amenities: "Margaret Pace Park, waterfront, proximity to Wynwood/Design District",
+        thesis: "Mayor apreciación del urban core (+110%). Waterfront gentrification activa. Rent growth sólido. The Hamilton se vendió aquí a $688K/unit — benchmark. Buena relación yield/apreciación.",
+        futureScore: 76
+    },
+    {
+        id: 4,
+        name: "Wynwood / Design District",
+        type: "Urban Core",
+        signal: "BUY",
+        aprec5yr: 130,
+        rentAvg: 2950,
+        rentGrowth: 4.5,
+        capRateMin: 4.8,
+        capRateMax: 5.2,
+        priceMin: 300,
+        priceMax: 380,
+        millage: 21.08,
+        taxPerUnit: 4200,
+        flood: "X (Bajo)",
+        insurance: 1200,
+        insuranceRisk: "LOW",
+        opex: 11500,
+        opexRatio: 30,
+        population: 12000,
+        income: 55000,
+        walk: 87,
+        transit: 72,
+        crime: "B-",
+        schools: "B-",
+        pipeline: 1200,
+        vacancy: 5.5,
+        employers: "Art galleries, tech startups, WeWork, Spotify office, creative industry",
+        amenities: "Wynwood Walls, Design District luxury retail, restaurants, nightlife",
+        thesis: "Mejor brand del condado. Rent growth #2 en urban core. SIN FLOOD ZONE = insurance 40% menor que coastal. Apreciación récord (+130%). Price/unit todavía debajo de replacement cost.",
+        futureScore: 78
+    },
+    {
+        id: 5,
+        name: "Midtown Miami",
+        type: "Urban Core",
+        signal: "BUY",
+        aprec5yr: 90,
+        rentAvg: 2800,
+        rentGrowth: 2.8,
+        capRateMin: 4.9,
+        capRateMax: 5.3,
+        priceMin: 280,
+        priceMax: 350,
+        millage: 21.08,
+        taxPerUnit: 4000,
+        flood: "X (Bajo)",
+        insurance: 1200,
+        insuranceRisk: "LOW",
+        opex: 11200,
+        opexRatio: 30,
+        population: 15000,
+        income: 65000,
+        walk: 85,
+        transit: 75,
+        crime: "B",
+        schools: "B",
+        pipeline: 800,
+        vacancy: 5.8,
+        employers: "Midtown retail, nearby Wynwood/Design District employers",
+        amenities: "Midtown Miami shops, Target, Publix, restaurants, central location",
+        thesis: "Ubicación central entre Wynwood y Edgewater. Sin flood risk. Price/unit más accesible que vecinos. Upside significativo si gentrification de Wynwood sigue expandiendo.",
+        futureScore: 65
+    },
+    {
+        id: 6,
+        name: "Little Havana",
+        type: "Urban Core",
+        signal: "BUY STRONG",
+        aprec5yr: 95,
+        rentAvg: 1850,
+        rentGrowth: 6.2,
+        capRateMin: 5.5,
+        capRateMax: 6.2,
+        priceMin: 180,
+        priceMax: 250,
+        millage: 21.08,
+        taxPerUnit: 3200,
+        flood: "X (Bajo)",
+        insurance: 1100,
+        insuranceRisk: "LOW",
+        opex: 9500,
+        opexRatio: 38,
+        population: 75000,
+        income: 32000,
+        walk: 83,
+        transit: 70,
+        crime: "C+",
+        schools: "C+",
+        pipeline: 400,
+        vacancy: 3.8,
+        employers: "Small business, restaurants, healthcare, proximity to downtown/Brickell",
+        amenities: "Calle Ocho, Domino Park, cultural hub, affordable dining",
+        thesis: "MEJOR RELACIÓN YIELD/APPRECIATION del condado. Cap rate alto (6%+), rent growth #1 (+6.2%), sin flood zone, debajo de replacement cost. Gentrification temprana — comprar AHORA.",
+        futureScore: 80
+    },
+    {
+        id: 7,
+        name: "Overtown",
+        type: "Urban Core",
+        signal: "SPECULATIVE",
+        aprec5yr: 70,
+        rentAvg: 1650,
+        rentGrowth: 5.8,
+        capRateMin: 5.8,
+        capRateMax: 6.5,
+        priceMin: 150,
+        priceMax: 220,
+        millage: 21.08,
+        taxPerUnit: 2800,
+        flood: "X (Bajo)",
+        insurance: 1100,
+        insuranceRisk: "LOW",
+        opex: 9000,
+        opexRatio: 40,
+        population: 10000,
+        income: 22000,
+        walk: 80,
+        transit: 82,
+        crime: "C-",
+        schools: "C-",
+        pipeline: 1600,
+        vacancy: 7.0,
+        employers: "Jackson Health System, proximity to downtown",
+        amenities: "Historic Overtown, Lyric Theater, Red Rooster",
+        thesis: "Redevelopment masivo con River District (1,600 units). Alto riesgo pero precios mínimos. Opportunity Zone = tax benefits. Crime bajando pero sigue siendo concern.",
+        futureScore: 58
+    },
+    {
+        id: 8,
+        name: "Allapattah",
+        type: "Urban Core",
+        signal: "BUY",
+        aprec5yr: 80,
+        rentAvg: 1750,
+        rentGrowth: 7.1,
+        capRateMin: 5.5,
+        capRateMax: 6.3,
+        priceMin: 170,
+        priceMax: 240,
+        millage: 21.08,
+        taxPerUnit: 3000,
+        flood: "X (Bajo)",
+        insurance: 1100,
+        insuranceRisk: "LOW",
+        opex: 9200,
+        opexRatio: 38,
+        population: 45000,
+        income: 28000,
+        walk: 75,
+        transit: 68,
+        crime: "C",
+        schools: "C",
+        pipeline: 500,
+        vacancy: 4.2,
+        employers: "Rubell Museum, Produce market, healthcare, light industrial",
+        amenities: "Rubell Museum, proximity to Wynwood, authentic restaurants",
+        thesis: "RENT GROWTH MÁS ALTO DEL METRO (+7.1%). Spillover directo de Wynwood con precios 50% menores. Sin flood zone. Rubell Museum ya ancla la gentrification.",
+        futureScore: 82
+    },
+    {
+        id: 9,
+        name: "Miami Beach / South Beach",
+        type: "Coastal",
+        signal: "HOLD",
+        aprec5yr: 60,
+        rentAvg: 3400,
+        rentGrowth: -1.2,
+        capRateMin: 4.8,
+        capRateMax: 5.3,
+        priceMin: 350,
+        priceMax: 450,
+        millage: 14.47,
+        taxPerUnit: 4500,
+        flood: "VE (Muy Alto)",
+        insurance: 2800,
+        insuranceRisk: "VERY HIGH",
+        opex: 16000,
+        opexRatio: 40,
+        population: 92000,
+        income: 58000,
+        walk: 82,
+        transit: 65,
+        crime: "B",
+        schools: "B",
+        pipeline: 0,
+        vacancy: 8.0,
+        employers: "Tourism, hospitality, entertainment, Art Basel ecosystem",
+        amenities: "Ocean Drive, Lincoln Road, South Pointe, beaches",
+        thesis: "Insurance es ASESINO ($2,800/unit). Sea level rise = riesgo a largo plazo. Rentas bajando. Millage bajo pero insurance lo compensa con creces.",
+        futureScore: 35
+    },
+    {
+        id: 10,
+        name: "Coconut Grove",
+        type: "Suburban Premium",
+        signal: "HOLD",
+        aprec5yr: 95,
+        rentAvg: 3200,
+        rentGrowth: 1.5,
+        capRateMin: 4.3,
+        capRateMax: 4.7,
+        priceMin: 400,
+        priceMax: 500,
+        millage: 21.08,
+        taxPerUnit: 5500,
+        flood: "AE (Moderado)",
+        insurance: 1600,
+        insuranceRisk: "MEDIUM",
+        opex: 14000,
+        opexRatio: 33,
+        population: 20000,
+        income: 105000,
+        walk: 72,
+        transit: 55,
+        crime: "A-",
+        schools: "A",
+        pipeline: 100,
+        vacancy: 4.0,
+        employers: "University of Miami, tech companies, CocoWalk retail",
+        amenities: "CocoWalk, marinas, parks, Vizcaya Museum, UM campus",
+        thesis: "Premium estable con escasez natural. Entry price alto limita el upside. Ideal para capital preservation. Tenants de alto ingreso = baja rotación.",
+        futureScore: 42
+    },
+    {
+        id: 11,
+        name: "Coral Gables",
+        type: "Suburban Premium",
+        signal: "HOLD",
+        aprec5yr: 80,
+        rentAvg: 3100,
+        rentGrowth: 2.0,
+        capRateMin: 4.2,
+        capRateMax: 4.6,
+        priceMin: 420,
+        priceMax: 520,
+        millage: 18.20,
+        taxPerUnit: 5800,
+        flood: "X/AE (Mixto)",
+        insurance: 1400,
+        insuranceRisk: "MEDIUM",
+        opex: 14200,
+        opexRatio: 34,
+        population: 51000,
+        income: 110000,
+        walk: 58,
+        transit: 45,
+        crime: "A",
+        schools: "A+",
+        pipeline: 150,
+        vacancy: 3.5,
+        employers: "UM, Bacardi, Baptist Health, MasTec, many corporate HQs",
+        amenities: "Miracle Mile, Venetian Pool, Biltmore Hotel, top schools",
+        thesis: "Trophy asset territory. Escuelas A+, income alto, crime bajo. Zoning restrictivo limita supply = protección natural. Pero cap rate comprimido y entry price elevado.",
+        futureScore: 40
+    },
+    {
+        id: 12,
+        name: "Key Biscayne",
+        type: "Coastal Premium",
+        signal: "TROPHY",
+        aprec5yr: 55,
+        rentAvg: 4200,
+        rentGrowth: 0.8,
+        capRateMin: 3.8,
+        capRateMax: 4.2,
+        priceMin: 600,
+        priceMax: 700,
+        millage: 15.80,
+        taxPerUnit: 6500,
+        flood: "VE (Muy Alto)",
+        insurance: 3200,
+        insuranceRisk: "VERY HIGH",
+        opex: 18000,
+        opexRatio: 38,
+        population: 14000,
+        income: 145000,
+        walk: 45,
+        transit: 20,
+        crime: "A+",
+        schools: "A+",
+        pipeline: 0,
+        vacancy: 3.0,
+        employers: "Limited local, residents commute to Brickell/Downtown",
+        amenities: "Crandon Park, Bill Baggs, exclusive island lifestyle",
+        thesis: "Ultra-premium island. NO es inversión de yield — es wealth preservation. Insurance astronomical. Cap rate más bajo del condado. Solo para UHNW.",
+        futureScore: 25
+    },
+    {
+        id: 13,
+        name: "Aventura",
+        type: "Suburban",
+        signal: "BUY",
+        aprec5yr: 70,
+        rentAvg: 2600,
+        rentGrowth: 1.8,
+        capRateMin: 4.8,
+        capRateMax: 5.2,
+        priceMin: 280,
+        priceMax: 360,
+        millage: 16.85,
+        taxPerUnit: 3800,
+        flood: "X (Bajo)",
+        insurance: 1200,
+        insuranceRisk: "LOW",
+        opex: 11500,
+        opexRatio: 32,
+        population: 40000,
+        income: 72000,
+        walk: 55,
+        transit: 50,
+        crime: "A-",
+        schools: "A-",
+        pipeline: 600,
+        vacancy: 5.0,
+        employers: "Aventura Mall (top 5 US), retail, medical offices",
+        amenities: "Aventura Mall, parks, proximity to beaches",
+        thesis: "TAXES MÁS BAJOS DEL CONDADO ($1.57/SF). Sin flood zone. Crime bajo. Schools buenos. Aventura Mall genera empleo masivo. Balance perfecto entre seguridad y yield.",
+        futureScore: 60
+    },
+    {
+        id: 14,
+        name: "Sunny Isles Beach",
+        type: "Coastal",
+        signal: "HOLD",
+        aprec5yr: 65,
+        rentAvg: 3000,
+        rentGrowth: 1.2,
+        capRateMin: 4.5,
+        capRateMax: 5.0,
+        priceMin: 320,
+        priceMax: 420,
+        millage: 17.20,
+        taxPerUnit: 4200,
+        flood: "VE (Alto)",
+        insurance: 2500,
+        insuranceRisk: "VERY HIGH",
+        opex: 15500,
+        opexRatio: 38,
+        population: 22000,
+        income: 85000,
+        walk: 62,
+        transit: 45,
+        crime: "A",
+        schools: "A-",
+        pipeline: 300,
+        vacancy: 6.0,
+        employers: "Tourism, international trade, real estate",
+        amenities: "Beachfront, Russian/LATAM community, luxury towers",
+        thesis: "Demanda internacional fuerte (LATAM + Eastern Europe). Pero insurance VE zone mata el yield. Rents estancándose. Solo atractivo si insurance baja.",
+        futureScore: 38
+    },
+    {
+        id: 15,
+        name: "North Miami",
+        type: "Suburban",
+        signal: "BUY",
+        aprec5yr: 75,
+        rentAvg: 2100,
+        rentGrowth: 3.5,
+        capRateMin: 5.3,
+        capRateMax: 5.8,
+        priceMin: 220,
+        priceMax: 300,
+        millage: 22.50,
+        taxPerUnit: 4000,
+        flood: "AE (Moderado)",
+        insurance: 1500,
+        insuranceRisk: "MEDIUM",
+        opex: 11800,
+        opexRatio: 42,
+        population: 59000,
+        income: 42000,
+        walk: 52,
+        transit: 45,
+        crime: "C+",
+        schools: "B-",
+        pipeline: 1300,
+        vacancy: 5.5,
+        employers: "FIU Biscayne Bay, MOCA, healthcare, retail",
+        amenities: "MOCA, Oleta River State Park, FIU campus",
+        thesis: "Price below replacement cost ($350K+). Rent growth sólido. FIU campus genera demanda constante. Millage alto (22.50) pero compensado con rent growth.",
+        futureScore: 67
+    },
+    {
+        id: 16,
+        name: "North Miami Beach",
+        type: "Suburban",
+        signal: "BUY",
+        aprec5yr: 80,
+        rentAvg: 2000,
+        rentGrowth: 4.0,
+        capRateMin: 5.5,
+        capRateMax: 6.0,
+        priceMin: 200,
+        priceMax: 280,
+        millage: 20.80,
+        taxPerUnit: 3600,
+        flood: "X/AE (Mixto)",
+        insurance: 1400,
+        insuranceRisk: "MEDIUM",
+        opex: 11000,
+        opexRatio: 40,
+        population: 43000,
+        income: 45000,
+        walk: 48,
+        transit: 40,
+        crime: "C",
+        schools: "B-",
+        pipeline: 800,
+        vacancy: 5.8,
+        employers: "Retail corridors, healthcare, proximity to Aventura Mall",
+        amenities: "Eastern Shores, Greynolds Park, improving retail",
+        thesis: "Value-add sweet spot. Precios muy debajo de replacement cost. Demographics mejorando. Rent growth #4 entre suburbios. Competencia manejable.",
+        futureScore: 72
+    },
+    {
+        id: 17,
+        name: "Miami Gardens",
+        type: "Suburban",
+        signal: "BUY",
+        aprec5yr: 85,
+        rentAvg: 1900,
+        rentGrowth: 3.8,
+        capRateMin: 5.8,
+        capRateMax: 6.5,
+        priceMin: 170,
+        priceMax: 240,
+        millage: 22.30,
+        taxPerUnit: 3400,
+        flood: "X (Bajo)",
+        insurance: 1100,
+        insuranceRisk: "LOW",
+        opex: 10000,
+        opexRatio: 38,
+        population: 112000,
+        income: 48000,
+        walk: 35,
+        transit: 35,
+        crime: "C-",
+        schools: "C",
+        pipeline: 400,
+        vacancy: 4.5,
+        employers: "Hard Rock Stadium, Amazon warehouse, FedEx, healthcare",
+        amenities: "Hard Rock Stadium (NFL), Calder Casino, parks",
+        thesis: "POBLACIÓN MÁS GRANDE suburbana (112K). Workforce housing demand enorme. Cap rate alto. Sin flood. Hard Rock Stadium y Amazon = employment anchors.",
+        futureScore: 68
+    },
+    {
+        id: 18,
+        name: "Hialeah",
+        type: "Suburban",
+        signal: "BUY",
+        aprec5yr: 90,
+        rentAvg: 1800,
+        rentGrowth: 4.2,
+        capRateMin: 5.5,
+        capRateMax: 6.2,
+        priceMin: 180,
+        priceMax: 260,
+        millage: 19.50,
+        taxPerUnit: 3200,
+        flood: "X (Bajo)",
+        insurance: 1100,
+        insuranceRisk: "LOW",
+        opex: 9800,
+        opexRatio: 40,
+        population: 221000,
+        income: 40000,
+        walk: 60,
+        transit: 55,
+        crime: "B-",
+        schools: "B",
+        pipeline: 300,
+        vacancy: 3.5,
+        employers: "Hialeah Park Racing, hospitals, manufacturing, small business hub",
+        amenities: "Hialeah Park, Westland Mall, MetroRail access, cultural identity",
+        thesis: "SEGUNDA CIUDAD MÁS GRANDE de Miami-Dade (221K). Workforce demand masiva. Vacancia bajísima (3.5%). MetroRail access. Precios todavía debajo replacement cost.",
+        futureScore: 73
+    },
+    {
+        id: 19,
+        name: "Hialeah Gardens",
+        type: "Suburban",
+        signal: "BUY",
+        aprec5yr: 85,
+        rentAvg: 1750,
+        rentGrowth: 3.5,
+        capRateMin: 5.6,
+        capRateMax: 6.3,
+        priceMin: 170,
+        priceMax: 240,
+        millage: 18.90,
+        taxPerUnit: 3000,
+        flood: "X (Bajo)",
+        insurance: 1100,
+        insuranceRisk: "LOW",
+        opex: 9500,
+        opexRatio: 40,
+        population: 25000,
+        income: 52000,
+        walk: 40,
+        transit: 35,
+        crime: "B",
+        schools: "B",
+        pipeline: 50,
+        vacancy: 4.0,
+        employers: "Proximity to Doral corporate, warehousing, logistics",
+        amenities: "Parks, family-oriented community",
+        thesis: "Low entry, no flood, growing community. Millage razonable. Pipeline casi inexistente = no competition. Proximity a Doral sin los precios.",
+        futureScore: 62
+    },
+    {
+        id: 20,
+        name: "Doral",
+        type: "Suburban",
+        signal: "CAUTION",
+        aprec5yr: 100,
+        rentAvg: 2400,
+        rentGrowth: 2.5,
+        capRateMin: 5.0,
+        capRateMax: 5.5,
+        priceMin: 260,
+        priceMax: 340,
+        millage: 19.20,
+        taxPerUnit: 4000,
+        flood: "X (Bajo)",
+        insurance: 1200,
+        insuranceRisk: "LOW",
+        opex: 11800,
+        opexRatio: 36,
+        population: 76000,
+        income: 68000,
+        walk: 42,
+        transit: 30,
+        crime: "A-",
+        schools: "A-",
+        pipeline: 1500,
+        vacancy: 6.5,
+        employers: "World Fuel Services, Carnival Corp, Univision, Amazon, Kia",
+        amenities: "CityPlace Doral, Trump National Doral, Dolphin Mall, MIA proximity",
+        thesis: "Corporate hub con appreciation récord (+100%). PERO pipeline de 1,500+ units preocupa. Precios se acercaron a replacement cost. Rent growth desacelerando.",
+        futureScore: 55
+    },
+    {
+        id: 21,
+        name: "Sweetwater / FIU Area",
+        type: "Suburban",
+        signal: "BUY",
+        aprec5yr: 75,
+        rentAvg: 1700,
+        rentGrowth: 5.0,
+        capRateMin: 5.5,
+        capRateMax: 6.0,
+        priceMin: 160,
+        priceMax: 230,
+        millage: 20.10,
+        taxPerUnit: 2800,
+        flood: "X (Bajo)",
+        insurance: 1100,
+        insuranceRisk: "LOW",
+        opex: 9000,
+        opexRatio: 38,
+        population: 19000,
+        income: 35000,
+        walk: 55,
+        transit: 45,
+        crime: "B-",
+        schools: "B-",
+        pipeline: 300,
+        vacancy: 4.0,
+        employers: "FIU (58,000 students), Dolphin Mall, nearby Doral corporates",
+        amenities: "FIU campus, Dolphin Mall, Tamiami Trail restaurants",
+        thesis: "FIU con 58,000 estudiantes es un demand engine permanente. Precios MUY debajo de replacement cost. Rent growth fuerte. Student + workforce housing hybrid.",
+        futureScore: 70
+    },
+    {
+        id: 22,
+        name: "Kendall / The Crossings",
+        type: "Suburban",
+        signal: "HOLD",
+        aprec5yr: 70,
+        rentAvg: 2200,
+        rentGrowth: 2.0,
+        capRateMin: 5.2,
+        capRateMax: 5.7,
+        priceMin: 240,
+        priceMax: 310,
+        millage: 21.08,
+        taxPerUnit: 3800,
+        flood: "X (Bajo)",
+        insurance: 1200,
+        insuranceRisk: "LOW",
+        opex: 11500,
+        opexRatio: 38,
+        population: 80000,
+        income: 72000,
+        walk: 30,
+        transit: 25,
+        crime: "A-",
+        schools: "A-",
+        pipeline: 500,
+        vacancy: 5.0,
+        employers: "Baptist Hospital, retail, professional services",
+        amenities: "Dadeland Mall, The Falls, suburban family living",
+        thesis: "Estable, family-oriented, safe. Pero cap rate moderado y walk score bajo. Rent growth lento. No hay upside dramático. Ideal para investor conservador.",
+        futureScore: 48
+    },
+    {
+        id: 23,
+        name: "Pinecrest",
+        type: "Suburban Premium",
+        signal: "N/A",
+        aprec5yr: 65,
+        rentAvg: 3500,
+        rentGrowth: 1.0,
+        capRateMin: 4.0,
+        capRateMax: 4.5,
+        priceMin: 450,
+        priceMax: 600,
+        millage: 17.80,
+        taxPerUnit: 6000,
+        flood: "X (Bajo)",
+        insurance: 1200,
+        insuranceRisk: "LOW",
+        opex: 0,
+        opexRatio: 0,
+        population: 19000,
+        income: 155000,
+        walk: 25,
+        transit: 15,
+        crime: "A+",
+        schools: "A+",
+        pipeline: 0,
+        vacancy: 0,
+        employers: "Professional services, medical, proximity to Dadeland",
+        amenities: "Pinecrest Gardens, top schools, family luxury",
+        thesis: "NO HAY MULTIFAMILY PERMITIDO. Solo single-family homes. Incluido como referencia de las mejores escuelas del condado.",
+        futureScore: -1
+    },
+    {
+        id: 24,
+        name: "Palmetto Bay / Cutler Bay",
+        type: "Suburban",
+        signal: "HOLD",
+        aprec5yr: 75,
+        rentAvg: 2100,
+        rentGrowth: 2.5,
+        capRateMin: 5.3,
+        capRateMax: 5.8,
+        priceMin: 230,
+        priceMax: 300,
+        millage: 19.50,
+        taxPerUnit: 3600,
+        flood: "X/AE (Mixto)",
+        insurance: 1400,
+        insuranceRisk: "MEDIUM",
+        opex: 11500,
+        opexRatio: 40,
+        population: 45000,
+        income: 85000,
+        walk: 28,
+        transit: 20,
+        crime: "A",
+        schools: "A",
+        pipeline: 200,
+        vacancy: 4.5,
+        employers: "Baptist South, retail, professional services",
+        amenities: "Black Point Marina, Deering Estate, family suburbs",
+        thesis: "Estable, safe, family. Pipeline mínimo. Pero limited upside y walk score bajo. Good for conservative buy-and-hold.",
+        futureScore: 45
+    },
+    {
+        id: 25,
+        name: "Homestead",
+        type: "Exurban",
+        signal: "BUY STRONG",
+        aprec5yr: 115,
+        rentAvg: 1600,
+        rentGrowth: 5.5,
+        capRateMin: 6.0,
+        capRateMax: 7.0,
+        priceMin: 140,
+        priceMax: 200,
+        millage: 23.50,
+        taxPerUnit: 2800,
+        flood: "X (Bajo)",
+        insurance: 1100,
+        insuranceRisk: "LOW",
+        opex: 8800,
+        opexRatio: 40,
+        population: 81000,
+        income: 50000,
+        walk: 35,
+        transit: 20,
+        crime: "C",
+        schools: "C+",
+        pipeline: 2000,
+        vacancy: 4.5,
+        employers: "Homestead Air Reserve Base, agriculture, Amazon, distribution centers",
+        amenities: "Everglades proximity, Homestead Speedway, affordable living",
+        thesis: "MAYOR APRECIACIÓN del condado (+115%) y precios MÁS BAJOS ($140K/unit). Cap rate 7% posible. Sin flood. Workforce migration masiva. La frontera del crecimiento.",
+        futureScore: 75
+    },
+    {
+        id: 26,
+        name: "Florida City",
+        type: "Exurban",
+        signal: "SPECULATIVE",
+        aprec5yr: 105,
+        rentAvg: 1400,
+        rentGrowth: 6.0,
+        capRateMin: 6.5,
+        capRateMax: 7.5,
+        priceMin: 110,
+        priceMax: 160,
+        millage: 24.00,
+        taxPerUnit: 2400,
+        flood: "X (Bajo)",
+        insurance: 1100,
+        insuranceRisk: "LOW",
+        opex: 8200,
+        opexRatio: 42,
+        population: 12000,
+        income: 35000,
+        walk: 25,
+        transit: 10,
+        crime: "D+",
+        schools: "C-",
+        pipeline: 200,
+        vacancy: 6.0,
+        employers: "Agriculture, distribution, Homestead Air Reserve Base",
+        amenities: "Gateway to Keys, Everglades, basic amenities",
+        thesis: "PRECIOS MÍNIMOS del condado ($110K/unit) con cap rate máximo (7.5%). Pero crime grade D+ es el peor del condado. Millage altísimo (24.0).",
+        futureScore: 52
+    },
+    {
+        id: 27,
+        name: "Liberty City / Brownsville",
+        type: "Urban",
+        signal: "SPECULATIVE",
+        aprec5yr: 60,
+        rentAvg: 1500,
+        rentGrowth: 4.5,
+        capRateMin: 6.0,
+        capRateMax: 7.0,
+        priceMin: 120,
+        priceMax: 180,
+        millage: 21.08,
+        taxPerUnit: 2600,
+        flood: "X (Bajo)",
+        insurance: 1100,
+        insuranceRisk: "LOW",
+        opex: 8500,
+        opexRatio: 42,
+        population: 30000,
+        income: 25000,
+        walk: 55,
+        transit: 55,
+        crime: "D",
+        schools: "C-",
+        pipeline: 100,
+        vacancy: 5.5,
+        employers: "Jackson Health System, proximity to downtown",
+        amenities: "Historic neighborhood, community gardens, improving infrastructure",
+        thesis: "Opportunity Zone con beneficios fiscales significativos. Crime ha bajado dramáticamente. Precios de entry mínimos. Pero todavía high-risk.",
+        futureScore: 55
+    },
+    {
+        id: 28,
+        name: "Little Haiti / Upper East Side",
+        type: "Urban",
+        signal: "BUY STRONG",
+        aprec5yr: 120,
+        rentAvg: 2200,
+        rentGrowth: 5.5,
+        capRateMin: 5.2,
+        capRateMax: 5.8,
+        priceMin: 230,
+        priceMax: 310,
+        millage: 21.08,
+        taxPerUnit: 3400,
+        flood: "X (Bajo)",
+        insurance: 1100,
+        insuranceRisk: "LOW",
+        opex: 10000,
+        opexRatio: 34,
+        population: 25000,
+        income: 38000,
+        walk: 70,
+        transit: 60,
+        crime: "C+",
+        schools: "B-",
+        pipeline: 600,
+        vacancy: 5.0,
+        employers: "Magic City Innovation District, creative economy, restaurants",
+        amenities: "Little Haiti Cultural Complex, Caribbean culture, emerging restaurants",
+        thesis: "SEGUNDA MAYOR APRECIACIÓN (+120%) después de Wynwood. Gentrification rápida — spillover directo de Edgewater y Wynwood. Magic City Innovation District catalyst.",
+        futureScore: 85
+    },
+    {
+        id: 29,
+        name: "Opa-locka",
+        type: "Suburban",
+        signal: "SPECULATIVE",
+        aprec5yr: 55,
+        rentAvg: 1350,
+        rentGrowth: 3.0,
+        capRateMin: 6.5,
+        capRateMax: 7.5,
+        priceMin: 100,
+        priceMax: 150,
+        millage: 26.50,
+        taxPerUnit: 2800,
+        flood: "X (Bajo)",
+        insurance: 1100,
+        insuranceRisk: "LOW",
+        opex: 8500,
+        opexRatio: 46,
+        population: 16000,
+        income: 28000,
+        walk: 40,
+        transit: 40,
+        crime: "D",
+        schools: "C-",
+        pipeline: 50,
+        vacancy: 7.0,
+        employers: "Opa-locka Executive Airport, warehousing, distribution",
+        amenities: "Moorish architecture, airport, limited retail",
+        thesis: "MILLAGE MÁS ALTO del condado (26.50) — taxes devoran el yield. Crime grade D. Pero precios son los más bajos ($100K/unit). Turnaround play ultra high-risk.",
+        futureScore: 42
+    },
+    {
+        id: 30,
+        name: "Surfside / Bal Harbour",
+        type: "Coastal Premium",
+        signal: "TROPHY",
+        aprec5yr: 50,
+        rentAvg: 3800,
+        rentGrowth: 0.5,
+        capRateMin: 4.0,
+        capRateMax: 4.5,
+        priceMin: 500,
+        priceMax: 650,
+        millage: 16.00,
+        taxPerUnit: 5500,
+        flood: "VE (Alto)",
+        insurance: 2800,
+        insuranceRisk: "VERY HIGH",
+        opex: 16500,
+        opexRatio: 38,
+        population: 7000,
+        income: 120000,
+        walk: 72,
+        transit: 50,
+        crime: "A+",
+        schools: "A",
+        pipeline: 0,
+        vacancy: 4.0,
+        employers: "Bal Harbour Shops (luxury retail), tourism",
+        amenities: "Bal Harbour Shops, beaches, exclusive dining",
+        thesis: "Ultra-luxury coastal. Post-Champlain Tower, building codes strictest en FL. No new supply. Insurance astronomical. Wealth preservation only.",
+        futureScore: 30
+    },
+    {
+        id: 31,
+        name: "South Miami",
+        type: "Suburban",
+        signal: "HOLD",
+        aprec5yr: 70,
+        rentAvg: 2300,
+        rentGrowth: 2.0,
+        capRateMin: 5.0,
+        capRateMax: 5.5,
+        priceMin: 260,
+        priceMax: 330,
+        millage: 19.80,
+        taxPerUnit: 3800,
+        flood: "X (Bajo)",
+        insurance: 1200,
+        insuranceRisk: "LOW",
+        opex: 11500,
+        opexRatio: 36,
+        population: 13000,
+        income: 68000,
+        walk: 65,
+        transit: 55,
+        crime: "A-",
+        schools: "A-",
+        pipeline: 100,
+        vacancy: 4.5,
+        employers: "South Miami Hospital, University of Miami, professional services",
+        amenities: "Sunset Place, UM campus proximity, Metrorail access",
+        thesis: "Establecida, safe, walkable. UM proximity genera demand. Pero limited upside e inventory escaso. Good hold, not exciting buy.",
+        futureScore: 47
+    },
+    {
+        id: 32,
+        name: "Westchester / Tamiami",
+        type: "Suburban",
+        signal: "BUY",
+        aprec5yr: 65,
+        rentAvg: 1800,
+        rentGrowth: 3.0,
+        capRateMin: 5.5,
+        capRateMax: 6.0,
+        priceMin: 180,
+        priceMax: 250,
+        millage: 21.08,
+        taxPerUnit: 3200,
+        flood: "X (Bajo)",
+        insurance: 1100,
+        insuranceRisk: "LOW",
+        opex: 9500,
+        opexRatio: 38,
+        population: 50000,
+        income: 55000,
+        walk: 40,
+        transit: 35,
+        crime: "B",
+        schools: "B",
+        pipeline: 200,
+        vacancy: 4.0,
+        employers: "FIU, retail, professional services, Tamiami Airport",
+        amenities: "Tropical Park, FIU proximity, established community",
+        thesis: "Below replacement cost, no flood, limited pipeline. FIU growth drives demand. Established Cuban-American community. Steady, unsexy, profitable.",
+        futureScore: 63
+    },
+    {
+        id: 33,
+        name: "Miami Lakes",
+        type: "Suburban",
+        signal: "HOLD",
+        aprec5yr: 75,
+        rentAvg: 2300,
+        rentGrowth: 2.2,
+        capRateMin: 5.0,
+        capRateMax: 5.5,
+        priceMin: 250,
+        priceMax: 320,
+        millage: 18.50,
+        taxPerUnit: 3500,
+        flood: "X (Bajo)",
+        insurance: 1200,
+        insuranceRisk: "LOW",
+        opex: 11000,
+        opexRatio: 35,
+        population: 32000,
+        income: 75000,
+        walk: 38,
+        transit: 30,
+        crime: "A-",
+        schools: "A-",
+        pipeline: 300,
+        vacancy: 4.5,
+        employers: "Graham Companies, Carnival Corp HQ (nearby), retail",
+        amenities: "Main Street, lakes, planned community feel, family-friendly",
+        thesis: "Planned community de Graham Companies. Family-friendly con schools buenos. Millage razonable. Pero no hay upside explosivo. Stable cash flow play.",
+        futureScore: 50
+    },
+    {
+        id: 34,
+        name: "Medley / Hialeah Industrial",
+        type: "Industrial",
+        signal: "N/A",
+        aprec5yr: 0,
+        rentAvg: 0,
+        rentGrowth: 0,
+        capRateMin: 0,
+        capRateMax: 0,
+        priceMin: 0,
+        priceMax: 0,
+        millage: 0,
+        taxPerUnit: 0,
+        flood: "N/A",
+        insurance: 0,
+        insuranceRisk: "N/A",
+        opex: 0,
+        opexRatio: 0,
+        population: 1000,
+        income: 45000,
+        walk: 15,
+        transit: 0,
+        crime: "B",
+        schools: "N/A",
+        pipeline: 0,
+        vacancy: 0,
+        employers: "Industrial zone",
+        amenities: "N/A",
+        thesis: "Zona industrial pura. No hay multifamily. Incluida por completitud. Dato útil: genera empleo para workforce en zonas residenciales cercanas.",
+        futureScore: -1
+    }
+];
+
+const enhancedZoneData = [
+  {
+    id: 1,
+    name: "Brickell / Financial District",
+    schools: [
+      { name: "MAST Academy", grade: "6-12", type: "Middle/High" },
+      { name: "Brickell Avenue Charter School", grade: "K-5", type: "Elementary" },
+      { name: "Alex Fernandez Preparatory Academy", grade: "K-8", type: "K-8" }
+    ],
+    rents: { studio: 2200, br1: 2800, br2: 3600, br3: 4500 },
+    comps: [
+      { name: "Four Seasons Private Residences", pricePerUnit: 425000, units: 221, year: 2024, notes: "Luxury tower, 73 stories" },
+      { name: "Brickell Luxury Apartments", pricePerUnit: 395000, units: 150, year: 2024, notes: "High-rise mixed-use" },
+      { name: "Millecento", pricePerUnit: 430000, units: 120, year: 2023, notes: "Premium condo conversion" }
+    ],
+    infrastructure: [
+      { name: "Brightline Rail Expansion", cost: 2400000000, status: "Under Construction", impact: "Direct rail connection to Fort Lauderdale and Orlando" },
+      { name: "Brickell City Centre Expansion", cost: 1200000000, status: "Operational", impact: "Mixed-use urban development, retail and office" }
+    ],
+    t12: {
+      taxes: 850,
+      insurance: 420,
+      utilities: 180,
+      rm: 450,
+      management: 300,
+      payroll: 200,
+      reserves: 150,
+      total: 2550
+    },
+    topSchoolDetail: "Brickell is served by MAST Academy, a highly-regarded STEM-focused magnet school with A+ ratings and strong college placement. Downtown Miami has excellent educational institutions with specialized programs in science, technology, engineering, and mathematics, attracting families prioritizing academic excellence.",
+    infraDetail: "The Brightline Rail expansion directly connects Brickell to Fort Lauderdale and Orlando, transforming urban mobility and reducing car dependency. The completed Brickell City Centre mixed-use development adds 500K+ square feet of retail, office, and hospitality space, enhancing walkability and commercial appeal.",
+    rentTrend: [100, 108, 119, 127, 134]
+  },
+  {
+    id: 2,
+    name: "Downtown Miami",
+    schools: [
+      { name: "MAST Academy", grade: "6-12", type: "Middle/High" },
+      { name: "Design and Architecture Senior High", grade: "9-12", type: "High" },
+      { name: "Downtown Elementary School", grade: "K-5", type: "Elementary" }
+    ],
+    rents: { studio: 2000, br1: 2600, br2: 3300, br3: 4100 },
+    comps: [
+      { name: "Panorama Tower", pricePerUnit: 380000, units: 500, year: 2024, notes: "Mixed-use high-rise" },
+      { name: "Museum Park Residences", pricePerUnit: 350000, units: 220, year: 2023, notes: "Arts district location" },
+      { name: "Met 1", pricePerUnit: 320000, units: 350, year: 2024, notes: "Luxury contemporary tower" }
+    ],
+    infrastructure: [
+      { name: "Underline Rapid Transit", cost: 968000000, status: "Under Construction", impact: "Green linear park with connectivity to Wynwood, Allapattah" },
+      { name: "Miami River Pedestrian Trail", cost: 250000000, status: "Operational", impact: "Enhanced riverfront access and mixed-use development catalyst" }
+    ],
+    t12: {
+      taxes: 920,
+      insurance: 450,
+      utilities: 200,
+      rm: 500,
+      management: 350,
+      payroll: 220,
+      reserves: 180,
+      total: 2820
+    },
+    topSchoolDetail: "Downtown benefits from proximity to Design and Architecture Senior High, a world-class school specializing in creative industries and design. Access to specialized STEM and arts magnet programs with strong university partnerships and internship opportunities.",
+    infraDetail: "The Underline project—a 10-mile linear rapid transit and green space network—transforms the area into an interconnected, walkable urban corridor. Miami River pedestrian activation and continued riverfront development create vibrant mixed-use neighborhoods with enhanced public spaces.",
+    rentTrend: [100, 103, 112, 118, 125]
+  },
+  {
+    id: 3,
+    name: "Edgewater",
+    schools: [
+      { name: "Buena Vista Elementary School", grade: "K-5", type: "Elementary" },
+      { name: "Overtown Exceptional Student Services School", grade: "6-12", type: "Middle/High" },
+      { name: "Overtown Youth Center", grade: "K-12", type: "K-8" }
+    ],
+    rents: { studio: 1900, br1: 2450, br2: 3100, br3: 3800 },
+    comps: [
+      { name: "Aria at Edgewater", pricePerUnit: 410000, units: 186, year: 2024, notes: "Waterfront luxury condo" },
+      { name: "Monad Terrace", pricePerUnit: 395000, units: 208, year: 2023, notes: "Contemporary waterfront design" },
+      { name: "Oceania Luxury Residences", pricePerUnit: 420000, units: 92, year: 2024, notes: "Ultra-luxury waterfront tower" }
+    ],
+    infrastructure: [
+      { name: "Edgewater Green Waterfront Park", cost: 180000000, status: "Operational", impact: "Waterfront parks and public access improvements" },
+      { name: "Biscayne Bay Restoration", cost: 300000000, status: "Under Construction", impact: "Environmental restoration improving water quality and marine habitat" }
+    ],
+    t12: {
+      taxes: 880,
+      insurance: 440,
+      utilities: 190,
+      rm: 480,
+      management: 320,
+      payroll: 210,
+      reserves: 165,
+      total: 2685
+    },
+    topSchoolDetail: "Edgewater is part of the high-performing Miami-Dade school system with access to specialized magnet programs. Proximity to Design and Architecture Senior High and MAST Academy provides options for students seeking STEM and creative education.",
+    infraDetail: "Edgewater Green Waterfront Park creates vibrant public waterfront access with pedestrian promenades and recreational amenities. Ongoing Biscayne Bay restoration and environmental initiatives enhance the area's natural assets and long-term sustainability.",
+    rentTrend: [100, 110, 122, 132, 140]
+  },
+  {
+    id: 4,
+    name: "Wynwood / Design District",
+    schools: [
+      { name: "Design and Architecture Senior High", grade: "9-12", type: "High" },
+      { name: "Mater Academy Charter Middle School", grade: "6-8", type: "Middle" },
+      { name: "Mater Academy Charter Elementary", grade: "K-5", type: "Elementary" }
+    ],
+    rents: { studio: 1700, br1: 2200, br2: 2800, br3: 3400 },
+    comps: [
+      { name: "Wynwood 25", pricePerUnit: 360000, units: 125, year: 2024, notes: "Contemporary loft-style conversions" },
+      { name: "The Elser", pricePerUnit: 345000, units: 94, year: 2023, notes: "Heritage warehouse conversion" },
+      { name: "Coral Warehouse", pricePerUnit: 330000, units: 60, year: 2024, notes: "Artist lofts and creative spaces" }
+    ],
+    infrastructure: [
+      { name: "Underline Wynwood Section", cost: 280000000, status: "Under Construction", impact: "Transit, retail, and public space activation" },
+      { name: "Wynwood Walls Art Infrastructure", cost: 80000000, status: "Operational", impact: "Cultural district investment and creative economy catalyst" }
+    ],
+    t12: {
+      taxes: 720,
+      insurance: 380,
+      utilities: 170,
+      rm: 400,
+      management: 280,
+      payroll: 190,
+      reserves: 140,
+      total: 2280
+    },
+    topSchoolDetail: "Wynwood benefits from Design and Architecture Senior High's proximity and specialized arts/design curriculum. The neighborhood's creative industry focus aligns with vocational and STEM education opportunities through partnerships with design and tech companies.",
+    infraDetail: "The Underline's Wynwood section will create a vibrant 2-mile corridor connecting to retail, arts venues, and public spaces, transforming the district into a major creative and commercial hub. Wynwood Walls has already established the area as Miami's premier cultural district with international recognition.",
+    rentTrend: [100, 112, 128, 139, 148]
+  },
+  {
+    id: 5,
+    name: "Midtown Miami",
+    schools: [
+      { name: "Design and Architecture Senior High", grade: "9-12", type: "High" },
+      { name: "Mater Academy Charter School", grade: "K-8", type: "K-8" },
+      { name: "Overtown Elementary School", grade: "K-5", type: "Elementary" }
+    ],
+    rents: { studio: 1800, br1: 2350, br2: 3000, br3: 3650 },
+    comps: [
+      { name: "Midtown Miami", pricePerUnit: 365000, units: 300, year: 2024, notes: "Large mixed-use development" },
+      { name: "Buena Vista Lofts", pricePerUnit: 340000, units: 120, year: 2023, notes: "Walkable urban neighborhood" },
+      { name: "Midtown Residences", pricePerUnit: 355000, units: 180, year: 2024, notes: "Contemporary lifestyle development" }
+    ],
+    infrastructure: [
+      { name: "Underline Midtown Connection", cost: 320000000, status: "Under Construction", impact: "Transit, public space, and neighborhood connectivity" },
+      { name: "Mixed-Use Development Infrastructure", cost: 450000000, status: "Operational", impact: "Retail, office, restaurant, and cultural venues" }
+    ],
+    t12: {
+      taxes: 760,
+      insurance: 400,
+      utilities: 175,
+      rm: 420,
+      management: 290,
+      payroll: 200,
+      reserves: 150,
+      total: 2395
+    },
+    topSchoolDetail: "Midtown is near Design and Architecture Senior High and has access to charter schools emphasizing STEM and 21st century skills. The neighborhood's proximity to creative industries provides real-world learning opportunities and vocational pathways.",
+    infraDetail: "The Underline project's Midtown section creates a major transit spine with integrated public space, retail, and cultural venues. The larger Midtown development includes 1.7M+ square feet of mixed-use space with restaurants, retail, offices, and pedestrian plazas.",
+    rentTrend: [100, 111, 125, 136, 145]
+  },
+  {
+    id: 6,
+    name: "Little Havana",
+    schools: [
+      { name: "Citrus Grove Elementary School", grade: "K-5", type: "Elementary" },
+      { name: "Doral Academy", grade: "6-12", type: "Middle/High" },
+      { name: "Felix Varela Elementary", grade: "K-5", type: "Elementary" }
+    ],
+    rents: { studio: 1100, br1: 1450, br2: 1800, br3: 2200 },
+    comps: [
+      { name: "Wynwood Edges", pricePerUnit: 220000, units: 85, year: 2024, notes: "Conversion project near district edge" },
+      { name: "Little Havana Residences", pricePerUnit: 210000, units: 60, year: 2023, notes: "Mixed-income development" },
+      { name: "Armory Arts Lofts", pricePerUnit: 215000, units: 72, year: 2024, notes: "Arts-focused conversion" }
+    ],
+    infrastructure: [
+      { name: "Underline Phase 2 Extension", cost: 450000000, status: "Planned", impact: "Transit connectivity and economic development catalyst" },
+      { name: "Little Havana Cultural District Improvements", cost: 75000000, status: "Under Construction", impact: "Street improvements, public spaces, cultural venues" }
+    ],
+    t12: {
+      taxes: 520,
+      insurance: 260,
+      utilities: 130,
+      rm: 280,
+      management: 200,
+      payroll: 140,
+      reserves: 100,
+      total: 1630
+    },
+    topSchoolDetail: "Little Havana has solid performing elementary schools with strong community support and bilingual education programs. Charter schools like Doral Academy offer choice with specialized STEM and advanced academics curriculum.",
+    infraDetail: "The planned Underline extension through Little Havana will drive significant economic revitalization and real estate appreciation. The community's cultural district initiative attracts investment, tourism, and mixed-use development opportunities.",
+    rentTrend: [100, 114, 132, 145, 156]
+  },
+  {
+    id: 7,
+    name: "Little Haiti / Little River",
+    schools: [
+      { name: "Little Haiti K-8 Center", grade: "K-8", type: "K-8" },
+      { name: "Little River Elementary School", grade: "K-5", type: "Elementary" },
+      { name: "Doral Academy", grade: "6-12", type: "Middle/High" }
+    ],
+    rents: { studio: 1200, br1: 1550, br2: 1950, br3: 2400 },
+    comps: [
+      { name: "Little Haiti Lofts", pricePerUnit: 235000, units: 78, year: 2024, notes: "Community-focused development" },
+      { name: "River North Residences", pricePerUnit: 245000, units: 92, year: 2023, notes: "Commercial mixed-use" },
+      { name: "Historic Lofts", pricePerUnit: 240000, units: 65, year: 2024, notes: "Heritage preservation project" }
+    ],
+    infrastructure: [
+      { name: "Design District Gateway Initiative", cost: 120000000, status: "Under Construction", impact: "Streetscaping and public realm improvements" },
+      { name: "Little Haiti Cultural Center Expansion", cost: 45000000, status: "Operational", impact: "Cultural programming and community gathering space" }
+    ],
+    t12: {
+      taxes: 540,
+      insurance: 270,
+      utilities: 135,
+      rm: 300,
+      management: 210,
+      payroll: 150,
+      reserves: 110,
+      total: 1715
+    },
+    topSchoolDetail: "Little Haiti has dedicated K-8 centers supporting continuous learning from early childhood through middle school. Strong community engagement and multicultural education programs provide culturally responsive learning environments.",
+    infraDetail: "The Design District gateway improvements enhance walkability and public spaces while attracting new investment and development. Cultural center expansion reinforces the community's identity and attracts tourism and cultural economy investment.",
+    rentTrend: [100, 116, 135, 150, 162]
+  },
+  {
+    id: 8,
+    name: "Allapattah",
+    schools: [
+      { name: "Citrus Grove Elementary School", grade: "K-5", type: "Elementary" },
+      { name: "Allapattah K-8 Center", grade: "K-8", type: "K-8" },
+      { name: "Ralph Frazier Middle School", grade: "6-8", type: "Middle" }
+    ],
+    rents: { studio: 1000, br1: 1350, br2: 1700, br3: 2050 },
+    comps: [
+      { name: "Allapattah Residences", pricePerUnit: 195000, units: 50, year: 2024, notes: "New construction value play" },
+      { name: "West Side Lofts", pricePerUnit: 185000, units: 45, year: 2023, notes: "Conversion project" },
+      { name: "Transit-Oriented Development", pricePerUnit: 190000, units: 60, year: 2024, notes: "Bus rapid transit access" }
+    ],
+    infrastructure: [
+      { name: "Underline South Extension", cost: 400000000, status: "Planned", impact: "Major transit backbone for community activation" },
+      { name: "Allapattah Parks and Recreation Master Plan", cost: 85000000, status: "Under Construction", impact: "Community facilities and green space development" }
+    ],
+    t12: {
+      taxes: 480,
+      insurance: 240,
+      utilities: 120,
+      rm: 260,
+      management: 190,
+      payroll: 130,
+      reserves: 90,
+      total: 1510
+    },
+    topSchoolDetail: "Allapattah schools serve the community with K-8 centers and middle schools emphasizing strong foundational academics. Investment in educational infrastructure supports student achievement and community development.",
+    infraDetail: "The planned Underline South extension will transform Allapattah into a transit-rich, walkable community with significant development potential. Parks and recreation improvements create family-friendly amenities and quality-of-life enhancements.",
+    rentTrend: [100, 118, 140, 158, 172]
+  },
+  {
+    id: 9,
+    name: "Miami Beach / South Beach",
+    schools: [
+      { name: "Miami Beach K-8 Center", grade: "K-8", type: "K-8" },
+      { name: "Miami Beach Senior High School", grade: "9-12", type: "High" },
+      { name: "Flamingo Elementary School", grade: "K-5", type: "Elementary" }
+    ],
+    rents: { studio: 2200, br1: 2900, br2: 3700, br3: 4600 },
+    comps: [
+      { name: "Arte by Antonio Citterio", pricePerUnit: 440000, units: 180, year: 2024, notes: "Luxury Miami Beach tower" },
+      { name: "The Surf Club Residences", pricePerUnit: 460000, units: 131, year: 2023, notes: "Ultra-luxury beachfront" },
+      { name: "Continuum South Tower", pricePerUnit: 435000, units: 210, year: 2024, notes: "Premium beachfront condo" }
+    ],
+    infrastructure: [
+      { name: "Miami Beach Stormwater Resilience Program", cost: 650000000, status: "Under Construction", impact: "Flood mitigation and infrastructure hardening" },
+      { name: "Ocean Drive Pedestrian and Streetscape Improvements", cost: 120000000, status: "Operational", impact: "Enhanced walkability and public realm" }
+    ],
+    t12: {
+      taxes: 950,
+      insurance: 480,
+      utilities: 210,
+      rm: 520,
+      management: 360,
+      payroll: 240,
+      reserves: 190,
+      total: 2950
+    },
+    topSchoolDetail: "Miami Beach Senior High School is a well-established institution with strong academics and diverse programming. The community benefits from proximity to beachfront educational facilities and cultural institutions.",
+    infraDetail: "Miami Beach's comprehensive stormwater resilience program addresses flooding and sea-level rise concerns through innovative infrastructure. Ocean Drive improvements enhance the iconic beachfront destination with world-class public spaces.",
+    rentTrend: [100, 105, 114, 122, 129]
+  },
+  {
+    id: 10,
+    name: "Coconut Grove",
+    schools: [
+      { name: "Coconut Grove Elementary School", grade: "K-5", type: "Elementary" },
+      { name: "Coral Reef Senior High School", grade: "9-12", type: "High" },
+      { name: "Grove Park Elementary", grade: "K-5", type: "Elementary" }
+    ],
+    rents: { studio: 2100, br1: 2800, br2: 3600, br3: 4400 },
+    comps: [
+      { name: "The Oasis at Coconut Grove", pricePerUnit: 470000, units: 145, year: 2024, notes: "Luxury village-style development" },
+      { name: "Grove Isle Club Residences", pricePerUnit: 490000, units: 98, year: 2023, notes: "Island community with amenities" },
+      { name: "Vizcaya Residences", pricePerUnit: 460000, units: 120, year: 2024, notes: "Premier residential community" }
+    ],
+    infrastructure: [
+      { name: "Coconut Grove Waterfront Park Expansion", cost: 210000000, status: "Under Construction", impact: "Waterfront recreation and public access" },
+      { name: "Peacock Park and Facilities Enhancement", cost: 90000000, status: "Operational", impact: "Community gathering space and events venue" }
+    ],
+    t12: {
+      taxes: 1020,
+      insurance: 510,
+      utilities: 220,
+      rm: 560,
+      management: 380,
+      payroll: 260,
+      reserves: 200,
+      total: 3150
+    },
+    topSchoolDetail: "Coral Reef Senior High School is one of Miami-Dade's top-ranked schools with A ratings and strong college preparation programs. Coconut Grove's educational ecosystem supports advanced academics, arts, and STEM pathways.",
+    infraDetail: "Coconut Grove's waterfront park expansion creates premier recreational amenities and public beach access along the bay. Peacock Park remains the cultural heart of the community hosting major events and fostering community engagement.",
+    rentTrend: [100, 103, 110, 116, 121]
+  },
+  {
+    id: 11,
+    name: "Coral Gables",
+    schools: [
+      { name: "Coral Gables Senior High School", grade: "9-12", type: "High" },
+      { name: "Coral Gables Elementary School", grade: "K-5", type: "Elementary" },
+      { name: "Ponce de Leon K-8 Center", grade: "K-8", type: "K-8" }
+    ],
+    rents: { studio: 2000, br1: 2700, br2: 3500, br3: 4300 },
+    comps: [
+      { name: "Coral Gables Merrick Manor", pricePerUnit: 500000, units: 110, year: 2024, notes: "Historic luxury community" },
+      { name: "The Residences at Coral Gables", pricePerUnit: 510000, units: 95, year: 2023, notes: "Premium planned community" },
+      { name: "Gables Station", pricePerUnit: 485000, units: 130, year: 2024, notes: "Transit-oriented luxury living" }
+    ],
+    infrastructure: [
+      { name: "Coral Gables Station and Mixed-Use Development", cost: 800000000, status: "Under Construction", impact: "Transit, retail, office, and residential hub" },
+      { name: "Historic Preservation and Street Improvements", cost: 150000000, status: "Operational", impact: "Community character and pedestrian realm enhancement" }
+    ],
+    t12: {
+      taxes: 1080,
+      insurance: 540,
+      utilities: 230,
+      rm: 590,
+      management: 400,
+      payroll: 280,
+      reserves: 220,
+      total: 3340
+    },
+    topSchoolDetail: "Coral Gables Senior High School is consistently top-ranked with excellent college acceptance rates and diverse academic programs. The City Beautiful's commitment to education excellence is reflected in community investment and school performance metrics.",
+    infraDetail: "The Coral Gables Station development will bring Tri-Rail connectivity to the historic community, with mixed-use development creating vibrant urban center. Historic preservation efforts maintain character while supporting modern urban revitalization.",
+    rentTrend: [100, 102, 108, 114, 119]
+  },
+  {
+    id: 12,
+    name: "Key Biscayne",
+    schools: [
+      { name: "Key Biscayne K-8 Center", grade: "K-8", type: "K-8" },
+      { name: "Coral Reef Senior High School", grade: "9-12", type: "High" },
+      { name: "Coral Gables Elementary", grade: "K-5", type: "Elementary" }
+    ],
+    rents: { studio: 2800, br1: 3600, br2: 4600, br3: 5700 },
+    comps: [
+      { name: "The Ritz-Carlton Key Biscayne", pricePerUnit: 680000, units: 115, year: 2024, notes: "Ultra-luxury beachfront resort residence" },
+      { name: "Ocean Reef Club", pricePerUnit: 700000, units: 85, year: 2023, notes: "Exclusive gated community" },
+      { name: "Key Biscayne Estates", pricePerUnit: 690000, units: 60, year: 2024, notes: "Premium waterfront community" }
+    ],
+    infrastructure: [
+      { name: "Key Biscayne Bikeway Network", cost: 85000000, status: "Operational", impact: "Sustainable transportation and recreational access" },
+      { name: "Crandon Park Beach and Facilities Upgrades", cost: 120000000, status: "Under Construction", impact: "Public beach recreation and conservation" }
+    ],
+    t12: {
+      taxes: 1420,
+      insurance: 710,
+      utilities: 280,
+      rm: 750,
+      management: 500,
+      payroll: 350,
+      reserves: 280,
+      total: 4290
+    },
+    topSchoolDetail: "Key Biscayne's small, exclusive K-8 center and access to Coral Reef Senior High provide world-class education with strong college preparation. The island community's emphasis on academics and small class sizes supports exceptional student outcomes.",
+    infraDetail: "Key Biscayne's bikeway network and beach facilities support a premium lifestyle focused on outdoor recreation and environmental stewardship. Crandon Park improvements maintain the island's natural beauty and public recreation access.",
+    rentTrend: [100, 104, 113, 121, 128]
+  },
+  {
+    id: 13,
+    name: "Aventura",
+    schools: [
+      { name: "Aventura Elementary School", grade: "K-5", type: "Elementary" },
+      { name: "Aventura K-8 Center", grade: "K-8", type: "K-8" },
+      { name: "North Miami Senior High School", grade: "9-12", type: "High" }
+    ],
+    rents: { studio: 1700, br1: 2200, br2: 2800, br3: 3400 },
+    comps: [
+      { name: "Aventura Residences", pricePerUnit: 330000, units: 220, year: 2024, notes: "Master-planned community" },
+      { name: "Turnberry Isle Residences", pricePerUnit: 345000, units: 150, year: 2023, notes: "Golf and resort community" },
+      { name: "Aventura Luxury Living", pricePerUnit: 325000, units: 180, year: 2024, notes: "Contemporary residences" }
+    ],
+    infrastructure: [
+      { name: "Aventura Mall Expansion and Redevelopment", cost: 350000000, status: "Operational", impact: "Retail and entertainment destination" },
+      { name: "Aventura Parkway Transit Connection", cost: 280000000, status: "Under Construction", impact: "Transit connectivity and congestion relief" }
+    ],
+    t12: {
+      taxes: 680,
+      insurance: 340,
+      utilities: 150,
+      rm: 360,
+      management: 260,
+      payroll: 180,
+      reserves: 130,
+      total: 2100
+    },
+    topSchoolDetail: "Aventura schools are highly rated with strong test scores and college preparation programs. The master-planned community prioritizes educational excellence with modern facilities and enrichment opportunities.",
+    infraDetail: "Aventura's continued retail and mixed-use development around the mall creates a vibrant shopping and entertainment destination. Transit improvements enhance connectivity and reduce traffic congestion throughout the community.",
+    rentTrend: [100, 109, 122, 133, 142]
+  },
+  {
+    id: 14,
+    name: "Sunny Isles Beach",
+    schools: [
+      { name: "Sunny Isles Beach K-8 Center", grade: "K-8", type: "K-8" },
+      { name: "Alonzo High School", grade: "9-12", type: "High" },
+      { name: "Sunny Isles Elementary", grade: "K-5", type: "Elementary" }
+    ],
+    rents: { studio: 1950, br1: 2550, br2: 3250, br3: 4000 },
+    comps: [
+      { name: "Sunny Isles Beach Residences", pricePerUnit: 390000, units: 260, year: 2024, notes: "Beachfront luxury towers" },
+      { name: "Bal Harbour Towers", pricePerUnit: 415000, units: 140, year: 2023, notes: "Premier beachfront community" },
+      { name: "Oceanfront Residences", pricePerUnit: 405000, units: 180, year: 2024, notes: "Luxury beachfront development" }
+    ],
+    infrastructure: [
+      { name: "Sunny Isles Beach Stormwater and Resilience Program", cost: 480000000, status: "Under Construction", impact: "Sea-level rise adaptation and flood mitigation" },
+      { name: "Collins Avenue Streetscape Improvements", cost: 95000000, status: "Operational", impact: "Enhanced walkability and public realm" }
+    ],
+    t12: {
+      taxes: 820,
+      insurance: 410,
+      utilities: 195,
+      rm: 450,
+      management: 310,
+      payroll: 220,
+      reserves: 170,
+      total: 2575
+    },
+    topSchoolDetail: "Sunny Isles Beach schools provide solid academics with a focus on bilingual education and international perspectives. The community's diverse population enriches educational programming and cultural experiences.",
+    infraDetail: "The beach town's stormwater and resilience investments address climate challenges while enhancing infrastructure. Collins Avenue improvements support walkability and attract upscale retail and dining investment.",
+    rentTrend: [100, 106, 118, 128, 136]
+  },
+  {
+    id: 15,
+    name: "North Miami",
+    schools: [
+      { name: "North Miami Elementary School", grade: "K-5", type: "Elementary" },
+      { name: "North Miami K-8 Center", grade: "K-8", type: "K-8" },
+      { name: "North Miami Senior High School", grade: "9-12", type: "High" }
+    ],
+    rents: { studio: 1400, br1: 1850, br2: 2350, br3: 2850 },
+    comps: [
+      { name: "North Miami Residences", pricePerUnit: 270000, units: 140, year: 2024, notes: "Value-oriented community" },
+      { name: "Biscayne Corridor Development", pricePerUnit: 260000, units: 120, year: 2023, notes: "Mixed-use waterfront" },
+      { name: "North Miami Station", pricePerUnit: 275000, units: 110, year: 2024, notes: "Transit-oriented project" }
+    ],
+    infrastructure: [
+      { name: "Biscayne Boulevard Corridor Revitalization", cost: 380000000, status: "Under Construction", impact: "Transit, mixed-use development, and connectivity" },
+      { name: "North Miami Waterfront Park Development", cost: 150000000, status: "Operational", impact: "Public waterfront access and recreational amenities" }
+    ],
+    t12: {
+      taxes: 600,
+      insurance: 300,
+      utilities: 140,
+      rm: 320,
+      management: 230,
+      payroll: 160,
+      reserves: 120,
+      total: 1870
+    },
+    topSchoolDetail: "North Miami schools serve diverse communities with strong ESL programs and inclusive educational practices. The district provides college and career readiness pathways for students with varied backgrounds.",
+    infraDetail: "The Biscayne Boulevard revitalization will transform the corridor into a vibrant urban main street with transit, retail, and mixed-use development. North Miami's waterfront park development creates public gathering spaces and recreational opportunities.",
+    rentTrend: [100, 115, 135, 152, 168]
+  },
+  {
+    id: 16,
+    name: "North Miami Beach",
+    schools: [
+      { name: "North Miami Beach K-8 Center", grade: "K-8", type: "K-8" },
+      { name: "Alonzo High School", grade: "9-12", type: "High" },
+      { name: "Wynwood Elementary", grade: "K-5", type: "Elementary" }
+    ],
+    rents: { studio: 1350, br1: 1800, br2: 2300, br3: 2800 },
+    comps: [
+      { name: "North Miami Beach Residences", pricePerUnit: 255000, units: 130, year: 2024, notes: "Contemporary mid-rise" },
+      { name: "Beachfront Towers", pricePerUnit: 270000, units: 95, year: 2023, notes: "Oceanfront community" },
+      { name: "Transit Village", pricePerUnit: 260000, units: 110, year: 2024, notes: "Transit-accessible location" }
+    ],
+    infrastructure: [
+      { name: "Collins Avenue Streetscape and Transit Improvements", cost: 280000000, status: "Under Construction", impact: "Public transit and walkability enhancement" },
+      { name: "North Shore Park and Recreational Facilities", cost: 95000000, status: "Operational", impact: "Waterfront recreation and community space" }
+    ],
+    t12: {
+      taxes: 580,
+      insurance: 290,
+      utilities: 135,
+      rm: 310,
+      management: 220,
+      payroll: 155,
+      reserves: 115,
+      total: 1805
+    },
+    topSchoolDetail: "North Miami Beach schools support diverse learner populations with bilingual and gifted programs. Strong community partnerships enhance educational opportunities and student support services.",
+    infraDetail: "Collins Avenue improvements enhance connectivity and walkability along the coastal corridor while attracting mixed-use development. North Shore Park provides waterfront recreational amenities for residents and visitors.",
+    rentTrend: [100, 117, 138, 156, 171]
+  },
+  {
+    id: 17,
+    name: "Miami Gardens",
+    schools: [
+      { name: "Miami Gardens Elementary School", grade: "K-5", type: "Elementary" },
+      { name: "Miami Gardens K-8 Center", grade: "K-8", type: "K-8" },
+      { name: "Carol City K-8 Center", grade: "K-8", type: "K-8" }
+    ],
+    rents: { studio: 1300, br1: 1750, br2: 2200, br3: 2650 },
+    comps: [
+      { name: "Miami Gardens Residences", pricePerUnit: 235000, units: 115, year: 2024, notes: "Family-oriented community" },
+      { name: "Gardens Mixed-Use Development", pricePerUnit: 230000, units: 100, year: 2023, notes: "Retail and residential combination" },
+      { name: "Community Residences", pricePerUnit: 240000, units: 95, year: 2024, notes: "Affordable housing options" }
+    ],
+    infrastructure: [
+      { name: "North Corridor Transit Project", cost: 4700000000, status: "Under Construction", impact: "Major north-south connectivity and economic development" },
+      { name: "Miami Gardens Park and Recreation Master Plan", cost: 120000000, status: "Operational", impact: "Community facilities and green space" }
+    ],
+    t12: {
+      taxes: 560,
+      insurance: 280,
+      utilities: 130,
+      rm: 300,
+      management: 210,
+      payroll: 150,
+      reserves: 110,
+      total: 1740
+    },
+    topSchoolDetail: "Miami Gardens K-8 centers provide comprehensive education from elementary through middle school with strong community engagement. The schools emphasize foundational academics and social-emotional learning.",
+    infraDetail: "The North Corridor transit project is a transformative 23-mile initiative connecting Miami Gardens to downtown Miami and beyond. This major infrastructure investment will catalyze significant economic development and real estate appreciation.",
+    rentTrend: [100, 119, 142, 161, 178]
+  },
+  {
+    id: 18,
+    name: "Opa-locka",
+    schools: [
+      { name: "Opa-locka Elementary School", grade: "K-5", type: "Elementary" },
+      { name: "Opa-locka K-8 Center", grade: "K-8", type: "K-8" },
+      { name: "Brownsville K-8 Center", grade: "K-8", type: "K-8" }
+    ],
+    rents: { studio: 950, br1: 1250, br2: 1600, br3: 1950 },
+    comps: [
+      { name: "Opa-locka Residences", pricePerUnit: 155000, units: 70, year: 2024, notes: "Emerging market opportunity" },
+      { name: "Historic District Conversion", pricePerUnit: 150000, units: 50, year: 2023, notes: "Heritage preservation project" },
+      { name: "New Affordable Housing", pricePerUnit: 160000, units: 65, year: 2024, notes: "Mixed-income development" }
+    ],
+    infrastructure: [
+      { name: "North Corridor Transit (Opa-locka Station)", cost: 4700000000, status: "Under Construction", impact: "Major hub for North Corridor transformation" },
+      { name: "Opa-locka Historic District Revitalization", cost: 180000000, status: "Under Construction", impact: "Heritage preservation and cultural tourism" }
+    ],
+    t12: {
+      taxes: 420,
+      insurance: 210,
+      utilities: 100,
+      rm: 220,
+      management: 160,
+      payroll: 115,
+      reserves: 85,
+      total: 1310
+    },
+    topSchoolDetail: "Opa-locka K-8 centers support students with foundational academics and community resources. Schools work closely with families to address educational equity and student achievement gaps.",
+    infraDetail: "The North Corridor transit system will position Opa-locka as a major hub on the 23-mile rapid transit spine, catalyzing significant economic transformation. Historic district revitalization celebrates Opa-locka's unique 1920s Mediterranean revival architecture.",
+    rentTrend: [100, 122, 152, 178, 205]
+  },
+  {
+    id: 19,
+    name: "Hialeah",
+    schools: [
+      { name: "Hialeah Elementary School", grade: "K-5", type: "Elementary" },
+      { name: "Hialeah K-8 Center", grade: "K-8", type: "K-8" },
+      { name: "Hialeah Senior High School", grade: "9-12", type: "High" }
+    ],
+    rents: { studio: 1150, br1: 1500, br2: 1900, br3: 2300 },
+    comps: [
+      { name: "Hialeah Residences", pricePerUnit: 210000, units: 125, year: 2024, notes: "Modern residential development" },
+      { name: "Hialeah Market Lofts", pricePerUnit: 200000, units: 90, year: 2023, notes: "Urban-style conversions" },
+      { name: "Gateway Residences", pricePerUnit: 215000, units: 110, year: 2024, notes: "Mixed-use development" }
+    ],
+    infrastructure: [
+      { name: "Hialeah Multipurpose Center", cost: 165000000, status: "Operational", impact: "Community facilities and events venue" },
+      { name: "Okeechobee Road Corridor Development", cost: 320000000, status: "Under Construction", impact: "Commercial and mixed-use growth corridor" }
+    ],
+    t12: {
+      taxes: 550,
+      insurance: 275,
+      utilities: 125,
+      rm: 290,
+      management: 210,
+      payroll: 150,
+      reserves: 110,
+      total: 1710
+    },
+    topSchoolDetail: "Hialeah schools serve a diverse, Spanish-speaking population with strong bilingual programs and cultural education. The schools emphasize academic excellence with pathways for college and career success.",
+    infraDetail: "The Hialeah Multipurpose Center provides modern community facilities for events, recreation, and gatherings. Okeechobee Road corridor development attracts commercial investment and creates economic opportunity.",
+    rentTrend: [100, 113, 130, 145, 158]
+  },
+  {
+    id: 20,
+    name: "Hialeah Gardens",
+    schools: [
+      { name: "Hialeah Gardens Elementary School", grade: "K-5", type: "Elementary" },
+      { name: "Hialeah Gardens K-8 Center", grade: "K-8", type: "K-8" },
+      { name: "Westwood Middle School", grade: "6-8", type: "Middle" }
+    ],
+    rents: { studio: 1200, br1: 1600, br2: 2000, br3: 2400 },
+    comps: [
+      { name: "Hialeah Gardens Residences", pricePerUnit: 225000, units: 115, year: 2024, notes: "Family-friendly community" },
+      { name: "Gardens Development", pricePerUnit: 220000, units: 85, year: 2023, notes: "Suburban-style living" },
+      { name: "Residential Community", pricePerUnit: 230000, units: 100, year: 2024, notes: "New construction value" }
+    ],
+    infrastructure: [
+      { name: "Westchester Mixed-Use Center", cost: 280000000, status: "Operational", impact: "Retail, office, and residential mixed-use development" },
+      { name: "Parks and Green Space Expansion", cost: 75000000, status: "Under Construction", impact: "Community recreational facilities" }
+    ],
+    t12: {
+      taxes: 580,
+      insurance: 290,
+      utilities: 130,
+      rm: 310,
+      management: 220,
+      payroll: 155,
+      reserves: 115,
+      total: 1800
+    },
+    topSchoolDetail: "Hialeah Gardens K-8 center provides continuous learning from early childhood through middle school with supportive community. Strong bilingual education and family engagement characterize the school's approach.",
+    infraDetail: "Westchester's mixed-use center creates a vibrant retail and commercial hub attracting diverse businesses. Parks and green space investment enhances community quality of life and recreational opportunities.",
+    rentTrend: [100, 112, 128, 142, 154]
+  },
+  {
+    id: 21,
+    name: "Doral",
+    schools: [
+      { name: "Doral Elementary School", grade: "K-5", type: "Elementary" },
+      { name: "Doral K-8 Center", grade: "K-8", type: "K-8" },
+      { name: "Doral Academy", grade: "6-12", type: "Middle/High" }
+    ],
+    rents: { studio: 1650, br1: 2150, br2: 2700, br3: 3250 },
+    comps: [
+      { name: "Doral Residences", pricePerUnit: 320000, units: 200, year: 2024, notes: "Master-planned community" },
+      { name: "Doral City Center", pricePerUnit: 310000, units: 150, year: 2023, notes: "Mixed-use development" },
+      { name: "Luxury Living Towers", pricePerUnit: 330000, units: 120, year: 2024, notes: "Premium residential" }
+    ],
+    infrastructure: [
+      { name: "Doral City Development", cost: 1600000000, status: "Operational", impact: "Master-planned commercial and mixed-use hub" },
+      { name: "Doral Park and Recreation Master Plan", cost: 95000000, status: "Under Construction", impact: "World-class sports and recreation facilities" }
+    ],
+    t12: {
+      taxes: 720,
+      insurance: 360,
+      utilities: 160,
+      rm: 380,
+      management: 280,
+      payroll: 200,
+      reserves: 150,
+      total: 2250
+    },
+    topSchoolDetail: "Doral Academy provides choice with specialized STEM curriculum and college preparation. The community invests in modern school facilities supporting student achievement and competitive academic programs.",
+    infraDetail: "Doral City is a comprehensive mixed-use development with commercial, office, and retail spaces creating a vibrant urban center. World-class sports facilities, golf courses, and recreation enhance community appeal.",
+    rentTrend: [100, 108, 118, 128, 135]
+  },
+  {
+    id: 22,
+    name: "Kendall / The Hammocks",
+    schools: [
+      { name: "Kendall Elementary School", grade: "K-5", type: "Elementary" },
+      { name: "Kendall K-8 Center", grade: "K-8", type: "K-8" },
+      { name: "Palmetto High School", grade: "9-12", type: "High" }
+    ],
+    rents: { studio: 1500, br1: 1950, br2: 2450, br3: 2950 },
+    comps: [
+      { name: "Kendall Residences", pricePerUnit: 280000, units: 180, year: 2024, notes: "Master-planned community" },
+      { name: "The Hammocks Community", pricePerUnit: 295000, units: 140, year: 2023, notes: "Gated residential community" },
+      { name: "Kendall Premium Living", pricePerUnit: 285000, units: 120, year: 2024, notes: "Contemporary development" }
+    ],
+    infrastructure: [
+      { name: "Kendall Mixed-Use Center", cost: 450000000, status: "Operational", impact: "Retail, office, and residential mixed-use development" },
+      { name: "Kendall Park and Recreation Expansion", cost: 120000000, status: "Under Construction", impact: "Community facilities and green space" }
+    ],
+    t12: {
+      taxes: 640,
+      insurance: 320,
+      utilities: 145,
+      rm: 340,
+      management: 245,
+      payroll: 170,
+      reserves: 130,
+      total: 1990
+    },
+    topSchoolDetail: "Kendall schools provide strong academics with diverse programming and enrichment opportunities. The community's stable, family-oriented neighborhoods support educational excellence and student achievement.",
+    infraDetail: "Kendall's mixed-use center attracts major retail and commercial tenants creating a vibrant shopping and dining destination. Park expansion provides recreational amenities supporting active community lifestyle.",
+    rentTrend: [100, 111, 125, 137, 147]
+  },
+  {
+    id: 23,
+    name: "Pinecrest",
+    schools: [
+      { name: "Pinecrest Elementary School", grade: "K-5", type: "Elementary" },
+      { name: "Pinecrest Gardens K-8 Center", grade: "K-8", type: "K-8" },
+      { name: "Palmetto High School", grade: "9-12", type: "High" }
+    ],
+    rents: null,
+    comps: null,
+    infrastructure: [
+      { name: "Pinecrest Gardens", cost: 85000000, status: "Operational", impact: "Community gathering space and botanical gardens" }
+    ],
+    t12: null,
+    topSchoolDetail: "Pinecrest is an A+ rated school district in an upscale residential community. Schools provide excellent academic preparation with strong college and career pathways.",
+    infraDetail: "Pinecrest Gardens is a cultural landmark providing botanical exploration and community events.",
+    rentTrend: null
+  },
+  {
+    id: 24,
+    name: "Homestead",
+    schools: [
+      { name: "Homestead Elementary School", grade: "K-5", type: "Elementary" },
+      { name: "Homestead K-8 Center", grade: "K-8", type: "K-8" },
+      { name: "Homestead Senior High School", grade: "9-12", type: "High" }
+    ],
+    rents: { studio: 1100, br1: 1450, br2: 1850, br3: 2250 },
+    comps: [
+      { name: "Homestead Residences", pricePerUnit: 175000, units: 85, year: 2024, notes: "Emerging market opportunity" },
+      { name: "Agricultural Corridor Development", pricePerUnit: 165000, units: 65, year: 2023, notes: "Mixed-use conversion" },
+      { name: "Homestead Growth Center", pricePerUnit: 180000, units: 75, year: 2024, notes: "Economic development project" }
+    ],
+    infrastructure: [
+      { name: "Homestead Gateway and Revitalization Project", cost: 280000000, status: "Under Construction", impact: "Mixed-use development and economic growth catalyst" },
+      { name: "Parks and Agriculture Preservation", cost: 95000000, status: "Operational", impact: "Community space and agricultural heritage protection" }
+    ],
+    t12: {
+      taxes: 480,
+      insurance: 240,
+      utilities: 110,
+      rm: 250,
+      management: 180,
+      payroll: 130,
+      reserves: 95,
+      total: 1485
+    },
+    topSchoolDetail: "Homestead schools serve the agricultural community with strong academics and vocational pathways. Programs emphasize both traditional education and agricultural/technical skills development.",
+    infraDetail: "The Homestead Gateway project catalyzes economic development through mixed-use revitalization of downtown. Agricultural heritage preservation maintains community identity while supporting modern growth.",
+    rentTrend: [100, 121, 150, 176, 203]
+  },
+  {
+    id: 25,
+    name: "Florida City",
+    schools: [
+      { name: "Florida City Elementary School", grade: "K-5", type: "Elementary" },
+      { name: "Florida City K-8 Center", grade: "K-8", type: "K-8" },
+      { name: "Southern High School", grade: "9-12", type: "High" }
+    ],
+    rents: { studio: 950, br1: 1300, br2: 1650, br3: 2000 },
+    comps: [
+      { name: "Florida City Residences", pricePerUnit: 145000, units: 60, year: 2024, notes: "Gateway to Keys opportunity" },
+      { name: "Waterfront Development", pricePerUnit: 155000, units: 50, year: 2023, notes: "Port-adjacent location" },
+      { name: "Community Growth Project", pricePerUnit: 150000, units: 55, year: 2024, notes: "Revitalization initiative" }
+    ],
+    infrastructure: [
+      { name: "Florida City Port and Marina Expansion", cost: 320000000, status: "Under Construction", impact: "Commercial fishing hub and tourist gateway development" },
+      { name: "Downtown Revitalization Initiative", cost: 85000000, status: "Operational", impact: "Mixed-use development and waterfront access" }
+    ],
+    t12: {
+      taxes: 420,
+      insurance: 210,
+      utilities: 100,
+      rm: 220,
+      management: 160,
+      payroll: 115,
+      reserves: 85,
+      total: 1310
+    },
+    topSchoolDetail: "Florida City schools support diverse student populations with vocational and maritime curriculum options. Programs prepare students for fishing industry, tourism, and maritime careers.",
+    infraDetail: "Port and marina expansion positions Florida City as a major commercial fishing and tourism hub. Downtown revitalization creates gateway amenities for visitors traveling to the Florida Keys.",
+    rentTrend: [100, 125, 160, 195, 230]
+  },
+  {
+    id: 26,
+    name: "Cutler Bay",
+    schools: [
+      { name: "Cutler Bay Elementary School", grade: "K-5", type: "Elementary" },
+      { name: "Cutler Bay K-8 Center", grade: "K-8", type: "K-8" },
+      { name: "Palmetto High School", grade: "9-12", type: "High" }
+    ],
+    rents: { studio: 1350, br1: 1800, br2: 2300, br3: 2800 },
+    comps: [
+      { name: "Cutler Bay Residences", pricePerUnit: 255000, units: 130, year: 2024, notes: "Suburban family community" },
+      { name: "Master-Planned Development", pricePerUnit: 265000, units: 110, year: 2023, notes: "Gated community" },
+      { name: "Bay Vista Residences", pricePerUnit: 260000, units: 100, year: 2024, notes: "Contemporary suburban" }
+    ],
+    infrastructure: [
+      { name: "Cutler Bay Village Center Development", cost: 180000000, status: "Operational", impact: "Retail, office, and community gathering space" },
+      { name: "Parks and Recreation Master Plan", cost: 75000000, status: "Under Construction", impact: "Family-friendly community amenities" }
+    ],
+    t12: {
+      taxes: 600,
+      insurance: 300,
+      utilities: 135,
+      rm: 320,
+      management: 230,
+      payroll: 160,
+      reserves: 120,
+      total: 1865
+    },
+    topSchoolDetail: "Cutler Bay schools provide strong suburban education with family-oriented programming. Schools emphasize academic excellence, arts, and athletics in a safe, supportive environment.",
+    infraDetail: "Cutler Bay Village Center creates a community gathering space with retail, dining, and office amenities. Parks and recreation investment supports active family lifestyle.",
+    rentTrend: [100, 105, 114, 122, 129]
+  },
+  {
+    id: 27,
+    name: "Palmetto Bay",
+    schools: [
+      { name: "Palmetto Elementary School", grade: "K-5", type: "Elementary" },
+      { name: "Palmetto K-8 Center", grade: "K-8", type: "K-8" },
+      { name: "Palmetto High School", grade: "9-12", type: "High" }
+    ],
+    rents: { studio: 1600, br1: 2100, br2: 2700, br3: 3250 },
+    comps: [
+      { name: "Palmetto Bay Residences", pricePerUnit: 305000, units: 150, year: 2024, notes: "Waterfront community" },
+      { name: "Bay Harbor Islands Living", pricePerUnit: 320000, units: 120, year: 2023, notes: "Premium waterfront" },
+      { name: "Coastal Residences", pricePerUnit: 310000, units: 130, year: 2024, notes: "Waterside living" }
+    ],
+    infrastructure: [
+      { name: "Palmetto Bay Waterfront Park Expansion", cost: 125000000, status: "Under Construction", impact: "Waterfront recreation and public access" },
+      { name: "Commercial and Mixed-Use Development", cost: 210000000, status: "Operational", impact: "Village center retail and dining" }
+    ],
+    t12: {
+      taxes: 680,
+      insurance: 340,
+      utilities: 150,
+      rm: 360,
+      management: 260,
+      payroll: 180,
+      reserves: 130,
+      total: 2100
+    },
+    topSchoolDetail: "Palmetto Bay schools are highly rated with strong academics and diverse enrichment programs. The community's stable neighborhoods support educational excellence and student achievement.",
+    infraDetail: "Waterfront park expansion creates premier recreational amenities along Biscayne Bay. Village center development attracts upscale retail and dining creating vibrant community gathering space.",
+    rentTrend: [100, 104, 112, 120, 126]
+  },
+  {
+    id: 28,
+    name: "Sweetwater / FIU Area",
+    schools: [
+      { name: "Sweetwater Elementary School", grade: "K-5", type: "Elementary" },
+      { name: "Sweetwater K-8 Center", grade: "K-8", type: "K-8" },
+      { name: "Palmetto High School", grade: "9-12", type: "High" }
+    ],
+    rents: { studio: 1300, br1: 1700, br2: 2150, br3: 2600 },
+    comps: [
+      { name: "Sweetwater Residences", pricePerUnit: 235000, units: 110, year: 2024, notes: "FIU-adjacent community" },
+      { name: "University Village", pricePerUnit: 225000, units: 95, year: 2023, notes: "Student and mixed-income housing" },
+      { name: "Campus Gateway Development", pricePerUnit: 240000, units: 105, year: 2024, notes: "Mixed-use neighborhood" }
+    ],
+    infrastructure: [
+      { name: "Sweetwater Park and Recreation Master Plan", cost: 95000000, status: "Operational", impact: "Community facilities and green space" },
+      { name: "FIU Mixed-Use Development and Gateway", cost: 380000000, status: "Under Construction", impact: "Student housing, retail, and university expansion" }
+    ],
+    t12: {
+      taxes: 560,
+      insurance: 280,
+      utilities: 130,
+      rm: 300,
+      management: 210,
+      payroll: 150,
+      reserves: 110,
+      total: 1740
+    },
+    topSchoolDetail: "Sweetwater schools benefit from proximity to Florida International University with enrichment opportunities. Programs include college preparation and vocational pathways for diverse learners.",
+    infraDetail: "FIU mixed-use development creates vibrant gateway with student housing, retail, and dining. Strong university-community partnerships enhance educational and economic opportunities.",
+    rentTrend: [100, 113, 130, 145, 158]
+  },
+  {
+    id: 29,
+    name: "Overtown",
+    schools: [
+      { name: "Overtown Elementary School", grade: "K-5", type: "Elementary" },
+      { name: "Overtown K-8 Center", grade: "K-8", type: "K-8" },
+      { name: "Design and Architecture Senior High", grade: "9-12", type: "High" }
+    ],
+    rents: { studio: 1100, br1: 1450, br2: 1850, br3: 2250 },
+    comps: [
+      { name: "Overtown Residences", pricePerUnit: 215000, units: 95, year: 2024, notes: "Historic neighborhood redevelopment" },
+      { name: "Overtown Arts District Lofts", pricePerUnit: 210000, units: 75, year: 2023, notes: "Cultural district conversion" },
+      { name: "Heritage Community Development", pricePerUnit: 220000, units: 85, year: 2024, notes: "Mixed-income project" }
+    ],
+    infrastructure: [
+      { name: "Overtown Metrorail Station Area Revitalization", cost: 380000000, status: "Under Construction", impact: "Transit-oriented development and economic catalyst" },
+      { name: "Overtown Cultural and Arts District Expansion", cost: 145000000, status: "Operational", impact: "Arts venues, cultural programming, and heritage preservation" }
+    ],
+    t12: {
+      taxes: 530,
+      insurance: 265,
+      utilities: 120,
+      rm: 280,
+      management: 200,
+      payroll: 140,
+      reserves: 105,
+      total: 1640
+    },
+    topSchoolDetail: "Overtown schools serve the historic community with strong academic programming and cultural education. Design and Architecture Senior High provides specialized creative industries curriculum.",
+    infraDetail: "Overtown's Metrorail station area revitalization creates major economic development opportunity with transit access. Arts district expansion celebrates community heritage and supports cultural economy growth.",
+    rentTrend: [100, 117, 140, 160, 180]
+  },
+  {
+    id: 30,
+    name: "Surfside / Bal Harbour",
+    schools: [
+      { name: "Bal Harbour Elementary School", grade: "K-5", type: "Elementary" },
+      { name: "Bal Harbour K-8 Center", grade: "K-8", type: "K-8" },
+      { name: "Aventura High School", grade: "9-12", type: "High" }
+    ],
+    rents: { studio: 2400, br1: 3200, br2: 4100, br3: 5100 },
+    comps: [
+      { name: "Bal Harbour Luxury Residences", pricePerUnit: 485000, units: 180, year: 2024, notes: "Ultra-luxury beachfront tower" },
+      { name: "Surfside Waterfront Estates", pricePerUnit: 475000, units: 120, year: 2023, notes: "Premium oceanfront property" },
+      { name: "Luxury Coastal Living", pricePerUnit: 495000, units: 100, year: 2024, notes: "High-end beachfront development" }
+    ],
+    infrastructure: [
+      { name: "Bal Harbour Shopping Center Expansion and Luxury Development", cost: 600000000, status: "Operational", impact: "World-class retail and hospitality destination" },
+      { name: "Surfside Beach Preservation and Infrastructure", cost: 185000000, status: "Under Construction", impact: "Beach restoration and sea-level rise mitigation" }
+    ],
+    t12: {
+      taxes: 1250,
+      insurance: 625,
+      utilities: 260,
+      rm: 660,
+      management: 440,
+      payroll: 310,
+      reserves: 240,
+      total: 3785
+    },
+    topSchoolDetail: "Surfside and Bal Harbour have excellent school systems with strong academics and enrichment programs. Access to private school options and specialized programs supports educational excellence.",
+    infraDetail: "Bal Harbour Shopping Center remains the world-class luxury shopping destination attracting international visitors and premium brands. Beach preservation initiatives address environmental concerns while maintaining pristine oceanfront.",
+    rentTrend: [100, 103, 111, 118, 124]
+  },
+  {
+    id: 31,
+    name: "South Miami",
+    schools: [
+      { name: "South Miami Elementary School", grade: "K-5", type: "Elementary" },
+      { name: "South Miami K-8 Center", grade: "K-8", type: "K-8" },
+      { name: "Palmetto High School", grade: "9-12", type: "High" }
+    ],
+    rents: { studio: 1550, br1: 2050, br2: 2600, br3: 3150 },
+    comps: [
+      { name: "South Miami Residences", pricePerUnit: 285000, units: 140, year: 2024, notes: "Walkable urban community" },
+      { name: "South Miami Village Development", pricePerUnit: 295000, units: 120, year: 2023, notes: "Mixed-use with character" },
+      { name: "Contemporary Residences", pricePerUnit: 290000, units: 115, year: 2024, notes: "Modern suburban living" }
+    ],
+    infrastructure: [
+      { name: "South Miami Village Mixed-Use Development", cost: 320000000, status: "Operational", impact: "Walkable village center with retail and dining" },
+      { name: "Parks and Green Space Enhancement", cost: 85000000, status: "Under Construction", impact: "Community recreational amenities" }
+    ],
+    t12: {
+      taxes: 640,
+      insurance: 320,
+      utilities: 145,
+      rm: 340,
+      management: 245,
+      payroll: 170,
+      reserves: 130,
+      total: 1990
+    },
+    topSchoolDetail: "South Miami schools provide strong academics in a stable, family-oriented community. The schools emphasize progressive education and student-centered learning approaches.",
+    infraDetail: "South Miami Village creates a walkable, vibrant downtown with restaurants, retail, and offices. Park enhancements support community recreation and outdoor lifestyle.",
+    rentTrend: [100, 104, 113, 121, 128]
+  },
+  {
+    id: 32,
+    name: "Westchester / Tamiami",
+    schools: [
+      { name: "Westchester Elementary School", grade: "K-5", type: "Elementary" },
+      { name: "Westchester K-8 Center", grade: "K-8", type: "K-8" },
+      { name: "Palmetto High School", grade: "9-12", type: "High" }
+    ],
+    rents: { studio: 1200, br1: 1600, br2: 2000, br3: 2400 },
+    comps: [
+      { name: "Westchester Residences", pricePerUnit: 225000, units: 120, year: 2024, notes: "Family-oriented community" },
+      { name: "Tamiami Gateway Development", pricePerUnit: 220000, units: 100, year: 2023, notes: "Mixed-use location" },
+      { name: "Suburban Community Living", pricePerUnit: 230000, units: 105, year: 2024, notes: "Value proposition" }
+    ],
+    infrastructure: [
+      { name: "Westchester Mixed-Use Center", cost: 280000000, status: "Operational", impact: "Retail, office, and residential hub" },
+      { name: "Tamiami Trail Corridor Improvements", cost: 165000000, status: "Under Construction", impact: "Enhanced connectivity and commercial development" }
+    ],
+    t12: {
+      taxes: 570,
+      insurance: 285,
+      utilities: 130,
+      rm: 300,
+      management: 220,
+      payroll: 155,
+      reserves: 115,
+      total: 1775
+    },
+    topSchoolDetail: "Westchester schools serve diverse neighborhoods with strong academic programs. Schools emphasize inclusive education and support for students with varied backgrounds.",
+    infraDetail: "Westchester mixed-use center anchors the community with major retail and commercial tenants. Tamiami Trail improvements enhance connectivity and support commercial corridor growth.",
+    rentTrend: [100, 112, 128, 142, 154]
+  },
+  {
+    id: 33,
+    name: "Miami Lakes",
+    schools: [
+      { name: "Miami Lakes Elementary School", grade: "K-5", type: "Elementary" },
+      { name: "Miami Lakes K-8 Center", grade: "K-8", type: "K-8" },
+      { name: "Monsignor Pace High School", grade: "9-12", type: "High" }
+    ],
+    rents: { studio: 1550, br1: 2050, br2: 2600, br3: 3150 },
+    comps: [
+      { name: "Miami Lakes Residences", pricePerUnit: 280000, units: 130, year: 2024, notes: "Master-planned family community" },
+      { name: "Lakes Community Development", pricePerUnit: 275000, units: 110, year: 2023, notes: "Lakeside living" },
+      { name: "Planned Community Residences", pricePerUnit: 285000, units: 120, year: 2024, notes: "Family amenities" }
+    ],
+    infrastructure: [
+      { name: "Miami Lakes Town Center Mixed-Use Development", cost: 380000000, status: "Operational", impact: "Retail, office, and community gathering space" },
+      { name: "Lakes Park and Recreation Master Plan", cost: 110000000, status: "Under Construction", impact: "World-class community facilities and sports complexes" }
+    ],
+    t12: {
+      taxes: 620,
+      insurance: 310,
+      utilities: 140,
+      rm: 330,
+      management: 240,
+      payroll: 170,
+      reserves: 130,
+      total: 1940
+    },
+    topSchoolDetail: "Miami Lakes schools are highly rated with strong academics and family-oriented programming. Access to private school options provides educational choice and specialized programs.",
+    infraDetail: "Miami Lakes Town Center creates vibrant mixed-use community gathering space with retail and dining. World-class recreation facilities support active family lifestyle and community wellness.",
+    rentTrend: [100, 103, 110, 116, 121]
+  },
+  {
+    id: 34,
+    name: "Medley / Hialeah Industrial",
+    schools: null,
+    rents: null,
+    comps: null,
+    infrastructure: [
+      { name: "Miami-Dade Industrial and Logistics Hub", cost: 500000000, status: "Operational", impact: "Strategic logistics and distribution center" }
+    ],
+    t12: null,
+    topSchoolDetail: "Medley is primarily industrial with limited residential and educational presence.",
+    infraDetail: "Medley functions as a major industrial, logistics, and distribution hub for South Florida with strategic port and rail connectivity.",
+    rentTrend: null
+  }
+];
+
+
+// Global zones array (merged from zoneData and enhancedZoneData)
+let zones = [];
+
+const SIGNAL_COLORS = {
+  'BUY STRONG': '#00C853',
+  'BUY': '#4CAF50',
+  'HOLD': '#FF9800',
+  'CAUTION': '#f44336',
+  'SPECULATIVE': '#9C27B0',
+  'TROPHY': '#FFD700',
+  'N/A': '#999'
+};
+
+// Maps lowercase-hyphen filter values to actual signal strings
+const SIGNAL_MAP = {
+  'buy-strong': 'BUY STRONG',
+  'buy': 'BUY',
+  'hold': 'HOLD',
+  'caution': 'CAUTION',
+  'speculative': 'SPECULATIVE',
+  'trophy': 'TROPHY'
+};
+
+function mergeData() {
+  if (typeof zoneData === 'undefined' || typeof enhancedZoneData === 'undefined') {
+    console.error('Zone data not loaded');
+    return;
+  }
+  zones = zoneData.map(base => {
+    const enh = enhancedZoneData.find(e => e.id === base.id);
+    return enh ? { ...base, ...enh } : { ...base };
+  });
+}
+
+function fmt(num) {
+  if (num == null) return 'N/A';
+  const abs = Math.abs(num);
+  if (abs >= 1e9) return '$' + (num / 1e9).toFixed(1) + 'B';
+  if (abs >= 1e6) return '$' + (num / 1e6).toFixed(1) + 'M';
+  return '$' + Math.round(num).toLocaleString();
+}
+
+function getSignalClass(s) {
+  const map = { 'BUY STRONG': 'signal-buy-strong', 'BUY': 'signal-buy', 'HOLD': 'signal-hold', 'CAUTION': 'signal-caution', 'SPECULATIVE': 'signal-speculative', 'TROPHY': 'signal-trophy' };
+  return map[s] || 'signal-na';
+}
+
+function getSignalColor(s) { return SIGNAL_COLORS[s] || '#999'; }
+
+function calcMonthlyPmt(principal, annualRate, years) {
+  const r = annualRate / 12 / 100;
+  const n = years * 12;
+  if (r === 0) return principal / n;
+  return (principal * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+}
+
+// ============================================
+// ZONE CARDS
+// ============================================
+function populateZoneCards() {
+  const container = document.getElementById('zoneCards');
+  if (!container) return;
+  container.innerHTML = '';
+
+  zones.forEach(zone => {
+    if (zone.signal === 'N/A' && zone.rentAvg === 0) return; // skip industrial
+
+    const card = document.createElement('div');
+    card.className = 'zone-card';
+    card.setAttribute('data-zone-id', zone.id);
+    card.style.borderLeftColor = getSignalColor(zone.signal);
+
+    const capStr = zone.capRateMin && zone.capRateMax
+      ? zone.capRateMin.toFixed(1) + '% - ' + zone.capRateMax.toFixed(1) + '%'
+      : 'N/A';
+
+    // priceMin/priceMax are in K (380 = $380K)
+    const priceStr = zone.priceMin > 0
+      ? '$' + zone.priceMin + 'K - $' + zone.priceMax + 'K'
+      : 'N/A';
+
+    const fsColor = zone.futureScore >= 70 ? '#00C853' : zone.futureScore >= 50 ? '#FF9800' : '#f44336';
+    const fsBg = zone.futureScore >= 70 ? 'rgba(0,200,83,0.12)' : zone.futureScore >= 50 ? 'rgba(255,152,0,0.12)' : 'rgba(244,67,54,0.12)';
+
+    card.innerHTML = `
+      <div style="padding:1.25rem 1.25rem 0.5rem;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;">
+          <h3 style="font-family:'Inter',sans-serif;font-size:1rem;font-weight:700;color:#1a2744;flex:1;margin:0 0.5rem 0 0;line-height:1.3;">${zone.name}</h3>
+          <span class="signal-badge ${getSignalClass(zone.signal)}" style="flex-shrink:0;">${zone.signal}</span>
+        </div>
+        <div style="font-size:0.78rem;color:#718096;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.75rem;">${zone.type || ''}</div>
+      </div>
+      <div style="padding:0 1.25rem;">
+        <div style="display:flex;justify-content:space-between;padding:0.45rem 0;border-bottom:1px solid #f0f4f8;">
+          <span style="font-size:0.82rem;color:#718096;">Renta Promedio</span>
+          <span style="font-weight:700;color:#1a2744;">$${(zone.rentAvg || 0).toLocaleString()}/mo</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:0.45rem 0;border-bottom:1px solid #f0f4f8;">
+          <span style="font-size:0.82rem;color:#718096;">Cap Rate</span>
+          <span style="font-weight:600;color:#1a2744;">${capStr}</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:0.45rem 0;border-bottom:1px solid #f0f4f8;">
+          <span style="font-size:0.82rem;color:#718096;">Precio/Unidad</span>
+          <span style="font-weight:600;color:#1a2744;">${priceStr}</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:0.45rem 0;">
+          <span style="font-size:0.82rem;color:#718096;">Rent Growth</span>
+          <span style="font-weight:700;color:${(zone.rentGrowth || 0) > 0 ? '#00C853' : '#f44336'};">${(zone.rentGrowth || 0) > 0 ? '+' : ''}${(zone.rentGrowth || 0).toFixed(1)}%</span>
+        </div>
+      </div>
+      <div style="padding:0.75rem 1.25rem;margin-top:0.5rem;border-top:1px solid #e2e8f0;text-align:center;">
+        <span style="display:inline-block;padding:0.3rem 1.2rem;border-radius:20px;font-weight:700;font-size:0.9rem;background:${fsBg};color:${fsColor};">
+          Future Score: ${zone.futureScore > 0 ? zone.futureScore : 'N/A'}
+        </span>
+      </div>
+    `;
+
+    card.addEventListener('click', () => openModal(zone.id));
+    container.appendChild(card);
+  });
+}
+
+// ============================================
+// FILTERS
+// ============================================
+function setupFilters() {
+  const allFilterBtns = document.querySelectorAll('.filter-btn');
+  const searchInput = document.getElementById('zoneSearch');
+
+  let activeSignal = 'all';
+  let activeBudget = 'all';
+  let searchTerm = '';
+
+  function applyFilters() {
+    const cards = document.querySelectorAll('.zone-card');
+    cards.forEach(card => {
+      const zoneId = parseInt(card.getAttribute('data-zone-id'));
+      const zone = zones.find(z => z.id === zoneId);
+      if (!zone) { card.style.display = 'none'; return; }
+
+      let show = true;
+
+      // Signal filter
+      if (activeSignal !== 'all') {
+        const targetSignal = SIGNAL_MAP[activeSignal];
+        if (targetSignal && zone.signal !== targetSignal) show = false;
+      }
+
+      // Budget filter (priceMin/priceMax are in K, e.g. 380 = $380K)
+      if (show && activeBudget !== 'all') {
+        const pMin = zone.priceMin || 0;
+        const pMax = zone.priceMax || 0;
+        switch (activeBudget) {
+          case '<200K': show = pMin < 200; break;
+          case '200-300K': show = pMin >= 120 && pMax <= 360; break;
+          case '300-400K': show = pMin >= 250 && pMax <= 450; break;
+          case '400K+': show = pMin >= 350; break;
+        }
+      }
+
+      // Search
+      if (show && searchTerm) {
+        show = zone.name.toLowerCase().includes(searchTerm);
+      }
+
+      card.style.display = show ? '' : 'none';
+    });
+  }
+
+  allFilterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filterType = btn.getAttribute('data-filter');
+      const value = btn.getAttribute('data-value');
+
+      if (filterType === 'signal') {
+        activeSignal = value;
+        document.querySelectorAll('[data-filter="signal"]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      } else if (filterType === 'budget') {
+        activeBudget = value;
+        document.querySelectorAll('[data-filter="budget"]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      }
+
+      applyFilters();
+    });
+  });
+
+  if (searchInput) {
+    searchInput.addEventListener('input', e => {
+      searchTerm = e.target.value.toLowerCase();
+      applyFilters();
+    });
+  }
+}
+
+// ============================================
+// MODAL
+// ============================================
+function openModal(zoneId) {
+  const zone = zones.find(z => z.id == zoneId);
+  if (!zone) return;
+
+  const modal = document.getElementById('zoneModal');
+  if (!modal) return;
+
+  // Title + signal badge
+  const titleEl = document.getElementById('modalZoneName');
+  const badgeEl = document.getElementById('modalSignalBadge');
+  if (titleEl) titleEl.textContent = zone.name;
+  if (badgeEl) {
+    badgeEl.textContent = zone.signal;
+    badgeEl.className = 'signal-badge ' + getSignalClass(zone.signal);
+  }
+
+  // Populate all tabs
+  fillValorizacion(zone);
+  fillCostos(zone);
+  fillDemografia(zone);
+  fillEscuelas(zone);
+  fillInfraestructura(zone);
+  fillInversion(zone);
+
+  // Reset to first tab
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  const firstTab = document.getElementById('tab-valorizacion');
+  const firstBtn = document.querySelector('.tab-btn[data-tab="valorizacion"]');
+  if (firstTab) firstTab.classList.add('active');
+  if (firstBtn) firstBtn.classList.add('active');
+
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  const modal = document.getElementById('zoneModal');
+  if (modal) { modal.style.display = 'none'; document.body.style.overflow = ''; }
+}
+
+function setupModalEvents() {
+  const modal = document.getElementById('zoneModal');
+  const closeBtn = document.getElementById('modalCloseBtn');
+
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (modal) modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tabName = btn.getAttribute('data-tab');
+      document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      const tab = document.getElementById('tab-' + tabName);
+      if (tab) tab.classList.add('active');
+      btn.classList.add('active');
+    });
+  });
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+}
+
+// Helper: horizontal bar
+function hbar(label, value, maxVal, color, displayVal) {
+  const pct = maxVal > 0 ? Math.min((value / maxVal) * 100, 100) : 0;
+  return `<div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.6rem;">
+    <span style="min-width:110px;font-size:0.85rem;color:#718096;">${label}</span>
+    <div style="flex:1;height:22px;background:#f0f4f8;border-radius:11px;overflow:hidden;">
+      <div style="height:100%;width:${pct}%;background:${color};border-radius:11px;transition:width 0.5s;"></div>
+    </div>
+    <span style="min-width:80px;text-align:right;font-weight:600;font-size:0.9rem;color:#1a2744;">${displayVal}</span>
+  </div>`;
+}
+
+// ============================================
+// TAB 1: VALORIZACIÓN
+// ============================================
+function fillValorizacion(z) {
+  const c = document.getElementById('tab-valorizacion');
+  if (!c) return;
+  const r = z.rents || { studio: 0, br1: 0, br2: 0, br3: 0 };
+  const maxR = Math.max(r.studio, r.br1, r.br2, r.br3, 1);
+  const comps = z.comps || [];
+  const trend = z.rentTrend || [100, 100, 100, 100, 100];
+  const maxT = Math.max(...trend, 1);
+
+  let compsHtml = comps.length > 0 ? `<table class="comps-table"><thead><tr><th>Propiedad</th><th>$/Unidad</th><th>Unidades</th><th>Año</th><th>Notas</th></tr></thead><tbody>` +
+    comps.map(c => `<tr><td>${c.name}</td><td>$${(c.pricePerUnit || 0).toLocaleString()}</td><td>${c.units}</td><td>${c.year}</td><td style="font-size:0.85rem;color:#718096;">${c.notes || ''}</td></tr>`).join('') +
+    `</tbody></table>` : '<p style="color:#718096;">No hay datos comparables disponibles.</p>';
+
+  c.innerHTML = `
+    <div class="tab-section">
+      <h3>Valorización & Rentas</h3>
+      <h4>Renta por Tipo de Unidad</h4>
+      ${hbar('Studio', r.studio, maxR, '#2196F3', '$' + (r.studio || 0).toLocaleString())}
+      ${hbar('1 Habitación', r.br1, maxR, '#1976D2', '$' + (r.br1 || 0).toLocaleString())}
+      ${hbar('2 Habitaciones', r.br2, maxR, '#1565C0', '$' + (r.br2 || 0).toLocaleString())}
+      ${hbar('3 Habitaciones', r.br3, maxR, '#0D47A1', '$' + (r.br3 || 0).toLocaleString())}
+
+      <h4 style="margin-top:1.5rem;">Métricas Clave</h4>
+      ${hbar('Apreciación 5yr', z.aprec5yr || 0, 150, '#FF9800', '+' + (z.aprec5yr || 0) + '%')}
+      ${hbar('Rent Growth YoY', Math.max(z.rentGrowth || 0, 0), 10, '#4CAF50', (z.rentGrowth > 0 ? '+' : '') + (z.rentGrowth || 0).toFixed(1) + '%')}
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0;padding:1rem;background:#f8f9fa;border-radius:8px;">
+        <div><span style="color:#718096;font-size:0.85rem;">Cap Rate</span><br><strong>${z.capRateMin ? z.capRateMin.toFixed(1) + '% - ' + z.capRateMax.toFixed(1) + '%' : 'N/A'}</strong></div>
+        <div><span style="color:#718096;font-size:0.85rem;">Precio/Unidad</span><br><strong>$${z.priceMin || 0}K - $${z.priceMax || 0}K</strong></div>
+        <div><span style="color:#718096;font-size:0.85rem;">Vacancia</span><br><strong>${(z.vacancy || 0).toFixed(1)}%</strong></div>
+        <div><span style="color:#718096;font-size:0.85rem;">Future Score</span><br><strong style="color:${z.futureScore >= 70 ? '#00C853' : z.futureScore >= 50 ? '#FF9800' : '#f44336'};">${z.futureScore > 0 ? z.futureScore + '/100' : 'N/A'}</strong></div>
+      </div>
+
+      <h4 style="margin-top:1.5rem;">Tendencia de Renta (2021-2025, Base 100)</h4>
+      <div style="display:flex;gap:6px;height:100px;align-items:flex-end;margin:1rem 0;">
+        ${trend.map((v, i) => `<div style="flex:1;display:flex;flex-direction:column;align-items:center;">
+          <div style="width:100%;height:${(v / maxT * 80)}px;background:linear-gradient(180deg,#00C853,#4CAF50);border-radius:4px 4px 0 0;transition:height 0.5s;"></div>
+          <small style="margin-top:4px;color:#718096;">${2021 + i}</small>
+          <small style="font-weight:600;color:#1a2744;">${v}</small>
+        </div>`).join('')}
+      </div>
+
+      <h4 style="margin-top:1.5rem;">Ventas Comparables Recientes</h4>
+      ${compsHtml}
+
+      <h4 style="margin-top:1.5rem;">Tesis de Inversión</h4>
+      <div style="padding:1rem;background:#f0f7ff;border-left:4px solid #2196F3;border-radius:0 8px 8px 0;margin-top:0.5rem;">
+        <p style="color:#2c3e50;line-height:1.7;margin:0;">${z.thesis || 'No disponible.'}</p>
+      </div>
+    </div>`;
+}
+
+// ============================================
+// TAB 2: COSTOS FIJOS
+// ============================================
+function fillCostos(z) {
+  const c = document.getElementById('tab-costos');
+  if (!c) return;
+  const t = z.t12 || { taxes: 0, insurance: 0, utilities: 0, rm: 0, management: 0, payroll: 0, reserves: 0, total: 0 };
+  const maxC = Math.max(t.taxes, t.insurance, t.utilities, t.rm, t.management, t.payroll, t.reserves, 1);
+
+  // T-12 costs are PER UNIT PER MONTH based on the data structure
+  const countyAvg = 21.08;
+  const millDiff = ((z.millage || 0) - countyAvg).toFixed(2);
+  const millColor = z.millage > countyAvg ? '#f44336' : '#4CAF50';
+
+  const riskColors = { 'LOW': '#4CAF50', 'MEDIUM': '#FF9800', 'HIGH': '#f44336', 'VERY HIGH': '#d32f2f' };
+  const riskColor = riskColors[z.insuranceRisk] || '#999';
+
+  c.innerHTML = `
+    <div class="tab-section">
+      <h3>Costos Fijos del Propietario</h3>
+
+      <h4>Desglose T-12 por Unidad (Anual)</h4>
+      ${hbar('Impuestos', t.taxes, maxC, '#E53935', '$' + (t.taxes || 0).toLocaleString())}
+      ${hbar('Seguros', t.insurance, maxC, '#FF6F00', '$' + (t.insurance || 0).toLocaleString())}
+      ${hbar('Servicios', t.utilities, maxC, '#FFC107', '$' + (t.utilities || 0).toLocaleString())}
+      ${hbar('Rep. & Mant.', t.rm, maxC, '#2196F3', '$' + (t.rm || 0).toLocaleString())}
+      ${hbar('Gestión', t.management, maxC, '#4CAF50', '$' + (t.management || 0).toLocaleString())}
+      ${hbar('Nómina', t.payroll, maxC, '#9C27B0', '$' + (t.payroll || 0).toLocaleString())}
+      ${hbar('Reservas', t.reserves, maxC, '#607D8B', '$' + (t.reserves || 0).toLocaleString())}
+
+      <div style="margin-top:1rem;padding:1rem;background:#1a2744;border-radius:8px;color:white;display:flex;justify-content:space-between;">
+        <span style="font-weight:600;">Total T-12 por Unidad</span>
+        <span style="font-weight:700;font-size:1.1rem;">$${(t.total || 0).toLocaleString()}/año</span>
+      </div>
+
+      <h4 style="margin-top:1.5rem;">Gastos Operativos Totales</h4>
+      ${hbar('OpEx/Unidad/Año', z.opex || 0, 20000, '#FF9800', '$' + (z.opex || 0).toLocaleString())}
+      <p style="color:#718096;font-size:0.85rem;">OpEx Ratio: <strong>${(z.opexRatio || 0)}%</strong> de ingresos brutos</p>
+
+      <h4 style="margin-top:1.5rem;">Tasa de Millage</h4>
+      <div style="display:flex;align-items:center;gap:1rem;padding:1rem;background:#f8f9fa;border-radius:8px;">
+        <div style="font-size:2rem;font-weight:800;color:#1a2744;">${(z.millage || 0).toFixed(2)}</div>
+        <div>
+          <div style="font-size:0.85rem;color:#718096;">Promedio Condado: ${countyAvg}</div>
+          <div style="font-weight:600;color:${millColor};">${z.millage > countyAvg ? '▲' : '▼'} ${Math.abs(millDiff)} ${z.millage > countyAvg ? 'por encima' : 'por debajo'} del promedio</div>
+        </div>
+      </div>
+
+      <h4 style="margin-top:1.5rem;">Impuestos & Seguros por Unidad</h4>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div style="padding:1rem;background:#fff5f5;border-radius:8px;border-left:4px solid #E53935;">
+          <div style="color:#718096;font-size:0.85rem;">Impuesto/Unidad/Año</div>
+          <div style="font-size:1.3rem;font-weight:700;color:#E53935;">$${(z.taxPerUnit || 0).toLocaleString()}</div>
+        </div>
+        <div style="padding:1rem;background:#fff8e1;border-radius:8px;border-left:4px solid #FF6F00;">
+          <div style="color:#718096;font-size:0.85rem;">Seguro/Unidad/Año</div>
+          <div style="font-size:1.3rem;font-weight:700;color:#FF6F00;">$${(z.insurance || 0).toLocaleString()}</div>
+        </div>
+      </div>
+
+      <h4 style="margin-top:1.5rem;">Zona FEMA & Riesgo</h4>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <div style="padding:0.75rem 1.5rem;background:#f0f4f8;border-radius:8px;">
+          <span style="color:#718096;font-size:0.85rem;">Zona FEMA:</span> <strong>${z.flood || 'N/A'}</strong>
+        </div>
+        <div style="padding:0.75rem 1.5rem;background:${riskColor}15;border-radius:8px;border:1px solid ${riskColor}40;">
+          <span style="color:#718096;font-size:0.85rem;">Riesgo:</span> <strong style="color:${riskColor};">${z.insuranceRisk || 'N/A'}</strong>
+        </div>
+      </div>
+    </div>`;
+}
+
+// ============================================
+// TAB 3: DEMOGRAFÍA
+// ============================================
+function fillDemografia(z) {
+  const c = document.getElementById('tab-demografia');
+  if (!c) return;
+  const walkColor = (z.walk || 0) >= 70 ? '#4CAF50' : (z.walk || 0) >= 40 ? '#FFC107' : '#f44336';
+  const walkLabel = (z.walk || 0) >= 70 ? 'Muy Caminable' : (z.walk || 0) >= 40 ? 'Moderado' : 'Dependiente del Auto';
+
+  // employers and amenities may be strings (from original data) — handle both
+  const empList = Array.isArray(z.employers) ? z.employers : (z.employers || '').split(',').map(s => s.trim()).filter(Boolean);
+  const amenList = Array.isArray(z.amenities) ? z.amenities : (z.amenities || '').split(',').map(s => s.trim()).filter(Boolean);
+
+  c.innerHTML = `
+    <div class="tab-section">
+      <h3>Demografía & Estilo de Vida</h3>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1.5rem;">
+        <div style="padding:1rem;background:#f8f9fa;border-radius:8px;text-align:center;">
+          <div style="font-size:0.8rem;color:#718096;text-transform:uppercase;">Población</div>
+          <div style="font-size:1.5rem;font-weight:800;color:#1a2744;">${((z.population || 0) / 1000).toFixed(0)}K</div>
+        </div>
+        <div style="padding:1rem;background:#f8f9fa;border-radius:8px;text-align:center;">
+          <div style="font-size:0.8rem;color:#718096;text-transform:uppercase;">Ingreso Mediano</div>
+          <div style="font-size:1.5rem;font-weight:800;color:#1a2744;">$${((z.income || 0) / 1000).toFixed(0)}K</div>
+        </div>
+        <div style="padding:1rem;background:#f8f9fa;border-radius:8px;text-align:center;">
+          <div style="font-size:0.8rem;color:#718096;text-transform:uppercase;">Criminalidad</div>
+          <div style="font-size:1.5rem;font-weight:800;color:#1a2744;">${z.crime || 'N/A'}</div>
+        </div>
+      </div>
+
+      <h4>Walk Score</h4>
+      ${hbar('Caminabilidad', z.walk || 0, 100, walkColor, (z.walk || 0) + '/100')}
+      <p style="color:${walkColor};font-weight:600;font-size:0.85rem;">${walkLabel}</p>
+
+      <h4 style="margin-top:1rem;">Transit Score</h4>
+      ${hbar('Transporte', z.transit || 0, 100, '#2196F3', (z.transit || 0) + '/100')}
+
+      <h4 style="margin-top:1rem;">Vacancia & Pipeline</h4>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div style="padding:1rem;background:#f8f9fa;border-radius:8px;">
+          <div style="color:#718096;font-size:0.85rem;">Vacancia Actual</div>
+          <div style="font-size:1.3rem;font-weight:700;color:${(z.vacancy || 0) > 7 ? '#f44336' : '#1a2744'};">${(z.vacancy || 0).toFixed(1)}%</div>
+        </div>
+        <div style="padding:1rem;background:#f8f9fa;border-radius:8px;">
+          <div style="color:#718096;font-size:0.85rem;">Pipeline (Nuevas Unidades)</div>
+          <div style="font-size:1.3rem;font-weight:700;color:${(z.pipeline || 0) > 2000 ? '#f44336' : '#1a2744'};">${(z.pipeline || 0).toLocaleString()}</div>
+          <div style="font-size:0.8rem;color:#718096;">${(z.pipeline || 0) > 2000 ? 'Alto riesgo de sobreoferta' : (z.pipeline || 0) > 500 ? 'Moderado' : 'Bajo — favorable'}</div>
+        </div>
+      </div>
+
+      <h4 style="margin-top:1.5rem;">Empleadores Principales</h4>
+      <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+        ${empList.map(e => `<span style="padding:0.4rem 0.8rem;background:#e8f5e9;border-radius:20px;font-size:0.82rem;color:#2e7d32;">${e}</span>`).join('')}
+      </div>
+
+      <h4 style="margin-top:1rem;">Amenidades Clave</h4>
+      <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+        ${amenList.map(a => `<span style="padding:0.4rem 0.8rem;background:#e3f2fd;border-radius:20px;font-size:0.82rem;color:#1565C0;">${a}</span>`).join('')}
+      </div>
+    </div>`;
+}
+
+// ============================================
+// TAB 4: ESCUELAS
+// ============================================
+function fillEscuelas(z) {
+  const c = document.getElementById('tab-escuelas');
+  if (!c) return;
+  const schools = z.schools || [];
+  // z.schools (from base data) is a string like "A-", enhanced schools is array
+  const schoolArr = Array.isArray(schools) ? schools : [];
+  const niche = typeof z.schools === 'string' ? z.schools : (z.schools && z.schools.length > 0 ? '' : 'N/A');
+
+  c.innerHTML = `
+    <div class="tab-section">
+      <h3>Escuelas & Educación</h3>
+
+      ${schoolArr.length > 0 ? `
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin:1rem 0;">
+        ${schoolArr.map(s => `
+          <div style="padding:1rem;background:white;border:1px solid #e2e8f0;border-radius:10px;transition:all 0.3s;">
+            <div style="font-weight:600;color:#1a2744;margin-bottom:0.3rem;">${s.name}</div>
+            <div style="font-size:0.85rem;color:#718096;">Grados: ${s.grade || 'N/A'}</div>
+            <div style="font-size:0.85rem;color:#718096;">Tipo: ${s.type || 'N/A'}</div>
+          </div>
+        `).join('')}
+      </div>` : '<p style="color:#718096;">No hay datos de escuelas disponibles para esta zona.</p>'}
+
+      <h4 style="margin-top:1.5rem;">Calidad Educativa de la Zona</h4>
+      <div style="padding:1rem;background:#f0f7ff;border-left:4px solid #2196F3;border-radius:0 8px 8px 0;">
+        <p style="color:#2c3e50;line-height:1.7;margin:0;">${z.topSchoolDetail || 'No hay información detallada disponible.'}</p>
+      </div>
+    </div>`;
+}
+
+// ============================================
+// TAB 5: INFRAESTRUCTURA
+// ============================================
+function fillInfraestructura(z) {
+  const c = document.getElementById('tab-infraestructura');
+  if (!c) return;
+  const infra = z.infrastructure || [];
+
+  c.innerHTML = `
+    <div class="tab-section">
+      <h3>Infraestructura & Proyectos</h3>
+
+      ${infra.length > 0 ? infra.map(p => {
+        const statusColor = p.status === 'Operational' ? '#4CAF50' : p.status === 'Under Construction' ? '#FF9800' : '#2196F3';
+        const statusEs = p.status === 'Operational' ? 'Operativo' : p.status === 'Under Construction' ? 'En Construcción' : p.status === 'Planned' ? 'Planificado' : p.status;
+        return `
+        <div style="padding:1.25rem;background:white;border:1px solid #e2e8f0;border-radius:10px;margin-bottom:1rem;border-left:4px solid ${statusColor};">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+            <h4 style="margin:0;font-family:'Inter',sans-serif;font-size:1rem;">${p.name}</h4>
+            <span style="padding:0.25rem 0.75rem;background:${statusColor}18;color:${statusColor};border-radius:4px;font-size:0.75rem;font-weight:700;text-transform:uppercase;">${statusEs}</span>
+          </div>
+          <div style="font-size:1.1rem;font-weight:700;color:#1a2744;margin-bottom:0.5rem;">${fmt(p.cost)}</div>
+          <p style="color:#718096;font-size:0.9rem;margin:0;">${p.impact || ''}</p>
+        </div>`;
+      }).join('') : '<p style="color:#718096;">No hay proyectos de infraestructura identificados.</p>'}
+
+      <h4 style="margin-top:1.5rem;">Impacto en la Zona</h4>
+      <div style="padding:1rem;background:#f0f7ff;border-left:4px solid #2196F3;border-radius:0 8px 8px 0;">
+        <p style="color:#2c3e50;line-height:1.7;margin:0;">${z.infraDetail || 'No hay información detallada disponible.'}</p>
+      </div>
+    </div>`;
+}
+
+// ============================================
+// TAB 6: INVERSIÓN (10-UNIT MODEL)
+// ============================================
+function fillInversion(z) {
+  const c = document.getElementById('tab-inversion');
+  if (!c) return;
+
+  if (!z.priceMin || z.priceMin === 0) {
+    c.innerHTML = '<div class="tab-section"><h3>Modelo de Inversión</h3><p style="color:#718096;">No aplica para esta zona.</p></div>';
+    return;
+  }
+
+  // priceMin/priceMax are in K (380 = $380K). Convert to actual dollars.
+  const pricePerUnit = ((z.priceMin + z.priceMax) / 2) * 1000;
+  const units = 10;
+  const downPct = 25;
+  const rate = 6.5;
+  const amort = 30;
+  const vacPct = 5;
+
+  const totalPrice = pricePerUnit * units;
+  const downPayment = totalPrice * downPct / 100;
+  const loan = totalPrice - downPayment;
+  const monthlyPmt = calcMonthlyPmt(loan, rate, amort);
+  const annualDS = monthlyPmt * 12;
+
+  const annualRent = (z.rentAvg || 0) * 12;
+  const grossRev = units * annualRent * (1 - vacPct / 100);
+  const totalOpex = units * (z.opex || 0);
+  const noi = grossRev - totalOpex;
+  const cfbt = noi - annualDS;
+  const coc = downPayment > 0 ? (cfbt / downPayment * 100) : 0;
+
+  // 5-year projection
+  let projRows = '';
+  let cumCF = 0;
+  const annualApprec = (z.aprec5yr || 0) / 5;
+
+  for (let yr = 1; yr <= 5; yr++) {
+    const propVal = totalPrice * Math.pow(1 + annualApprec / 100, yr);
+
+    // Calculate remaining loan balance
+    let bal = loan;
+    const mr = rate / 12 / 100;
+    for (let m = 0; m < yr * 12; m++) {
+      const interest = bal * mr;
+      const principal = monthlyPmt - interest;
+      bal -= principal;
+    }
+    bal = Math.max(0, bal);
+
+    const equity = propVal - bal;
+    const yrNOI = noi * Math.pow(1 + (z.rentGrowth || 0) / 100, yr - 1);
+    cumCF += (yrNOI - annualDS);
+
+    projRows += `<tr>
+      <td style="font-weight:600;">Año ${yr}</td>
+      <td>${fmt(propVal)}</td>
+      <td>${fmt(bal)}</td>
+      <td style="font-weight:700;color:#00C853;">${fmt(equity)}</td>
+      <td>${fmt(yrNOI)}</td>
+      <td style="color:${cumCF >= 0 ? '#00C853' : '#f44336'}">${fmt(cumCF)}</td>
+    </tr>`;
+  }
+
+  c.innerHTML = `
+    <div class="tab-section">
+      <h3>Modelo de Inversión — 10 Unidades</h3>
+
+      <h4>Supuestos</h4>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:0.75rem;margin:1rem 0;">
+        <div style="padding:0.75rem;background:#f8f9fa;border-radius:6px;"><span style="color:#718096;font-size:0.8rem;">Precio/Unidad</span><br><strong>${fmt(pricePerUnit)}</strong></div>
+        <div style="padding:0.75rem;background:#f8f9fa;border-radius:6px;"><span style="color:#718096;font-size:0.8rem;">Total (10 units)</span><br><strong>${fmt(totalPrice)}</strong></div>
+        <div style="padding:0.75rem;background:#f8f9fa;border-radius:6px;"><span style="color:#718096;font-size:0.8rem;">Down Payment (25%)</span><br><strong>${fmt(downPayment)}</strong></div>
+        <div style="padding:0.75rem;background:#f8f9fa;border-radius:6px;"><span style="color:#718096;font-size:0.8rem;">Préstamo (75%)</span><br><strong>${fmt(loan)}</strong></div>
+        <div style="padding:0.75rem;background:#f8f9fa;border-radius:6px;"><span style="color:#718096;font-size:0.8rem;">Tasa</span><br><strong>${rate}% / ${amort} años</strong></div>
+        <div style="padding:0.75rem;background:#f8f9fa;border-radius:6px;"><span style="color:#718096;font-size:0.8rem;">Renta Prom.</span><br><strong>$${(z.rentAvg || 0).toLocaleString()}/mo</strong></div>
+      </div>
+
+      <h4 style="margin-top:1.5rem;">Flujo de Caja — Año 1</h4>
+      <div style="border:1px solid #e2e8f0;border-radius:10px;overflow:hidden;margin:1rem 0;">
+        <div style="display:flex;justify-content:space-between;padding:0.75rem 1.25rem;border-bottom:1px solid #f0f4f8;">
+          <span style="color:#718096;">Ingresos Brutos (10 × $${(z.rentAvg || 0).toLocaleString()} × 12 × 95%)</span>
+          <strong style="color:#4CAF50;">${fmt(grossRev)}</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:0.75rem 1.25rem;border-bottom:1px solid #f0f4f8;">
+          <span style="color:#718096;">(-) Gastos Operativos (10 × $${(z.opex || 0).toLocaleString()})</span>
+          <strong style="color:#f44336;">-${fmt(totalOpex)}</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:0.75rem 1.25rem;background:#f0faf0;border-bottom:1px solid #f0f4f8;">
+          <span style="font-weight:600;">= NOI</span>
+          <strong style="font-size:1.1rem;color:#00C853;">${fmt(noi)}</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:0.75rem 1.25rem;border-bottom:1px solid #f0f4f8;">
+          <span style="color:#718096;">(-) Servicio de Deuda</span>
+          <strong style="color:#f44336;">-${fmt(annualDS)}</strong>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:0.75rem 1.25rem;background:#1a2744;">
+          <span style="color:white;font-weight:600;">= Cash Flow Antes de Impuestos</span>
+          <strong style="color:${cfbt >= 0 ? '#00C853' : '#f44336'};font-size:1.2rem;">${fmt(cfbt)}</strong>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0;">
+        <div style="padding:1.25rem;background:#f0faf0;border-radius:10px;text-align:center;">
+          <div style="font-size:0.85rem;color:#718096;">Cash-on-Cash Return</div>
+          <div style="font-size:2rem;font-weight:800;color:${coc >= 0 ? '#00C853' : '#f44336'};">${coc.toFixed(1)}%</div>
+        </div>
+        <div style="padding:1.25rem;background:#f0f7ff;border-radius:10px;text-align:center;">
+          <div style="font-size:0.85rem;color:#718096;">Cap Rate Estimado</div>
+          <div style="font-size:2rem;font-weight:800;color:#2196F3;">${totalPrice > 0 ? (noi / totalPrice * 100).toFixed(1) : 0}%</div>
+        </div>
+      </div>
+
+      <h4 style="margin-top:1.5rem;">Proyección de Equity a 5 Años</h4>
+      <div style="overflow-x:auto;">
+        <table class="projection-table">
+          <thead><tr>
+            <th style="text-align:left;">Período</th>
+            <th>Valor Propiedad</th>
+            <th>Saldo Préstamo</th>
+            <th>Equity</th>
+            <th>NOI Anual</th>
+            <th>Flujo Acumulado</th>
+          </tr></thead>
+          <tbody>${projRows}</tbody>
+        </table>
+      </div>
+    </div>`;
+}
+
+// ============================================
+// COMPARISON
+// ============================================
+function setupComparison() {
+  const s1 = document.getElementById('compareZone1');
+  const s2 = document.getElementById('compareZone2');
+  const results = document.getElementById('comparisonResults');
+  if (!s1 || !s2 || !results) return;
+
+  zones.filter(z => z.signal !== 'N/A' || z.rentAvg > 0).forEach(z => {
+    s1.innerHTML += `<option value="${z.id}">${z.name}</option>`;
+    s2.innerHTML += `<option value="${z.id}">${z.name}</option>`;
+  });
+
+  function compare() {
+    const z1 = zones.find(z => z.id == s1.value);
+    const z2 = zones.find(z => z.id == s2.value);
+    if (!z1 || !z2) { results.innerHTML = '<p style="color:#718096;text-align:center;padding:2rem;">Selecciona ambas zonas para comparar.</p>'; return; }
+
+    const metrics = [
+      { label: 'Renta Promedio', k: 'rentAvg', fmt: v => '$' + (v || 0).toLocaleString(), higher: true },
+      { label: 'Cap Rate', k: 'capRateMin', fmt: v => (v || 0).toFixed(1) + '%', higher: true },
+      { label: 'Precio/Unidad', k: 'priceMin', fmt: v => '$' + (v || 0) + 'K', higher: false },
+      { label: 'Rent Growth', k: 'rentGrowth', fmt: v => (v > 0 ? '+' : '') + (v || 0).toFixed(1) + '%', higher: true },
+      { label: 'Impuestos/Unit', k: 'taxPerUnit', fmt: v => '$' + (v || 0).toLocaleString(), higher: false },
+      { label: 'Seguro/Unit', k: 'insurance', fmt: v => '$' + (v || 0).toLocaleString(), higher: false },
+      { label: 'OpEx/Unit', k: 'opex', fmt: v => '$' + (v || 0).toLocaleString(), higher: false },
+      { label: 'Walk Score', k: 'walk', fmt: v => (v || 0) + '', higher: true },
+      { label: 'Crime Grade', k: 'crime', fmt: v => v || 'N/A', higher: null },
+      { label: 'Future Score', k: 'futureScore', fmt: v => (v || 0) + '', higher: true },
+    ];
+
+    let html = `
+      <div style="display:grid;grid-template-columns:1fr 2fr 1fr 1fr;gap:0;border:1px solid #e2e8f0;border-radius:10px;overflow:hidden;">
+        <div style="padding:1rem;background:#1a2744;color:white;font-weight:600;">Métrica</div>
+        <div></div>
+        <div style="padding:1rem;background:#1a2744;color:white;font-weight:700;text-align:center;">${z1.name}</div>
+        <div style="padding:1rem;background:#1a2744;color:white;font-weight:700;text-align:center;">${z2.name}</div>`;
+
+    metrics.forEach((m, i) => {
+      const v1 = z1[m.k]; const v2 = z2[m.k];
+      const n1 = parseFloat(v1) || 0; const n2 = parseFloat(v2) || 0;
+      let w1 = '', w2 = '';
+      if (m.higher !== null) {
+        if (m.higher) { w1 = n1 > n2 ? 'color:#00C853;font-weight:700;' : ''; w2 = n2 > n1 ? 'color:#00C853;font-weight:700;' : ''; }
+        else { w1 = n1 < n2 ? 'color:#00C853;font-weight:700;' : ''; w2 = n2 < n1 ? 'color:#00C853;font-weight:700;' : ''; }
+      }
+      const bg = i % 2 === 0 ? '#f8f9fa' : 'white';
+      const maxN = Math.max(n1, n2, 1);
+      html += `
+        <div style="padding:0.75rem 1rem;background:${bg};font-size:0.85rem;color:#718096;display:flex;align-items:center;">${m.label}</div>
+        <div style="padding:0.75rem;background:${bg};display:flex;align-items:center;gap:4px;">
+          <div style="flex:1;height:16px;background:#e2e8f0;border-radius:8px;overflow:hidden;">
+            <div style="height:100%;width:${n1/maxN*100}%;background:#2196F3;border-radius:8px;"></div>
+          </div>
+          <div style="flex:1;height:16px;background:#e2e8f0;border-radius:8px;overflow:hidden;">
+            <div style="height:100%;width:${n2/maxN*100}%;background:#FF9800;border-radius:8px;"></div>
+          </div>
+        </div>
+        <div style="padding:0.75rem 1rem;background:${bg};text-align:center;${w1}">${m.fmt(v1)}</div>
+        <div style="padding:0.75rem 1rem;background:${bg};text-align:center;${w2}">${m.fmt(v2)}</div>`;
+    });
+
+    html += '</div>';
+    results.innerHTML = html;
+  }
+
+  s1.addEventListener('change', compare);
+  s2.addEventListener('change', compare);
+}
+
+// ============================================
+// RANKING TABLE
+// ============================================
+function populateRanking() {
+  const container = document.getElementById('rankingTable');
+  if (!container) return;
+
+  const ranked = zones.filter(z => (z.futureScore || 0) > 0).sort((a, b) => (b.futureScore || 0) - (a.futureScore || 0));
+
+  let html = `<table class="ranking-table"><thead><tr>
+    <th>#</th><th>Zona</th><th>Señal</th><th>Cap Rate</th><th>Renta</th><th>Score</th><th>$/Unit</th><th>Growth</th><th>Riesgo</th>
+  </tr></thead><tbody>`;
+
+  ranked.forEach((z, i) => {
+    const riskLvl = z.futureScore >= 70 ? 'Bajo' : z.futureScore >= 50 ? 'Moderado' : 'Alto';
+    const riskClr = riskLvl === 'Bajo' ? '#4CAF50' : riskLvl === 'Moderado' ? '#FF9800' : '#f44336';
+    const growth = (z.rentGrowth || 0) > 4 ? 'Alto' : (z.rentGrowth || 0) > 1.5 ? 'Moderado' : 'Bajo';
+
+    html += `<tr class="ranking-row" data-zone-id="${z.id}" style="cursor:pointer;">
+      <td><span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#1a2744;color:white;font-weight:700;font-size:0.8rem;">${i + 1}</span></td>
+      <td style="font-weight:600;">${z.name}</td>
+      <td><span class="signal-badge ${getSignalClass(z.signal)}">${z.signal}</span></td>
+      <td>${z.capRateMin ? z.capRateMin.toFixed(1) + '%' : 'N/A'}</td>
+      <td>$${(z.rentAvg || 0).toLocaleString()}</td>
+      <td style="font-weight:700;">${z.futureScore}</td>
+      <td>$${z.priceMin || 0}K-${z.priceMax || 0}K</td>
+      <td>${growth}</td>
+      <td><span style="color:${riskClr};font-weight:600;">${riskLvl}</span></td>
+    </tr>`;
+  });
+
+  html += '</tbody></table>';
+  container.innerHTML = html;
+
+  container.querySelectorAll('.ranking-row').forEach(row => {
+    row.addEventListener('click', () => openModal(row.getAttribute('data-zone-id')));
+  });
+}
+
+// ============================================
+// BUYER'S GUIDE
+// ============================================
+function populateGuide() {
+  const container = document.getElementById('buyersGuide');
+  if (!container) return;
+
+  const guides = [
+    { t: 'Cap Rate (Tasa de Capitalización)', c: 'El Cap Rate es el NOI (Ingreso Neto Operativo) dividido por el precio de compra. Indica el retorno anual que genera una propiedad. En Miami-Dade, el promedio es ~5.3%. Brickell/Downtown 4.5-5.0% (comprimido). Little Havana/Homestead 6%+. Si buscas rendimiento inmediato, enfócate en >5.5%.' },
+    { t: 'Precio vs Costo de Reemplazo', c: 'Si compras por debajo del costo de reemplazo ($350K+/unit en Miami), tienes un "margin of safety" natural. Zonas como Little Havana ($180-250K), Overtown ($150-220K) están muy debajo. Brickell ($380-450K) está en o por encima.' },
+    { t: 'Crecimiento de Renta (Rent Growth)', c: 'Zonas con crecimiento >4% anual son outperformers. Top: Allapattah (+7.1%), Little Havana (+6.2%), Florida City (+6.0%). Advertencia: Downtown (-1.2%), Miami Beach (-1.2%) tienen saturación.' },
+    { t: 'Apreciación Histórica', c: 'Miami-Dade ha visto apreciación de 60-130% en 5 años dependiendo de la zona. Líder: Wynwood +130%, Little Haiti +120%, Homestead +115%. Past performance no es garantía pero momentum importa.' },
+    { t: 'Zonas de Inundación FEMA', c: 'Zona X = bajo riesgo (~$1,100/unit/yr seguro). Zona AE = moderado ($1,400-2,200). Zona VE = muy alto ($2,500-3,200). En Miami Beach / Key Biscayne, el seguro VE mata el yield.' },
+    { t: 'Tasa de Millage (Carga Fiscal)', c: 'Rango: 14.47 (Miami Beach) a 26.50 (Opa-locka). A veces un cap rate 5.5% en zona de tax baja es mejor que 6.0% con tax alta. Aventura ($1.57/SF) vs Opa-locka ($2.65/SF) = $15K diferencia anual.' },
+    { t: 'Walk Score', c: 'Walk Score >80 = very walkable. Cada 10 puntos = ~3-5% premium en renta. Downtown Miami (95) vs Kendall (30). Walk score alto = menos turnover, más estabilidad.' },
+    { t: 'Criminalidad', c: 'Crime alto = tenant quality baja, turnover alto, seguro más caro. Coral Gables A+ vs Liberty City D = 30-40% diferencia en calidad de tenant. Nota: Overtown mejorando (-80% homicidios en década).' },
+    { t: 'Ingreso Mediano', c: 'Income = techo de renta (regla del 30%). Little Havana ($32K) → max ~$1,000/mes. Coral Gables ($110K) → max ~$3,300/mes. Compra donde el income soporta la renta que necesitas.' },
+    { t: 'Pipeline de Oferta', c: 'Si pipeline >5% del inventario existente = riesgo de oversupply. Red flag: Downtown 8,000+ units. Green flag: Little Havana 400 units. Pipeline pesado = presión a la baja en rentas.' }
+  ];
+
+  let html = '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1rem;">';
+  guides.forEach((g, i) => {
+    html += `
+      <div class="guide-item${i === 0 ? ' open' : ''}" style="background:white;border:1px solid #e2e8f0;border-radius:10px;overflow:hidden;">
+        <div onclick="this.parentElement.classList.toggle('open')" style="display:flex;justify-content:space-between;align-items:center;padding:1rem 1.25rem;cursor:pointer;font-weight:600;color:#1a2744;">
+          <span>${g.t}</span>
+          <span style="color:#00C853;font-size:1.2rem;transition:transform 0.3s;">▼</span>
+        </div>
+        <div style="max-height:${i === 0 ? '300px' : '0'};overflow:hidden;transition:max-height 0.4s ease;padding:0 1.25rem ${i === 0 ? '1.25rem' : '0'};">
+          <p style="color:#4a5568;line-height:1.7;margin:0;">${g.c}</p>
+        </div>
+      </div>`;
+  });
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+// ============================================
+// INIT
+// ============================================
+document.addEventListener('DOMContentLoaded', () => {
+  mergeData();
+  populateZoneCards();
+  setupFilters();
+  setupComparison();
+  populateRanking();
+  populateGuide();
+  setupModalEvents();
+});
+
+</script>
+</body>
+</html>

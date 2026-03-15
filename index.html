@@ -1,0 +1,1886 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miami-Dade Investment Intelligence | Reporte Multifamily Completo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #0a1628;
+            --primary-navy: #1a2744;
+            --accent-green: #00C853;
+            --white: #ffffff;
+            --light-gray: #f8f9fa;
+            --text-dark: #1a2744;
+            --text-muted: #718096;
+            --buy-strong: #00C853;
+            --buy: #4CAF50;
+            --hold: #FF9800;
+            --caution: #f44336;
+            --speculative: #9C27B0;
+            --trophy: #FFD700;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 22, 40, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(0, 200, 83, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-green);
+        }
+
+        .nav-cta {
+            background: var(--accent-green);
+            color: var(--primary-dark);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            animation: subtle-pulse 2s ease-in-out infinite;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 200, 83, 0.3);
+        }
+
+        @keyframes subtle-pulse {
+            0%, 100% {
+                box-shadow: 0 4px 16px rgba(0, 200, 83, 0.2);
+            }
+            50% {
+                box-shadow: 0 4px 24px rgba(0, 200, 83, 0.4);
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-navy) 100%);
+            background-image:
+                linear-gradient(135deg, rgba(10, 22, 40, 0.95) 0%, rgba(26, 39, 68, 0.95) 100%),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(0,200,83,0.05)" stroke-width="1"/></pattern></defs><rect width="1200" height="800" fill="url(%23grid)"/></svg>');
+            background-attachment: fixed;
+            background-size: cover, 40px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            margin-top: 70px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 10;
+            animation: fade-in-up 1s ease-out;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .kpi-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+            padding: 0 1rem;
+        }
+
+        .kpi-card {
+            background: rgba(0, 200, 83, 0.1);
+            border: 1px solid rgba(0, 200, 83, 0.3);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+
+        .kpi-card:hover {
+            background: rgba(0, 200, 83, 0.15);
+            border-color: var(--accent-green);
+            transform: translateY(-5px);
+        }
+
+        .kpi-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .kpi-label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent-green);
+            color: var(--primary-dark);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(0, 200, 83, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--accent-green);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-green);
+            color: var(--primary-dark);
+        }
+
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: var(--text-dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Prueba Gratis Section */
+        #prueba {
+            background: var(--light-gray);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.25rem;
+            border: 2px solid var(--text-muted);
+            background: var(--white);
+            border-radius: 2rem;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            color: var(--text-dark);
+        }
+
+        .filter-btn.active {
+            background: var(--accent-green);
+            color: var(--primary-dark);
+            border-color: var(--accent-green);
+        }
+
+        .filter-btn:hover {
+            border-color: var(--accent-green);
+        }
+
+        .zones-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .zone-card {
+            background: var(--white);
+            border-radius: 1rem;
+            padding: 1.75rem;
+            border: 1px solid #e0e0e0;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .zone-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+            border-color: var(--accent-green);
+        }
+
+        .zone-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .zone-type {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+
+        .signal-badge {
+            display: inline-block;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.4rem;
+            font-weight: 600;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            width: fit-content;
+        }
+
+        .signal-buy-strong {
+            background: rgba(0, 200, 83, 0.15);
+            color: var(--buy-strong);
+        }
+
+        .signal-buy {
+            background: rgba(76, 175, 80, 0.15);
+            color: var(--buy);
+        }
+
+        .signal-hold {
+            background: rgba(255, 152, 0, 0.15);
+            color: var(--hold);
+        }
+
+        .signal-caution {
+            background: rgba(244, 67, 54, 0.15);
+            color: var(--caution);
+        }
+
+        .signal-speculative {
+            background: rgba(156, 39, 176, 0.15);
+            color: var(--speculative);
+        }
+
+        .signal-trophy {
+            background: rgba(255, 215, 0, 0.15);
+            color: var(--trophy);
+        }
+
+        .signal-na {
+            background: rgba(113, 128, 150, 0.15);
+            color: var(--text-muted);
+        }
+
+        .zone-metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .metric {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .metric-label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.25rem;
+        }
+
+        .metric-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .future-score {
+            display: inline-block;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.4rem;
+            font-weight: 600;
+            font-size: 0.8rem;
+            background: rgba(0, 200, 83, 0.15);
+            color: var(--buy-strong);
+            margin-bottom: 1rem;
+        }
+
+        .zone-cta {
+            color: var(--accent-green);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            transition: gap 0.3s;
+        }
+
+        .zone-cta:hover {
+            gap: 0.75rem;
+        }
+
+        /* Paywall Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 22, 40, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--white);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            animation: modal-slide-up 0.4s ease-out;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @keyframes modal-slide-up {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -1rem;
+            right: -1rem;
+            width: 3rem;
+            height: 3rem;
+            background: var(--primary-dark);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover {
+            background: var(--accent-green);
+            color: var(--primary-dark);
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-preview {
+            background: linear-gradient(135deg, var(--light-gray) 0%, #e8eef5 100%);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            border: 1px solid #d0d8e8;
+            filter: blur(2px);
+            position: relative;
+        }
+
+        .modal-preview::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-preview-text {
+            color: var(--text-muted);
+            font-weight: 500;
+            position: relative;
+            z-index: 2;
+        }
+
+        .modal-includes {
+            margin-bottom: 2rem;
+        }
+
+        .modal-includes h3 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .checklist {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .checklist li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        .checklist li::before {
+            content: '✓';
+            color: var(--accent-green);
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.5rem;
+            height: 1.5rem;
+            background: rgba(0, 200, 83, 0.1);
+            border-radius: 0.3rem;
+        }
+
+        .modal-cta-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .modal-btn {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .modal-btn-secondary {
+            background: var(--light-gray);
+            color: var(--text-dark);
+            border: 2px solid #e0e0e0;
+        }
+
+        .modal-btn-secondary:hover {
+            background: #e8eef5;
+            border-color: var(--accent-green);
+        }
+
+        .modal-btn-primary {
+            background: var(--accent-green);
+            color: var(--primary-dark);
+            font-size: 1.05rem;
+        }
+
+        .modal-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 200, 83, 0.3);
+        }
+
+        /* Ranking Table */
+        #ranking {
+            background: var(--white);
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--white);
+        }
+
+        thead {
+            background: var(--primary-navy);
+            color: var(--white);
+        }
+
+        th {
+            padding: 1.25rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        tbody tr:hover {
+            background: var(--light-gray);
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .table-blurred {
+            color: var(--text-muted);
+            filter: blur(3px);
+            user-select: none;
+            pointer-events: none;
+            position: relative;
+        }
+
+        .table-blurred::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.6) 50%, transparent 100%);
+        }
+
+        /* Value Stack Section */
+        #value-stack {
+            background: var(--light-gray);
+        }
+
+        .value-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .value-card {
+            background: var(--white);
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s;
+        }
+
+        .value-card:hover {
+            border-color: var(--accent-green);
+            box-shadow: 0 8px 24px rgba(0, 200, 83, 0.1);
+        }
+
+        .value-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-title {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .value-price {
+            color: var(--accent-green);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .value-total-section {
+            background: var(--white);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            border: 2px solid var(--accent-green);
+        }
+
+        .value-total-label {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .value-crossed {
+            text-decoration: line-through;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-right: 1rem;
+        }
+
+        .value-actual {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-green);
+        }
+
+        /* Pricing Section */
+        #pricing {
+            background: var(--white);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--accent-green);
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 200, 83, 0.15);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-8px);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -1rem;
+            right: 1.5rem;
+            background: var(--accent-green);
+            color: var(--primary-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .pricing-badge.gold {
+            background: var(--trophy);
+        }
+
+        .pricing-tier {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .pricing-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-price-currency {
+            font-size: 1.5rem;
+            vertical-align: super;
+        }
+
+        .pricing-price-period {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .pricing-description {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .pricing-features li {
+            padding: 0.75rem 0;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--accent-green);
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .pricing-savings {
+            background: rgba(0, 200, 83, 0.1);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--buy-strong);
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .pricing-btn {
+            padding: 1.125rem;
+            background: var(--accent-green);
+            color: var(--primary-dark);
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .pricing-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 200, 83, 0.3);
+        }
+
+        .pricing-disclaimer {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Guarantee Section */
+        #guarantee {
+            background: var(--primary-dark);
+            color: var(--white);
+        }
+
+        #guarantee h2 {
+            color: var(--white);
+        }
+
+        .guarantee-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .guarantee-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .guarantee-highlight {
+            color: var(--accent-green);
+            font-weight: 700;
+        }
+
+        .guarantee-badges {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .guarantee-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .badge-icon {
+            font-size: 2.5rem;
+        }
+
+        .badge-text {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* FAQ Section */
+        #faq {
+            background: var(--light-gray);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #e0e0e0;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            border-color: var(--accent-green);
+            box-shadow: 0 4px 12px rgba(0, 200, 83, 0.1);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--text-dark);
+            user-select: none;
+            transition: all 0.3s;
+        }
+
+        .faq-question:hover {
+            background: var(--light-gray);
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+            color: var(--accent-green);
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: rgba(0, 200, 83, 0.05);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 1.5rem;
+        }
+
+        .faq-answer p {
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* Urgency Section */
+        #urgency {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-navy) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .urgency-content h2 {
+            color: var(--white);
+        }
+
+        .urgency-text {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .timer-container {
+            background: rgba(0, 200, 83, 0.1);
+            border: 2px solid var(--accent-green);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .timer-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            color: var(--accent-green);
+        }
+
+        .timer {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            letter-spacing: 2px;
+        }
+
+        .urgency-price-note {
+            font-size: 0.95rem;
+            margin-top: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .urgency-price-highlight {
+            color: var(--accent-green);
+            font-weight: 700;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--accent-green);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .footer-disclaimer {
+            border-top: 1px solid rgba(0, 200, 83, 0.2);
+            padding-top: 2rem;
+            margin-top: 2rem;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 0.75rem 1rem;
+            }
+
+            .nav-logo {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .nav-cta {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .hero {
+                margin-top: 60px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+
+            .kpi-cards {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+                padding: 0;
+            }
+
+            .kpi-value {
+                font-size: 1.5rem;
+            }
+
+            .hero-cta-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .zones-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-buttons {
+                margin-bottom: 2rem;
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .modal-content {
+                padding: 2rem;
+                max-height: 85vh;
+            }
+
+            .modal-close {
+                width: 2.5rem;
+                height: 2.5rem;
+                font-size: 1.2rem;
+                top: 1rem;
+                right: 1rem;
+            }
+
+            .modal-title {
+                font-size: 1.4rem;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .pricing-card.featured:hover {
+                transform: translateY(-8px);
+            }
+
+            .pricing-price {
+                font-size: 2rem;
+            }
+
+            .guarantee-badges {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .timer {
+                font-size: 2rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">MiamiDade Intelligence</div>
+            <ul class="nav-links">
+                <li><a href="#prueba">Zonas</a></li>
+                <li><a href="#ranking">Ranking</a></li>
+                <li><a href="#pricing">Precios</a></li>
+                <li><a href="#guarantee">Garantía</a></li>
+            </ul>
+            <a href="#pricing" class="nav-cta">Desbloquear Reporte Completo</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>El Reporte de Inversión Multifamily Más Completo de Miami-Dade</h1>
+            <p class="subtitle">34 zonas. 6 dimensiones de análisis. 1 decisión inteligente.</p>
+
+            <div class="kpi-cards">
+                <div class="kpi-card">
+                    <div class="kpi-value">34</div>
+                    <div class="kpi-label">Zonas Analizadas</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-value">$4.2B</div>
+                    <div class="kpi-label">Volumen Transaccional</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-value">6</div>
+                    <div class="kpi-label">Dimensiones / Zona</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-value">Q1 26</div>
+                    <div class="kpi-label">Datos Actuales</div>
+                </div>
+            </div>
+
+            <div class="hero-cta-group">
+                <a href="#prueba" class="btn btn-primary">Ver Zonas Gratis →</a>
+                <a href="#pricing" class="btn btn-secondary">Desbloquear Todo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prueba Gratis Section -->
+    <section id="prueba">
+        <div class="container">
+            <h2>Prueba Gratis: Explora las 34 Zonas</h2>
+            <p class="section-subtitle">Haz clic en cualquier zona para ver qué información completa desbloquea</p>
+
+            <!-- Filter Buttons -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Todas</button>
+                <button class="filter-btn" data-filter="BUY STRONG">🚀 Buy Strong</button>
+                <button class="filter-btn" data-filter="BUY">📈 Buy</button>
+                <button class="filter-btn" data-filter="HOLD">⏸️ Hold</button>
+                <button class="filter-btn" data-filter="CAUTION">⚠️ Caution</button>
+                <button class="filter-btn" data-filter="SPECULATIVE">🎲 Speculative</button>
+                <button class="filter-btn" data-filter="TROPHY">🏆 Trophy</button>
+            </div>
+
+            <!-- Zones Grid -->
+            <div class="zones-grid" id="zonesGrid"></div>
+        </div>
+    </section>
+
+    <!-- Ranking Table Section -->
+    <section id="ranking">
+        <div class="container">
+            <h2>Ranking Completo: 34 Zonas</h2>
+            <p class="section-subtitle">Desplázate horizontalmente para ver los datos. Haz clic en una zona para desbloquear.</p>
+
+            <div class="table-wrapper">
+                <table id="rankingTable">
+                    <thead>
+                        <tr>
+                            <th>Zona</th>
+                            <th>Señal</th>
+                            <th>Tipo</th>
+                            <th class="table-blurred">Renta Promedio</th>
+                            <th class="table-blurred">Cap Rate</th>
+                            <th class="table-blurred">Precio/Unidad</th>
+                            <th>Future Score</th>
+                            <th class="table-blurred">Crecimiento Estimado</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rankingBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Stack Section -->
+    <section id="value-stack">
+        <div class="container">
+            <h2>¿Qué Recibes?</h2>
+            <p class="section-subtitle">Desglosamos el valor real de lo que incluye este reporte</p>
+
+            <div class="value-cards-grid">
+                <div class="value-card">
+                    <div class="value-icon">📊</div>
+                    <div class="value-title">Análisis de 34 Zonas (6 Dimensiones)</div>
+                    <div class="value-price">Valor: $1,700</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">💰</div>
+                    <div class="value-title">Modelo de Cash Flow por Zona</div>
+                    <div class="value-price">Valor: $500</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🏫</div>
+                    <div class="value-title">Escuelas Específicas con Ratings</div>
+                    <div class="value-price">Valor: $200</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🏗️</div>
+                    <div class="value-title">Proyectos de Infraestructura</div>
+                    <div class="value-price">Valor: $300</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">📈</div>
+                    <div class="value-title">Ranking con Future Score</div>
+                    <div class="value-price">Valor: $400</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🔄</div>
+                    <div class="value-title">Comparador de Zonas</div>
+                    <div class="value-price">Valor: $200</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">📋</div>
+                    <div class="value-title">Guía del Comprador</div>
+                    <div class="value-price">Valor: $150</div>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🎯</div>
+                    <div class="value-title">Ventas Comparables Recientes</div>
+                    <div class="value-price">Valor: $300</div>
+                </div>
+            </div>
+
+            <div class="value-total-section">
+                <div class="value-total-label">Valor Total de los Análisis Incluidos:</div>
+                <div>
+                    <span class="value-crossed">$3,750</span>
+                    <div style="margin-top: 1rem;">
+                        <span class="value-actual" id="finalPrice">Tu Precio</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing">
+        <div class="container">
+            <h2>Elige Tu Acceso</h2>
+            <p class="section-subtitle">Tienes opciones. Elige la que funciona para ti.</p>
+
+            <div class="pricing-grid">
+                <!-- Tier 1: Explorador -->
+                <div class="pricing-card">
+                    <div class="pricing-tier">Explorador</div>
+                    <div class="pricing-price"><span class="pricing-price-currency">$</span>29</div>
+                    <div class="pricing-description">Acceso a 1 zona a tu elección</div>
+                    <ul class="pricing-features">
+                        <li>Análisis completo de 1 zona</li>
+                        <li>6 tabs de información</li>
+                        <li>Modelo de cash flow</li>
+                        <li>Ventas comparables</li>
+                        <li>Escuelas cercanas</li>
+                    </ul>
+                    <div style="margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--text-muted);">
+                        <strong>Ideal para:</strong> Ya sé exactamente dónde quiero invertir
+                    </div>
+                    <a href="https://santiagopsa.gumroad.com/l/miami-zona" class="pricing-btn" target="_blank">Elegir Mi Zona →</a>
+                </div>
+
+                <!-- Tier 2: Inversionista Serio (FEATURED) -->
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">MÁS POPULAR</div>
+                    <div class="pricing-tier">Inversionista Serio</div>
+                    <div class="pricing-price"><span class="pricing-price-currency">$</span>97</div>
+                    <div class="pricing-description">Acceso a todas las 34 zonas</div>
+                    <ul class="pricing-features">
+                        <li>Todas las 34 zonas completas</li>
+                        <li>Comparador de zonas lado a lado</li>
+                        <li>Ranking sin limitaciones</li>
+                        <li>Guía del comprador completa</li>
+                        <li>Modelos de inversión detallados</li>
+                        <li>6 dimensiones de análisis</li>
+                    </ul>
+                    <div class="pricing-savings">Ahorra $889 vs comprar zonas individuales</div>
+                    <a href="https://santiagopsa.gumroad.com/l/miami-completo" class="pricing-btn" target="_blank">Desbloquear Todo →</a>
+                </div>
+
+                <!-- Tier 3: Profesional -->
+                <div class="pricing-card">
+                    <div class="pricing-badge gold">MEJOR VALOR</div>
+                    <div class="pricing-tier">Profesional</div>
+                    <div class="pricing-price"><span class="pricing-price-currency">$</span>247</div>
+                    <div class="pricing-description">Todo + Herramientas y Soporte Premium</div>
+                    <ul class="pricing-features">
+                        <li>Todo lo de Inversionista Serio</li>
+                        <li>Template Excel T-12 avanzado</li>
+                        <li>Actualizaciones trimestrales x 1 año</li>
+                        <li>Acceso grupo privado WhatsApp</li>
+                        <li>15 min consulta por email</li>
+                        <li>Análisis de deals personalizados</li>
+                    </ul>
+                    <div style="margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--text-muted);">
+                        <strong>Ideal para:</strong> Profesionales y portfolios grandes
+                    </div>
+                    <a href="https://santiagopsa.gumroad.com/l/miami-pro" class="pricing-btn" target="_blank">Acceso Profesional →</a>
+                </div>
+            </div>
+
+            <div class="pricing-disclaimer">
+                <p>¿Cuánto te costaría una <strong>MALA inversión</strong> de $2M en la zona equivocada?<br>Este reporte cuesta menos que una cena en Brickell.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee Section -->
+    <section id="guarantee">
+        <div class="container">
+            <h2>Nuestra Garantía</h2>
+
+            <div class="guarantee-content">
+                <div class="guarantee-text">
+                    <p>
+                        <strong>30 días de garantía de satisfacción</strong><br>
+                        Si no encuentras al menos <span class="guarantee-highlight">UNA insight que valga 10x lo que pagaste</span>, te devolvemos el 100%.
+                    </p>
+                </div>
+
+                <div class="guarantee-badges">
+                    <div class="guarantee-badge">
+                        <div class="badge-icon">🔒</div>
+                        <div class="badge-text">Garantía 30 Días</div>
+                    </div>
+                    <div class="guarantee-badge">
+                        <div class="badge-icon">🎯</div>
+                        <div class="badge-text">Datos Q1 2026</div>
+                    </div>
+                    <div class="guarantee-badge">
+                        <div class="badge-icon">⚡</div>
+                        <div class="badge-text">Acceso Inmediato</div>
+                    </div>
+                    <div class="guarantee-badge">
+                        <div class="badge-icon">✨</div>
+                        <div class="badge-text">Análisis Premium</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="container">
+            <h2>Preguntas Frecuentes</h2>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Qué formato tiene el reporte?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Es un reporte HTML interactivo que funciona en cualquier dispositivo. Contiene tablas interactivas, gráficos, comparadores y toda la información en un formato fácil de navegar. Lo recibes como un archivo que puedes guardar y acceder siempre.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Los datos son actuales?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sí, los datos reflejan el estado del mercado en Q1 2026. Incluyen las ventas más recientes, proyectos de infraestructura anunciados y tendencias de precios hasta el momento de publicación.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Puedo compartir el reporte?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Tienes una licencia individual para tu uso personal. No está permitido compartir con tu equipo completo sin licencias adicionales. Si necesitas múltiples accesos, contáctanos para opciones de volumen.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Hay reembolso si no estoy satisfecho?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sí, 100%. Tienes 30 días desde la compra para solicitar un reembolso completo, sin preguntas. Si el reporte no vale al menos 10x tu inversión, te lo devolvemos.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Necesito experiencia previa en inversión?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No. Incluimos una Guía del Comprador que explica las 10 variables más críticas para evaluar una propiedad multifamily. Es accesible para principiantes pero útil para profesionales también.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Cómo recibo el producto?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Descarga inmediata. Después de completar tu pago, recibirás un enlace de descarga. El archivo llegará también a tu correo electrónico. Puedes acceder al reporte desde cualquier dispositivo con navegador web.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Qué incluye exactamente el modelo de cash flow?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Proyección a 10 años para 10 unidades típicas en cada zona. Incluye ingresos de renta, gastos operacionales (T-12), impuestos, seguros, vacancia, y estimados de apreciación. Todo parametrizable para ajustar a tu caso.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Los datos incluyen proyectos futuros?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sí. Cada zona incluye información sobre proyectos de infraestructura anunciados (metro, carreteras, desarrollos) y su impacto estimado en precios y demanda. Esto es clave para la apreciación futura.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Urgency Section -->
+    <section id="urgency">
+        <div class="container">
+            <div class="urgency-content">
+                <h2>Actúa Ahora: Precio Especial de Lanzamiento</h2>
+                <div class="urgency-text">
+                    Los datos de este reporte reflejan Q1 2026. Los mercados cambian rápido. El precio subirá después de los primeros 100 compradores.
+                </div>
+
+                <div class="timer-container">
+                    <div class="timer-label">Tiempo Restante Hoy:</div>
+                    <div class="timer" id="countdown">23:45:32</div>
+                </div>
+
+                <div class="urgency-price-note">
+                    Precio especial de lanzamiento: <span class="urgency-price-highlight">$97 (Inversionista Serio)</span><br>
+                    Precio normal después: <strong>$197</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#pricing">Precios</a>
+                <a href="#guarantee">Garantía</a>
+                <a href="#faq">FAQ</a>
+                <a href="#prueba">Explorar Zonas</a>
+            </div>
+
+            <p>Preparado por <strong>Santiago</strong> | Q1 2026<br>
+            Miami-Dade Investment Intelligence</p>
+
+            <div class="footer-disclaimer">
+                <p><strong>Disclaimer Legal:</strong> Este reporte es solo para propósitos informativos y educativos. No constituye asesoría de inversión, asesoría legal, ni asesoría fiscal. Toda inversión conlleva riesgo, incluyendo pérdida de capital. Consulta con profesionales antes de tomar decisiones de inversión. Los datos provienen de fuentes públicas y se consideran precisos, pero no se garantiza su exactitud. Los retornos futuros no están garantizados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Paywall Modal -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">×</button>
+
+            <div class="modal-header">
+                <h3 class="modal-title">Análisis Completo de <span id="modalZoneName">Zone</span></h3>
+            </div>
+
+            <div class="modal-preview">
+                <div class="modal-preview-text">
+                    📊 Vista previa del análisis completo (haz clic abajo para desbloquear)
+                </div>
+            </div>
+
+            <div class="modal-includes">
+                <h3>Este análisis incluye:</h3>
+                <ul class="checklist">
+                    <li>Renta por tipo (Studio, 1BR, 2BR, 3BR+)</li>
+                    <li>Desglose T-12 de costos fijos</li>
+                    <li>Ventas comparables recientes</li>
+                    <li>Escuelas específicas con ratings Niche</li>
+                    <li>Proyectos de infraestructura cercanos</li>
+                    <li>Modelo de cash flow para 10 unidades</li>
+                    <li>Proyección de equity a 5 años</li>
+                </ul>
+            </div>
+
+            <div class="modal-cta-group">
+                <a href="https://santiagopsa.gumroad.com/l/miami-zona" class="modal-btn modal-btn-secondary" target="_blank">
+                    🔓 Desbloquear Solo Esta Zona — $29
+                </a>
+                <a href="https://santiagopsa.gumroad.com/l/miami-completo" class="modal-btn modal-btn-primary" target="_blank">
+                    🔥 Desbloquear LAS 34 ZONAS — $97
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Zones Data
+        const zones = [
+            {id:1,name:"Brickell / Financial District",type:"Urban Core",signal:"HOLD",rent:3585,score:52,growth:2.1},
+            {id:2,name:"Downtown Miami",type:"Urban Core",signal:"CAUTION",rent:3286,score:40,growth:0.5},
+            {id:3,name:"Edgewater",type:"Urban Core",signal:"BUY",rent:3058,score:62,growth:3.2},
+            {id:4,name:"Wynwood / Design District",type:"Urban Core",signal:"BUY STRONG",rent:2800,score:78,growth:5.5},
+            {id:5,name:"Midtown Miami",type:"Urban Core",signal:"BUY",rent:2900,score:58,growth:3.0},
+            {id:6,name:"Little Havana",type:"Emerging",signal:"BUY STRONG",rent:1650,score:85,growth:6.2},
+            {id:7,name:"Little Haiti / Little River",type:"Emerging",signal:"BUY STRONG",rent:1800,score:80,growth:5.5},
+            {id:8,name:"Allapattah",type:"Emerging",signal:"SPECULATIVE",rent:1500,score:82,growth:7.1},
+            {id:9,name:"Miami Beach / South Beach",type:"Coastal",signal:"HOLD",rent:3400,score:35,growth:-1.2},
+            {id:10,name:"Coconut Grove",type:"Suburban Premium",signal:"HOLD",rent:3200,score:42,growth:1.5},
+            {id:11,name:"Coral Gables",type:"Suburban Premium",signal:"HOLD",rent:3100,score:40,growth:2.0},
+            {id:12,name:"Key Biscayne",type:"Coastal Premium",signal:"TROPHY",rent:4200,score:25,growth:0.8},
+            {id:13,name:"Aventura",type:"Suburban",signal:"BUY",rent:2600,score:60,growth:1.8},
+            {id:14,name:"Sunny Isles Beach",type:"Coastal",signal:"HOLD",rent:3000,score:38,growth:1.2},
+            {id:15,name:"North Miami",type:"Suburban",signal:"BUY",rent:2100,score:67,growth:3.5},
+            {id:16,name:"North Miami Beach",type:"Suburban",signal:"BUY",rent:2000,score:72,growth:4.0},
+            {id:17,name:"Miami Gardens",type:"Suburban",signal:"BUY",rent:1900,score:70,growth:3.8},
+            {id:18,name:"Opa-locka",type:"Emerging",signal:"SPECULATIVE",rent:1400,score:55,growth:4.5},
+            {id:19,name:"Hialeah",type:"Suburban",signal:"BUY",rent:1700,score:65,growth:3.5},
+            {id:20,name:"Hialeah Gardens",type:"Suburban",signal:"BUY",rent:1800,score:60,growth:3.0},
+            {id:21,name:"Doral",type:"Suburban",signal:"CAUTION",rent:2500,score:45,growth:1.0},
+            {id:22,name:"Kendall / The Hammocks",type:"Suburban",signal:"BUY",rent:2200,score:55,growth:2.5},
+            {id:23,name:"Pinecrest",type:"Residential",signal:"N/A",rent:0,score:0,growth:0},
+            {id:24,name:"Homestead",type:"Emerging",signal:"SPECULATIVE",rent:1600,score:68,growth:5.0},
+            {id:25,name:"Florida City",type:"Emerging",signal:"SPECULATIVE",rent:1400,score:65,growth:6.0},
+            {id:26,name:"Cutler Bay",type:"Suburban",signal:"HOLD",rent:2000,score:50,growth:2.2},
+            {id:27,name:"Palmetto Bay",type:"Suburban",signal:"HOLD",rent:2400,score:45,growth:1.8},
+            {id:28,name:"Sweetwater / FIU Area",type:"Suburban",signal:"BUY",rent:1900,score:63,growth:4.0},
+            {id:29,name:"Overtown",type:"Emerging",signal:"BUY",rent:1600,score:75,growth:5.0},
+            {id:30,name:"Surfside / Bal Harbour",type:"Coastal Premium",signal:"TROPHY",rent:3800,score:30,growth:1.0},
+            {id:31,name:"South Miami",type:"Suburban",signal:"HOLD",rent:2300,score:47,growth:2.0},
+            {id:32,name:"Westchester / Tamiami",type:"Suburban",signal:"BUY",rent:1800,score:63,growth:3.0},
+            {id:33,name:"Miami Lakes",type:"Suburban",signal:"HOLD",rent:2300,score:50,growth:2.2},
+            {id:34,name:"Medley / Hialeah Industrial",type:"Industrial",signal:"N/A",rent:0,score:0,growth:0}
+        ];
+
+        // Signal Colors Map
+        const signalColors = {
+            'BUY STRONG': '#00C853',
+            'BUY': '#4CAF50',
+            'HOLD': '#FF9800',
+            'CAUTION': '#f44336',
+            'SPECULATIVE': '#9C27B0',
+            'TROPHY': '#FFD700',
+            'N/A': '#718096'
+        };
+
+        const signalClasses = {
+            'BUY STRONG': 'signal-buy-strong',
+            'BUY': 'signal-buy',
+            'HOLD': 'signal-hold',
+            'CAUTION': 'signal-caution',
+            'SPECULATIVE': 'signal-speculative',
+            'TROPHY': 'signal-trophy',
+            'N/A': 'signal-na'
+        };
+
+        // Render Zones Grid
+        function renderZones(filter = 'all') {
+            const grid = document.getElementById('zonesGrid');
+            grid.innerHTML = '';
+
+            const filtered = filter === 'all'
+                ? zones
+                : zones.filter(z => z.signal === filter);
+
+            filtered.forEach(zone => {
+                const rentDisplay = zone.rent > 0 ? `$${zone.rent.toLocaleString()}` : 'N/A';
+                const scoreDisplay = zone.score > 0 ? zone.score : 'N/A';
+
+                const card = document.createElement('div');
+                card.className = 'zone-card';
+                card.onclick = () => openModal(zone);
+                card.innerHTML = `
+                    <div class="zone-name">${zone.name}</div>
+                    <div class="zone-type">${zone.type}</div>
+                    <div class="signal-badge ${signalClasses[zone.signal]}">${zone.signal}</div>
+                    <div class="zone-metrics">
+                        <div class="metric">
+                            <span class="metric-label">Renta Promedio</span>
+                            <span class="metric-value">${rentDisplay}</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Crecimiento</span>
+                            <span class="metric-value">${zone.growth > 0 ? '+' : ''}${zone.growth}%</span>
+                        </div>
+                    </div>
+                    ${zone.score > 0 ? `<div class="future-score">Future Score: ${scoreDisplay}</div>` : ''}
+                    <a href="#" class="zone-cta">Ver Análisis Completo →</a>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Render Ranking Table
+        function renderRankingTable() {
+            const tbody = document.getElementById('rankingBody');
+            tbody.innerHTML = '';
+
+            zones.forEach(zone => {
+                const row = document.createElement('tr');
+                row.style.cursor = 'pointer';
+                row.onclick = () => openModal(zone);
+
+                const rentDisplay = zone.rent > 0 ? `$${zone.rent}` : 'N/A';
+                const scoreDisplay = zone.score > 0 ? zone.score : 'N/A';
+                const capRate = zone.score > 0 ? (Math.random() * 5 + 4.5).toFixed(2) : 'N/A';
+                const pricePerUnit = zone.rent > 0 ? `$${(zone.rent * 100).toLocaleString()}` : 'N/A';
+
+                row.innerHTML = `
+                    <td style="font-weight: 600;">${zone.name}</td>
+                    <td><span class="signal-badge ${signalClasses[zone.signal]}">${zone.signal}</span></td>
+                    <td>${zone.type}</td>
+                    <td class="table-blurred">${rentDisplay}</td>
+                    <td class="table-blurred">${capRate}%</td>
+                    <td class="table-blurred">${pricePerUnit}</td>
+                    <td>${scoreDisplay}</td>
+                    <td class="table-blurred">${zone.growth > 0 ? '+' : ''}${zone.growth}%</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Filter Buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderZones(btn.dataset.filter);
+            });
+        });
+
+        // Modal Functions
+        function openModal(zone) {
+            document.getElementById('modalZoneName').textContent = zone.name;
+            document.getElementById('modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('modal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('modal')) {
+                closeModal();
+            }
+        });
+
+        // Countdown Timer
+        function updateCountdown() {
+            const now = new Date();
+            const tomorrow = new Date(now);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            tomorrow.setHours(0, 0, 0, 0);
+
+            function tick() {
+                const current = new Date();
+                const diff = tomorrow - current;
+
+                if (diff <= 0) {
+                    document.getElementById('countdown').textContent = '23:59:59';
+                    setTimeout(updateCountdown, 1000);
+                    return;
+                }
+
+                const hours = Math.floor(diff / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById('countdown').textContent =
+                    `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+                setTimeout(tick, 1000);
+            }
+
+            tick();
+        }
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.querySelector('.faq-question').addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderZones();
+            renderRankingTable();
+            updateCountdown();
+        });
+    </script>
+</body>
+</html>

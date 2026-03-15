@@ -1,0 +1,5 @@
+# Netlify redirects
+# Redirect old paths if needed
+/report    /reporte/completo.html    200
+/zone      /reporte/zona.html        200
+/pro       /reporte/profesional.html  200

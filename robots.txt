@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /reporte/
+
+Sitemap: https://miamimultifamilydata.com/sitemap.xml
