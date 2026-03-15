@@ -4821,8 +4821,8 @@ function fillValorizacion(z) {
 function fillCostos(z) {
   const c = document.getElementById('tab-costos');
   if (!c) return;
-  const t = z.t12 || { taxes: 0, insurance: 0, utilities: 0, rm: 0, management: 0, payroll: 0, reserves: 0, total: 0 };
-  const maxC = Math.max(t.taxes, t.insurance, t.utilities, t.rm, t.management, t.payroll, t.reserves, 1);
+  const costs = z.t12 || { taxes: 0, insurance: 0, utilities: 0, rm: 0, management: 0, payroll: 0, reserves: 0, total: 0 };
+  const maxC = Math.max(costs.taxes, costs.insurance, costs.utilities, costs.rm, costs.management, costs.payroll, costs.reserves, 1);
 
   // T-12 costs are PER UNIT PER MONTH based on the data structure
   const countyAvg = 21.08;
@@ -4837,17 +4837,17 @@ function fillCostos(z) {
       <h3>${t('ownerFixedCosts')}</h3>
 
       <h4>T-12 Breakdown per Unit (Annual)</h4>
-      ${hbar('Taxes', t.taxes, maxC, '#E53935', '$' + (t.taxes || 0).toLocaleString())}
-      ${hbar('Insurance', t.insurance, maxC, '#FF6F00', '$' + (t.insurance || 0).toLocaleString())}
-      ${hbar('Utilities', t.utilities, maxC, '#FFC107', '$' + (t.utilities || 0).toLocaleString())}
-      ${hbar('Repairs & Maintenance', t.rm, maxC, '#2196F3', '$' + (t.rm || 0).toLocaleString())}
-      ${hbar('Management', t.management, maxC, '#4CAF50', '$' + (t.management || 0).toLocaleString())}
-      ${hbar('Payroll', t.payroll, maxC, '#9C27B0', '$' + (t.payroll || 0).toLocaleString())}
-      ${hbar('Reserves', t.reserves, maxC, '#607D8B', '$' + (t.reserves || 0).toLocaleString())}
+      ${hbar('Taxes', costs.taxes, maxC, '#E53935', '$' + (costs.taxes || 0).toLocaleString())}
+      ${hbar('Insurance', costs.insurance, maxC, '#FF6F00', '$' + (costs.insurance || 0).toLocaleString())}
+      ${hbar('Utilities', costs.utilities, maxC, '#FFC107', '$' + (costs.utilities || 0).toLocaleString())}
+      ${hbar('Repairs & Maintenance', costs.rm, maxC, '#2196F3', '$' + (costs.rm || 0).toLocaleString())}
+      ${hbar('Management', costs.management, maxC, '#4CAF50', '$' + (costs.management || 0).toLocaleString())}
+      ${hbar('Payroll', costs.payroll, maxC, '#9C27B0', '$' + (costs.payroll || 0).toLocaleString())}
+      ${hbar('Reserves', costs.reserves, maxC, '#607D8B', '$' + (costs.reserves || 0).toLocaleString())}
 
       <div style="margin-top:1rem;padding:1rem;background:#1a2744;border-radius:8px;color:white;display:flex;justify-content:space-between;">
         <span style="font-weight:600;">Total T-12 per Unit</span>
-        <span style="font-weight:700;font-size:1.1rem;">$${(t.total || 0).toLocaleString()}/year</span>
+        <span style="font-weight:700;font-size:1.1rem;">$${(costs.total || 0).toLocaleString()}/year</span>
       </div>
 
       <h4 style="margin-top:1.5rem;">Total Operating Expenses</h4>

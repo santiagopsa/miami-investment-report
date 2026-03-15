@@ -1903,7 +1903,7 @@
                 selectZone1: '— Select Zone 1 —',
                 selectZone2: '— Select Zone 2 —',
                 fullZoneRankings: 'Full Zone Rankings',
-                buyersGuideTitle: 'Multifamily Buyer's Guide for Miami-Dade',
+                buyersGuideTitle: 'Multifamily Buyer\'s Guide for Miami-Dade',
                 dataSourcesMethodology: 'Data Sources & Methodology',
                 proUpgradePrompt: 'Unlock investment calculators, scenario projections, and deal analysis tools',
                 proUpgradeBtn: 'Upgrade to Professional — $247',
@@ -4849,7 +4849,7 @@ function fillValorizacion(z) {
 
   let compsHtml = comps.length > 0 ? `<table class="comps-table"><thead><tr><th>${t('property')}</th><th>${t('dollarPerUnit')}</th><th>${t('units')}</th><th>${t('year')}</th><th>${t('notes')}</th></tr></thead><tbody>` +
     comps.map(c => `<tr><td>${c.name}</td><td>$${(c.pricePerUnit || 0).toLocaleString()}</td><td>${c.units}</td><td>${c.year}</td><td style="font-size:0.85rem;color:#718096;">${c.notes || ''}</td></tr>`).join('') +
-    `</tbody></table>` : '<p style="color:#718096;">${t('noCompsAvailable')}</p>';
+    `</tbody></table>` : `<p style="color:#718096;">${t('noCompsAvailable')}</p>`;
 
   c.innerHTML = `
     <div class="tab-section">
@@ -5049,7 +5049,7 @@ function fillEscuelas(z) {
             <div style="font-size:0.85rem;color:#718096;">Tipo: ${s.type || 'N/A'}</div>
           </div>
         `).join('')}
-      </div>` : '<p style="color:#718096;">${t('noSchoolData')}</p>'}
+      </div>` : `<p style="color:#718096;">${t('noSchoolData')}</p>`}
 
       <h4 style="margin-top:1.5rem;">${t('schoolQualityZone')}</h4>
       <div style="padding:1rem;background:#f0f7ff;border-left:4px solid #2196F3;border-radius:0 8px 8px 0;">
@@ -5082,7 +5082,7 @@ function fillInfraestructura(z) {
           <div style="font-size:1.1rem;font-weight:700;color:#1a2744;margin-bottom:0.5rem;">${fmt(p.cost)}</div>
           <p style="color:#718096;font-size:0.9rem;margin:0;">${p.impact || ''}</p>
         </div>`;
-      }).join('') : '<p style="color:#718096;">${t('noInfraProjects')}</p>'}
+      }).join('') : `<p style="color:#718096;">${t('noInfraProjects')}</p>`}
 
       <h4 style="margin-top:1.5rem;">${t('infrastructureImpact')}</h4>
       <div style="padding:1rem;background:#f0f7ff;border-left:4px solid #2196F3;border-radius:0 8px 8px 0;">
@@ -5099,7 +5099,7 @@ function fillInversion(z) {
   if (!c) return;
 
   if (!z.priceMin || z.priceMin === 0) {
-    c.innerHTML = '<div class="tab-section"><h3>${t('investmentModel')}</h3><p style="color:#718096;">${t('notApplicable')}</p></div>';
+    c.innerHTML = `<div class="tab-section"><h3>${t('investmentModel')}</h3><p style="color:#718096;">${t('notApplicable')}</p></div>`;
     return;
   }
 
