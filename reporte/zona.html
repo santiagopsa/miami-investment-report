@@ -468,6 +468,45 @@
     </style>
 </head>
 <body>
+<div id="passwordGate" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#0a1628;z-index:99999;display:flex;align-items:center;justify-content:center;">
+  <div style="text-align:center;max-width:420px;padding:2rem;">
+    <div style="font-size:2.5rem;margin-bottom:1rem;">🔐</div>
+    <h2 style="font-family:'Playfair Display',serif;color:#fff;font-size:1.8rem;margin-bottom:0.5rem;">Acceso al Reporte</h2>
+    <p style="color:rgba(255,255,255,0.6);margin-bottom:2rem;font-family:'Inter',sans-serif;font-size:0.95rem;">Ingresa la contraseña que recibiste en tu correo de confirmación</p>
+    <input type="password" id="gatePassword" placeholder="Contraseña" style="width:100%;padding:1rem;border:2px solid #2d3e5f;background:#1a2744;color:#fff;border-radius:0.5rem;font-size:1rem;font-family:'Inter',sans-serif;text-align:center;letter-spacing:2px;outline:none;transition:border-color 0.3s;" onfocus="this.style.borderColor='#4cd37e'" onblur="this.style.borderColor='#2d3e5f'">
+    <button id="gateSubmit" style="width:100%;margin-top:1rem;padding:1rem;background:#4cd37e;color:#0a1628;border:none;border-radius:0.5rem;font-size:1rem;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.3s;" onmouseover="this.style.boxShadow='0 4px 15px rgba(76,211,126,0.4)'" onmouseout="this.style.boxShadow='none'">Acceder</button>
+    <p id="gateError" style="color:#ff6b6b;margin-top:1rem;font-size:0.9rem;font-family:'Inter',sans-serif;display:none;">Contraseña incorrecta. Revisa tu correo de confirmación.</p>
+    <p style="color:rgba(255,255,255,0.4);margin-top:2rem;font-size:0.8rem;font-family:'Inter',sans-serif;">¿No tienes contraseña? <a href="/" style="color:#4cd37e;text-decoration:none;">Comprar acceso</a></p>
+  </div>
+</div>
+<script>
+(function(){
+  const PASS = 'MIAMI29EXP';
+  const STORAGE_KEY = 'miami_access_explorer';
+
+  if(sessionStorage.getItem(STORAGE_KEY) === 'granted') {
+    document.getElementById('passwordGate').style.display = 'none';
+    return;
+  }
+
+  function tryAccess() {
+    const input = document.getElementById('gatePassword');
+    if(input.value.trim().toUpperCase() === PASS) {
+      sessionStorage.setItem(STORAGE_KEY, 'granted');
+      document.getElementById('passwordGate').style.display = 'none';
+    } else {
+      document.getElementById('gateError').style.display = 'block';
+      input.style.borderColor = '#ff6b6b';
+      setTimeout(() => { input.style.borderColor = '#2d3e5f'; }, 2000);
+    }
+  }
+
+  document.getElementById('gateSubmit').addEventListener('click', tryAccess);
+  document.getElementById('gatePassword').addEventListener('keydown', function(e) {
+    if(e.key === 'Enter') tryAccess();
+  });
+})();
+</script>
     <header>
         <h1 data-i18n="pageTitle">MiamiDade Intelligence — Tu Zona</h1>
         <div class="language-toggle">
@@ -486,6 +525,32 @@
     </div>
     
     <div id="reportContainer"></div>
+
+    <!-- Zone counter -->
+    <div id="zoneCounter" style="position:fixed;bottom:1.5rem;right:1.5rem;background:#1a2744;border:1px solid #2d3e5f;border-radius:0.75rem;padding:0.75rem 1.25rem;z-index:100;font-family:'Inter',sans-serif;font-size:0.85rem;color:#e0e0e0;box-shadow:0 4px 15px rgba(0,0,0,0.3);display:none;">
+        <span id="counterText"></span>
+        <div style="margin-top:0.4rem;height:4px;background:#2d3e5f;border-radius:2px;overflow:hidden;">
+            <div id="counterBar" style="height:100%;background:#4cd37e;border-radius:2px;transition:width 0.5s;"></div>
+        </div>
+    </div>
+
+    <!-- Upgrade modal -->
+    <div id="upgradeModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:99998;align-items:center;justify-content:center;font-family:'Inter',sans-serif;">
+        <div style="background:#0f1a2e;border:2px solid #4cd37e;border-radius:1rem;max-width:480px;width:90%;padding:2.5rem;text-align:center;position:relative;">
+            <div style="font-size:3rem;margin-bottom:1rem;">🔓</div>
+            <h2 id="upgradeTitle" style="font-family:'Playfair Display',serif;color:#fff;font-size:1.5rem;margin-bottom:1rem;"></h2>
+            <p id="upgradeText" style="color:rgba(255,255,255,0.7);margin-bottom:1.5rem;line-height:1.6;font-size:0.95rem;"></p>
+            <div style="background:rgba(76,211,126,0.1);border:1px solid rgba(76,211,126,0.2);border-radius:0.5rem;padding:1rem;margin-bottom:1.5rem;">
+                <div style="color:#4cd37e;font-weight:600;">✓ 34 zonas completas</div>
+                <div style="color:#4cd37e;font-weight:600;margin-top:0.3rem;">✓ Comparador interactivo</div>
+                <div style="color:#4cd37e;font-weight:600;margin-top:0.3rem;">✓ Ranking por Future Score</div>
+                <div style="color:#4cd37e;font-weight:600;margin-top:0.3rem;">✓ Guía del comprador</div>
+            </div>
+            <a id="upgradeBtn" href="https://buy.stripe.com/8x26oH6tBfRE1mLg748g001" style="display:block;background:#4cd37e;color:#0a1628;padding:1rem 2rem;border-radius:0.5rem;font-size:1.1rem;font-weight:700;text-decoration:none;margin-bottom:0.75rem;transition:all 0.3s;"></a>
+            <p id="upgradeSaving" style="color:rgba(255,255,255,0.5);font-size:0.8rem;margin-bottom:1rem;"></p>
+            <button id="upgradeClose" onclick="document.getElementById('upgradeModal').style.display='none'" style="background:none;border:1px solid #2d3e5f;color:rgba(255,255,255,0.5);padding:0.5rem 1.5rem;border-radius:0.5rem;cursor:pointer;font-size:0.85rem;font-family:'Inter',sans-serif;"></button>
+        </div>
+    </div>
 
 <script>
 // ===== INTERNATIONALIZATION SYSTEM =====
@@ -570,7 +635,14 @@ const translations = {
         equityBuilding: 'Equity Building',
         totalValue: 'Valor Total',
         signal: 'Señal',
-        futureScore: 'Future Score'
+        futureScore: 'Future Score',
+        zonesRemaining: 'zonas restantes',
+        zonesUsed: 'de 3 zonas usadas',
+        upgradeTitle: 'Has alcanzado tu límite de 3 zonas',
+        upgradeText: 'Con el plan Explorador puedes analizar hasta 3 zonas. Para acceso ilimitado a las 34 zonas, el comparador interactivo y el ranking completo:',
+        upgradeBtn: 'Desbloquear las 34 Zonas — $97',
+        upgradeSaving: 'Ahorra cientos de horas de investigación',
+        upgradeClose: 'Seguir con mis 3 zonas'
     },
     en: {
         pageTitle: 'MiamiDade Intelligence — Your Zone',
@@ -650,7 +722,14 @@ const translations = {
         equityBuilding: 'Equity Building',
         totalValue: 'Total Value',
         signal: 'Signal',
-        futureScore: 'Future Score'
+        futureScore: 'Future Score',
+        zonesRemaining: 'zones remaining',
+        zonesUsed: 'of 3 zones used',
+        upgradeTitle: 'You\'ve reached your 3-zone limit',
+        upgradeText: 'The Explorer plan lets you analyze up to 3 zones. For unlimited access to all 34 zones, the interactive comparator and full ranking:',
+        upgradeBtn: 'Unlock All 34 Zones — $97',
+        upgradeSaving: 'Save hundreds of hours of research',
+        upgradeClose: 'Continue with my 3 zones'
     }
 };
 
@@ -1007,6 +1086,38 @@ function renderInversion(zone) {
     return html;
 }
 
+// ===== ZONE LIMIT SYSTEM =====
+const MAX_ZONES = 3;
+let viewedZones = JSON.parse(localStorage.getItem('miami_viewed_zones') || '[]');
+
+function updateCounter() {
+    const counter = document.getElementById('zoneCounter');
+    const counterText = document.getElementById('counterText');
+    const counterBar = document.getElementById('counterBar');
+    if (viewedZones.length > 0) {
+        counter.style.display = 'block';
+        counterText.textContent = viewedZones.length + ' ' + t('zonesUsed') + ' — ' + (MAX_ZONES - viewedZones.length) + ' ' + t('zonesRemaining');
+        counterBar.style.width = ((viewedZones.length / MAX_ZONES) * 100) + '%';
+        if (viewedZones.length >= MAX_ZONES) {
+            counterBar.style.background = '#ff6b6b';
+        }
+    }
+}
+
+function updateUpgradeModal() {
+    document.getElementById('upgradeTitle').textContent = t('upgradeTitle');
+    document.getElementById('upgradeText').textContent = t('upgradeText');
+    document.getElementById('upgradeBtn').textContent = t('upgradeBtn');
+    document.getElementById('upgradeSaving').textContent = t('upgradeSaving');
+    document.getElementById('upgradeClose').textContent = t('upgradeClose');
+}
+
+function showUpgradeModal() {
+    updateUpgradeModal();
+    const modal = document.getElementById('upgradeModal');
+    modal.style.display = 'flex';
+}
+
 // ===== EVENT HANDLERS =====
 const zoneSelector = document.getElementById('zoneSelector');
 const reportContainer = document.getElementById('reportContainer');
@@ -1027,7 +1138,19 @@ zoneSelector.addEventListener('change', (e) => {
         reportContainer.innerHTML = '';
         return;
     }
-    
+
+    // Check zone limit
+    if (!viewedZones.includes(zoneId)) {
+        if (viewedZones.length >= MAX_ZONES) {
+            showUpgradeModal();
+            e.target.value = '';
+            return;
+        }
+        viewedZones.push(zoneId);
+        localStorage.setItem('miami_viewed_zones', JSON.stringify(viewedZones));
+    }
+    updateCounter();
+
     const zone = zoneData.find(z => z.id === zoneId);
     const enhanced = enhancedZoneData.find(e => e.id === zoneId) || { id: zoneId, name: zone.name };
     
@@ -1074,8 +1197,24 @@ zoneSelector.addEventListener('change', (e) => {
 document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
         setLanguage(e.target.getAttribute('data-lang'));
+        updateCounter();
+        updateUpgradeModal();
     });
 });
+
+// Initialize
+updateCounter();
+updateUpgradeModal();
+
+// Disable already-used zones from dropdown if limit reached
+if (viewedZones.length >= MAX_ZONES) {
+    Array.from(zoneSelector.options).forEach(opt => {
+        if (opt.value && !viewedZones.includes(parseInt(opt.value))) {
+            opt.disabled = true;
+            opt.textContent = opt.textContent + ' 🔒';
+        }
+    });
+}
 </script>
 </body>
 </html>

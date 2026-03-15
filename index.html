@@ -847,6 +847,10 @@
             cursor: pointer;
             transition: all 0.3s;
             width: 100%;
+            display: block;
+            text-decoration: none;
+            text-align: center;
+            box-sizing: border-box;
         }
 
         .pricing-cta:hover {
@@ -1179,7 +1183,7 @@
                 <div class="ranking-blur-overlay">
                     <span class="lock-icon">🔒</span>
                     <p class="unlock-text" data-i18n="ranking_unlock_text">Las 34 zonas rankeadas están en el reporte completo</p>
-                    <button class="unlock-btn" onclick="document.getElementById('paywall').classList.add('active')" data-i18n="ranking_unlock_btn">Desbloquear Ranking Completo — $97</button>
+                    <a href="https://buy.stripe.com/8x26oH6tBfRE1mLg748g001" class="unlock-btn" style="text-decoration:none;display:inline-block;" data-i18n="ranking_unlock_btn">Desbloquear Ranking Completo — $97</a>
                 </div>
             </div>
         </div>
@@ -1241,7 +1245,7 @@
                         <li data-i18n="pricing_feature_historical">Datos históricos de 5 años</li>
                         <li data-i18n="pricing_feature_export">Exportar análisis en PDF</li>
                     </ul>
-                    <button class="pricing-cta" data-i18n="pricing_cta_zone">Desbloquear Zona — $29</button>
+                    <a href="https://buy.stripe.com/bJe28rg4b6h4aXl1ca8g000" class="pricing-cta" data-i18n="pricing_cta_zone">Desbloquear Zona — $29</a>
                 </div>
 
                 <div class="pricing-card featured">
@@ -1257,13 +1261,13 @@
                         <li data-i18n="pricing_feature_community">Acceso a comunidad VIP</li>
                         <li data-i18n="pricing_feature_monthly">Actualizaciones mensuales</li>
                     </ul>
-                    <button class="pricing-cta" data-i18n="pricing_cta_all">Desbloquear Todas — $97</button>
+                    <a href="https://buy.stripe.com/8x26oH6tBfRE1mLg748g001" class="pricing-cta" data-i18n="pricing_cta_all">Desbloquear Todas — $97</a>
                 </div>
 
                 <div class="pricing-card">
-                    <div class="pricing-title" data-i18n="pricing_tier_3_title">Acceso Anual</div>
-                    <div class="pricing-price">$197</div>
-                    <div class="pricing-description" data-i18n="pricing_tier_3_desc">Máximo valor con acceso anual</div>
+                    <div class="pricing-title" data-i18n="pricing_tier_3_title">Profesional</div>
+                    <div class="pricing-price">$247</div>
+                    <div class="pricing-description" data-i18n="pricing_tier_3_desc">Máximo valor con acceso profesional</div>
                     <ul class="pricing-features">
                         <li data-i18n="pricing_feature_all_zones">Análisis completo de 34 zonas</li>
                         <li data-i18n="pricing_feature_comparator">Comparador avanzado de zonas</li>
@@ -1273,7 +1277,7 @@
                         <li data-i18n="pricing_feature_monthly">Actualizaciones mensuales</li>
                         <li data-i18n="pricing_feature_priority">Soporte prioritario</li>
                     </ul>
-                    <button class="pricing-cta" data-i18n="pricing_cta_annual">Acceso Anual — $197</button>
+                    <a href="https://buy.stripe.com/5kQ7sLcRZfRE6H56wu8g002" class="pricing-cta" data-i18n="pricing_cta_annual">Profesional — $247</a>
                 </div>
             </div>
         </div>
@@ -1418,17 +1422,17 @@
                 <div class="modal-subtitle" data-i18n="modal_pricing_select">Elige tu opción:</div>
 
                 <div class="pricing-options">
-                    <div class="price-option" data-price="single">
+                    <a href="https://buy.stripe.com/bJe28rg4b6h4aXl1ca8g000" class="price-option" data-price="single" style="text-decoration:none;color:inherit;">
                         <div class="price-option-amount">$29</div>
                         <div class="price-option-description" data-i18n="modal_option_single">Solo Esta Zona</div>
-                    </div>
-                    <div class="price-option selected" data-price="all">
+                    </a>
+                    <a href="https://buy.stripe.com/8x26oH6tBfRE1mLg748g001" class="price-option selected" data-price="all" style="text-decoration:none;color:inherit;">
                         <div class="price-option-amount">$97</div>
                         <div class="price-option-description" data-i18n="modal_option_all">Las 34 ZONAS</div>
-                    </div>
+                    </a>
                 </div>
 
-                <button class="btn-unlock" id="unlockBtn" data-i18n="modal_unlock_all">Desbloquear LAS 34 ZONAS — $97</button>
+                <a href="https://buy.stripe.com/8x26oH6tBfRE1mLg748g001" class="btn-unlock" id="unlockBtn" style="display:block;text-decoration:none;text-align:center;" data-i18n="modal_unlock_all">Desbloquear LAS 34 ZONAS — $97</a>
             </div>
         </div>
     </div>
