@@ -1991,9 +1991,71 @@
             });
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body class="professional-tier">
 <!-- Password gate removed — protection via secret URL only -->
+<div id="welcomeBanner" style="position:fixed;top:0;left:0;width:100%;background:linear-gradient(135deg,#0a1628 0%,#1a2744 100%);z-index:99999;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'Inter',Arial,sans-serif;">
+  <div style="text-align:center;max-width:480px;padding:2rem;">
+    <div style="font-size:3rem;margin-bottom:1rem;">🎉</div>
+    <h2 style="color:#fff;font-size:1.6rem;margin-bottom:0.5rem;font-family:'Playfair Display',serif;">Welcome to Your Report!</h2>
+    <p style="color:rgba(255,255,255,0.7);margin-bottom:1.5rem;font-size:0.95rem;line-height:1.5;">Enter your email and we'll send you a permanent access link so you can come back anytime.</p>
+    <input type="text" id="bannerName" placeholder="Your name" style="width:100%;padding:0.9rem;border:2px solid #2d3e5f;background:#1a2744;color:#fff;border-radius:0.5rem;font-size:1rem;margin-bottom:0.75rem;outline:none;transition:border-color 0.3s;box-sizing:border-box;" onfocus="this.style.borderColor='#4cd37e'" onblur="this.style.borderColor='#2d3e5f'">
+    <input type="email" id="bannerEmail" placeholder="your@email.com" style="width:100%;padding:0.9rem;border:2px solid #2d3e5f;background:#1a2744;color:#fff;border-radius:0.5rem;font-size:1rem;margin-bottom:0.75rem;outline:none;transition:border-color 0.3s;box-sizing:border-box;" onfocus="this.style.borderColor='#4cd37e'" onblur="this.style.borderColor='#2d3e5f'">
+    <button id="bannerSubmit" style="width:100%;padding:1rem;background:#4cd37e;color:#0a1628;border:none;border-radius:0.5rem;font-size:1rem;font-weight:700;cursor:pointer;transition:all 0.3s;" onmouseover="this.style.boxShadow='0 4px 15px rgba(76,211,126,0.4)'" onmouseout="this.style.boxShadow='none'">Send Me Access Link</button>
+    <p id="bannerStatus" style="margin-top:1rem;font-size:0.9rem;display:none;"></p>
+    <button id="bannerSkip" onclick="document.getElementById('welcomeBanner').style.display='none'" style="background:none;border:none;color:rgba(255,255,255,0.4);margin-top:1rem;cursor:pointer;font-size:0.85rem;font-family:'Inter',Arial,sans-serif;">Skip — I'll bookmark it myself</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  emailjs.init('3_ockgNWEUD3xR9jO');
+
+  // Check if already submitted
+  if(localStorage.getItem('miami_email_sent')) {
+    document.getElementById('welcomeBanner').style.display = 'none';
+    return;
+  }
+
+  document.getElementById('bannerSubmit').addEventListener('click', function(){
+    const name = document.getElementById('bannerName').value.trim();
+    const email = document.getElementById('bannerEmail').value.trim();
+    const status = document.getElementById('bannerStatus');
+
+    if(!email || !email.includes('@')) {
+      status.style.display = 'block';
+      status.style.color = '#ff6b6b';
+      status.textContent = 'Please enter a valid email.';
+      return;
+    }
+
+    this.disabled = true;
+    this.textContent = 'Sending...';
+
+    emailjs.send('service_hlgnzbz', 'template_7jztcbi', {
+      to_name: name || 'Investor',
+      to_email: email,
+      plan_name: 'Professional Report',
+      plan_features: '• Everything in the Investor plan<br>• Quarterly updates included<br>• Priority access to new reports<br>• Direct email support',
+      report_link: 'https://miamimultifamilydata.com/reporte/profesional.html'
+    }).then(function(){
+      status.style.display = 'block';
+      status.style.color = '#4cd37e';
+      status.textContent = '✓ Email sent! Check your inbox.';
+      localStorage.setItem('miami_email_sent', 'true');
+      setTimeout(function(){ document.getElementById('welcomeBanner').style.display = 'none'; }, 2000);
+    }, function(error){
+      status.style.display = 'block';
+      status.style.color = '#ff6b6b';
+      status.textContent = 'Error sending. Try again.';
+      document.getElementById('bannerSubmit').disabled = false;
+      document.getElementById('bannerSubmit').textContent = 'Send Me Access Link';
+    });
+  });
+})();
+</script>
+
     <!-- Professional Tier Banner -->
     <div class="professional-banner">
         <div class="professional-badge">ACCESO PROFESIONAL</div>
