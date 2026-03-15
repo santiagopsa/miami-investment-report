@@ -1156,14 +1156,14 @@
 
     <!-- Call to Action -->
     <section style="padding: 3rem 2rem; text-align: center; background: var(--white);">
-        <a href="#prueba" class="btn btn-primary" data-i18n="cta_explore">Explora las Zonas Gratis →</a>
+        <a href="/zones/" class="btn btn-primary" data-i18n="cta_explore">Explora las Zonas Gratis →</a>
     </section>
 
     <!-- Free Exploration Section -->
     <section id="prueba" style="padding: 4rem 2rem; background: var(--light-gray);">
         <div class="container">
             <h2 data-i18n="free_trial_title">Prueba Gratis: Explora las 34 Zonas</h2>
-            <p class="section-subtitle" data-i18n="free_trial_subtitle">Haz clic en cualquier zona para ver un análisis parcial. Desbloquea análisis completos con nuestros planes.</p>
+            <p class="section-subtitle" data-i18n="free_trial_subtitle">Haz clic en cualquier zona para ver cap rates, renta y datos clave. Datos premium disponibles en el reporte completo.</p>
 
             <div class="filter-buttons">
                 <button class="filter-btn active" data-filter="all" data-i18n="filter_all">Todas</button>
@@ -1479,7 +1479,7 @@
                 kpi_tabs: "Tabs/Zone",
                 cta_explore: "Explore Zones for Free →",
                 free_trial_title: "Free Exploration: Explore 34 Zones",
-                free_trial_subtitle: "Click on any zone to see a partial analysis. Unlock complete analyses with our plans.",
+                free_trial_subtitle: "Click any zone to see cap rates, rent, and key data. Premium metrics available in the full report.",
                 filter_all: "All",
                 signal_buy_strong: "BUY STRONG",
                 signal_buy: "BUY",
@@ -1594,7 +1594,7 @@
                 kpi_tabs: "Tabs/Zona",
                 cta_explore: "Explora las Zonas Gratis →",
                 free_trial_title: "Prueba Gratis: Explora las 34 Zonas",
-                free_trial_subtitle: "Haz clic en cualquier zona para ver un análisis parcial. Desbloquea análisis completos con nuestros planes.",
+                free_trial_subtitle: "Haz clic en cualquier zona para ver cap rates, renta y datos clave. Datos premium disponibles en el reporte completo.",
                 filter_all: "Todas",
                 signal_buy_strong: "BUY STRONG",
                 signal_buy: "BUY",
@@ -1834,10 +1834,9 @@
                     </div>
                     <div class="future-score">${zone.futureScore}</div>
                     <a href="/zones/${slugifyZone(zone.name)}.html" class="zone-free-link" onclick="event.stopPropagation()">Free Zone Data &rarr;</a>
-                    <a href="#" class="zone-cta" data-i18n="zone_card_view">${translations[currentLanguage].zone_card_view}</a>
                 `;
 
-                card.addEventListener('click', () => openPaywall(zone.name));
+                card.addEventListener('click', () => window.location.href = '/zones/' + slugifyZone(zone.name) + '.html');
                 zonesGrid.appendChild(card);
             });
 
