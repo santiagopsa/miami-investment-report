@@ -152,6 +152,17 @@
             .kpi-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
+        /* Premium locked sections */
+        .premium-wrapper { position: relative; }
+        .premium-blur { filter: blur(6px); -webkit-filter: blur(6px); pointer-events: none; user-select: none; }
+        .premium-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10; background: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.85) 50%, rgba(255,255,255,0.95) 100%); }
+        .premium-overlay .lock-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .premium-overlay h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--text-dark); }
+        .premium-overlay p { color: var(--text-muted); font-size: 1rem; margin-bottom: 1.5rem; max-width: 400px; text-align: center; }
+        .btn-unlock { display: inline-block; background: var(--accent-green); color: var(--primary-dark); padding: 0.9rem 2rem; border-radius: 0.5rem; text-decoration: none; font-weight: 700; font-size: 1rem; transition: all 0.3s; }
+        .btn-unlock:hover { transform: scale(1.05); box-shadow: 0 4px 16px rgba(0,200,83,0.4); }
+        .premium-overlay .preview-note { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.75rem; }
+
         /* Schema markup hidden */
         .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
     </style>
@@ -243,6 +254,8 @@
     </div>
 </div>
 
+<div class="premium-wrapper">
+<div class="premium-blur">
 <div class="section">
     <div class="section-inner">
         <h2>Financial Metrics</h2>
@@ -364,6 +377,15 @@
         </div>
     </div>
 </div>
+</div><!-- end premium-blur -->
+<div class="premium-overlay">
+    <div class="lock-icon">&#128274;</div>
+    <h3>Premium Data</h3>
+    <p>Expenses, insurance, taxes, demographics, and quality scores for Coral Gables are available in the full report.</p>
+    <a href="/#pricing" class="btn-unlock">Unlock Full Analysis &rarr;</a>
+    <span class="preview-note">Includes all 34 zones + comparative rankings</span>
+</div>
+</div><!-- end premium-wrapper -->
 
 <div class="section">
     <div class="section-inner">
