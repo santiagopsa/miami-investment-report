@@ -1793,7 +1793,16 @@
                 calculate: 'Calcular',
                 scenarios: 'Escenarios',
                 projections: 'Proyecciones',
-                analyze: 'Analizar'
+                analyze: 'Analizar',
+                appreciationRents: 'Valorización & Rentas',
+                investmentThesis: 'Tesis de Inversión',
+                ownerFixedCosts: 'Costos Fijos del Propietario',
+                demographicsLifestyle: 'Demografía & Estilo de Vida',
+                schoolsEducation: 'Escuelas & Educación',
+                infrastructureProjects: 'Infraestructura & Proyectos',
+                investmentModel: 'Modelo de Inversión',
+                investmentModel10Units: 'Modelo de Inversión — 10 Unidades',
+                notApplicable: 'No aplica para esta zona.'
             },
             en: {
                 investmentZones: 'Investment Zones',
@@ -1825,7 +1834,16 @@
                 calculate: 'Calculate',
                 scenarios: 'Scenarios',
                 projections: 'Projections',
-                analyze: 'Analyze'
+                analyze: 'Analyze',
+                appreciationRents: 'Appreciation & Rents',
+                investmentThesis: 'Investment Thesis',
+                ownerFixedCosts: 'Owner Fixed Costs',
+                demographicsLifestyle: 'Demographics & Lifestyle',
+                schoolsEducation: 'Schools & Education',
+                infrastructureProjects: 'Infrastructure & Projects',
+                investmentModel: 'Investment Model',
+                investmentModel10Units: 'Investment Model — 10 Units',
+                notApplicable: 'Not applicable for this zone.'
             }
         };
         function t(key) {
@@ -1924,7 +1942,7 @@
     <!-- Professional Tier Banner -->
     <div class="professional-banner">
         <div class="professional-badge" data-i18n="professionalBadge">PROFESSIONAL ACCESS</div>
-        <div class="professional-banner-text" data-i18n="professionalBannerText">Welcome to professional tier. Your access includes exclusive benefits.</div>
+        <div class="professional-banner-text" data-i18n="professionalBannerText">Welcome to the professional tier. Your access includes exclusive benefits.</div>
     </div>
 
     <!-- Navigation -->
@@ -2217,12 +2235,12 @@
             </div>
 
             <div class="tab-nav">
-                <button class="tab-btn active" data-tab="valorizacion">Valorización</button>
-                <button class="tab-btn" data-tab="costos">Costos Fijos</button>
-                <button class="tab-btn" data-tab="demografia">Demografía</button>
-                <button class="tab-btn" data-tab="escuelas">Escuelas</button>
-                <button class="tab-btn" data-tab="infraestructura">Infraestructura</button>
-                <button class="tab-btn" data-tab="inversion">Inversión</button>
+                <button class="tab-btn active" data-tab="valorizacion" data-i18n="appreciationRents">Appreciation & Rents</button>
+                <button class="tab-btn" data-tab="costos" data-i18n="ownerFixedCosts">Owner Fixed Costs</button>
+                <button class="tab-btn" data-tab="demografia" data-i18n="demographicsLifestyle">Demographics & Lifestyle</button>
+                <button class="tab-btn" data-tab="escuelas" data-i18n="schoolsEducation">Schools & Education</button>
+                <button class="tab-btn" data-tab="infraestructura" data-i18n="infrastructureProjects">Infrastructure & Projects</button>
+                <button class="tab-btn" data-tab="inversion" data-i18n="investment">Investment</button>
             </div>
 
             <div id="tab-valorizacion" class="tab-content active">
@@ -2249,13 +2267,13 @@
     <!-- Zone Comparison Section -->
     <section id="comparison" class="zone-comparison-section">
         <h2 data-i18n="zoneComparator">Zone Comparator</h2>
-        <p style="color:#718096;margin-bottom:1.5rem;">Selecciona dos zonas para comparar sus métricas lado a lado</p>
+        <p style="color:#718096;margin-bottom:1.5rem;">Select two zones to compare their metrics side by side</p>
         <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:2rem;">
             <select id="compareZone1" style="flex:1;min-width:200px;padding:0.75rem 1rem;border:1px solid #e2e8f0;border-radius:8px;font-size:0.95rem;background:white;cursor:pointer;">
-                <option value="">— Seleccionar Zona 1 —</option>
+                <option value="">— Select Zone 1 —</option>
             </select>
             <select id="compareZone2" style="flex:1;min-width:200px;padding:0.75rem 1rem;border:1px solid #e2e8f0;border-radius:8px;font-size:0.95rem;background:white;cursor:pointer;">
-                <option value="">— Seleccionar Zona 2 —</option>
+                <option value="">— Select Zone 2 —</option>
             </select>
         </div>
         <div id="comparisonResults">
@@ -2265,7 +2283,7 @@
 
     <!-- Ranking Table Section -->
     <section id="ranking" class="ranking-section">
-        <h2>Ranking Completo de Zonas</h2>
+        <h2>Complete Zone Ranking</h2>
         <div id="rankingTable" style="overflow-x:auto;">
             <!-- Table populated by JavaScript -->
         </div>
@@ -2273,7 +2291,7 @@
 
     <!-- Buyer's Guide Section -->
     <section id="guide" class="buyers-guide-section">
-        <h2>Guía del Comprador de Multifamily en Miami-Dade</h2>
+        <h2>Multifamily Buyer's Guide for Miami-Dade</h2>
         <div id="buyersGuide">
             <!-- Accordion cards populated by JavaScript -->
         </div>
@@ -4564,7 +4582,7 @@ function populateZoneCards() {
       </div>
       <div style="padding:0 1.25rem;">
         <div style="display:flex;justify-content:space-between;padding:0.45rem 0;border-bottom:1px solid #f0f4f8;">
-          <span style="font-size:0.82rem;color:#718096;">Renta Promedio</span>
+          <span style="font-size:0.82rem;color:#718096;">Avg Rent</span>
           <span style="font-weight:700;color:#1a2744;">$${(zone.rentAvg || 0).toLocaleString()}/mo</span>
         </div>
         <div style="display:flex;justify-content:space-between;padding:0.45rem 0;border-bottom:1px solid #f0f4f8;">
@@ -4572,7 +4590,7 @@ function populateZoneCards() {
           <span style="font-weight:600;color:#1a2744;">${capStr}</span>
         </div>
         <div style="display:flex;justify-content:space-between;padding:0.45rem 0;border-bottom:1px solid #f0f4f8;">
-          <span style="font-size:0.82rem;color:#718096;">Precio/Unidad</span>
+          <span style="font-size:0.82rem;color:#718096;">Price/Unit</span>
           <span style="font-weight:600;color:#1a2744;">${priceStr}</span>
         </div>
         <div style="display:flex;justify-content:space-between;padding:0.45rem 0;">
@@ -4755,30 +4773,30 @@ function fillValorizacion(z) {
   const trend = z.rentTrend || [100, 100, 100, 100, 100];
   const maxT = Math.max(...trend, 1);
 
-  let compsHtml = comps.length > 0 ? `<table class="comps-table"><thead><tr><th>Propiedad</th><th>$/Unidad</th><th>Unidades</th><th>Año</th><th>Notas</th></tr></thead><tbody>` +
+  let compsHtml = comps.length > 0 ? `<table class="comps-table"><thead><tr><th>Property</th><th>$/Unit</th><th>Units</th><th>Year</th><th>Notes</th></tr></thead><tbody>` +
     comps.map(c => `<tr><td>${c.name}</td><td>$${(c.pricePerUnit || 0).toLocaleString()}</td><td>${c.units}</td><td>${c.year}</td><td style="font-size:0.85rem;color:#718096;">${c.notes || ''}</td></tr>`).join('') +
-    `</tbody></table>` : '<p style="color:#718096;">No hay datos comparables disponibles.</p>';
+    `</tbody></table>` : '<p style="color:#718096;">No comparable data available.</p>';
 
   c.innerHTML = `
     <div class="tab-section">
-      <h3>Valorización & Rentas</h3>
-      <h4>Renta por Tipo de Unidad</h4>
+      <h3>${t('appreciationRents')}</h3>
+      <h4>Rental by Unit Type</h4>
       ${hbar('Studio', r.studio, maxR, '#2196F3', '$' + (r.studio || 0).toLocaleString())}
-      ${hbar('1 Habitación', r.br1, maxR, '#1976D2', '$' + (r.br1 || 0).toLocaleString())}
-      ${hbar('2 Habitaciones', r.br2, maxR, '#1565C0', '$' + (r.br2 || 0).toLocaleString())}
-      ${hbar('3 Habitaciones', r.br3, maxR, '#0D47A1', '$' + (r.br3 || 0).toLocaleString())}
+      ${hbar('1 Bedroom', r.br1, maxR, '#1976D2', '$' + (r.br1 || 0).toLocaleString())}
+      ${hbar('2 Bedrooms', r.br2, maxR, '#1565C0', '$' + (r.br2 || 0).toLocaleString())}
+      ${hbar('3 Bedrooms', r.br3, maxR, '#0D47A1', '$' + (r.br3 || 0).toLocaleString())}
 
-      <h4 style="margin-top:1.5rem;">Métricas Clave</h4>
-      ${hbar('Apreciación 5yr', z.aprec5yr || 0, 150, '#FF9800', '+' + (z.aprec5yr || 0) + '%')}
+      <h4 style="margin-top:1.5rem;">Key Metrics</h4>
+      ${hbar('5-Year Appreciation', z.aprec5yr || 0, 150, '#FF9800', '+' + (z.aprec5yr || 0) + '%')}
       ${hbar('Rent Growth YoY', Math.max(z.rentGrowth || 0, 0), 10, '#4CAF50', (z.rentGrowth > 0 ? '+' : '') + (z.rentGrowth || 0).toFixed(1) + '%')}
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0;padding:1rem;background:#f8f9fa;border-radius:8px;">
         <div><span style="color:#718096;font-size:0.85rem;">Cap Rate</span><br><strong>${z.capRateMin ? z.capRateMin.toFixed(1) + '% - ' + z.capRateMax.toFixed(1) + '%' : 'N/A'}</strong></div>
-        <div><span style="color:#718096;font-size:0.85rem;">Precio/Unidad</span><br><strong>$${z.priceMin || 0}K - $${z.priceMax || 0}K</strong></div>
-        <div><span style="color:#718096;font-size:0.85rem;">Vacancia</span><br><strong>${(z.vacancy || 0).toFixed(1)}%</strong></div>
+        <div><span style="color:#718096;font-size:0.85rem;">Price/Unit</span><br><strong>$${z.priceMin || 0}K - $${z.priceMax || 0}K</strong></div>
+        <div><span style="color:#718096;font-size:0.85rem;">Vacancy</span><br><strong>${(z.vacancy || 0).toFixed(1)}%</strong></div>
         <div><span style="color:#718096;font-size:0.85rem;">Future Score</span><br><strong style="color:${z.futureScore >= 70 ? '#00C853' : z.futureScore >= 50 ? '#FF9800' : '#f44336'};">${z.futureScore > 0 ? z.futureScore + '/100' : 'N/A'}</strong></div>
       </div>
 
-      <h4 style="margin-top:1.5rem;">Tendencia de Renta (2021-2025, Base 100)</h4>
+      <h4 style="margin-top:1.5rem;">Rent Trend (2021-2025, Base 100)</h4>
       <div style="display:flex;gap:6px;height:100px;align-items:flex-end;margin:1rem 0;">
         ${trend.map((v, i) => `<div style="flex:1;display:flex;flex-direction:column;align-items:center;">
           <div style="width:100%;height:${(v / maxT * 80)}px;background:linear-gradient(180deg,#00C853,#4CAF50);border-radius:4px 4px 0 0;transition:height 0.5s;"></div>
@@ -4787,12 +4805,12 @@ function fillValorizacion(z) {
         </div>`).join('')}
       </div>
 
-      <h4 style="margin-top:1.5rem;">Ventas Comparables Recientes</h4>
+      <h4 style="margin-top:1.5rem;">Recent Comparable Sales</h4>
       ${compsHtml}
 
-      <h4 style="margin-top:1.5rem;">Tesis de Inversión</h4>
+      <h4 style="margin-top:1.5rem;">${t('investmentThesis')}</h4>
       <div style="padding:1rem;background:#f0f7ff;border-left:4px solid #2196F3;border-radius:0 8px 8px 0;margin-top:0.5rem;">
-        <p style="color:#2c3e50;line-height:1.7;margin:0;">${z.thesis || 'No disponible.'}</p>
+        <p style="color:#2c3e50;line-height:1.7;margin:0;">${z.thesis || 'Not available.'}</p>
       </div>
     </div>`;
 }
@@ -4816,54 +4834,54 @@ function fillCostos(z) {
 
   c.innerHTML = `
     <div class="tab-section">
-      <h3>Costos Fijos del Propietario</h3>
+      <h3>${t('ownerFixedCosts')}</h3>
 
-      <h4>Desglose T-12 por Unidad (Anual)</h4>
-      ${hbar('Impuestos', t.taxes, maxC, '#E53935', '$' + (t.taxes || 0).toLocaleString())}
-      ${hbar('Seguros', t.insurance, maxC, '#FF6F00', '$' + (t.insurance || 0).toLocaleString())}
-      ${hbar('Servicios', t.utilities, maxC, '#FFC107', '$' + (t.utilities || 0).toLocaleString())}
-      ${hbar('Rep. & Mant.', t.rm, maxC, '#2196F3', '$' + (t.rm || 0).toLocaleString())}
-      ${hbar('Gestión', t.management, maxC, '#4CAF50', '$' + (t.management || 0).toLocaleString())}
-      ${hbar('Nómina', t.payroll, maxC, '#9C27B0', '$' + (t.payroll || 0).toLocaleString())}
-      ${hbar('Reservas', t.reserves, maxC, '#607D8B', '$' + (t.reserves || 0).toLocaleString())}
+      <h4>T-12 Breakdown per Unit (Annual)</h4>
+      ${hbar('Taxes', t.taxes, maxC, '#E53935', '$' + (t.taxes || 0).toLocaleString())}
+      ${hbar('Insurance', t.insurance, maxC, '#FF6F00', '$' + (t.insurance || 0).toLocaleString())}
+      ${hbar('Utilities', t.utilities, maxC, '#FFC107', '$' + (t.utilities || 0).toLocaleString())}
+      ${hbar('Repairs & Maintenance', t.rm, maxC, '#2196F3', '$' + (t.rm || 0).toLocaleString())}
+      ${hbar('Management', t.management, maxC, '#4CAF50', '$' + (t.management || 0).toLocaleString())}
+      ${hbar('Payroll', t.payroll, maxC, '#9C27B0', '$' + (t.payroll || 0).toLocaleString())}
+      ${hbar('Reserves', t.reserves, maxC, '#607D8B', '$' + (t.reserves || 0).toLocaleString())}
 
       <div style="margin-top:1rem;padding:1rem;background:#1a2744;border-radius:8px;color:white;display:flex;justify-content:space-between;">
-        <span style="font-weight:600;">Total T-12 por Unidad</span>
-        <span style="font-weight:700;font-size:1.1rem;">$${(t.total || 0).toLocaleString()}/año</span>
+        <span style="font-weight:600;">Total T-12 per Unit</span>
+        <span style="font-weight:700;font-size:1.1rem;">$${(t.total || 0).toLocaleString()}/year</span>
       </div>
 
-      <h4 style="margin-top:1.5rem;">Gastos Operativos Totales</h4>
-      ${hbar('OpEx/Unidad/Año', z.opex || 0, 20000, '#FF9800', '$' + (z.opex || 0).toLocaleString())}
-      <p style="color:#718096;font-size:0.85rem;">OpEx Ratio: <strong>${(z.opexRatio || 0)}%</strong> de ingresos brutos</p>
+      <h4 style="margin-top:1.5rem;">Total Operating Expenses</h4>
+      ${hbar('OpEx/Unit/Year', z.opex || 0, 20000, '#FF9800', '$' + (z.opex || 0).toLocaleString())}
+      <p style="color:#718096;font-size:0.85rem;">OpEx Ratio: <strong>${(z.opexRatio || 0)}%</strong> of gross revenue</p>
 
-      <h4 style="margin-top:1.5rem;">Tasa de Millage</h4>
+      <h4 style="margin-top:1.5rem;">Millage Rate</h4>
       <div style="display:flex;align-items:center;gap:1rem;padding:1rem;background:#f8f9fa;border-radius:8px;">
         <div style="font-size:2rem;font-weight:800;color:#1a2744;">${(z.millage || 0).toFixed(2)}</div>
         <div>
-          <div style="font-size:0.85rem;color:#718096;">Promedio Condado: ${countyAvg}</div>
-          <div style="font-weight:600;color:${millColor};">${z.millage > countyAvg ? '▲' : '▼'} ${Math.abs(millDiff)} ${z.millage > countyAvg ? 'por encima' : 'por debajo'} del promedio</div>
+          <div style="font-size:0.85rem;color:#718096;">County Average: ${countyAvg}</div>
+          <div style="font-weight:600;color:${millColor};">${z.millage > countyAvg ? '▲' : '▼'} ${Math.abs(millDiff)} ${z.millage > countyAvg ? 'above' : 'below'} average</div>
         </div>
       </div>
 
-      <h4 style="margin-top:1.5rem;">Impuestos & Seguros por Unidad</h4>
+      <h4 style="margin-top:1.5rem;">Taxes & Insurance per Unit</h4>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
         <div style="padding:1rem;background:#fff5f5;border-radius:8px;border-left:4px solid #E53935;">
-          <div style="color:#718096;font-size:0.85rem;">Impuesto/Unidad/Año</div>
+          <div style="color:#718096;font-size:0.85rem;">Tax/Unit/Year</div>
           <div style="font-size:1.3rem;font-weight:700;color:#E53935;">$${(z.taxPerUnit || 0).toLocaleString()}</div>
         </div>
         <div style="padding:1rem;background:#fff8e1;border-radius:8px;border-left:4px solid #FF6F00;">
-          <div style="color:#718096;font-size:0.85rem;">Seguro/Unidad/Año</div>
+          <div style="color:#718096;font-size:0.85rem;">Insurance/Unit/Year</div>
           <div style="font-size:1.3rem;font-weight:700;color:#FF6F00;">$${(z.insurance || 0).toLocaleString()}</div>
         </div>
       </div>
 
-      <h4 style="margin-top:1.5rem;">Zona FEMA & Riesgo</h4>
+      <h4 style="margin-top:1.5rem;">FEMA Zone & Risk</h4>
       <div style="display:flex;gap:1rem;flex-wrap:wrap;">
         <div style="padding:0.75rem 1.5rem;background:#f0f4f8;border-radius:8px;">
-          <span style="color:#718096;font-size:0.85rem;">Zona FEMA:</span> <strong>${z.flood || 'N/A'}</strong>
+          <span style="color:#718096;font-size:0.85rem;">FEMA Zone:</span> <strong>${z.flood || 'N/A'}</strong>
         </div>
         <div style="padding:0.75rem 1.5rem;background:${riskColor}15;border-radius:8px;border:1px solid ${riskColor}40;">
-          <span style="color:#718096;font-size:0.85rem;">Riesgo:</span> <strong style="color:${riskColor};">${z.insuranceRisk || 'N/A'}</strong>
+          <span style="color:#718096;font-size:0.85rem;">Risk:</span> <strong style="color:${riskColor};">${z.insuranceRisk || 'N/A'}</strong>
         </div>
       </div>
     </div>`;
@@ -4876,7 +4894,7 @@ function fillDemografia(z) {
   const c = document.getElementById('tab-demografia');
   if (!c) return;
   const walkColor = (z.walk || 0) >= 70 ? '#4CAF50' : (z.walk || 0) >= 40 ? '#FFC107' : '#f44336';
-  const walkLabel = (z.walk || 0) >= 70 ? 'Muy Caminable' : (z.walk || 0) >= 40 ? 'Moderado' : 'Dependiente del Auto';
+  const walkLabel = (z.walk || 0) >= 70 ? 'Very Walkable' : (z.walk || 0) >= 40 ? 'Somewhat Walkable' : 'Car-Dependent';
 
   // employers and amenities may be strings (from original data) — handle both
   const empList = Array.isArray(z.employers) ? z.employers : (z.employers || '').split(',').map(s => s.trim()).filter(Boolean);
@@ -4884,49 +4902,49 @@ function fillDemografia(z) {
 
   c.innerHTML = `
     <div class="tab-section">
-      <h3>Demografía & Estilo de Vida</h3>
+      <h3>${t('demographicsLifestyle')}</h3>
 
       <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1.5rem;">
         <div style="padding:1rem;background:#f8f9fa;border-radius:8px;text-align:center;">
-          <div style="font-size:0.8rem;color:#718096;text-transform:uppercase;">Población</div>
+          <div style="font-size:0.8rem;color:#718096;text-transform:uppercase;">Population</div>
           <div style="font-size:1.5rem;font-weight:800;color:#1a2744;">${((z.population || 0) / 1000).toFixed(0)}K</div>
         </div>
         <div style="padding:1rem;background:#f8f9fa;border-radius:8px;text-align:center;">
-          <div style="font-size:0.8rem;color:#718096;text-transform:uppercase;">Ingreso Mediano</div>
+          <div style="font-size:0.8rem;color:#718096;text-transform:uppercase;">Median Income</div>
           <div style="font-size:1.5rem;font-weight:800;color:#1a2744;">$${((z.income || 0) / 1000).toFixed(0)}K</div>
         </div>
         <div style="padding:1rem;background:#f8f9fa;border-radius:8px;text-align:center;">
-          <div style="font-size:0.8rem;color:#718096;text-transform:uppercase;">Criminalidad</div>
+          <div style="font-size:0.8rem;color:#718096;text-transform:uppercase;">Crime Grade</div>
           <div style="font-size:1.5rem;font-weight:800;color:#1a2744;">${z.crime || 'N/A'}</div>
         </div>
       </div>
 
       <h4>Walk Score</h4>
-      ${hbar('Caminabilidad', z.walk || 0, 100, walkColor, (z.walk || 0) + '/100')}
+      ${hbar('Walkability', z.walk || 0, 100, walkColor, (z.walk || 0) + '/100')}
       <p style="color:${walkColor};font-weight:600;font-size:0.85rem;">${walkLabel}</p>
 
       <h4 style="margin-top:1rem;">Transit Score</h4>
-      ${hbar('Transporte', z.transit || 0, 100, '#2196F3', (z.transit || 0) + '/100')}
+      ${hbar('Transit', z.transit || 0, 100, '#2196F3', (z.transit || 0) + '/100')}
 
-      <h4 style="margin-top:1rem;">Vacancia & Pipeline</h4>
+      <h4 style="margin-top:1rem;">Vacancy & Pipeline</h4>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
         <div style="padding:1rem;background:#f8f9fa;border-radius:8px;">
-          <div style="color:#718096;font-size:0.85rem;">Vacancia Actual</div>
+          <div style="color:#718096;font-size:0.85rem;">Current Vacancy</div>
           <div style="font-size:1.3rem;font-weight:700;color:${(z.vacancy || 0) > 7 ? '#f44336' : '#1a2744'};">${(z.vacancy || 0).toFixed(1)}%</div>
         </div>
         <div style="padding:1rem;background:#f8f9fa;border-radius:8px;">
-          <div style="color:#718096;font-size:0.85rem;">Pipeline (Nuevas Unidades)</div>
+          <div style="color:#718096;font-size:0.85rem;">Pipeline (New Units)</div>
           <div style="font-size:1.3rem;font-weight:700;color:${(z.pipeline || 0) > 2000 ? '#f44336' : '#1a2744'};">${(z.pipeline || 0).toLocaleString()}</div>
-          <div style="font-size:0.8rem;color:#718096;">${(z.pipeline || 0) > 2000 ? 'Alto riesgo de sobreoferta' : (z.pipeline || 0) > 500 ? 'Moderado' : 'Bajo — favorable'}</div>
+          <div style="font-size:0.8rem;color:#718096;">${(z.pipeline || 0) > 2000 ? 'High oversupply risk' : (z.pipeline || 0) > 500 ? 'Moderate' : 'Low — favorable'}</div>
         </div>
       </div>
 
-      <h4 style="margin-top:1.5rem;">Empleadores Principales</h4>
+      <h4 style="margin-top:1.5rem;">Major Employers</h4>
       <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
         ${empList.map(e => `<span style="padding:0.4rem 0.8rem;background:#e8f5e9;border-radius:20px;font-size:0.82rem;color:#2e7d32;">${e}</span>`).join('')}
       </div>
 
-      <h4 style="margin-top:1rem;">Amenidades Clave</h4>
+      <h4 style="margin-top:1rem;">Key Amenities</h4>
       <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
         ${amenList.map(a => `<span style="padding:0.4rem 0.8rem;background:#e3f2fd;border-radius:20px;font-size:0.82rem;color:#1565C0;">${a}</span>`).join('')}
       </div>
@@ -4946,22 +4964,22 @@ function fillEscuelas(z) {
 
   c.innerHTML = `
     <div class="tab-section">
-      <h3>Escuelas & Educación</h3>
+      <h3>${t('schoolsEducation')}</h3>
 
       ${schoolArr.length > 0 ? `
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin:1rem 0;">
         ${schoolArr.map(s => `
           <div style="padding:1rem;background:white;border:1px solid #e2e8f0;border-radius:10px;transition:all 0.3s;">
             <div style="font-weight:600;color:#1a2744;margin-bottom:0.3rem;">${s.name}</div>
-            <div style="font-size:0.85rem;color:#718096;">Grados: ${s.grade || 'N/A'}</div>
-            <div style="font-size:0.85rem;color:#718096;">Tipo: ${s.type || 'N/A'}</div>
+            <div style="font-size:0.85rem;color:#718096;">Grades: ${s.grade || 'N/A'}</div>
+            <div style="font-size:0.85rem;color:#718096;">Type: ${s.type || 'N/A'}</div>
           </div>
         `).join('')}
-      </div>` : '<p style="color:#718096;">No hay datos de escuelas disponibles para esta zona.</p>'}
+      </div>` : '<p style="color:#718096;">No school data available for this zone.</p>'}
 
-      <h4 style="margin-top:1.5rem;">Calidad Educativa de la Zona</h4>
+      <h4 style="margin-top:1.5rem;">Zone Educational Quality</h4>
       <div style="padding:1rem;background:#f0f7ff;border-left:4px solid #2196F3;border-radius:0 8px 8px 0;">
-        <p style="color:#2c3e50;line-height:1.7;margin:0;">${z.topSchoolDetail || 'No hay información detallada disponible.'}</p>
+        <p style="color:#2c3e50;line-height:1.7;margin:0;">${z.topSchoolDetail || 'No detailed information available.'}</p>
       </div>
     </div>`;
 }
@@ -4976,25 +4994,25 @@ function fillInfraestructura(z) {
 
   c.innerHTML = `
     <div class="tab-section">
-      <h3>Infraestructura & Proyectos</h3>
+      <h3>${t('infrastructureProjects')}</h3>
 
       ${infra.length > 0 ? infra.map(p => {
         const statusColor = p.status === 'Operational' ? '#4CAF50' : p.status === 'Under Construction' ? '#FF9800' : '#2196F3';
-        const statusEs = p.status === 'Operational' ? 'Operativo' : p.status === 'Under Construction' ? 'En Construcción' : p.status === 'Planned' ? 'Planificado' : p.status;
+        const statusLabel = p.status === 'Operational' ? 'Operational' : p.status === 'Under Construction' ? 'Under Construction' : p.status === 'Planned' ? 'Planned' : p.status;
         return `
         <div style="padding:1.25rem;background:white;border:1px solid #e2e8f0;border-radius:10px;margin-bottom:1rem;border-left:4px solid ${statusColor};">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
             <h4 style="margin:0;font-family:'Inter',sans-serif;font-size:1rem;">${p.name}</h4>
-            <span style="padding:0.25rem 0.75rem;background:${statusColor}18;color:${statusColor};border-radius:4px;font-size:0.75rem;font-weight:700;text-transform:uppercase;">${statusEs}</span>
+            <span style="padding:0.25rem 0.75rem;background:${statusColor}18;color:${statusColor};border-radius:4px;font-size:0.75rem;font-weight:700;text-transform:uppercase;">${statusLabel}</span>
           </div>
           <div style="font-size:1.1rem;font-weight:700;color:#1a2744;margin-bottom:0.5rem;">${fmt(p.cost)}</div>
           <p style="color:#718096;font-size:0.9rem;margin:0;">${p.impact || ''}</p>
         </div>`;
-      }).join('') : '<p style="color:#718096;">No hay proyectos de infraestructura identificados.</p>'}
+      }).join('') : '<p style="color:#718096;">No infrastructure projects identified.</p>'}
 
-      <h4 style="margin-top:1.5rem;">Impacto en la Zona</h4>
+      <h4 style="margin-top:1.5rem;">Impact on Zone</h4>
       <div style="padding:1rem;background:#f0f7ff;border-left:4px solid #2196F3;border-radius:0 8px 8px 0;">
-        <p style="color:#2c3e50;line-height:1.7;margin:0;">${z.infraDetail || 'No hay información detallada disponible.'}</p>
+        <p style="color:#2c3e50;line-height:1.7;margin:0;">${z.infraDetail || 'No detailed information available.'}</p>
       </div>
     </div>`;
 }
@@ -5007,7 +5025,7 @@ function fillInversion(z) {
   if (!c) return;
 
   if (!z.priceMin || z.priceMin === 0) {
-    c.innerHTML = '<div class="tab-section"><h3>Modelo de Inversión</h3><p style="color:#718096;">No aplica para esta zona.</p></div>';
+    c.innerHTML = '<div class="tab-section"><h3>${t(\'investmentModel\')}</h3><p style="color:#718096;">${t(\'notApplicable\')}</p></div>';
     return;
   }
 
@@ -5055,7 +5073,7 @@ function fillInversion(z) {
     cumCF += (yrNOI - annualDS);
 
     projRows += `<tr>
-      <td style="font-weight:600;">Año ${yr}</td>
+      <td style="font-weight:600;">Year ${yr}</td>
       <td>${fmt(propVal)}</td>
       <td>${fmt(bal)}</td>
       <td style="font-weight:700;color:#00C853;">${fmt(equity)}</td>
@@ -5066,26 +5084,26 @@ function fillInversion(z) {
 
   c.innerHTML = `
     <div class="tab-section">
-      <h3>Modelo de Inversión — 10 Unidades</h3>
+      <h3>${t('investmentModel10Units')}</h3>
 
-      <h4>Supuestos</h4>
+      <h4>Assumptions</h4>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:0.75rem;margin:1rem 0;">
-        <div style="padding:0.75rem;background:#f8f9fa;border-radius:6px;"><span style="color:#718096;font-size:0.8rem;">Precio/Unidad</span><br><strong>${fmt(pricePerUnit)}</strong></div>
+        <div style="padding:0.75rem;background:#f8f9fa;border-radius:6px;"><span style="color:#718096;font-size:0.8rem;">Price/Unit</span><br><strong>${fmt(pricePerUnit)}</strong></div>
         <div style="padding:0.75rem;background:#f8f9fa;border-radius:6px;"><span style="color:#718096;font-size:0.8rem;">Total (10 units)</span><br><strong>${fmt(totalPrice)}</strong></div>
         <div style="padding:0.75rem;background:#f8f9fa;border-radius:6px;"><span style="color:#718096;font-size:0.8rem;">Down Payment (25%)</span><br><strong>${fmt(downPayment)}</strong></div>
-        <div style="padding:0.75rem;background:#f8f9fa;border-radius:6px;"><span style="color:#718096;font-size:0.8rem;">Préstamo (75%)</span><br><strong>${fmt(loan)}</strong></div>
-        <div style="padding:0.75rem;background:#f8f9fa;border-radius:6px;"><span style="color:#718096;font-size:0.8rem;">Tasa</span><br><strong>${rate}% / ${amort} años</strong></div>
-        <div style="padding:0.75rem;background:#f8f9fa;border-radius:6px;"><span style="color:#718096;font-size:0.8rem;">Renta Prom.</span><br><strong>$${(z.rentAvg || 0).toLocaleString()}/mo</strong></div>
+        <div style="padding:0.75rem;background:#f8f9fa;border-radius:6px;"><span style="color:#718096;font-size:0.8rem;">Loan (75%)</span><br><strong>${fmt(loan)}</strong></div>
+        <div style="padding:0.75rem;background:#f8f9fa;border-radius:6px;"><span style="color:#718096;font-size:0.8rem;">Rate</span><br><strong>${rate}% / ${amort} years</strong></div>
+        <div style="padding:0.75rem;background:#f8f9fa;border-radius:6px;"><span style="color:#718096;font-size:0.8rem;">Avg Rent</span><br><strong>$${(z.rentAvg || 0).toLocaleString()}/mo</strong></div>
       </div>
 
-      <h4 style="margin-top:1.5rem;">Flujo de Caja — Año 1</h4>
+      <h4 style="margin-top:1.5rem;">Year 1 Cash Flow</h4>
       <div style="border:1px solid #e2e8f0;border-radius:10px;overflow:hidden;margin:1rem 0;">
         <div style="display:flex;justify-content:space-between;padding:0.75rem 1.25rem;border-bottom:1px solid #f0f4f8;">
-          <span style="color:#718096;">Ingresos Brutos (10 × $${(z.rentAvg || 0).toLocaleString()} × 12 × 95%)</span>
+          <span style="color:#718096;">Gross Revenue (10 × $${(z.rentAvg || 0).toLocaleString()} × 12 × 95%)</span>
           <strong style="color:#4CAF50;">${fmt(grossRev)}</strong>
         </div>
         <div style="display:flex;justify-content:space-between;padding:0.75rem 1.25rem;border-bottom:1px solid #f0f4f8;">
-          <span style="color:#718096;">(-) Gastos Operativos (10 × $${(z.opex || 0).toLocaleString()})</span>
+          <span style="color:#718096;">(-) Operating Expenses (10 × $${(z.opex || 0).toLocaleString()})</span>
           <strong style="color:#f44336;">-${fmt(totalOpex)}</strong>
         </div>
         <div style="display:flex;justify-content:space-between;padding:0.75rem 1.25rem;background:#f0faf0;border-bottom:1px solid #f0f4f8;">
@@ -5093,11 +5111,11 @@ function fillInversion(z) {
           <strong style="font-size:1.1rem;color:#00C853;">${fmt(noi)}</strong>
         </div>
         <div style="display:flex;justify-content:space-between;padding:0.75rem 1.25rem;border-bottom:1px solid #f0f4f8;">
-          <span style="color:#718096;">(-) Servicio de Deuda</span>
+          <span style="color:#718096;">(-) Debt Service</span>
           <strong style="color:#f44336;">-${fmt(annualDS)}</strong>
         </div>
         <div style="display:flex;justify-content:space-between;padding:0.75rem 1.25rem;background:#1a2744;">
-          <span style="color:white;font-weight:600;">= Cash Flow Antes de Impuestos</span>
+          <span style="color:white;font-weight:600;">= Cash Flow Before Taxes</span>
           <strong style="color:${cfbt >= 0 ? '#00C853' : '#f44336'};font-size:1.2rem;">${fmt(cfbt)}</strong>
         </div>
       </div>
@@ -5108,21 +5126,21 @@ function fillInversion(z) {
           <div style="font-size:2rem;font-weight:800;color:${coc >= 0 ? '#00C853' : '#f44336'};">${coc.toFixed(1)}%</div>
         </div>
         <div style="padding:1.25rem;background:#f0f7ff;border-radius:10px;text-align:center;">
-          <div style="font-size:0.85rem;color:#718096;">Cap Rate Estimado</div>
+          <div style="font-size:0.85rem;color:#718096;">Estimated Cap Rate</div>
           <div style="font-size:2rem;font-weight:800;color:#2196F3;">${totalPrice > 0 ? (noi / totalPrice * 100).toFixed(1) : 0}%</div>
         </div>
       </div>
 
-      <h4 style="margin-top:1.5rem;">Proyección de Equity a 5 Años</h4>
+      <h4 style="margin-top:1.5rem;">5-Year Equity Projection</h4>
       <div style="overflow-x:auto;">
         <table class="projection-table">
           <thead><tr>
-            <th style="text-align:left;">Período</th>
-            <th>Valor Propiedad</th>
-            <th>Saldo Préstamo</th>
+            <th style="text-align:left;">Period</th>
+            <th>Property Value</th>
+            <th>Loan Balance</th>
             <th>Equity</th>
-            <th>NOI Anual</th>
-            <th>Flujo Acumulado</th>
+            <th>Annual NOI</th>
+            <th>Cumulative Cash Flow</th>
           </tr></thead>
           <tbody>${projRows}</tbody>
         </table>
@@ -5147,15 +5165,15 @@ function setupComparison() {
   function compare() {
     const z1 = zones.find(z => z.id == s1.value);
     const z2 = zones.find(z => z.id == s2.value);
-    if (!z1 || !z2) { results.innerHTML = '<p style="color:#718096;text-align:center;padding:2rem;">Selecciona ambas zonas para comparar.</p>'; return; }
+    if (!z1 || !z2) { results.innerHTML = '<p style="color:#718096;text-align:center;padding:2rem;">Select both zones to compare.</p>'; return; }
 
     const metrics = [
-      { label: 'Renta Promedio', k: 'rentAvg', fmt: v => '$' + (v || 0).toLocaleString(), higher: true },
+      { label: 'Avg Rent', k: 'rentAvg', fmt: v => '$' + (v || 0).toLocaleString(), higher: true },
       { label: 'Cap Rate', k: 'capRateMin', fmt: v => (v || 0).toFixed(1) + '%', higher: true },
-      { label: 'Precio/Unidad', k: 'priceMin', fmt: v => '$' + (v || 0) + 'K', higher: false },
+      { label: 'Price/Unit', k: 'priceMin', fmt: v => '$' + (v || 0) + 'K', higher: false },
       { label: 'Rent Growth', k: 'rentGrowth', fmt: v => (v > 0 ? '+' : '') + (v || 0).toFixed(1) + '%', higher: true },
-      { label: 'Impuestos/Unit', k: 'taxPerUnit', fmt: v => '$' + (v || 0).toLocaleString(), higher: false },
-      { label: 'Seguro/Unit', k: 'insurance', fmt: v => '$' + (v || 0).toLocaleString(), higher: false },
+      { label: 'Tax/Unit', k: 'taxPerUnit', fmt: v => '$' + (v || 0).toLocaleString(), higher: false },
+      { label: 'Insurance/Unit', k: 'insurance', fmt: v => '$' + (v || 0).toLocaleString(), higher: false },
       { label: 'OpEx/Unit', k: 'opex', fmt: v => '$' + (v || 0).toLocaleString(), higher: false },
       { label: 'Walk Score', k: 'walk', fmt: v => (v || 0) + '', higher: true },
       { label: 'Crime Grade', k: 'crime', fmt: v => v || 'N/A', higher: null },
@@ -5164,7 +5182,7 @@ function setupComparison() {
 
     let html = `
       <div style="display:grid;grid-template-columns:1fr 2fr 1fr 1fr;gap:0;border:1px solid #e2e8f0;border-radius:10px;overflow:hidden;">
-        <div style="padding:1rem;background:#1a2744;color:white;font-weight:600;">Métrica</div>
+        <div style="padding:1rem;background:#1a2744;color:white;font-weight:600;">Metric</div>
         <div></div>
         <div style="padding:1rem;background:#1a2744;color:white;font-weight:700;text-align:center;">${z1.name}</div>
         <div style="padding:1rem;background:#1a2744;color:white;font-weight:700;text-align:center;">${z2.name}</div>`;
@@ -5211,13 +5229,13 @@ function populateRanking() {
   const ranked = zones.filter(z => (z.futureScore || 0) > 0).sort((a, b) => (b.futureScore || 0) - (a.futureScore || 0));
 
   let html = `<table class="ranking-table"><thead><tr>
-    <th>#</th><th>Zona</th><th>Señal</th><th>Cap Rate</th><th>Renta</th><th>Score</th><th>$/Unit</th><th>Growth</th><th>Riesgo</th>
+    <th>#</th><th>Zone</th><th>Signal</th><th>Cap Rate</th><th>Rent</th><th>Score</th><th>$/Unit</th><th>Growth</th><th>Risk</th>
   </tr></thead><tbody>`;
 
   ranked.forEach((z, i) => {
-    const riskLvl = z.futureScore >= 70 ? 'Bajo' : z.futureScore >= 50 ? 'Moderado' : 'Alto';
-    const riskClr = riskLvl === 'Bajo' ? '#4CAF50' : riskLvl === 'Moderado' ? '#FF9800' : '#f44336';
-    const growth = (z.rentGrowth || 0) > 4 ? 'Alto' : (z.rentGrowth || 0) > 1.5 ? 'Moderado' : 'Bajo';
+    const riskLvl = z.futureScore >= 70 ? 'Low' : z.futureScore >= 50 ? 'Moderate' : 'High';
+    const riskClr = riskLvl === 'Low' ? '#4CAF50' : riskLvl === 'Moderate' ? '#FF9800' : '#f44336';
+    const growth = (z.rentGrowth || 0) > 4 ? 'High' : (z.rentGrowth || 0) > 1.5 ? 'Moderate' : 'Low';
 
     html += `<tr class="ranking-row" data-zone-id="${z.id}" style="cursor:pointer;">
       <td><span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#1a2744;color:white;font-weight:700;font-size:0.8rem;">${i + 1}</span></td>
@@ -5248,16 +5266,16 @@ function populateGuide() {
   if (!container) return;
 
   const guides = [
-    { t: 'Cap Rate (Tasa de Capitalización)', c: 'El Cap Rate es el NOI (Ingreso Neto Operativo) dividido por el precio de compra. Indica el retorno anual que genera una propiedad. En Miami-Dade, el promedio es ~5.3%. Brickell/Downtown 4.5-5.0% (comprimido). Little Havana/Homestead 6%+. Si buscas rendimiento inmediato, enfócate en >5.5%.' },
-    { t: 'Precio vs Costo de Reemplazo', c: 'Si compras por debajo del costo de reemplazo ($350K+/unit en Miami), tienes un "margin of safety" natural. Zonas como Little Havana ($180-250K), Overtown ($150-220K) están muy debajo. Brickell ($380-450K) está en o por encima.' },
-    { t: 'Crecimiento de Renta (Rent Growth)', c: 'Zonas con crecimiento >4% anual son outperformers. Top: Allapattah (+7.1%), Little Havana (+6.2%), Florida City (+6.0%). Advertencia: Downtown (-1.2%), Miami Beach (-1.2%) tienen saturación.' },
-    { t: 'Apreciación Histórica', c: 'Miami-Dade ha visto apreciación de 60-130% en 5 años dependiendo de la zona. Líder: Wynwood +130%, Little Haiti +120%, Homestead +115%. Past performance no es garantía pero momentum importa.' },
-    { t: 'Zonas de Inundación FEMA', c: 'Zona X = bajo riesgo (~$1,100/unit/yr seguro). Zona AE = moderado ($1,400-2,200). Zona VE = muy alto ($2,500-3,200). En Miami Beach / Key Biscayne, el seguro VE mata el yield.' },
-    { t: 'Tasa de Millage (Carga Fiscal)', c: 'Rango: 14.47 (Miami Beach) a 26.50 (Opa-locka). A veces un cap rate 5.5% en zona de tax baja es mejor que 6.0% con tax alta. Aventura ($1.57/SF) vs Opa-locka ($2.65/SF) = $15K diferencia anual.' },
-    { t: 'Walk Score', c: 'Walk Score >80 = very walkable. Cada 10 puntos = ~3-5% premium en renta. Downtown Miami (95) vs Kendall (30). Walk score alto = menos turnover, más estabilidad.' },
-    { t: 'Criminalidad', c: 'Crime alto = tenant quality baja, turnover alto, seguro más caro. Coral Gables A+ vs Liberty City D = 30-40% diferencia en calidad de tenant. Nota: Overtown mejorando (-80% homicidios en década).' },
-    { t: 'Ingreso Mediano', c: 'Income = techo de renta (regla del 30%). Little Havana ($32K) → max ~$1,000/mes. Coral Gables ($110K) → max ~$3,300/mes. Compra donde el income soporta la renta que necesitas.' },
-    { t: 'Pipeline de Oferta', c: 'Si pipeline >5% del inventario existente = riesgo de oversupply. Red flag: Downtown 8,000+ units. Green flag: Little Havana 400 units. Pipeline pesado = presión a la baja en rentas.' }
+    { t: 'Cap Rate (Capitalization Rate)', c: 'Cap Rate is NOI (Net Operating Income) divided by purchase price. It shows the annual return a property generates. In Miami-Dade, the average is ~5.3%. Brickell/Downtown 4.5-5.0% (compressed). Little Havana/Homestead 6%+. If you seek immediate yield, focus on >5.5%.' },
+    { t: 'Price vs Replacement Cost', c: 'If you buy below replacement cost ($350K+/unit in Miami), you have a natural "margin of safety." Zones like Little Havana ($180-250K), Overtown ($150-220K) are well below. Brickell ($380-450K) is at or above.' },
+    { t: 'Rent Growth', c: 'Zones with >4% annual growth are outperformers. Top: Allapattah (+7.1%), Little Havana (+6.2%), Florida City (+6.0%). Warning: Downtown (-1.2%), Miami Beach (-1.2%) show saturation.' },
+    { t: 'Historical Appreciation', c: 'Miami-Dade has seen 60-130% appreciation in 5 years depending on zone. Leaders: Wynwood +130%, Little Haiti +120%, Homestead +115%. Past performance is no guarantee, but momentum matters.' },
+    { t: 'FEMA Flood Zones', c: 'Zone X = low risk (~$1,100/unit/yr insurance). Zone AE = moderate ($1,400-2,200). Zone VE = very high ($2,500-3,200). In Miami Beach / Key Biscayne, VE insurance kills yield.' },
+    { t: 'Millage Rate (Property Tax)', c: 'Range: 14.47 (Miami Beach) to 26.50 (Opa-locka). Sometimes 5.5% cap rate in a low-tax zone beats 6.0% in a high-tax zone. Aventura ($1.57/SF) vs Opa-locka ($2.65/SF) = $15K annual difference.' },
+    { t: 'Walk Score', c: 'Walk Score >80 = very walkable. Each 10 points = ~3-5% rent premium. Downtown Miami (95) vs Kendall (30). High walk score = less turnover, more stability.' },
+    { t: 'Crime Grade', c: 'High crime = lower tenant quality, high turnover, expensive insurance. Coral Gables A+ vs Liberty City D = 30-40% difference in tenant quality. Note: Overtown improving (-80% homicides in decade).' },
+    { t: 'Median Income', c: 'Income = rent ceiling (30% rule). Little Havana ($32K) → max ~$1,000/month. Coral Gables ($110K) → max ~$3,300/month. Buy where income supports the rent you need.' },
+    { t: 'Development Pipeline', c: 'If pipeline >5% of existing inventory = oversupply risk. Red flag: Downtown 8,000+ units. Green flag: Little Havana 400 units. Heavy pipeline = downward rent pressure.' }
   ];
 
   let html = '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1rem;">';
