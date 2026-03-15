@@ -1993,45 +1993,7 @@
     </script>
 </head>
 <body class="professional-tier">
-<div id="passwordGate" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#0a1628;z-index:99999;display:flex;align-items:center;justify-content:center;">
-  <div style="text-align:center;max-width:420px;padding:2rem;">
-    <div style="font-size:2.5rem;margin-bottom:1rem;">🔐</div>
-    <h2 style="font-family:'Playfair Display',serif;color:#fff;font-size:1.8rem;margin-bottom:0.5rem;">Acceso al Reporte</h2>
-    <p style="color:rgba(255,255,255,0.6);margin-bottom:2rem;font-family:'Inter',sans-serif;font-size:0.95rem;">Ingresa la contraseña que recibiste en tu correo de confirmación</p>
-    <input type="password" id="gatePassword" placeholder="Contraseña" style="width:100%;padding:1rem;border:2px solid #2d3e5f;background:#1a2744;color:#fff;border-radius:0.5rem;font-size:1rem;font-family:'Inter',sans-serif;text-align:center;letter-spacing:2px;outline:none;transition:border-color 0.3s;" onfocus="this.style.borderColor='#4cd37e'" onblur="this.style.borderColor='#2d3e5f'">
-    <button id="gateSubmit" style="width:100%;margin-top:1rem;padding:1rem;background:#4cd37e;color:#0a1628;border:none;border-radius:0.5rem;font-size:1rem;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.3s;" onmouseover="this.style.boxShadow='0 4px 15px rgba(76,211,126,0.4)'" onmouseout="this.style.boxShadow='none'">Acceder</button>
-    <p id="gateError" style="color:#ff6b6b;margin-top:1rem;font-size:0.9rem;font-family:'Inter',sans-serif;display:none;">Contraseña incorrecta. Revisa tu correo de confirmación.</p>
-    <p style="color:rgba(255,255,255,0.4);margin-top:2rem;font-size:0.8rem;font-family:'Inter',sans-serif;">¿No tienes contraseña? <a href="/" style="color:#4cd37e;text-decoration:none;">Comprar acceso</a></p>
-  </div>
-</div>
-<script>
-(function(){
-  const PASS = 'MIAMI247PRO';
-  const STORAGE_KEY = 'miami_access_pro';
-
-  if(sessionStorage.getItem(STORAGE_KEY) === 'granted') {
-    document.getElementById('passwordGate').style.display = 'none';
-    return;
-  }
-
-  function tryAccess() {
-    const input = document.getElementById('gatePassword');
-    if(input.value.trim().toUpperCase() === PASS) {
-      sessionStorage.setItem(STORAGE_KEY, 'granted');
-      document.getElementById('passwordGate').style.display = 'none';
-    } else {
-      document.getElementById('gateError').style.display = 'block';
-      input.style.borderColor = '#ff6b6b';
-      setTimeout(() => { input.style.borderColor = '#2d3e5f'; }, 2000);
-    }
-  }
-
-  document.getElementById('gateSubmit').addEventListener('click', tryAccess);
-  document.getElementById('gatePassword').addEventListener('keydown', function(e) {
-    if(e.key === 'Enter') tryAccess();
-  });
-})();
-</script>
+<!-- Password gate removed — protection via secret URL only -->
     <!-- Professional Tier Banner -->
     <div class="professional-banner">
         <div class="professional-badge">ACCESO PROFESIONAL</div>
