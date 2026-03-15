@@ -24,13 +24,48 @@
             padding: 2rem;
             text-align: center;
             border-bottom: 1px solid #2d3e5f;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
         header h1 {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
             color: #fff;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0;
+            flex: 1;
+        }
+        
+        .language-toggle {
+            display: flex;
+            border: 2px solid #4cd37e;
+            border-radius: 2rem;
+            overflow: hidden;
+            margin-left: auto;
+        }
+
+        .language-toggle button {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: transparent;
+            color: #e0e7ff;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .language-toggle button.active {
+            background: #4cd37e;
+            color: #0a1628;
+            font-weight: 700;
+        }
+
+        .language-toggle button:hover:not(.active) {
+            opacity: 1;
+            background: rgba(76, 211, 126, 0.15);
         }
         
         .welcome-section {
@@ -419,19 +454,33 @@
             header h1 {
                 font-size: 1.8rem;
             }
+            
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .language-toggle {
+                margin-left: 0;
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>MiamiDade Intelligence — Tu Zona</h1>
+        <h1 data-i18n="pageTitle">MiamiDade Intelligence — Tu Zona</h1>
+        <div class="language-toggle">
+            <button class="lang-btn active" data-lang="es">🇪🇸 ES</button>
+            <button class="lang-btn" data-lang="en">🇺🇸 EN</button>
+        </div>
     </header>
     
     <div class="welcome-section">
-        <p>Gracias por tu compra. Selecciona la zona que quieres analizar:</p>
+        <p data-i18n="welcomeMessage">Gracias por tu compra. Selecciona la zona que quieres analizar:</p>
         <div class="selector-container">
             <select id="zoneSelector">
-                <option value="">-- Selecciona una zona --</option>
+                <option value="" data-i18n="selectZone">-- Selecciona una zona --</option>
             </select>
         </div>
     </div>
@@ -439,6 +488,206 @@
     <div id="reportContainer"></div>
 
 <script>
+// ===== INTERNATIONALIZATION SYSTEM =====
+let currentLang = 'es';
+
+const translations = {
+    es: {
+        pageTitle: 'MiamiDade Intelligence — Tu Zona',
+        welcomeMessage: 'Gracias por tu compra. Selecciona la zona que quieres analizar:',
+        selectZone: '-- Selecciona una zona --',
+        appreciation: 'Valorización',
+        fixedCosts: 'Costos Fijos',
+        demographics: 'Demografía',
+        schools: 'Escuelas',
+        infrastructure: 'Infraestructura',
+        investment: 'Inversión',
+        appreciation5yr: 'Apreciación (5 años)',
+        avgRent: 'Rent Promedio',
+        rentGrowth: 'Rent Growth',
+        capRate: 'Cap Rate',
+        rentByBedroom: 'Renta por Dormitorio',
+        priceRange: 'Rango de Precios',
+        minPrice: 'Precio Mínimo',
+        maxPrice: 'Precio Máximo',
+        rentTrend: 'Trend de Renta 2021-2025',
+        comparables: 'Comparables Recientes',
+        project: 'Proyecto',
+        pricePerUnit: 'Precio/Unit',
+        units: 'Unidades',
+        year: 'Año',
+        notes: 'Notas',
+        investmentThesis: 'Tesis de Inversión',
+        t12Breakdown: 'Desglose T-12 (12 Meses)',
+        taxes: 'Impuestos',
+        insurance: 'Seguros',
+        utilities: 'Servicios',
+        repairs: 'Reparaciones',
+        management: 'Administración',
+        payroll: 'Nómina',
+        reserves: 'Reservas',
+        totalOpEx: 'Total OpEx (mensual)',
+        millageRate: 'Millage Rate',
+        vsCountyAvg: 'vs. Promedio County',
+        taxPerUnit: 'Impuestos/Unit',
+        insurancePerUnit: 'Seguros/Unit',
+        femaZone: 'Zona FEMA',
+        riskLevel: 'Nivel de Riesgo',
+        population: 'Población',
+        medianIncome: 'Ingreso Mediano',
+        vacancy: 'Vacancia',
+        pipeline: 'Pipeline',
+        walkScore: 'Walk Score',
+        transitScore: 'Transit Score',
+        crimeGrade: 'Crime Grade',
+        numSchools: 'Schools',
+        topEmployers: 'Empleadores Principales',
+        amenities: 'Amenidades',
+        grades: 'Grados',
+        type: 'Tipo',
+        educationDetail: 'Detalle de Educación',
+        infrastructureDev: 'Desarrollo Infraestructura',
+        cost: 'Costo',
+        impact: 'Impacto',
+        assumptions: 'Supuestos (10 Unidades)',
+        pricePerUnitLabel: 'Precio por Unidad:',
+        downPayment: 'Enganche (25%):',
+        loanAmount: 'Monto Préstamo:',
+        interestRate: 'Tasa Interés:',
+        term: 'Plazo:',
+        monthlyPayment: 'Pago Mensual (1 unit):',
+        yearOneStatement: 'Estado de Resultado Año 1 (10 Units)',
+        rentalIncome: 'Ingresos (Renta):',
+        annualOpEx: 'OpEx Anual:',
+        noi: 'NOI:',
+        debtService: 'Debt Service:',
+        cfbt: 'CFBT:',
+        cashOnCash: 'Cash-on-Cash Return',
+        equityProjection: 'Proyección de Equity (5 Años)',
+        year: 'Año',
+        pricePerUnitCol: 'Precio/Unit',
+        appreciationYear: 'Apreciación Año',
+        equityBuilding: 'Equity Building',
+        totalValue: 'Valor Total',
+        signal: 'Señal',
+        futureScore: 'Future Score'
+    },
+    en: {
+        pageTitle: 'MiamiDade Intelligence — Your Zone',
+        welcomeMessage: 'Thank you for your purchase. Select the zone you want to analyze:',
+        selectZone: '-- Select a zone --',
+        appreciation: 'Appreciation',
+        fixedCosts: 'Fixed Costs',
+        demographics: 'Demographics',
+        schools: 'Schools',
+        infrastructure: 'Infrastructure',
+        investment: 'Investment',
+        appreciation5yr: 'Appreciation (5 years)',
+        avgRent: 'Average Rent',
+        rentGrowth: 'Rent Growth',
+        capRate: 'Cap Rate',
+        rentByBedroom: 'Rent by Bedroom',
+        priceRange: 'Price Range',
+        minPrice: 'Minimum Price',
+        maxPrice: 'Maximum Price',
+        rentTrend: 'Rent Trend 2021-2025',
+        comparables: 'Recent Comparables',
+        project: 'Project',
+        pricePerUnit: 'Price/Unit',
+        units: 'Units',
+        year: 'Year',
+        notes: 'Notes',
+        investmentThesis: 'Investment Thesis',
+        t12Breakdown: 'T-12 Breakdown (12 Months)',
+        taxes: 'Taxes',
+        insurance: 'Insurance',
+        utilities: 'Utilities',
+        repairs: 'Repairs',
+        management: 'Management',
+        payroll: 'Payroll',
+        reserves: 'Reserves',
+        totalOpEx: 'Total OpEx (monthly)',
+        millageRate: 'Millage Rate',
+        vsCountyAvg: 'vs. County Average',
+        taxPerUnit: 'Taxes/Unit',
+        insurancePerUnit: 'Insurance/Unit',
+        femaZone: 'FEMA Zone',
+        riskLevel: 'Risk Level',
+        population: 'Population',
+        medianIncome: 'Median Income',
+        vacancy: 'Vacancy',
+        pipeline: 'Pipeline',
+        walkScore: 'Walk Score',
+        transitScore: 'Transit Score',
+        crimeGrade: 'Crime Grade',
+        numSchools: 'Schools',
+        topEmployers: 'Top Employers',
+        amenities: 'Amenities',
+        grades: 'Grades',
+        type: 'Type',
+        educationDetail: 'Education Detail',
+        infrastructureDev: 'Infrastructure Development',
+        cost: 'Cost',
+        impact: 'Impact',
+        assumptions: 'Assumptions (10 Units)',
+        pricePerUnitLabel: 'Price per Unit:',
+        downPayment: 'Down Payment (25%):',
+        loanAmount: 'Loan Amount:',
+        interestRate: 'Interest Rate:',
+        term: 'Term:',
+        monthlyPayment: 'Monthly Payment (1 unit):',
+        yearOneStatement: 'Year 1 Income Statement (10 Units)',
+        rentalIncome: 'Rental Income:',
+        annualOpEx: 'Annual OpEx:',
+        noi: 'NOI:',
+        debtService: 'Debt Service:',
+        cfbt: 'CFBT:',
+        cashOnCash: 'Cash-on-Cash Return',
+        equityProjection: 'Equity Projection (5 Years)',
+        year: 'Year',
+        pricePerUnitCol: 'Price/Unit',
+        appreciationYear: 'Year Appreciation',
+        equityBuilding: 'Equity Building',
+        totalValue: 'Total Value',
+        signal: 'Signal',
+        futureScore: 'Future Score'
+    }
+};
+
+function t(key) {
+    return translations[currentLang][key] || translations['es'][key] || key;
+}
+
+function setLanguage(lang) {
+    currentLang = lang;
+    
+    // Update all data-i18n elements
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        el.textContent = t(key);
+    });
+    
+    // Update select option
+    const selectZoneOption = document.querySelector('option[data-i18n="selectZone"]');
+    if (selectZoneOption) {
+        selectZoneOption.textContent = t('selectZone');
+    }
+    
+    // Update language toggle buttons
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
+    
+    // Re-render current zone if one is selected
+    const zoneSelector = document.getElementById('zoneSelector');
+    if (zoneSelector.value) {
+        const event = new Event('change');
+        zoneSelector.dispatchEvent(event);
+    }
+}
+
+// ===== ZONE DATA =====
 const zoneData = [
     { id: 1, name: "Brickell / Financial District", type: "Urban Core", signal: "HOLD", aprec5yr: 85, rentAvg: 3585, rentGrowth: 2.1, capRateMin: 4.5, capRateMax: 4.8, priceMin: 380, priceMax: 450, millage: 21.08, taxPerUnit: 5200, flood: "AE (Moderado)", insurance: 1800, insuranceRisk: "HIGH", opex: 14500, opexRatio: 32, population: 35000, income: 143114, walk: 91, transit: 89, crime: "B+", schools: "A-", pipeline: 517, vacancy: 7.5, employers: "Microsoft LATAM, JP Morgan, Citadel, hedge funds, fintech startups", amenities: "Brickell City Centre, waterfront, MetroMover, restaurants", thesis: "Rentas top del condado pero cap rate comprimido limita yield. Supply limitado protege contra oversupply. Ideal para capital preservation, no para cash flow agresivo.", futureScore: 52 },
     { id: 2, name: "Downtown Miami", type: "Urban Core", signal: "CAUTION", aprec5yr: 75, rentAvg: 3286, rentGrowth: 0.5, capRateMin: 4.6, capRateMax: 5.0, priceMin: 320, priceMax: 400, millage: 21.08, taxPerUnit: 4800, flood: "AE (Alto)", insurance: 2200, insuranceRisk: "VERY HIGH", opex: 15000, opexRatio: 38, population: 100000, income: 62000, walk: 95, transit: 92, crime: "C+", schools: "B-", pipeline: 8000, vacancy: 9.0, employers: "Miami WorldCenter, Brightline, cruise lines, hospitality", amenities: "Bayside, AAA, Brightline Station, Perez Art Museum", thesis: "OVERSUPPLY MASIVO. 8,000+ unidades entrando saturarán el mercado. Vacancia proyectada >11%. Solo considerar si price/unit cae 20%+ en 2026-2027.", futureScore: 40 },
@@ -483,56 +732,52 @@ const enhancedZoneData = [
   { id: 6, name: "Little Havana", schools: [{ name: "Citrus Grove Elementary School", grade: "K-5", type: "Elementary" }, { name: "Doral Academy", grade: "6-12", type: "Middle/High" }, { name: "Felix Varela Elementary", grade: "K-5", type: "Elementary" }], rents: { studio: 1100, br1: 1450, br2: 1800, br3: 2200 }, comps: [{ name: "Wynwood Edges", pricePerUnit: 220000, units: 85, year: 2024, notes: "Conversion project near district edge" }, { name: "Little Havana Residences", pricePerUnit: 210000, units: 60, year: 2023, notes: "Mixed-income development" }, { name: "Armory Arts Lofts", pricePerUnit: 215000, units: 72, year: 2024, notes: "Arts-focused conversion" }], infrastructure: [{ name: "Underline Phase 2 Extension", cost: 450000000, status: "Planned", impact: "Transit connectivity and economic development catalyst" }, { name: "Little Havana Cultural District Improvements", cost: 75000000, status: "Under Construction", impact: "Street improvements, public spaces, cultural venues" }], t12: { taxes: 520, insurance: 260, utilities: 130, rm: 280, management: 200, payroll: 140, reserves: 100, total: 1630 }, topSchoolDetail: "Little Havana has solid performing elementary schools with strong community support and bilingual education programs. Charter schools like Doral Academy offer choice with specialized STEM and advanced academics curriculum.", infraDetail: "The planned Underline extension through Little Havana will drive significant economic revitalization and real estate appreciation. The community's cultural district initiative attracts investment, tourism, and mixed-use development opportunities.", rentTrend: [100, 114, 132, 145, 156] }
 ];
 
+// ===== UTILITY FUNCTIONS =====
 function fmt(num) {
-    if (num == null) return '-';
-    if (num >= 1000000) return '$' + (num / 1000000).toFixed(1) + 'M';
-    if (num >= 1000) return '$' + (num / 1000).toFixed(0) + 'K';
-    return '$' + Math.round(num);
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(num);
 }
 
-function hbar(label, value, max, unit = '') {
-    const pct = (value / max) * 100;
-    return `<div class="bar-row">
-        <div class="bar-label">${label}</div>
-        <div class="bar-bg">
-            <div class="bar-fill" style="width: ${pct}%;">${value}${unit}</div>
-        </div>
-    </div>`;
+function hbar(label, val, max) {
+    const pct = (val / max) * 100;
+    return `<div class="bar-row"><div class="bar-label">${label}</div><div class="bar-bg"><div class="bar-fill" style="width: ${pct}%;">${fmt(val)}</div></div></div>`;
 }
 
 function calcMonthlyPmt(principal, annualRate, years) {
     const monthlyRate = annualRate / 12;
-    const n = years * 12;
-    if (monthlyRate === 0) return principal / n;
-    return (principal * (monthlyRate * Math.pow(1 + monthlyRate, n))) / (Math.pow(1 + monthlyRate, n) - 1);
+    const numPayments = years * 12;
+    if (monthlyRate === 0) return principal / numPayments;
+    return (principal * monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / (Math.pow(1 + monthlyRate, numPayments) - 1);
 }
 
 function getWalkScoreColor(score) {
     if (score >= 90) return '#4ade80';
-    if (score >= 70) return '#fbbf24';
-    if (score >= 50) return '#fb923c';
+    if (score >= 70) return '#a3e635';
+    if (score >= 50) return '#fbbf24';
+    if (score >= 25) return '#f97316';
     return '#ef4444';
 }
 
 function getCrimeColor(grade) {
-    if (grade.includes('A')) return '#4ade80';
-    if (grade.includes('B')) return '#fbbf24';
-    if (grade.includes('C')) return '#fb923c';
-    return '#ef4444';
+    switch(grade) {
+        case 'A': return '#4ade80';
+        case 'B': return '#a3e635';
+        case 'C': return '#fbbf24';
+        case 'D': return '#f97316';
+        case 'F': return '#ef4444';
+        default: return '#b0b0b0';
+    }
 }
 
+// ===== RENDER FUNCTIONS =====
 function renderValorizacion(zone, enhanced) {
-    const avgRent = enhanced.rents ? Object.values(enhanced.rents).reduce((a,b) => a+b) / Object.keys(enhanced.rents).length : zone.rentAvg;
-    const capRateMid = (zone.capRateMin + zone.capRateMax) / 2;
-    
     let html = `<div class="stat-grid">
-        <div class="stat-card"><strong>Apreciación (5 años)</strong><div class="value">${zone.aprec5yr}%</div></div>
-        <div class="stat-card"><strong>Rent Promedio</strong><div class="value">${fmt(avgRent)}</div></div>
-        <div class="stat-card"><strong>Rent Growth</strong><div class="value">${zone.rentGrowth}%</div></div>
-        <div class="stat-card"><strong>Cap Rate</strong><div class="value">${zone.capRateMin}% - ${zone.capRateMax}%</div></div>
+        <div class="stat-card"><strong>${t('appreciation5yr')}</strong><div class="value">${zone.aprec5yr}%</div></div>
+        <div class="stat-card"><strong>${t('avgRent')}</strong><div class="value">${fmt(zone.rentAvg)}</div></div>
+        <div class="stat-card"><strong>${t('rentGrowth')}</strong><div class="value">${zone.rentGrowth}%</div></div>
+        <div class="stat-card"><strong>${t('capRate')}</strong><div class="value">${zone.capRateMin}% - ${zone.capRateMax}%</div></div>
     </div>`;
     
-    html += `<h3 style="margin: 2rem 0 1rem; color: #fff;">Renta por Dormitorio</h3>`;
+    html += `<h3 style="margin: 2rem 0 1rem; color: #fff;">${t('rentByBedroom')}</h3>`;
     if (enhanced.rents) {
         const maxRent = Math.max(...Object.values(enhanced.rents));
         html += hbar('Studio', enhanced.rents.studio || 0, maxRent);
@@ -541,14 +786,14 @@ function renderValorizacion(zone, enhanced) {
         html += hbar('3 BR', enhanced.rents.br3 || 0, maxRent);
     }
     
-    html += `<h3 style="margin: 2rem 0 1rem; color: #fff;">Rango de Precios</h3>
+    html += `<h3 style="margin: 2rem 0 1rem; color: #fff;">${t('priceRange')}</h3>
     <div class="stat-grid">
-        <div class="stat-card"><strong>Precio Mínimo</strong><div class="value">${fmt(zone.priceMin * 1000)}</div></div>
-        <div class="stat-card"><strong>Precio Máximo</strong><div class="value">${fmt(zone.priceMax * 1000)}</div></div>
+        <div class="stat-card"><strong>${t('minPrice')}</strong><div class="value">${fmt(zone.priceMin * 1000)}</div></div>
+        <div class="stat-card"><strong>${t('maxPrice')}</strong><div class="value">${fmt(zone.priceMax * 1000)}</div></div>
     </div>`;
     
     if (enhanced.rentTrend) {
-        html += `<h3 style="margin: 2rem 0 1rem; color: #fff;">Trend de Renta 2021-2025</h3>
+        html += `<h3 style="margin: 2rem 0 1rem; color: #fff;">${t('rentTrend')}</h3>
         <div class="bar-chart">`;
         const years = ['2021', '2022', '2023', '2024', '2025'];
         const maxTrend = Math.max(...enhanced.rentTrend);
@@ -559,9 +804,9 @@ function renderValorizacion(zone, enhanced) {
     }
     
     if (enhanced.comps && enhanced.comps.length) {
-        html += `<h3 style="margin: 2rem 0 1rem; color: #fff;">Comparables Recientes</h3>
+        html += `<h3 style="margin: 2rem 0 1rem; color: #fff;">${t('comparables')}</h3>
         <div class="table-responsive"><table>
-            <thead><tr><th>Proyecto</th><th>Precio/Unit</th><th>Unidades</th><th>Año</th><th>Notas</th></tr></thead>
+            <thead><tr><th>${t('project')}</th><th>${t('pricePerUnit')}</th><th>${t('units')}</th><th>${t('year')}</th><th>${t('notes')}</th></tr></thead>
             <tbody>`;
         enhanced.comps.forEach(c => {
             html += `<tr><td>${c.name}</td><td>${fmt(c.pricePerUnit)}</td><td>${c.units}</td><td>${c.year}</td><td>${c.notes}</td></tr>`;
@@ -569,45 +814,45 @@ function renderValorizacion(zone, enhanced) {
         html += `</tbody></table></div>`;
     }
     
-    html += `<h3 style="margin: 2rem 0 1rem; color: #fff;">Tesis de Inversión</h3>
+    html += `<h3 style="margin: 2rem 0 1rem; color: #fff;">${t('investmentThesis')}</h3>
     <div class="thesis-box"><p>${zone.thesis}</p></div>`;
     
     return html;
 }
 
 function renderCostosFixed(zone, enhanced) {
-    let html = `<h3 style="margin: 0 0 1rem; color: #fff;">Desglose T-12 (12 Meses)</h3>`;
+    let html = `<h3 style="margin: 0 0 1rem; color: #fff;">${t('t12Breakdown')}</h3>`;
     
     if (enhanced.t12) {
         const t12 = enhanced.t12;
         const maxItem = Math.max(...Object.values(t12).filter(v => typeof v === 'number' && v !== t12.total));
         
         html += `<div class="bar-chart">`;
-        html += hbar('Impuestos', t12.taxes, maxItem);
-        html += hbar('Seguros', t12.insurance, maxItem);
-        html += hbar('Servicios', t12.utilities, maxItem);
-        html += hbar('Reparaciones', t12.rm, maxItem);
-        html += hbar('Administración', t12.management, maxItem);
-        html += hbar('Nómina', t12.payroll, maxItem);
-        html += hbar('Reservas', t12.reserves, maxItem);
+        html += hbar(t('taxes'), t12.taxes, maxItem);
+        html += hbar(t('insurance'), t12.insurance, maxItem);
+        html += hbar(t('utilities'), t12.utilities, maxItem);
+        html += hbar(t('repairs'), t12.rm, maxItem);
+        html += hbar(t('management'), t12.management, maxItem);
+        html += hbar(t('payroll'), t12.payroll, maxItem);
+        html += hbar(t('reserves'), t12.reserves, maxItem);
         html += `</div>`;
         
         html += `<div class="stat-grid">
-            <div class="stat-card"><strong>Total OpEx (mensual)</strong><div class="value">${fmt(t12.total)}</div></div>
-            <div class="stat-card"><strong>Millage Rate</strong><div class="value">${zone.millage.toFixed(2)}%</div></div>
-            <div class="stat-card"><strong>vs. Promedio County</strong><div class="value">${(zone.millage - 21.08).toFixed(2)}%</div></div>
+            <div class="stat-card"><strong>${t('totalOpEx')}</strong><div class="value">${fmt(t12.total)}</div></div>
+            <div class="stat-card"><strong>${t('millageRate')}</strong><div class="value">${zone.millage.toFixed(2)}%</div></div>
+            <div class="stat-card"><strong>${t('vsCountyAvg')}</strong><div class="value">${(zone.millage - 21.08).toFixed(2)}%</div></div>
         </div>`;
         
         html += `<div class="stat-grid">
-            <div class="stat-card"><strong>Impuestos/Unit</strong><div class="value">${fmt(zone.taxPerUnit)}</div></div>
-            <div class="stat-card"><strong>Seguros/Unit</strong><div class="value">${fmt(zone.insurance)}</div></div>
-            <div class="stat-card"><strong>Zona FEMA</strong><div class="value">${zone.flood}</div></div>
+            <div class="stat-card"><strong>${t('taxPerUnit')}</strong><div class="value">${fmt(zone.taxPerUnit)}</div></div>
+            <div class="stat-card"><strong>${t('insurancePerUnit')}</strong><div class="value">${fmt(zone.insurance)}</div></div>
+            <div class="stat-card"><strong>${t('femaZone')}</strong><div class="value">${zone.flood}</div></div>
         </div>`;
     }
     
     const riskColor = zone.insuranceRisk === 'LOW' ? '#4ade80' : zone.insuranceRisk === 'MEDIUM' ? '#fbbf24' : '#ef4444';
     html += `<div style="margin-top: 2rem; padding: 1.5rem; background: #232f47; border-left: 3px solid ${riskColor}; border-radius: 4px;">
-        <strong style="color: ${riskColor};">Nivel de Riesgo: ${zone.insuranceRisk}</strong>
+        <strong style="color: ${riskColor};">${t('riskLevel')}: ${zone.insuranceRisk}</strong>
         <p style="color: #b0b0b0; margin-top: 0.5rem; font-size: 0.9rem;">${zone.flood}</p>
     </div>`;
     
@@ -619,27 +864,27 @@ function renderDemografia(zone) {
     const crimeColor = getCrimeColor(zone.crime);
     
     let html = `<div class="stat-grid">
-        <div class="stat-card"><strong>Población</strong><div class="value">${(zone.population / 1000).toFixed(0)}K</div></div>
-        <div class="stat-card"><strong>Ingreso Mediano</strong><div class="value">${fmt(zone.income)}</div></div>
-        <div class="stat-card"><strong>Vacancia</strong><div class="value">${zone.vacancy}%</div></div>
-        <div class="stat-card"><strong>Pipeline</strong><div class="value">${zone.pipeline}</div></div>
+        <div class="stat-card"><strong>${t('population')}</strong><div class="value">${(zone.population / 1000).toFixed(0)}K</div></div>
+        <div class="stat-card"><strong>${t('medianIncome')}</strong><div class="value">${fmt(zone.income)}</div></div>
+        <div class="stat-card"><strong>${t('vacancy')}</strong><div class="value">${zone.vacancy}%</div></div>
+        <div class="stat-card"><strong>${t('pipeline')}</strong><div class="value">${zone.pipeline}</div></div>
     </div>`;
     
     html += `<div class="stat-grid">
-        <div class="stat-card"><strong>Walk Score</strong><div class="value" style="color: ${walkColor};">${zone.walk}</div></div>
-        <div class="stat-card"><strong>Transit Score</strong><div class="value" style="color: #a78bfa;">${zone.transit}</div></div>
-        <div class="stat-card"><strong>Crime Grade</strong><div class="value" style="color: ${crimeColor};">${zone.crime}</div></div>
-        <div class="stat-card"><strong>Schools</strong><div class="value">${zone.schools}</div></div>
+        <div class="stat-card"><strong>${t('walkScore')}</strong><div class="value" style="color: ${walkColor};">${zone.walk}</div></div>
+        <div class="stat-card"><strong>${t('transitScore')}</strong><div class="value" style="color: #a78bfa;">${zone.transit}</div></div>
+        <div class="stat-card"><strong>${t('crimeGrade')}</strong><div class="value" style="color: ${crimeColor};">${zone.crime}</div></div>
+        <div class="stat-card"><strong>${t('numSchools')}</strong><div class="value">${zone.schools}</div></div>
     </div>`;
     
-    html += `<h3 style="margin: 2rem 0 1rem; color: #fff;">Empleadores Principales</h3>
+    html += `<h3 style="margin: 2rem 0 1rem; color: #fff;">${t('topEmployers')}</h3>
     <div class="tags">`;
     zone.employers.split(', ').forEach(emp => {
         html += `<span class="tag">${emp}</span>`;
     });
     html += `</div>`;
     
-    html += `<h3 style="margin: 2rem 0 1rem; color: #fff;">Amenidades</h3>
+    html += `<h3 style="margin: 2rem 0 1rem; color: #fff;">${t('amenities')}</h3>
     <div class="tags">`;
     zone.amenities.split(', ').forEach(am => {
         html += `<span class="tag">${am}</span>`;
@@ -656,8 +901,8 @@ function renderEscuelas(zone, enhanced) {
         enhanced.schools.forEach(school => {
             html += `<div class="school-card">
                 <h4>${school.name}</h4>
-                <p><strong>Grados:</strong> ${school.grade}</p>
-                <p><strong>Tipo:</strong> ${school.type}</p>
+                <p><strong>${t('grades')}:</strong> ${school.grade}</p>
+                <p><strong>${t('type')}:</strong> ${school.type}</p>
             </div>`;
         });
     }
@@ -665,7 +910,7 @@ function renderEscuelas(zone, enhanced) {
     html += `</div>`;
     
     if (enhanced.topSchoolDetail) {
-        html += `<div class="thesis-box"><h4>Detalle de Educación</h4><p>${enhanced.topSchoolDetail}</p></div>`;
+        html += `<div class="thesis-box"><h4>${t('educationDetail')}</h4><p>${enhanced.topSchoolDetail}</p></div>`;
     }
     
     return html;
@@ -681,15 +926,15 @@ function renderInfraestructura(zone, enhanced) {
             html += `<div class="infra-card">
                 <h4>${proj.name}</h4>
                 <div class="status ${statusClass}">${proj.status}</div>
-                <p><strong>Costo:</strong> ${fmt(proj.cost)}</p>
-                <p><strong>Impacto:</strong> ${proj.impact}</p>
+                <p><strong>${t('cost')}:</strong> ${fmt(proj.cost)}</p>
+                <p><strong>${t('impact')}:</strong> ${proj.impact}</p>
             </div>`;
         });
         html += `</div>`;
     }
     
     if (enhanced.infraDetail) {
-        html += `<div class="thesis-box"><h4>Desarrollo Infraestructura</h4><p>${enhanced.infraDetail}</p></div>`;
+        html += `<div class="thesis-box"><h4>${t('infrastructureDev')}</h4><p>${enhanced.infraDetail}</p></div>`;
     }
     
     return html;
@@ -714,33 +959,33 @@ function renderInversion(zone) {
     
     let html = `<div class="investment-grid">
         <div class="assumptions-box">
-            <h4>Supuestos (10 Unidades)</h4>
-            <div class="assumption-row"><strong>Precio por Unidad:</strong> <span class="value">${fmt(unitPrice)}</span></div>
-            <div class="assumption-row"><strong>Enganche (25%):</strong> <span class="value">${fmt(downPayment)}</span></div>
-            <div class="assumption-row"><strong>Monto Préstamo:</strong> <span class="value">${fmt(loanAmount)}</span></div>
-            <div class="assumption-row"><strong>Tasa Interés:</strong> <span class="value">${(interestRate * 100).toFixed(2)}%</span></div>
-            <div class="assumption-row"><strong>Plazo:</strong> <span class="value">${loanTerm} años</span></div>
-            <div class="assumption-row"><strong>Pago Mensual (1 unit):</strong> <span class="value">${fmt(monthlyPayment)}</span></div>
+            <h4>${t('assumptions')}</h4>
+            <div class="assumption-row"><strong>${t('pricePerUnitLabel')}</strong> <span class="value">${fmt(unitPrice)}</span></div>
+            <div class="assumption-row"><strong>${t('downPayment')}</strong> <span class="value">${fmt(downPayment)}</span></div>
+            <div class="assumption-row"><strong>${t('loanAmount')}</strong> <span class="value">${fmt(loanAmount)}</span></div>
+            <div class="assumption-row"><strong>${t('interestRate')}</strong> <span class="value">${(interestRate * 100).toFixed(2)}%</span></div>
+            <div class="assumption-row"><strong>${t('term')}</strong> <span class="value">${loanTerm} ${t('year') === 'Año' ? 'años' : 'years'}</span></div>
+            <div class="assumption-row"><strong>${t('monthlyPayment')}</strong> <span class="value">${fmt(monthlyPayment)}</span></div>
         </div>
         
         <div class="assumptions-box">
-            <h4>Estado de Resultado Año 1 (10 Units)</h4>
-            <div class="assumption-row"><strong>Ingresos (Renta):</strong> <span class="value">${fmt(monthlyRent * 12 * 10)}</span></div>
-            <div class="assumption-row"><strong>OpEx Anual:</strong> <span class="value">-${fmt(zone.opex * 10)}</span></div>
-            <div class="assumption-row"><strong>NOI:</strong> <span class="value">${fmt(noi * 12)}</span></div>
-            <div class="assumption-row"><strong>Debt Service:</strong> <span class="value">-${fmt(annualDebtService * 10)}</span></div>
-            <div class="assumption-row" style="border-top: 2px solid #ff6b35; padding-top: 0.8rem; margin-top: 0.8rem;"><strong>CFBT:</strong> <span class="value">${fmt(cfbt * 10)}</span></div>
+            <h4>${t('yearOneStatement')}</h4>
+            <div class="assumption-row"><strong>${t('rentalIncome')}:</strong> <span class="value">${fmt(monthlyRent * 12 * 10)}</span></div>
+            <div class="assumption-row"><strong>${t('annualOpEx')}:</strong> <span class="value">-${fmt(zone.opex * 10)}</span></div>
+            <div class="assumption-row"><strong>${t('noi')}:</strong> <span class="value">${fmt(noi * 12)}</span></div>
+            <div class="assumption-row"><strong>${t('debtService')}:</strong> <span class="value">-${fmt(annualDebtService * 10)}</span></div>
+            <div class="assumption-row" style="border-top: 2px solid #ff6b35; padding-top: 0.8rem; margin-top: 0.8rem;"><strong>${t('cfbt')}:</strong> <span class="value">${fmt(cfbt * 10)}</span></div>
         </div>
     </div>`;
     
     html += `<div class="stat-grid">
-        <div class="stat-card"><strong>Cash-on-Cash Return</strong><div class="value">${cashOnCash.toFixed(1)}%</div></div>
-        <div class="stat-card"><strong>Cap Rate</strong><div class="value">${capRate.toFixed(2)}%</div></div>
+        <div class="stat-card"><strong>${t('cashOnCash')}</strong><div class="value">${cashOnCash.toFixed(1)}%</div></div>
+        <div class="stat-card"><strong>${t('capRate')}</strong><div class="value">${capRate.toFixed(2)}%</div></div>
     </div>`;
     
-    html += `<h3 style="margin: 2rem 0 1rem; color: #fff;">Proyección de Equity (5 Años)</h3>
+    html += `<h3 style="margin: 2rem 0 1rem; color: #fff;">${t('equityProjection')}</h3>
     <div class="table-responsive"><table>
-        <thead><tr><th>Año</th><th>Precio/Unit</th><th>Apreciación Año</th><th>Equity Building</th><th>Valor Total</th></tr></thead>
+        <thead><tr><th>${t('year')}</th><th>${t('pricePerUnitCol')}</th><th>${t('appreciationYear')}</th><th>${t('equityBuilding')}</th><th>${t('totalValue')}</th></tr></thead>
         <tbody>`;
     
     for (let y = 1; y <= 5; y++) {
@@ -749,7 +994,7 @@ function renderInversion(zone) {
         const yearDebtPaydown = (monthlyPayment - (loanAmount * (interestRate / 12))) * 12 * y;
         const totalEquity = (downPayment + yearDebtPaydown + (yearPrice - unitPrice) * 10);
         html += `<tr>
-            <td>Año ${y}</td>
+            <td>${t('year')} ${y}</td>
             <td>${fmt(yearPrice)}</td>
             <td>${fmt((yearPrice - unitPrice) * 10)}</td>
             <td>${fmt(yearDebtPaydown * 10)}</td>
@@ -762,6 +1007,7 @@ function renderInversion(zone) {
     return html;
 }
 
+// ===== EVENT HANDLERS =====
 const zoneSelector = document.getElementById('zoneSelector');
 const reportContainer = document.getElementById('reportContainer');
 
@@ -789,19 +1035,19 @@ zoneSelector.addEventListener('change', (e) => {
         <div class="zone-header">
             <h2>${zone.name}</h2>
             <div class="zone-meta">
-                <div><strong>${zone.signal}</strong><div style="font-size: 0.85rem; color: #b0b0b0;">Señal</div></div>
-                <div><strong>${zone.aprec5yr}%</strong><div style="font-size: 0.85rem; color: #b0b0b0;">Apreciación 5yr</div></div>
-                <div><strong>${zone.futureScore}</strong><div style="font-size: 0.85rem; color: #b0b0b0;">Future Score</div></div>
+                <div><strong>${zone.signal}</strong><div style="font-size: 0.85rem; color: #b0b0b0;">${t('signal')}</div></div>
+                <div><strong>${zone.aprec5yr}%</strong><div style="font-size: 0.85rem; color: #b0b0b0;">${t('appreciation5yr')}</div></div>
+                <div><strong>${zone.futureScore}</strong><div style="font-size: 0.85rem; color: #b0b0b0;">${t('futureScore')}</div></div>
             </div>
         </div>
         
         <div class="tabs">
-            <button class="tab-btn active" data-tab="valoriz">Valorización</button>
-            <button class="tab-btn" data-tab="costos">Costos Fijos</button>
-            <button class="tab-btn" data-tab="demo">Demografía</button>
-            <button class="tab-btn" data-tab="escuelas">Escuelas</button>
-            <button class="tab-btn" data-tab="infra">Infraestructura</button>
-            <button class="tab-btn" data-tab="inversion">Inversión</button>
+            <button class="tab-btn active" data-tab="valoriz">${t('appreciation')}</button>
+            <button class="tab-btn" data-tab="costos">${t('fixedCosts')}</button>
+            <button class="tab-btn" data-tab="demo">${t('demographics')}</button>
+            <button class="tab-btn" data-tab="escuelas">${t('schools')}</button>
+            <button class="tab-btn" data-tab="infra">${t('infrastructure')}</button>
+            <button class="tab-btn" data-tab="inversion">${t('investment')}</button>
         </div>
         
         <div id="valoriz" class="tab-content active">${renderValorizacion(zone, enhanced)}</div>
@@ -821,6 +1067,13 @@ zoneSelector.addEventListener('change', (e) => {
             e.target.classList.add('active');
             document.getElementById(e.target.dataset.tab).classList.add('active');
         });
+    });
+});
+
+// Language toggle
+document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        setLanguage(e.target.getAttribute('data-lang'));
     });
 });
 </script>

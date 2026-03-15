@@ -1716,18 +1716,119 @@
             }
         }
     </style>
+    <script>
+        let currentLang = 'es';
+        const translations = {
+            es: {
+                investmentZones: 'Zonas de Inversión',
+                investmentSignal: 'Señal de Inversión',
+                budgetRange: 'Rango de Presupuesto',
+                searchZone: 'Buscar zona por nombre...',
+                all: 'Todos',
+                comparison: 'Comparación',
+                rankings: 'Rankings',
+                buyersGuide: 'Guía del Comprador',
+                methodology: 'Metodología',
+                appreciation: 'Valorización',
+                fixedCosts: 'Costos Fijos',
+                demographics: 'Demografía',
+                schools: 'Escuelas',
+                infrastructure: 'Infraestructura',
+                investment: 'Inversión',
+                close: 'Cerrar',
+                selectZone: 'Selecciona una zona'
+            },
+            en: {
+                investmentZones: 'Investment Zones',
+                investmentSignal: 'Investment Signal',
+                budgetRange: 'Budget Range',
+                searchZone: 'Search zone by name...',
+                all: 'All',
+                comparison: 'Comparison',
+                rankings: 'Rankings',
+                buyersGuide: 'Buyers Guide',
+                methodology: 'Methodology',
+                appreciation: 'Appreciation',
+                fixedCosts: 'Fixed Costs',
+                demographics: 'Demographics',
+                schools: 'Schools',
+                infrastructure: 'Infrastructure',
+                investment: 'Investment',
+                close: 'Close',
+                selectZone: 'Select a zone'
+            }
+        };
+        function t(key) {
+            return translations[currentLang][key] || translations.es[key] || key;
+        }
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (el.tagName === 'INPUT') {
+                    el.placeholder = t(key);
+                } else {
+                    el.textContent = t(key);
+                }
+            });
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`.lang-btn[data-lang="${lang}"]`)?.classList.add('active');
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    setLanguage(e.target.getAttribute('data-lang'));
+                });
+            });
+        });
+    </script>
 </head>
 <body>
     <!-- Navigation -->
     <nav>
         <div class="nav-logo">MiamiDade Intelligence</div>
         <ul class="nav-links">
-            <li><a href="#zones">Investment Zones</a></li>
-            <li><a href="#comparison">Comparison</a></li>
+            <li><a href="#zones"><span data-i18n="investmentZones">Investment Zones</span></a></li>
+            <li><a href="#comparison"><span data-i18n="comparison">Comparison</span></a></li>
             <li><a href="#ranking">Rankings</a></li>
-            <li><a href="#guide">Buyer's Guide</a></li>
+            <li><a href="#guide"><span data-i18n="buyersGuide">Buyer\'s Guide</span></a></li>
             <li><a href="#methodology">Methodology</a></li>
         </ul>
+        <div class="language-toggle">
+            <button class="lang-btn active" data-lang="es">🇪🇸 ES</button>
+            <button class="lang-btn" data-lang="en">🇺🇸 EN</button>
+        </div>
+        <style>
+            .language-toggle {
+                display: flex;
+                border: 2px solid #4cd37e;
+                border-radius: 2rem;
+                overflow: hidden;
+                margin-left: auto;
+            }
+            .language-toggle .lang-btn {
+                padding: 0.5rem 1rem;
+                border: none;
+                background: transparent;
+                color: #e0e7ff;
+                cursor: pointer;
+                font-weight: 600;
+                font-size: 0.9rem;
+                transition: all 0.3s;
+                font-family: 'Inter', sans-serif;
+            }
+            .language-toggle .lang-btn.active {
+                background: #4cd37e;
+                color: #0a1628;
+                font-weight: 700;
+            }
+            .language-toggle .lang-btn:hover:not(.active) {
+                opacity: 1;
+                background: rgba(76, 211, 126, 0.15);
+            }
+        </style>
     </nav>
 
     <!-- Hero Section -->
@@ -1788,7 +1889,7 @@
 
         <!-- Search -->
         <div class="filter-row">
-            <input type="text" class="search-input" id="zoneSearch" placeholder="Search zone by name...">
+            <input type="text" class="search-input" id="zoneSearch" placeholder="Search zone by name..." data-i18n="searchZone">
         </div>
 
         <!-- Zone Cards Grid -->

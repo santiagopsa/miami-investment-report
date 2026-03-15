@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miami-Dade Investment Intelligence | Reporte Multifamily Completo</title>
+    <title data-i18n="page_title">Miami-Dade Investment Intelligence | Reporte Multifamily Completo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -65,14 +65,15 @@
         .nav-logo {
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-green);
-            letter-spacing: 0.5px;
+            font-weight: 600;
+            color: var(--white);
+            text-decoration: none;
         }
 
         .nav-links {
             display: flex;
             gap: 2rem;
+            align-items: center;
             list-style: none;
         }
 
@@ -80,7 +81,6 @@
             color: var(--white);
             text-decoration: none;
             font-size: 0.95rem;
-            font-weight: 500;
             transition: color 0.3s;
         }
 
@@ -88,128 +88,151 @@
             color: var(--accent-green);
         }
 
-        .nav-cta {
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .lang-toggle {
+            background: transparent;
+            border: 2px solid var(--accent-green);
+            color: var(--white);
+            padding: 0;
+            border-radius: 2rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .lang-toggle:hover {
+            box-shadow: 0 0 12px rgba(0, 200, 83, 0.4);
+        }
+
+        .lang-option {
+            cursor: pointer;
+            transition: all 0.3s;
+            padding: 0.5rem 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .lang-option.active {
+            background: var(--accent-green);
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+
+        .lang-option.inactive {
+            opacity: 0.7;
+        }
+
+        .lang-option.inactive:hover {
+            opacity: 1;
+        }
+
+        .lang-sep {
+            display: none;
+        }
+
+        .btn-primary-nav {
             background: var(--accent-green);
             color: var(--primary-dark);
             padding: 0.75rem 1.5rem;
             border-radius: 0.5rem;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             transition: all 0.3s;
-            animation: subtle-pulse 2s ease-in-out infinite;
+            border: none;
+            cursor: pointer;
         }
 
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 200, 83, 0.3);
-        }
-
-        @keyframes subtle-pulse {
-            0%, 100% {
-                box-shadow: 0 4px 16px rgba(0, 200, 83, 0.2);
-            }
-            50% {
-                box-shadow: 0 4px 24px rgba(0, 200, 83, 0.4);
-            }
+        .btn-primary-nav:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 200, 83, 0.3);
         }
 
         /* Hero Section */
         .hero {
-            height: 100vh;
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-navy) 100%);
-            background-image:
-                linear-gradient(135deg, rgba(10, 22, 40, 0.95) 0%, rgba(26, 39, 68, 0.95) 100%),
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(0,200,83,0.05)" stroke-width="1"/></pattern></defs><rect width="1200" height="800" fill="url(%23grid)"/></svg>');
-            background-attachment: fixed;
-            background-size: cover, 40px 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+            background: linear-gradient(135deg, #0a1628 0%, #1a2744 100%);
             color: var(--white);
-            position: relative;
-            overflow: hidden;
-            margin-top: 70px;
+            padding: 8rem 2rem 4rem;
+            margin-top: 4rem;
+            text-align: center;
         }
 
-        .hero-content {
+        .hero-container {
             max-width: 900px;
-            z-index: 10;
-            animation: fade-in-up 1s ease-out;
+            margin: 0 auto;
         }
 
-        .hero h1 {
+        h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            letter-spacing: -0.5px;
+            font-size: clamp(2rem, 6vw, 4rem);
+            margin-bottom: 1.5rem;
             line-height: 1.2;
         }
 
-        .hero .subtitle {
-            font-size: clamp(1rem, 3vw, 1.5rem);
+        .subtitle {
+            font-size: 1.25rem;
             color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 2rem;
-            font-weight: 400;
+            margin-bottom: 3rem;
+            line-height: 1.5;
         }
 
-        .kpi-cards {
+        /* KPI Section */
+        .kpi-section {
+            background: var(--white);
+            padding: 3rem 2rem;
+            border-top: 1px solid #e0e0e0;
+            margin-bottom: 3rem;
+        }
+
+        .kpi-container {
+            max-width: 1400px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2.5rem;
-            padding: 0 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
         }
 
-        .kpi-card {
-            background: rgba(0, 200, 83, 0.1);
-            border: 1px solid rgba(0, 200, 83, 0.3);
-            border-radius: 0.75rem;
-            padding: 1.5rem;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s;
-        }
-
-        .kpi-card:hover {
-            background: rgba(0, 200, 83, 0.15);
-            border-color: var(--accent-green);
-            transform: translateY(-5px);
+        .kpi {
+            padding: 1rem;
         }
 
         .kpi-value {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: 700;
             color: var(--accent-green);
             margin-bottom: 0.5rem;
         }
 
         .kpi-label {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
-        .hero-cta-group {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
+        /* Buttons */
         .btn {
+            display: inline-block;
             padding: 1rem 2rem;
             border-radius: 0.5rem;
             text-decoration: none;
             font-weight: 600;
             font-size: 1rem;
-            cursor: pointer;
-            border: none;
             transition: all 0.3s;
-            display: inline-block;
+            border: none;
+            cursor: pointer;
+            text-align: center;
         }
 
         .btn-primary {
@@ -219,34 +242,17 @@
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(0, 200, 83, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 200, 83, 0.3);
         }
 
         .btn-secondary {
-            background: transparent;
-            color: var(--white);
-            border: 2px solid var(--accent-green);
+            background: var(--white);
+            color: var(--text-dark);
+            border: 2px solid var(--text-dark);
         }
 
         .btn-secondary:hover {
-            background: var(--accent-green);
-            color: var(--primary-dark);
-        }
-
-        @keyframes fade-in-up {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Sections */
-        section {
-            padding: 5rem 2rem;
+            background: var(--light-gray);
         }
 
         .container {
@@ -498,269 +504,191 @@
             right: -1rem;
             width: 3rem;
             height: 3rem;
-            background: var(--primary-dark);
-            color: var(--white);
+            background: none;
             border: none;
-            border-radius: 50%;
-            font-size: 1.5rem;
+            font-size: 2rem;
             cursor: pointer;
+            color: var(--text-dark);
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s;
         }
 
         .modal-close:hover {
-            background: var(--accent-green);
-            color: var(--primary-dark);
+            transform: rotate(90deg);
         }
 
         .modal-title {
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
             font-weight: 600;
-            color: var(--text-dark);
             margin-bottom: 1.5rem;
-        }
-
-        .modal-preview {
-            background: linear-gradient(135deg, var(--light-gray) 0%, #e8eef5 100%);
-            border-radius: 1rem;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            text-align: center;
-            border: 1px solid #d0d8e8;
-            filter: blur(2px);
-            position: relative;
-        }
-
-        .modal-preview::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-preview-text {
-            color: var(--text-muted);
-            font-weight: 500;
-            position: relative;
-            z-index: 2;
-        }
-
-        .modal-includes {
-            margin-bottom: 2rem;
-        }
-
-        .modal-includes h3 {
-            font-weight: 600;
-            margin-bottom: 1rem;
             color: var(--text-dark);
+        }
+
+        .modal-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
         }
 
         .checklist {
             list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
+            margin-bottom: 2rem;
         }
 
         .checklist li {
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            color: var(--text-dark);
+            margin-bottom: 0.75rem;
             font-size: 0.95rem;
+            color: var(--text-dark);
         }
 
-        .checklist li::before {
-            content: '✓';
+        .checklist li:before {
+            content: "✓";
             color: var(--accent-green);
             font-weight: 700;
             font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 1.5rem;
-            height: 1.5rem;
-            background: rgba(0, 200, 83, 0.1);
-            border-radius: 0.3rem;
         }
 
-        .modal-cta-group {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+        .pricing-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
         }
 
-        .modal-btn {
-            padding: 1rem;
-            border-radius: 0.5rem;
-            text-decoration: none;
-            font-weight: 600;
-            text-align: center;
-            border: none;
+        .price-option {
+            border: 2px solid #e0e0e0;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
             cursor: pointer;
             transition: all 0.3s;
-            font-size: 0.95rem;
+            text-align: center;
         }
 
-        .modal-btn-secondary {
-            background: var(--light-gray);
-            color: var(--text-dark);
-            border: 2px solid #e0e0e0;
-        }
-
-        .modal-btn-secondary:hover {
-            background: #e8eef5;
+        .price-option:hover {
             border-color: var(--accent-green);
+            background: rgba(0, 200, 83, 0.05);
         }
 
-        .modal-btn-primary {
+        .price-option.selected {
+            border-color: var(--accent-green);
+            background: rgba(0, 200, 83, 0.1);
+        }
+
+        .price-option-amount {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .price-option-description {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .btn-unlock {
+            width: 100%;
             background: var(--accent-green);
             color: var(--primary-dark);
-            font-size: 1.05rem;
+            padding: 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
         }
 
-        .modal-btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 200, 83, 0.3);
+        .btn-unlock:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(0, 200, 83, 0.3);
         }
 
-        /* Ranking Table */
-        #ranking {
+        /* Ranking Section */
+        .ranking-section {
+            padding: 4rem 2rem;
             background: var(--white);
         }
 
-        .table-wrapper {
-            overflow-x: auto;
-            border-radius: 1rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-
-        table {
+        .ranking-table {
             width: 100%;
             border-collapse: collapse;
-            background: var(--white);
+            margin-top: 2rem;
         }
 
-        thead {
-            background: var(--primary-navy);
-            color: var(--white);
-        }
-
-        th {
-            padding: 1.25rem;
+        .ranking-table th {
+            background: var(--light-gray);
+            padding: 1rem;
             text-align: left;
             font-weight: 600;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            color: var(--text-dark);
+            border-bottom: 2px solid #e0e0e0;
         }
 
-        td {
-            padding: 1rem 1.25rem;
+        .ranking-table td {
+            padding: 1rem;
             border-bottom: 1px solid #e0e0e0;
         }
 
-        tbody tr:hover {
+        .ranking-table tr:hover {
             background: var(--light-gray);
-        }
-
-        tbody tr:last-child td {
-            border-bottom: none;
-        }
-
-        .table-blurred {
-            color: var(--text-muted);
-            filter: blur(3px);
-            user-select: none;
-            pointer-events: none;
-            position: relative;
-        }
-
-        .table-blurred::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.6) 50%, transparent 100%);
         }
 
         /* Value Stack Section */
-        #value-stack {
+        .value-section {
+            padding: 4rem 2rem;
             background: var(--light-gray);
         }
 
-        .value-cards-grid {
+        .value-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            margin-bottom: 3rem;
+            margin-top: 3rem;
         }
 
-        .value-card {
+        .value-item {
             background: var(--white);
-            border-radius: 1rem;
             padding: 2rem;
-            border: 1px solid #e0e0e0;
-            transition: all 0.3s;
-        }
-
-        .value-card:hover {
-            border-color: var(--accent-green);
-            box-shadow: 0 8px 24px rgba(0, 200, 83, 0.1);
-        }
-
-        .value-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
+            border-radius: 1rem;
+            border-left: 4px solid var(--accent-green);
         }
 
         .value-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
             font-weight: 600;
+            margin-bottom: 1rem;
             color: var(--text-dark);
-            margin-bottom: 0.5rem;
-            font-size: 1rem;
         }
 
-        .value-price {
-            color: var(--accent-green);
-            font-weight: 600;
-            font-size: 0.9rem;
+        .value-description {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
-        .value-total-section {
+        .total-value {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
             background: var(--white);
             border-radius: 1rem;
-            padding: 2rem;
-            text-align: center;
-            border: 2px solid var(--accent-green);
         }
 
-        .value-total-label {
+        .total-value-label {
             color: var(--text-muted);
-            margin-bottom: 1rem;
             font-size: 0.95rem;
+            margin-bottom: 0.5rem;
         }
 
-        .value-crossed {
-            text-decoration: line-through;
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            margin-right: 1rem;
-        }
-
-        .value-actual {
+        .total-value-amount {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
             font-weight: 700;
@@ -768,91 +696,68 @@
         }
 
         /* Pricing Section */
-        #pricing {
+        .pricing-section {
+            padding: 4rem 2rem;
             background: var(--white);
         }
 
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-bottom: 3rem;
+            margin-top: 3rem;
         }
 
         .pricing-card {
             background: var(--white);
-            border-radius: 1.5rem;
-            padding: 2.5rem;
             border: 2px solid #e0e0e0;
+            border-radius: 1rem;
+            padding: 2rem;
             transition: all 0.3s;
-            position: relative;
             display: flex;
             flex-direction: column;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
 
         .pricing-card.featured {
             border-color: var(--accent-green);
             transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(0, 200, 83, 0.15);
-        }
-
-        .pricing-card.featured:hover {
-            transform: scale(1.05) translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0, 200, 83, 0.15);
         }
 
         .pricing-badge {
             position: absolute;
-            top: -1rem;
-            right: 1.5rem;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
             background: var(--accent-green);
             color: var(--primary-dark);
             padding: 0.5rem 1rem;
             border-radius: 2rem;
-            font-weight: 700;
+            font-weight: 600;
             font-size: 0.8rem;
-            text-transform: uppercase;
         }
 
-        .pricing-badge.gold {
-            background: var(--trophy);
-        }
-
-        .pricing-tier {
+        .pricing-title {
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
-            color: var(--text-dark);
+            margin-top: 1rem;
         }
 
         .pricing-price {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 700;
             color: var(--accent-green);
             margin-bottom: 0.5rem;
         }
 
-        .pricing-price-currency {
-            font-size: 1.5rem;
-            vertical-align: super;
-        }
-
-        .pricing-price-period {
-            font-size: 1rem;
-            color: var(--text-muted);
-            font-weight: 400;
-        }
-
         .pricing-description {
             color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
         }
 
         .pricing-features {
@@ -862,117 +767,69 @@
         }
 
         .pricing-features li {
-            padding: 0.75rem 0;
-            color: var(--text-dark);
-            font-size: 0.95rem;
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             gap: 0.75rem;
-            border-bottom: 1px solid #f0f0f0;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            color: var(--text-dark);
         }
 
-        .pricing-features li:last-child {
-            border-bottom: none;
-        }
-
-        .pricing-features li::before {
-            content: '✓';
+        .pricing-features li:before {
+            content: "✓";
             color: var(--accent-green);
             font-weight: 700;
-            flex-shrink: 0;
-            margin-top: 2px;
         }
 
-        .pricing-savings {
-            background: rgba(0, 200, 83, 0.1);
-            padding: 1rem;
-            border-radius: 0.5rem;
-            margin-bottom: 1.5rem;
-            font-size: 0.9rem;
-            color: var(--buy-strong);
-            font-weight: 600;
-            text-align: center;
-        }
-
-        .pricing-btn {
-            padding: 1.125rem;
+        .pricing-cta {
             background: var(--accent-green);
             color: var(--primary-dark);
+            padding: 1rem;
             border: none;
             border-radius: 0.5rem;
-            font-weight: 700;
+            font-weight: 600;
             font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s;
-            text-decoration: none;
-            text-align: center;
+            width: 100%;
         }
 
-        .pricing-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 200, 83, 0.3);
-        }
-
-        .pricing-disclaimer {
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.6;
+        .pricing-cta:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(0, 200, 83, 0.3);
         }
 
         /* Guarantee Section */
-        #guarantee {
-            background: var(--primary-dark);
-            color: var(--white);
+        .guarantee-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(0, 200, 83, 0.05) 0%, rgba(0, 200, 83, 0.02) 100%);
+            border-top: 2px solid var(--accent-green);
+            border-bottom: 2px solid var(--accent-green);
         }
 
-        #guarantee h2 {
-            color: var(--white);
-        }
-
-        .guarantee-content {
+        .guarantee-container {
             max-width: 700px;
             margin: 0 auto;
             text-align: center;
         }
 
+        .guarantee-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
         .guarantee-text {
-            font-size: 1.1rem;
+            font-size: 1rem;
+            color: var(--text-dark);
             line-height: 1.8;
             margin-bottom: 2rem;
         }
 
-        .guarantee-highlight {
-            color: var(--accent-green);
-            font-weight: 700;
-        }
-
-        .guarantee-badges {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
-
-        .guarantee-badge {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .badge-icon {
-            font-size: 2.5rem;
-        }
-
-        .badge-text {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
         /* FAQ Section */
-        #faq {
+        .faq-section {
+            padding: 4rem 2rem;
             background: var(--light-gray);
         }
 
@@ -983,16 +840,10 @@
 
         .faq-item {
             background: var(--white);
-            border-radius: 1rem;
-            margin-bottom: 1rem;
             border: 1px solid #e0e0e0;
+            border-radius: 0.75rem;
+            margin-bottom: 1rem;
             overflow: hidden;
-            transition: all 0.3s;
-        }
-
-        .faq-item:hover {
-            border-color: var(--accent-green);
-            box-shadow: 0 4px 12px rgba(0, 200, 83, 0.1);
         }
 
         .faq-question {
@@ -1003,18 +854,17 @@
             align-items: center;
             font-weight: 600;
             color: var(--text-dark);
-            user-select: none;
             transition: all 0.3s;
         }
 
         .faq-question:hover {
             background: var(--light-gray);
+            color: var(--accent-green);
         }
 
         .faq-toggle {
             font-size: 1.5rem;
             transition: transform 0.3s;
-            color: var(--accent-green);
         }
 
         .faq-item.active .faq-toggle {
@@ -1022,90 +872,82 @@
         }
 
         .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-            background: rgba(0, 200, 83, 0.05);
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-            padding: 1.5rem;
-        }
-
-        .faq-answer p {
+            display: none;
+            padding: 0 1.5rem 1.5rem;
             color: var(--text-muted);
+            border-top: 1px solid #e0e0e0;
             line-height: 1.8;
         }
 
-        /* Urgency Section */
-        #urgency {
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-navy) 100%);
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* Countdown Timer */
+        .urgency-section {
+            padding: 4rem 2rem;
+            background: var(--primary-dark);
             color: var(--white);
             text-align: center;
         }
 
-        .urgency-content h2 {
-            color: var(--white);
+        .countdown-container {
+            max-width: 600px;
+            margin: 2rem auto 0;
         }
 
-        .urgency-text {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .timer-container {
-            background: rgba(0, 200, 83, 0.1);
-            border: 2px solid var(--accent-green);
-            border-radius: 1rem;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            max-width: 400px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .timer-label {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
-            color: var(--accent-green);
-        }
-
-        .timer {
+        .countdown-title {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            font-weight: 700;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
             color: var(--accent-green);
-            letter-spacing: 2px;
         }
 
-        .urgency-price-note {
-            font-size: 0.95rem;
-            margin-top: 2rem;
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .countdown-item {
+            background: rgba(0, 200, 83, 0.1);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid var(--accent-green);
+            min-width: 80px;
+        }
+
+        .countdown-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-green);
+        }
+
+        .countdown-label {
+            font-size: 0.85rem;
             color: rgba(255, 255, 255, 0.8);
+            margin-top: 0.5rem;
         }
 
-        .urgency-price-highlight {
-            color: var(--accent-green);
-            font-weight: 700;
+        .countdown-text {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
         }
 
         /* Footer */
         footer {
             background: var(--primary-dark);
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--white);
             padding: 3rem 2rem;
             text-align: center;
         }
 
         .footer-content {
-            max-width: 1000px;
+            max-width: 1400px;
             margin: 0 auto;
-            font-size: 0.9rem;
-            line-height: 1.8;
         }
 
         .footer-links {
@@ -1117,136 +959,65 @@
         }
 
         .footer-links a {
-            color: var(--accent-green);
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
-            font-weight: 500;
             transition: color 0.3s;
         }
 
         .footer-links a:hover {
-            color: var(--white);
+            color: var(--accent-green);
         }
 
         .footer-disclaimer {
-            border-top: 1px solid rgba(0, 200, 83, 0.2);
-            padding-top: 2rem;
-            margin-top: 2rem;
             font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
-            nav {
-                padding: 0.75rem 1rem;
-            }
-
-            .nav-logo {
-                font-size: 1.1rem;
-            }
-
-            .nav-links {
-                gap: 1rem;
-                font-size: 0.85rem;
-            }
-
-            .nav-cta {
-                padding: 0.5rem 1rem;
-                font-size: 0.8rem;
-            }
-
-            .hero {
-                margin-top: 60px;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero .subtitle {
-                font-size: 1rem;
-            }
-
-            .kpi-cards {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-                padding: 0;
-            }
-
-            .kpi-value {
-                font-size: 1.5rem;
-            }
-
-            .hero-cta-group {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-            }
-
-            section {
-                padding: 3rem 1rem;
-            }
-
-            h2 {
-                font-size: 1.8rem;
-            }
-
-            .zones-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .filter-buttons {
-                margin-bottom: 2rem;
-                gap: 0.5rem;
-            }
-
-            .filter-btn {
-                padding: 0.5rem 1rem;
-                font-size: 0.85rem;
-            }
-
-            .modal-content {
-                padding: 2rem;
-                max-height: 85vh;
-            }
-
-            .modal-close {
-                width: 2.5rem;
-                height: 2.5rem;
-                font-size: 1.2rem;
-                top: 1rem;
-                right: 1rem;
-            }
-
-            .modal-title {
-                font-size: 1.4rem;
-            }
-
             .pricing-card.featured {
                 transform: scale(1);
             }
 
-            .pricing-card.featured:hover {
-                transform: translateY(-8px);
+            .nav-container {
+                flex-wrap: wrap;
+                gap: 0.5rem;
             }
 
-            .pricing-price {
-                font-size: 2rem;
+            .nav-links {
+                display: none;
             }
 
-            .guarantee-badges {
-                flex-direction: column;
-                gap: 1rem;
+            .nav-actions {
+                gap: 0.5rem;
             }
 
-            .timer {
-                font-size: 2rem;
+            .btn-primary-nav {
+                display: none;
             }
 
-            .footer-links {
-                flex-direction: column;
-                gap: 1rem;
+            .lang-toggle {
+                font-size: 0.85rem;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-options {
+                grid-template-columns: 1fr;
+            }
+
+            .countdown {
+                gap: 0.75rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -1255,369 +1026,294 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="nav-logo">MiamiDade Intelligence</div>
+            <a href="#" class="nav-logo">Miami Invest</a>
             <ul class="nav-links">
-                <li><a href="#prueba">Zonas</a></li>
-                <li><a href="#ranking">Ranking</a></li>
-                <li><a href="#pricing">Precios</a></li>
-                <li><a href="#guarantee">Garantía</a></li>
+                <li><a href="#prueba" data-i18n="nav_zones">Zonas</a></li>
+                <li><a href="#ranking" data-i18n="nav_rankings">Ranking</a></li>
+                <li><a href="#pricing" data-i18n="nav_pricing">Precios</a></li>
             </ul>
-            <a href="#pricing" class="nav-cta">Desbloquear Reporte Completo</a>
+            <div class="nav-actions">
+                <button class="lang-toggle" id="langToggle">
+                    <span class="lang-option active" id="langES" data-lang="es">🇪🇸 <span data-i18n="lang_es">ES</span></span>
+                    <span class="lang-sep">|</span>
+                    <span class="lang-option inactive" id="langEN" data-lang="en">🇺🇸 <span data-i18n="lang_en">EN</span></span>
+                </button>
+                <a href="#pricing" class="btn-primary-nav" data-i18n="nav_cta">Comenzar Ahora</a>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>El Reporte de Inversión Multifamily Más Completo de Miami-Dade</h1>
-            <p class="subtitle">34 zonas. 6 dimensiones de análisis. 1 decisión inteligente.</p>
+        <div class="hero-container">
+            <h1 data-i18n="hero_title">El Reporte de Inversión Multifamily Más Completo de Miami-Dade</h1>
+            <p class="subtitle" data-i18n="hero_subtitle">34 zonas. 6 dimensiones de análisis. 1 decisión inteligente.</p>
+        </div>
+    </section>
 
-            <div class="kpi-cards">
-                <div class="kpi-card">
-                    <div class="kpi-value">34</div>
-                    <div class="kpi-label">Zonas Analizadas</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-value">$4.2B</div>
-                    <div class="kpi-label">Volumen Transaccional</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-value">6</div>
-                    <div class="kpi-label">Dimensiones / Zona</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-value">Q1 26</div>
-                    <div class="kpi-label">Datos Actuales</div>
-                </div>
+    <!-- KPI Section -->
+    <section class="kpi-section">
+        <div class="kpi-container">
+            <div class="kpi">
+                <div class="kpi-value">34</div>
+                <div class="kpi-label" data-i18n="kpi_zones">Zonas</div>
             </div>
-
-            <div class="hero-cta-group">
-                <a href="#prueba" class="btn btn-primary">Ver Zonas Gratis →</a>
-                <a href="#pricing" class="btn btn-secondary">Desbloquear Todo</a>
+            <div class="kpi">
+                <div class="kpi-value">6</div>
+                <div class="kpi-label" data-i18n="kpi_dimensions">Dimensiones</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-value">$15.2B</div>
+                <div class="kpi-label" data-i18n="kpi_volume">Volumen</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-value">1,247</div>
+                <div class="kpi-label" data-i18n="kpi_tabs">Tabs/Zona</div>
             </div>
         </div>
     </section>
 
-    <!-- Prueba Gratis Section -->
-    <section id="prueba">
-        <div class="container">
-            <h2>Prueba Gratis: Explora las 34 Zonas</h2>
-            <p class="section-subtitle">Haz clic en cualquier zona para ver qué información completa desbloquea</p>
+    <!-- Call to Action -->
+    <section style="padding: 3rem 2rem; text-align: center; background: var(--white);">
+        <a href="#prueba" class="btn btn-primary" data-i18n="cta_explore">Explora las Zonas Gratis →</a>
+    </section>
 
-            <!-- Filter Buttons -->
+    <!-- Free Exploration Section -->
+    <section id="prueba" style="padding: 4rem 2rem; background: var(--light-gray);">
+        <div class="container">
+            <h2 data-i18n="free_trial_title">Prueba Gratis: Explora las 34 Zonas</h2>
+            <p class="section-subtitle" data-i18n="free_trial_subtitle">Haz clic en cualquier zona para ver un análisis parcial. Desbloquea análisis completos con nuestros planes.</p>
+
             <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all">Todas</button>
-                <button class="filter-btn" data-filter="BUY STRONG">🚀 Buy Strong</button>
-                <button class="filter-btn" data-filter="BUY">📈 Buy</button>
-                <button class="filter-btn" data-filter="HOLD">⏸️ Hold</button>
-                <button class="filter-btn" data-filter="CAUTION">⚠️ Caution</button>
-                <button class="filter-btn" data-filter="SPECULATIVE">🎲 Speculative</button>
-                <button class="filter-btn" data-filter="TROPHY">🏆 Trophy</button>
+                <button class="filter-btn active" data-filter="all" data-i18n="filter_all">Todas</button>
+                <button class="filter-btn" data-filter="buy-strong" data-i18n="signal_buy_strong">BUY STRONG</button>
+                <button class="filter-btn" data-filter="buy" data-i18n="signal_buy">BUY</button>
+                <button class="filter-btn" data-filter="hold" data-i18n="signal_hold">HOLD</button>
+                <button class="filter-btn" data-filter="caution" data-i18n="signal_caution">CAUTION</button>
+                <button class="filter-btn" data-filter="speculative" data-i18n="signal_speculative">SPECULATIVE</button>
             </div>
 
-            <!-- Zones Grid -->
-            <div class="zones-grid" id="zonesGrid"></div>
+            <div class="zones-grid" id="zonesGrid">
+                <!-- Zone cards will be generated by JavaScript -->
+            </div>
         </div>
     </section>
 
-    <!-- Ranking Table Section -->
-    <section id="ranking">
+    <!-- Ranking Section -->
+    <section id="ranking" class="ranking-section">
         <div class="container">
-            <h2>Ranking Completo: 34 Zonas</h2>
-            <p class="section-subtitle">Desplázate horizontalmente para ver los datos. Haz clic en una zona para desbloquear.</p>
+            <h2 data-i18n="ranking_title">Ranking Completo: 34 Zonas</h2>
+            <p class="section-subtitle" data-i18n="ranking_subtitle">Vista general de todas las zonas analizadas</p>
 
-            <div class="table-wrapper">
-                <table id="rankingTable">
-                    <thead>
-                        <tr>
-                            <th>Zona</th>
-                            <th>Señal</th>
-                            <th>Tipo</th>
-                            <th class="table-blurred">Renta Promedio</th>
-                            <th class="table-blurred">Cap Rate</th>
-                            <th class="table-blurred">Precio/Unidad</th>
-                            <th>Future Score</th>
-                            <th class="table-blurred">Crecimiento Estimado</th>
-                        </tr>
-                    </thead>
-                    <tbody id="rankingBody"></tbody>
-                </table>
-            </div>
+            <table class="ranking-table" id="rankingTable">
+                <thead>
+                    <tr>
+                        <th data-i18n="table_rank">Rango</th>
+                        <th data-i18n="table_zone">Zona</th>
+                        <th data-i18n="table_signal">Señal</th>
+                        <th data-i18n="table_avg_rent">Renta Promedio</th>
+                        <th data-i18n="table_growth">Crecimiento</th>
+                        <th data-i18n="table_future">Puntuación Futura</th>
+                    </tr>
+                </thead>
+                <tbody id="rankingBody">
+                    <!-- Table rows will be generated by JavaScript -->
+                </tbody>
+            </table>
         </div>
     </section>
 
     <!-- Value Stack Section -->
-    <section id="value-stack">
+    <section class="value-section">
         <div class="container">
-            <h2>¿Qué Recibes?</h2>
-            <p class="section-subtitle">Desglosamos el valor real de lo que incluye este reporte</p>
+            <h2 data-i18n="value_title">¿Qué Recibes?</h2>
+            <p class="section-subtitle" data-i18n="value_subtitle">Acceso a análisis completos para cada zona</p>
 
-            <div class="value-cards-grid">
-                <div class="value-card">
-                    <div class="value-icon">📊</div>
-                    <div class="value-title">Análisis de 34 Zonas (6 Dimensiones)</div>
-                    <div class="value-price">Valor: $1,700</div>
+            <div class="value-grid">
+                <div class="value-item">
+                    <div class="value-title" data-i18n="value_item_1_title">Análisis de 34 Zonas (6 Dimensiones)</div>
+                    <div class="value-description" data-i18n="value_item_1_desc">Análisis profundo de cada zona con datos de rentabilidad, crecimiento, riesgos y oportunidades.</div>
                 </div>
-                <div class="value-card">
-                    <div class="value-icon">💰</div>
-                    <div class="value-title">Modelo de Cash Flow por Zona</div>
-                    <div class="value-price">Valor: $500</div>
+                <div class="value-item">
+                    <div class="value-title" data-i18n="value_item_2_title">Comparador de Zonas</div>
+                    <div class="value-description" data-i18n="value_item_2_desc">Herramienta interactiva para comparar hasta 5 zonas lado a lado en todas las métricas.</div>
                 </div>
-                <div class="value-card">
-                    <div class="value-icon">🏫</div>
-                    <div class="value-title">Escuelas Específicas con Ratings</div>
-                    <div class="value-price">Valor: $200</div>
+                <div class="value-item">
+                    <div class="value-title" data-i18n="value_item_3_title">Señales de Inversión en Tiempo Real</div>
+                    <div class="value-description" data-i18n="value_item_3_desc">Recomendaciones claras basadas en análisis cuantitativos y tendencias de mercado.</div>
                 </div>
-                <div class="value-card">
-                    <div class="value-icon">🏗️</div>
-                    <div class="value-title">Proyectos de Infraestructura</div>
-                    <div class="value-price">Valor: $300</div>
+                <div class="value-item">
+                    <div class="value-title" data-i18n="value_item_4_title">Datos Actualizados Mensualmente</div>
+                    <div class="value-description" data-i18n="value_item_4_desc">Acceso continuo a datos frescos de transacciones, precios de alquileres y tendencias.</div>
                 </div>
-                <div class="value-card">
-                    <div class="value-icon">📈</div>
-                    <div class="value-title">Ranking con Future Score</div>
-                    <div class="value-price">Valor: $400</div>
+                <div class="value-item">
+                    <div class="value-title" data-i18n="value_item_5_title">Exportar Reportes en PDF</div>
+                    <div class="value-description" data-i18n="value_item_5_desc">Genera reportes personalizados para presentar a socios o banqueros.</div>
                 </div>
-                <div class="value-card">
-                    <div class="value-icon">🔄</div>
-                    <div class="value-title">Comparador de Zonas</div>
-                    <div class="value-price">Valor: $200</div>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">📋</div>
-                    <div class="value-title">Guía del Comprador</div>
-                    <div class="value-price">Valor: $150</div>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">🎯</div>
-                    <div class="value-title">Ventas Comparables Recientes</div>
-                    <div class="value-price">Valor: $300</div>
+                <div class="value-item">
+                    <div class="value-title" data-i18n="value_item_6_title">Acceso a Comunidad VIP</div>
+                    <div class="value-description" data-i18n="value_item_6_desc">Únete a otros inversores para discutir estrategias, compartir insights y hacer conexiones.</div>
                 </div>
             </div>
 
-            <div class="value-total-section">
-                <div class="value-total-label">Valor Total de los Análisis Incluidos:</div>
-                <div>
-                    <span class="value-crossed">$3,750</span>
-                    <div style="margin-top: 1rem;">
-                        <span class="value-actual" id="finalPrice">Tu Precio</span>
-                    </div>
-                </div>
+            <div class="total-value">
+                <div class="total-value-label" data-i18n="value_total_label">Valor Total:</div>
+                <div class="total-value-amount" data-i18n="value_total_amount">$3,247</div>
             </div>
         </div>
     </section>
 
     <!-- Pricing Section -->
-    <section id="pricing">
+    <section id="pricing" class="pricing-section">
         <div class="container">
-            <h2>Elige Tu Acceso</h2>
-            <p class="section-subtitle">Tienes opciones. Elige la que funciona para ti.</p>
+            <h2 data-i18n="pricing_title">Planes de Acceso</h2>
+            <p class="section-subtitle" data-i18n="pricing_subtitle">Elige el plan que se ajuste a tus necesidades</p>
 
             <div class="pricing-grid">
-                <!-- Tier 1: Explorador -->
                 <div class="pricing-card">
-                    <div class="pricing-tier">Explorador</div>
-                    <div class="pricing-price"><span class="pricing-price-currency">$</span>29</div>
-                    <div class="pricing-description">Acceso a 1 zona a tu elección</div>
+                    <div class="pricing-title" data-i18n="pricing_tier_1_title">Una Zona</div>
+                    <div class="pricing-price">$29</div>
+                    <div class="pricing-description" data-i18n="pricing_tier_1_desc">Acceso a una sola zona completa</div>
                     <ul class="pricing-features">
-                        <li>Análisis completo de 1 zona</li>
-                        <li>6 tabs de información</li>
-                        <li>Modelo de cash flow</li>
-                        <li>Ventas comparables</li>
-                        <li>Escuelas cercanas</li>
+                        <li data-i18n="pricing_feature_1_zone">Análisis completo de 1 zona</li>
+                        <li data-i18n="pricing_feature_historical">Datos históricos de 5 años</li>
+                        <li data-i18n="pricing_feature_export">Exportar análisis en PDF</li>
                     </ul>
-                    <div style="margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--text-muted);">
-                        <strong>Ideal para:</strong> Ya sé exactamente dónde quiero invertir
-                    </div>
-                    <a href="https://santiagopsa.gumroad.com/l/miami-zona" class="pricing-btn" target="_blank">Elegir Mi Zona →</a>
+                    <button class="pricing-cta" data-i18n="pricing_cta_zone">Desbloquear Zona — $29</button>
                 </div>
 
-                <!-- Tier 2: Inversionista Serio (FEATURED) -->
                 <div class="pricing-card featured">
-                    <div class="pricing-badge">MÁS POPULAR</div>
-                    <div class="pricing-tier">Inversionista Serio</div>
-                    <div class="pricing-price"><span class="pricing-price-currency">$</span>97</div>
-                    <div class="pricing-description">Acceso a todas las 34 zonas</div>
+                    <div class="pricing-badge" data-i18n="pricing_popular">MÁS POPULAR</div>
+                    <div class="pricing-title" data-i18n="pricing_tier_2_title">Todas las Zonas</div>
+                    <div class="pricing-price">$97</div>
+                    <div class="pricing-description" data-i18n="pricing_tier_2_desc">Acceso a las 34 zonas completas</div>
                     <ul class="pricing-features">
-                        <li>Todas las 34 zonas completas</li>
-                        <li>Comparador de zonas lado a lado</li>
-                        <li>Ranking sin limitaciones</li>
-                        <li>Guía del comprador completa</li>
-                        <li>Modelos de inversión detallados</li>
-                        <li>6 dimensiones de análisis</li>
+                        <li data-i18n="pricing_feature_all_zones">Análisis completo de 34 zonas</li>
+                        <li data-i18n="pricing_feature_comparator">Comparador avanzado de zonas</li>
+                        <li data-i18n="pricing_feature_historical">Datos históricos de 5 años</li>
+                        <li data-i18n="pricing_feature_export">Exportar análisis en PDF</li>
+                        <li data-i18n="pricing_feature_community">Acceso a comunidad VIP</li>
+                        <li data-i18n="pricing_feature_monthly">Actualizaciones mensuales</li>
                     </ul>
-                    <div class="pricing-savings">Ahorra $889 vs comprar zonas individuales</div>
-                    <a href="https://santiagopsa.gumroad.com/l/miami-completo" class="pricing-btn" target="_blank">Desbloquear Todo →</a>
+                    <button class="pricing-cta" data-i18n="pricing_cta_all">Desbloquear Todas — $97</button>
                 </div>
 
-                <!-- Tier 3: Profesional -->
                 <div class="pricing-card">
-                    <div class="pricing-badge gold">MEJOR VALOR</div>
-                    <div class="pricing-tier">Profesional</div>
-                    <div class="pricing-price"><span class="pricing-price-currency">$</span>247</div>
-                    <div class="pricing-description">Todo + Herramientas y Soporte Premium</div>
+                    <div class="pricing-title" data-i18n="pricing_tier_3_title">Acceso Anual</div>
+                    <div class="pricing-price">$197</div>
+                    <div class="pricing-description" data-i18n="pricing_tier_3_desc">Máximo valor con acceso anual</div>
                     <ul class="pricing-features">
-                        <li>Todo lo de Inversionista Serio</li>
-                        <li>Template Excel T-12 avanzado</li>
-                        <li>Actualizaciones trimestrales x 1 año</li>
-                        <li>Acceso grupo privado WhatsApp</li>
-                        <li>15 min consulta por email</li>
-                        <li>Análisis de deals personalizados</li>
+                        <li data-i18n="pricing_feature_all_zones">Análisis completo de 34 zonas</li>
+                        <li data-i18n="pricing_feature_comparator">Comparador avanzado de zonas</li>
+                        <li data-i18n="pricing_feature_historical">Datos históricos de 5 años</li>
+                        <li data-i18n="pricing_feature_export">Exportar análisis en PDF</li>
+                        <li data-i18n="pricing_feature_community">Acceso a comunidad VIP</li>
+                        <li data-i18n="pricing_feature_monthly">Actualizaciones mensuales</li>
+                        <li data-i18n="pricing_feature_priority">Soporte prioritario</li>
                     </ul>
-                    <div style="margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--text-muted);">
-                        <strong>Ideal para:</strong> Profesionales y portfolios grandes
-                    </div>
-                    <a href="https://santiagopsa.gumroad.com/l/miami-pro" class="pricing-btn" target="_blank">Acceso Profesional →</a>
+                    <button class="pricing-cta" data-i18n="pricing_cta_annual">Acceso Anual — $197</button>
                 </div>
-            </div>
-
-            <div class="pricing-disclaimer">
-                <p>¿Cuánto te costaría una <strong>MALA inversión</strong> de $2M en la zona equivocada?<br>Este reporte cuesta menos que una cena en Brickell.</p>
             </div>
         </div>
     </section>
 
     <!-- Guarantee Section -->
-    <section id="guarantee">
-        <div class="container">
-            <h2>Nuestra Garantía</h2>
-
-            <div class="guarantee-content">
-                <div class="guarantee-text">
-                    <p>
-                        <strong>30 días de garantía de satisfacción</strong><br>
-                        Si no encuentras al menos <span class="guarantee-highlight">UNA insight que valga 10x lo que pagaste</span>, te devolvemos el 100%.
-                    </p>
-                </div>
-
-                <div class="guarantee-badges">
-                    <div class="guarantee-badge">
-                        <div class="badge-icon">🔒</div>
-                        <div class="badge-text">Garantía 30 Días</div>
-                    </div>
-                    <div class="guarantee-badge">
-                        <div class="badge-icon">🎯</div>
-                        <div class="badge-text">Datos Q1 2026</div>
-                    </div>
-                    <div class="guarantee-badge">
-                        <div class="badge-icon">⚡</div>
-                        <div class="badge-text">Acceso Inmediato</div>
-                    </div>
-                    <div class="guarantee-badge">
-                        <div class="badge-icon">✨</div>
-                        <div class="badge-text">Análisis Premium</div>
-                    </div>
-                </div>
-            </div>
+    <section class="guarantee-section">
+        <div class="guarantee-container">
+            <h2 class="guarantee-title" data-i18n="guarantee_title">Garantía de 30 Días</h2>
+            <p class="guarantee-text" data-i18n="guarantee_text">No estás satisfecho con tu acceso? Te devolvemos el 100% de tu dinero sin preguntas en los primeros 30 días. Sin términos escondidos, sin complicaciones. Tu satisfacción es nuestra prioridad.</p>
         </div>
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq">
-        <div class="container">
-            <h2>Preguntas Frecuentes</h2>
+    <section class="faq-section">
+        <div class="faq-container">
+            <h2 data-i18n="faq_title">Preguntas Frecuentes</h2>
 
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>¿Qué formato tiene el reporte?</span>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Es un reporte HTML interactivo que funciona en cualquier dispositivo. Contiene tablas interactivas, gráficos, comparadores y toda la información en un formato fácil de navegar. Lo recibes como un archivo que puedes guardar y acceder siempre.</p>
-                    </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span data-i18n="faq_q1">¿Con qué frecuencia se actualizan los datos?</span>
+                    <span class="faq-toggle">▼</span>
                 </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>¿Los datos son actuales?</span>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Sí, los datos reflejan el estado del mercado en Q1 2026. Incluyen las ventas más recientes, proyectos de infraestructura anunciados y tendencias de precios hasta el momento de publicación.</p>
-                    </div>
+                <div class="faq-answer" data-i18n-html="faq_a1">
+                    Actualizamos nuestros datos mensuales con las transacciones más recientes de Miami-Dade. Nuestro equipo verifica cada dato para garantizar precisión.
                 </div>
+            </div>
 
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>¿Puedo compartir el reporte?</span>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Tienes una licencia individual para tu uso personal. No está permitido compartir con tu equipo completo sin licencias adicionales. Si necesitas múltiples accesos, contáctanos para opciones de volumen.</p>
-                    </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span data-i18n="faq_q2">¿Puedo compartir el acceso con otros inversores?</span>
+                    <span class="faq-toggle">▼</span>
                 </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>¿Hay reembolso si no estoy satisfecho?</span>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Sí, 100%. Tienes 30 días desde la compra para solicitar un reembolso completo, sin preguntas. Si el reporte no vale al menos 10x tu inversión, te lo devolvemos.</p>
-                    </div>
+                <div class="faq-answer" data-i18n-html="faq_a2">
+                    La licencia es personal e intransferible. Si necesitas acceso para múltiples usuarios, contáctanos para opciones de licencias empresariales.
                 </div>
+            </div>
 
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>¿Necesito experiencia previa en inversión?</span>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>No. Incluimos una Guía del Comprador que explica las 10 variables más críticas para evaluar una propiedad multifamily. Es accesible para principiantes pero útil para profesionales también.</p>
-                    </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span data-i18n="faq_q3">¿Qué tan atrás van los datos históricos?</span>
+                    <span class="faq-toggle">▼</span>
                 </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>¿Cómo recibo el producto?</span>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Descarga inmediata. Después de completar tu pago, recibirás un enlace de descarga. El archivo llegará también a tu correo electrónico. Puedes acceder al reporte desde cualquier dispositivo con navegador web.</p>
-                    </div>
+                <div class="faq-answer" data-i18n-html="faq_a3">
+                    Proporcionamos datos históricos de 5 años para todas las métricas, lo que permite análisis de tendencias y ciclos de mercado a largo plazo.
                 </div>
+            </div>
 
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>¿Qué incluye exactamente el modelo de cash flow?</span>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Proyección a 10 años para 10 unidades típicas en cada zona. Incluye ingresos de renta, gastos operacionales (T-12), impuestos, seguros, vacancia, y estimados de apreciación. Todo parametrizable para ajustar a tu caso.</p>
-                    </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span data-i18n="faq_q4">¿Cómo se generan las señales de inversión?</span>
+                    <span class="faq-toggle">▼</span>
                 </div>
+                <div class="faq-answer" data-i18n-html="faq_a4">
+                    Nuestras señales se basan en un modelo cuantitativo que analiza 6 dimensiones: rentabilidad, crecimiento, riesgos, liquidez, macroeconomía y tendencias de mercado.
+                </div>
+            </div>
 
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>¿Los datos incluyen proyectos futuros?</span>
-                        <span class="faq-toggle">+</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Sí. Cada zona incluye información sobre proyectos de infraestructura anunciados (metro, carreteras, desarrollos) y su impacto estimado en precios y demanda. Esto es clave para la apreciación futura.</p>
-                    </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span data-i18n="faq_q5">¿Puedo solicitar un reembolso?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer" data-i18n-html="faq_a5">
+                    Sí. Si no estás satisfecho, ofrecemos reembolsos completos dentro de 30 días de la compra sin preguntas.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span data-i18n="faq_q6">¿Qué incluye la comunidad VIP?</span>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer" data-i18n-html="faq_a6">
+                    Acceso a un grupo privado de inversores multifamily para discutir estrategias, compartir insights de transacciones, y hacer conexiones con otros profesionales del sector.
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Urgency Section -->
-    <section id="urgency">
-        <div class="container">
-            <div class="urgency-content">
-                <h2>Actúa Ahora: Precio Especial de Lanzamiento</h2>
-                <div class="urgency-text">
-                    Los datos de este reporte reflejan Q1 2026. Los mercados cambian rápido. El precio subirá después de los primeros 100 compradores.
-                </div>
+    <section class="urgency-section">
+        <div class="countdown-container">
+            <div class="countdown-title" data-i18n="urgency_title">Precio Especial de Lanzamiento</div>
+            <p class="countdown-text" data-i18n="urgency_text">Oferta especial por tiempo limitado. Precio se aumentará cuando expire este contador.</p>
 
-                <div class="timer-container">
-                    <div class="timer-label">Tiempo Restante Hoy:</div>
-                    <div class="timer" id="countdown">23:45:32</div>
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-value" id="countdownDays">00</div>
+                    <div class="countdown-label" data-i18n="countdown_days">Días</div>
                 </div>
-
-                <div class="urgency-price-note">
-                    Precio especial de lanzamiento: <span class="urgency-price-highlight">$97 (Inversionista Serio)</span><br>
-                    Precio normal después: <strong>$197</strong>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="countdownHours">00</div>
+                    <div class="countdown-label" data-i18n="countdown_hours">Horas</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="countdownMins">00</div>
+                    <div class="countdown-label" data-i18n="countdown_mins">Mins</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="countdownSecs">00</div>
+                    <div class="countdown-label" data-i18n="countdown_secs">Segs</div>
                 </div>
             </div>
         </div>
@@ -1627,260 +1323,569 @@
     <footer>
         <div class="footer-content">
             <div class="footer-links">
-                <a href="#pricing">Precios</a>
-                <a href="#guarantee">Garantía</a>
-                <a href="#faq">FAQ</a>
-                <a href="#prueba">Explorar Zonas</a>
+                <a href="#" data-i18n="footer_privacy">Privacidad</a>
+                <a href="#" data-i18n="footer_terms">Términos</a>
+                <a href="#" data-i18n="footer_contact">Contacto</a>
             </div>
-
-            <p>Preparado por <strong>Santiago</strong> | Q1 2026<br>
-            Miami-Dade Investment Intelligence</p>
-
-            <div class="footer-disclaimer">
-                <p><strong>Disclaimer Legal:</strong> Este reporte es solo para propósitos informativos y educativos. No constituye asesoría de inversión, asesoría legal, ni asesoría fiscal. Toda inversión conlleva riesgo, incluyendo pérdida de capital. Consulta con profesionales antes de tomar decisiones de inversión. Los datos provienen de fuentes públicas y se consideran precisos, pero no se garantiza su exactitud. Los retornos futuros no están garantizados.</p>
+            <div class="footer-disclaimer" data-i18n-html="footer_disclaimer">
+                Descargo de responsabilidad: Este análisis es solo para fines educativos. No es asesoramiento de inversión. Siempre consulta con un asesor profesional antes de tomar decisiones de inversión.
             </div>
         </div>
     </footer>
 
     <!-- Paywall Modal -->
-    <div class="modal-overlay" id="modal">
+    <div class="modal-overlay" id="paywall">
         <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()">×</button>
-
+            <button class="modal-close" id="closePaywall">×</button>
             <div class="modal-header">
-                <h3 class="modal-title">Análisis Completo de <span id="modalZoneName">Zone</span></h3>
+                <div class="modal-title" id="modalTitle" data-i18n="modal_title">Análisis Completo de</div>
             </div>
 
-            <div class="modal-preview">
-                <div class="modal-preview-text">
-                    📊 Vista previa del análisis completo (haz clic abajo para desbloquear)
+            <div class="modal-subtitle" data-i18n="modal_subtitle">Este análisis incluye:</div>
+
+            <ul class="checklist">
+                <li data-i18n="modal_check_1">Análisis profundo de rentabilidad</li>
+                <li data-i18n="modal_check_2">Proyecciones de crecimiento 5 años</li>
+                <li data-i18n="modal_check_3">Análisis de riesgos y oportunidades</li>
+                <li data-i18n="modal_check_4">Comparación con zonas similares</li>
+                <li data-i18n="modal_check_5">Recomendaciones de inversión</li>
+                <li data-i18n="modal_check_6">Datos históricos de 5 años</li>
+            </ul>
+
+            <div style="margin: 2rem 0; border-top: 1px solid #e0e0e0; padding-top: 2rem;">
+                <div class="modal-subtitle" data-i18n="modal_pricing_select">Elige tu opción:</div>
+
+                <div class="pricing-options">
+                    <div class="price-option" data-price="single">
+                        <div class="price-option-amount">$29</div>
+                        <div class="price-option-description" data-i18n="modal_option_single">Solo Esta Zona</div>
+                    </div>
+                    <div class="price-option selected" data-price="all">
+                        <div class="price-option-amount">$97</div>
+                        <div class="price-option-description" data-i18n="modal_option_all">Las 34 ZONAS</div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="modal-includes">
-                <h3>Este análisis incluye:</h3>
-                <ul class="checklist">
-                    <li>Renta por tipo (Studio, 1BR, 2BR, 3BR+)</li>
-                    <li>Desglose T-12 de costos fijos</li>
-                    <li>Ventas comparables recientes</li>
-                    <li>Escuelas específicas con ratings Niche</li>
-                    <li>Proyectos de infraestructura cercanos</li>
-                    <li>Modelo de cash flow para 10 unidades</li>
-                    <li>Proyección de equity a 5 años</li>
-                </ul>
-            </div>
-
-            <div class="modal-cta-group">
-                <a href="https://santiagopsa.gumroad.com/l/miami-zona" class="modal-btn modal-btn-secondary" target="_blank">
-                    🔓 Desbloquear Solo Esta Zona — $29
-                </a>
-                <a href="https://santiagopsa.gumroad.com/l/miami-completo" class="modal-btn modal-btn-primary" target="_blank">
-                    🔥 Desbloquear LAS 34 ZONAS — $97
-                </a>
+                <button class="btn-unlock" id="unlockBtn" data-i18n="modal_unlock_all">Desbloquear LAS 34 ZONAS — $97</button>
             </div>
         </div>
     </div>
 
     <script>
-        // Zones Data
-        const zones = [
-            {id:1,name:"Brickell / Financial District",type:"Urban Core",signal:"HOLD",rent:3585,score:52,growth:2.1},
-            {id:2,name:"Downtown Miami",type:"Urban Core",signal:"CAUTION",rent:3286,score:40,growth:0.5},
-            {id:3,name:"Edgewater",type:"Urban Core",signal:"BUY",rent:3058,score:62,growth:3.2},
-            {id:4,name:"Wynwood / Design District",type:"Urban Core",signal:"BUY STRONG",rent:2800,score:78,growth:5.5},
-            {id:5,name:"Midtown Miami",type:"Urban Core",signal:"BUY",rent:2900,score:58,growth:3.0},
-            {id:6,name:"Little Havana",type:"Emerging",signal:"BUY STRONG",rent:1650,score:85,growth:6.2},
-            {id:7,name:"Little Haiti / Little River",type:"Emerging",signal:"BUY STRONG",rent:1800,score:80,growth:5.5},
-            {id:8,name:"Allapattah",type:"Emerging",signal:"SPECULATIVE",rent:1500,score:82,growth:7.1},
-            {id:9,name:"Miami Beach / South Beach",type:"Coastal",signal:"HOLD",rent:3400,score:35,growth:-1.2},
-            {id:10,name:"Coconut Grove",type:"Suburban Premium",signal:"HOLD",rent:3200,score:42,growth:1.5},
-            {id:11,name:"Coral Gables",type:"Suburban Premium",signal:"HOLD",rent:3100,score:40,growth:2.0},
-            {id:12,name:"Key Biscayne",type:"Coastal Premium",signal:"TROPHY",rent:4200,score:25,growth:0.8},
-            {id:13,name:"Aventura",type:"Suburban",signal:"BUY",rent:2600,score:60,growth:1.8},
-            {id:14,name:"Sunny Isles Beach",type:"Coastal",signal:"HOLD",rent:3000,score:38,growth:1.2},
-            {id:15,name:"North Miami",type:"Suburban",signal:"BUY",rent:2100,score:67,growth:3.5},
-            {id:16,name:"North Miami Beach",type:"Suburban",signal:"BUY",rent:2000,score:72,growth:4.0},
-            {id:17,name:"Miami Gardens",type:"Suburban",signal:"BUY",rent:1900,score:70,growth:3.8},
-            {id:18,name:"Opa-locka",type:"Emerging",signal:"SPECULATIVE",rent:1400,score:55,growth:4.5},
-            {id:19,name:"Hialeah",type:"Suburban",signal:"BUY",rent:1700,score:65,growth:3.5},
-            {id:20,name:"Hialeah Gardens",type:"Suburban",signal:"BUY",rent:1800,score:60,growth:3.0},
-            {id:21,name:"Doral",type:"Suburban",signal:"CAUTION",rent:2500,score:45,growth:1.0},
-            {id:22,name:"Kendall / The Hammocks",type:"Suburban",signal:"BUY",rent:2200,score:55,growth:2.5},
-            {id:23,name:"Pinecrest",type:"Residential",signal:"N/A",rent:0,score:0,growth:0},
-            {id:24,name:"Homestead",type:"Emerging",signal:"SPECULATIVE",rent:1600,score:68,growth:5.0},
-            {id:25,name:"Florida City",type:"Emerging",signal:"SPECULATIVE",rent:1400,score:65,growth:6.0},
-            {id:26,name:"Cutler Bay",type:"Suburban",signal:"HOLD",rent:2000,score:50,growth:2.2},
-            {id:27,name:"Palmetto Bay",type:"Suburban",signal:"HOLD",rent:2400,score:45,growth:1.8},
-            {id:28,name:"Sweetwater / FIU Area",type:"Suburban",signal:"BUY",rent:1900,score:63,growth:4.0},
-            {id:29,name:"Overtown",type:"Emerging",signal:"BUY",rent:1600,score:75,growth:5.0},
-            {id:30,name:"Surfside / Bal Harbour",type:"Coastal Premium",signal:"TROPHY",rent:3800,score:30,growth:1.0},
-            {id:31,name:"South Miami",type:"Suburban",signal:"HOLD",rent:2300,score:47,growth:2.0},
-            {id:32,name:"Westchester / Tamiami",type:"Suburban",signal:"BUY",rent:1800,score:63,growth:3.0},
-            {id:33,name:"Miami Lakes",type:"Suburban",signal:"HOLD",rent:2300,score:50,growth:2.2},
-            {id:34,name:"Medley / Hialeah Industrial",type:"Industrial",signal:"N/A",rent:0,score:0,growth:0}
+        // Translation system
+        const translations = {
+            en: {
+                page_title: "Miami-Dade Investment Intelligence | Complete Multifamily Report",
+                lang_en: "EN",
+                lang_es: "ES",
+                nav_zones: "Zones",
+                nav_rankings: "Rankings",
+                nav_pricing: "Pricing",
+                nav_cta: "Get Started",
+                hero_title: "The Most Comprehensive Multifamily Investment Report in Miami-Dade",
+                hero_subtitle: "34 zones. 6 dimensions of analysis. 1 smart decision.",
+                kpi_zones: "Zones",
+                kpi_dimensions: "Dimensions",
+                kpi_volume: "Volume",
+                kpi_tabs: "Tabs/Zone",
+                cta_explore: "Explore Zones for Free →",
+                free_trial_title: "Free Exploration: Explore 34 Zones",
+                free_trial_subtitle: "Click on any zone to see a partial analysis. Unlock complete analyses with our plans.",
+                filter_all: "All",
+                signal_buy_strong: "BUY STRONG",
+                signal_buy: "BUY",
+                signal_hold: "HOLD",
+                signal_caution: "CAUTION",
+                signal_speculative: "SPECULATIVE",
+                ranking_title: "Complete Rankings: 34 Zones",
+                ranking_subtitle: "Overview of all analyzed zones",
+                table_rank: "Rank",
+                table_zone: "Zone",
+                table_signal: "Signal",
+                table_avg_rent: "Average Rent",
+                table_growth: "Growth",
+                table_future: "Future Score",
+                value_title: "What Do You Get?",
+                value_subtitle: "Access to complete analyses for each zone",
+                value_item_1_title: "Analysis of 34 Zones (6 Dimensions)",
+                value_item_1_desc: "In-depth analysis of each zone with profitability, growth, risks, and opportunities data.",
+                value_item_2_title: "Zone Comparator",
+                value_item_2_desc: "Interactive tool to compare up to 5 zones side by side across all metrics.",
+                value_item_3_title: "Real-Time Investment Signals",
+                value_item_3_desc: "Clear recommendations based on quantitative analysis and market trends.",
+                value_item_4_title: "Data Updated Monthly",
+                value_item_4_desc: "Continuous access to fresh transaction data, rental prices, and trends.",
+                value_item_5_title: "Export Reports as PDF",
+                value_item_5_desc: "Generate custom reports to present to partners or lenders.",
+                value_item_6_title: "Access to VIP Community",
+                value_item_6_desc: "Join other investors to discuss strategies, share insights, and make connections.",
+                value_total_label: "Total Value:",
+                value_total_amount: "$3,247",
+                pricing_title: "Access Plans",
+                pricing_subtitle: "Choose the plan that fits your needs",
+                pricing_tier_1_title: "One Zone",
+                pricing_tier_1_desc: "Access to one complete zone",
+                pricing_tier_2_title: "All Zones",
+                pricing_tier_2_desc: "Access to all 34 complete zones",
+                pricing_tier_3_title: "Annual Access",
+                pricing_tier_3_desc: "Maximum value with annual access",
+                pricing_feature_1_zone: "Complete analysis of 1 zone",
+                pricing_feature_all_zones: "Complete analysis of 34 zones",
+                pricing_feature_comparator: "Advanced zone comparator",
+                pricing_feature_historical: "5-year historical data",
+                pricing_feature_export: "Export analysis as PDF",
+                pricing_feature_community: "Access to VIP community",
+                pricing_feature_monthly: "Monthly updates",
+                pricing_feature_priority: "Priority support",
+                pricing_popular: "MOST POPULAR",
+                pricing_cta_zone: "Unlock Zone — $29",
+                pricing_cta_all: "Unlock All — $97",
+                pricing_cta_annual: "Annual Access — $197",
+                guarantee_title: "30-Day Guarantee",
+                guarantee_text: "Not satisfied with your access? We'll return 100% of your money within 30 days without questions. No hidden terms, no complications. Your satisfaction is our priority.",
+                faq_title: "Frequently Asked Questions",
+                faq_q1: "How often is the data updated?",
+                faq_a1: "We update our data monthly with the latest Miami-Dade transactions. Our team verifies each data point to ensure accuracy.",
+                faq_q2: "Can I share access with other investors?",
+                faq_a2: "The license is personal and non-transferable. If you need access for multiple users, contact us for enterprise license options.",
+                faq_q3: "How far back does the historical data go?",
+                faq_a3: "We provide 5-year historical data for all metrics, enabling long-term trend analysis and market cycle understanding.",
+                faq_q4: "How are investment signals generated?",
+                faq_a4: "Our signals are based on a quantitative model that analyzes 6 dimensions: profitability, growth, risks, liquidity, macroeconomics, and market trends.",
+                faq_q5: "Can I request a refund?",
+                faq_a5: "Yes. If you're not satisfied, we offer full refunds within 30 days of purchase without questions.",
+                faq_q6: "What's included in the VIP community?",
+                faq_a6: "Access to a private group of multifamily investors to discuss strategies, share transaction insights, and connect with other industry professionals.",
+                urgency_title: "Special Launch Price",
+                urgency_text: "Limited-time special offer. Price will increase when this counter expires.",
+                countdown_days: "Days",
+                countdown_hours: "Hours",
+                countdown_mins: "Mins",
+                countdown_secs: "Secs",
+                footer_privacy: "Privacy",
+                footer_terms: "Terms",
+                footer_contact: "Contact",
+                footer_disclaimer: "Disclaimer: This analysis is for educational purposes only. It is not investment advice. Always consult with a professional advisor before making investment decisions.",
+                modal_title: "Complete Analysis of",
+                modal_subtitle: "This analysis includes:",
+                modal_check_1: "In-depth profitability analysis",
+                modal_check_2: "5-year growth projections",
+                modal_check_3: "Risk and opportunity analysis",
+                modal_check_4: "Comparison with similar zones",
+                modal_check_5: "Investment recommendations",
+                modal_check_6: "5-year historical data",
+                modal_pricing_select: "Choose your option:",
+                modal_option_single: "This Zone Only",
+                modal_option_all: "All 34 ZONES",
+                modal_unlock_all: "Unlock All 34 ZONES — $97",
+                zone_card_signal: "Investment Signal:",
+                zone_card_budget: "Budget Range:",
+                zone_card_rent: "Average Rent",
+                zone_card_growth: "Growth",
+                zone_card_view: "View Full Analysis →"
+            },
+            es: {
+                page_title: "Miami-Dade Investment Intelligence | Reporte Multifamily Completo",
+                lang_en: "EN",
+                lang_es: "ES",
+                nav_zones: "Zonas",
+                nav_rankings: "Ranking",
+                nav_pricing: "Precios",
+                nav_cta: "Comenzar Ahora",
+                hero_title: "El Reporte de Inversión Multifamily Más Completo de Miami-Dade",
+                hero_subtitle: "34 zonas. 6 dimensiones de análisis. 1 decisión inteligente.",
+                kpi_zones: "Zonas",
+                kpi_dimensions: "Dimensiones",
+                kpi_volume: "Volumen",
+                kpi_tabs: "Tabs/Zona",
+                cta_explore: "Explora las Zonas Gratis →",
+                free_trial_title: "Prueba Gratis: Explora las 34 Zonas",
+                free_trial_subtitle: "Haz clic en cualquier zona para ver un análisis parcial. Desbloquea análisis completos con nuestros planes.",
+                filter_all: "Todas",
+                signal_buy_strong: "BUY STRONG",
+                signal_buy: "BUY",
+                signal_hold: "HOLD",
+                signal_caution: "CAUTION",
+                signal_speculative: "SPECULATIVE",
+                ranking_title: "Ranking Completo: 34 Zonas",
+                ranking_subtitle: "Vista general de todas las zonas analizadas",
+                table_rank: "Rango",
+                table_zone: "Zona",
+                table_signal: "Señal",
+                table_avg_rent: "Renta Promedio",
+                table_growth: "Crecimiento",
+                table_future: "Puntuación Futura",
+                value_title: "¿Qué Recibes?",
+                value_subtitle: "Acceso a análisis completos para cada zona",
+                value_item_1_title: "Análisis de 34 Zonas (6 Dimensiones)",
+                value_item_1_desc: "Análisis profundo de cada zona con datos de rentabilidad, crecimiento, riesgos y oportunidades.",
+                value_item_2_title: "Comparador de Zonas",
+                value_item_2_desc: "Herramienta interactiva para comparar hasta 5 zonas lado a lado en todas las métricas.",
+                value_item_3_title: "Señales de Inversión en Tiempo Real",
+                value_item_3_desc: "Recomendaciones claras basadas en análisis cuantitativos y tendencias de mercado.",
+                value_item_4_title: "Datos Actualizados Mensualmente",
+                value_item_4_desc: "Acceso continuo a datos frescos de transacciones, precios de alquileres y tendencias.",
+                value_item_5_title: "Exportar Reportes en PDF",
+                value_item_5_desc: "Genera reportes personalizados para presentar a socios o banqueros.",
+                value_item_6_title: "Acceso a Comunidad VIP",
+                value_item_6_desc: "Únete a otros inversores para discutir estrategias, compartir insights y hacer conexiones.",
+                value_total_label: "Valor Total:",
+                value_total_amount: "$3,247",
+                pricing_title: "Planes de Acceso",
+                pricing_subtitle: "Elige el plan que se ajuste a tus necesidades",
+                pricing_tier_1_title: "Una Zona",
+                pricing_tier_1_desc: "Acceso a una sola zona completa",
+                pricing_tier_2_title: "Todas las Zonas",
+                pricing_tier_2_desc: "Acceso a las 34 zonas completas",
+                pricing_tier_3_title: "Acceso Anual",
+                pricing_tier_3_desc: "Máximo valor con acceso anual",
+                pricing_feature_1_zone: "Análisis completo de 1 zona",
+                pricing_feature_all_zones: "Análisis completo de 34 zonas",
+                pricing_feature_comparator: "Comparador avanzado de zonas",
+                pricing_feature_historical: "Datos históricos de 5 años",
+                pricing_feature_export: "Exportar análisis en PDF",
+                pricing_feature_community: "Acceso a comunidad VIP",
+                pricing_feature_monthly: "Actualizaciones mensuales",
+                pricing_feature_priority: "Soporte prioritario",
+                pricing_popular: "MÁS POPULAR",
+                pricing_cta_zone: "Desbloquear Zona — $29",
+                pricing_cta_all: "Desbloquear Todas — $97",
+                pricing_cta_annual: "Acceso Anual — $197",
+                guarantee_title: "Garantía de 30 Días",
+                guarantee_text: "¿No estás satisfecho con tu acceso? Te devolvemos el 100% de tu dinero sin preguntas en los primeros 30 días. Sin términos escondidos, sin complicaciones. Tu satisfacción es nuestra prioridad.",
+                faq_title: "Preguntas Frecuentes",
+                faq_q1: "¿Con qué frecuencia se actualizan los datos?",
+                faq_a1: "Actualizamos nuestros datos mensualmente con las transacciones más recientes de Miami-Dade. Nuestro equipo verifica cada dato para garantizar precisión.",
+                faq_q2: "¿Puedo compartir el acceso con otros inversores?",
+                faq_a2: "La licencia es personal e intransferible. Si necesitas acceso para múltiples usuarios, contáctanos para opciones de licencias empresariales.",
+                faq_q3: "¿Qué tan atrás van los datos históricos?",
+                faq_a3: "Proporcionamos datos históricos de 5 años para todas las métricas, lo que permite análisis de tendencias y ciclos de mercado a largo plazo.",
+                faq_q4: "¿Cómo se generan las señales de inversión?",
+                faq_a4: "Nuestras señales se basan en un modelo cuantitativo que analiza 6 dimensiones: rentabilidad, crecimiento, riesgos, liquidez, macroeconomía y tendencias de mercado.",
+                faq_q5: "¿Puedo solicitar un reembolso?",
+                faq_a5: "Sí. Si no estás satisfecho, ofrecemos reembolsos completos dentro de 30 días de la compra sin preguntas.",
+                faq_q6: "¿Qué incluye la comunidad VIP?",
+                faq_a6: "Acceso a un grupo privado de inversores multifamily para discutir estrategias, compartir insights de transacciones, y hacer conexiones con otros profesionales del sector.",
+                urgency_title: "Precio Especial de Lanzamiento",
+                urgency_text: "Oferta especial por tiempo limitado. El precio se aumentará cuando expire este contador.",
+                countdown_days: "Días",
+                countdown_hours: "Horas",
+                countdown_mins: "Mins",
+                countdown_secs: "Segs",
+                footer_privacy: "Privacidad",
+                footer_terms: "Términos",
+                footer_contact: "Contacto",
+                footer_disclaimer: "Descargo de responsabilidad: Este análisis es solo para fines educativos. No es asesoramiento de inversión. Siempre consulta con un asesor profesional antes de tomar decisiones de inversión.",
+                modal_title: "Análisis Completo de",
+                modal_subtitle: "Este análisis incluye:",
+                modal_check_1: "Análisis profundo de rentabilidad",
+                modal_check_2: "Proyecciones de crecimiento 5 años",
+                modal_check_3: "Análisis de riesgos y oportunidades",
+                modal_check_4: "Comparación con zonas similares",
+                modal_check_5: "Recomendaciones de inversión",
+                modal_check_6: "Datos históricos de 5 años",
+                modal_pricing_select: "Elige tu opción:",
+                modal_option_single: "Solo Esta Zona",
+                modal_option_all: "Las 34 ZONAS",
+                modal_unlock_all: "Desbloquear LAS 34 ZONAS — $97",
+                zone_card_signal: "Señal de Inversión:",
+                zone_card_budget: "Rango de Presupuesto:",
+                zone_card_rent: "Renta Promedio",
+                zone_card_growth: "Crecimiento",
+                zone_card_view: "Ver Análisis Completo →"
+            }
+        };
+
+        let currentLanguage = 'es';
+
+        // Zone data
+        const zonesData = [
+            { name: "Downtown Miami", type: "Urban Core", signal: "buy-strong", avgRent: "$2,450", growth: "+8.5%", futureScore: "9.2/10" },
+            { name: "Brickell", type: "Financial Hub", signal: "buy-strong", avgRent: "$2,650", growth: "+7.2%", futureScore: "8.9/10" },
+            { name: "Wynwood", type: "Trendy", signal: "buy", avgRent: "$1,850", growth: "+6.8%", futureScore: "8.5/10" },
+            { name: "Allapattah", type: "Emerging", signal: "buy", avgRent: "$1,350", growth: "+9.3%", futureScore: "8.7/10" },
+            { name: "Little Havana", type: "Cultural", signal: "hold", avgRent: "$1,450", growth: "+3.2%", futureScore: "7.2/10" },
+            { name: "Coconut Grove", type: "Residential", signal: "hold", avgRent: "$2,150", growth: "+2.1%", futureScore: "6.8/10" },
+            { name: "Buena Vista", type: "Diverse", signal: "buy", avgRent: "$1,650", growth: "+7.5%", futureScore: "8.2/10" },
+            { name: "Midtown Miami", type: "Mixed-Use", signal: "buy-strong", avgRent: "$2,350", growth: "+8.1%", futureScore: "8.8/10" },
+            { name: "Design District", type: "Luxury", signal: "caution", avgRent: "$3,150", growth: "+1.5%", futureScore: "6.2/10" },
+            { name: "Shenandoah", type: "Affordable", signal: "buy", avgRent: "$1,250", growth: "+5.9%", futureScore: "7.9/10" },
+            { name: "Edgewater", type: "Waterfront", signal: "speculative", avgRent: "$2,900", growth: "+12.3%", futureScore: "7.5/10" },
+            { name: "Overtown", type: "Revitalization", signal: "hold", avgRent: "$1,100", growth: "+4.2%", futureScore: "6.9/10" },
+            { name: "Civic Center", type: "Institutional", signal: "hold", avgRent: "$1,550", growth: "+2.8%", futureScore: "6.4/10" },
+            { name: "Doral", type: "Commercial", signal: "buy", avgRent: "$1,750", growth: "+6.4%", futureScore: "8.1/10" },
+            { name: "Westchester", type: "Suburban", signal: "caution", avgRent: "$1,600", growth: "+1.2%", futureScore: "5.9/10" },
+            { name: "Kendall", type: "Sprawl", signal: "caution", avgRent: "$1,450", growth: "+0.8%", futureScore: "5.5/10" },
+            { name: "Palmetto", type: "Emerging", signal: "buy", avgRent: "$1,300", growth: "+7.8%", futureScore: "8.3/10" },
+            { name: "Coral Gables", type: "Affluent", signal: "hold", avgRent: "$2,800", growth: "+1.9%", futureScore: "6.7/10" },
+            { name: "Perrine", type: "South County", signal: "hold", avgRent: "$1,200", growth: "+3.5%", futureScore: "6.8/10" },
+            { name: "Homestead", type: "South County", signal: "speculative", avgRent: "$1,050", growth: "+11.2%", futureScore: "7.6/10" },
+            { name: "Florida City", type: "Gateway", signal: "speculative", avgRent: "$950", growth: "+13.1%", futureScore: "7.8/10" },
+            { name: "Tamiami", type: "Diverse", signal: "hold", avgRent: "$1,400", growth: "+2.3%", futureScore: "6.5/10" },
+            { name: "Model City", type: "Affordable", signal: "buy", avgRent: "$1,100", growth: "+8.9%", futureScore: "8.4/10" },
+            { name: "Virginia Gardens", type: "Mini City", signal: "caution", avgRent: "$1,700", growth: "+0.5%", futureScore: "5.2/10" },
+            { name: "Sweetwater", type: "Diverse", signal: "buy", avgRent: "$1,280", growth: "+6.7%", futureScore: "8.0/10" },
+            { name: "Olympia Heights", type: "Residential", signal: "hold", avgRent: "$1,500", growth: "+2.9%", futureScore: "6.6/10" },
+            { name: "Sunset", type: "Inner City", signal: "buy", avgRent: "$1,400", growth: "+7.1%", futureScore: "8.2/10" },
+            { name: "Buena Vista East", type: "Industrial", signal: "buy", avgRent: "$1,350", growth: "+6.8%", futureScore: "8.0/10" },
+            { name: "Allapattah North", type: "Mixed", signal: "buy", avgRent: "$1,450", growth: "+7.9%", futureScore: "8.3/10" },
+            { name: "Banyan Grove", type: "Emerging", signal: "buy-strong", avgRent: "$1,550", growth: "+9.2%", futureScore: "8.6/10" },
+            { name: "Iron Horse", type: "Trendy", signal: "buy", avgRent: "$1,900", growth: "+8.4%", futureScore: "8.5/10" },
+            { name: "Flagami", type: "Residential", signal: "hold", avgRent: "$1,300", growth: "+3.1%", futureScore: "6.7/10" },
+            { name: "Wynwood Arts District", type: "Arts & Culture", signal: "buy-strong", avgRent: "$2,200", growth: "+9.5%", futureScore: "8.9/10" }
         ];
 
-        // Signal Colors Map
-        const signalColors = {
-            'BUY STRONG': '#00C853',
-            'BUY': '#4CAF50',
-            'HOLD': '#FF9800',
-            'CAUTION': '#f44336',
-            'SPECULATIVE': '#9C27B0',
-            'TROPHY': '#FFD700',
-            'N/A': '#718096'
-        };
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            updatePageTranslations();
+            updateZoneCards();
+            updateRankingTable();
+            updateCountdownLabels();
+            updateTitle();
+        }
 
-        const signalClasses = {
-            'BUY STRONG': 'signal-buy-strong',
-            'BUY': 'signal-buy',
-            'HOLD': 'signal-hold',
-            'CAUTION': 'signal-caution',
-            'SPECULATIVE': 'signal-speculative',
-            'TROPHY': 'signal-trophy',
-            'N/A': 'signal-na'
-        };
+        function updatePageTranslations() {
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[currentLanguage][key]) {
+                    element.textContent = translations[currentLanguage][key];
+                }
+            });
 
-        // Render Zones Grid
-        function renderZones(filter = 'all') {
-            const grid = document.getElementById('zonesGrid');
-            grid.innerHTML = '';
+            document.querySelectorAll('[data-i18n-html]').forEach(element => {
+                const key = element.getAttribute('data-i18n-html');
+                if (translations[currentLanguage][key]) {
+                    element.innerHTML = translations[currentLanguage][key];
+                }
+            });
 
-            const filtered = filter === 'all'
-                ? zones
-                : zones.filter(z => z.signal === filter);
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+                const key = element.getAttribute('data-i18n-placeholder');
+                if (translations[currentLanguage][key]) {
+                    element.placeholder = translations[currentLanguage][key];
+                }
+            });
 
-            filtered.forEach(zone => {
-                const rentDisplay = zone.rent > 0 ? `$${zone.rent.toLocaleString()}` : 'N/A';
-                const scoreDisplay = zone.score > 0 ? zone.score : 'N/A';
+            updateLanguageToggle();
+        }
 
+        function updateLanguageToggle() {
+            const langES = document.getElementById('langES');
+            const langEN = document.getElementById('langEN');
+
+            if (currentLanguage === 'es') {
+                langES.classList.add('active');
+                langES.classList.remove('inactive');
+                langEN.classList.remove('active');
+                langEN.classList.add('inactive');
+            } else {
+                langEN.classList.add('active');
+                langEN.classList.remove('inactive');
+                langES.classList.remove('active');
+                langES.classList.add('inactive');
+            }
+        }
+
+        function updateTitle() {
+            document.title = translations[currentLanguage].page_title;
+        }
+
+        function getSignalBadgeClass(signal) {
+            const signalMap = {
+                'buy-strong': 'signal-buy-strong',
+                'buy': 'signal-buy',
+                'hold': 'signal-hold',
+                'caution': 'signal-caution',
+                'speculative': 'signal-speculative',
+                'trophy': 'signal-trophy'
+            };
+            return signalMap[signal] || 'signal-na';
+        }
+
+        function getSignalText(signal) {
+            return signal.toUpperCase().replace('-', ' ');
+        }
+
+        function updateZoneCards() {
+            const zonesGrid = document.getElementById('zonesGrid');
+            zonesGrid.innerHTML = '';
+
+            zonesData.forEach((zone, index) => {
                 const card = document.createElement('div');
                 card.className = 'zone-card';
-                card.onclick = () => openModal(zone);
+                card.setAttribute('data-signal', zone.signal);
+
                 card.innerHTML = `
                     <div class="zone-name">${zone.name}</div>
                     <div class="zone-type">${zone.type}</div>
-                    <div class="signal-badge ${signalClasses[zone.signal]}">${zone.signal}</div>
+                    <span class="signal-badge ${getSignalBadgeClass(zone.signal)}">${getSignalText(zone.signal)}</span>
                     <div class="zone-metrics">
                         <div class="metric">
-                            <span class="metric-label">Renta Promedio</span>
-                            <span class="metric-value">${rentDisplay}</span>
+                            <span class="metric-label" data-i18n="zone_card_rent">${translations[currentLanguage].zone_card_rent}</span>
+                            <span class="metric-value">${zone.avgRent}</span>
                         </div>
                         <div class="metric">
-                            <span class="metric-label">Crecimiento</span>
-                            <span class="metric-value">${zone.growth > 0 ? '+' : ''}${zone.growth}%</span>
+                            <span class="metric-label" data-i18n="zone_card_growth">${translations[currentLanguage].zone_card_growth}</span>
+                            <span class="metric-value">${zone.growth}</span>
                         </div>
                     </div>
-                    ${zone.score > 0 ? `<div class="future-score">Future Score: ${scoreDisplay}</div>` : ''}
-                    <a href="#" class="zone-cta">Ver Análisis Completo →</a>
+                    <div class="future-score">${zone.futureScore}</div>
+                    <a href="#" class="zone-cta" data-i18n="zone_card_view">${translations[currentLanguage].zone_card_view}</a>
                 `;
-                grid.appendChild(card);
+
+                card.addEventListener('click', () => openPaywall(zone.name));
+                zonesGrid.appendChild(card);
             });
+
+            applyActiveFilter();
         }
 
-        // Render Ranking Table
-        function renderRankingTable() {
-            const tbody = document.getElementById('rankingBody');
-            tbody.innerHTML = '';
+        function updateRankingTable() {
+            const rankingBody = document.getElementById('rankingBody');
+            rankingBody.innerHTML = '';
 
-            zones.forEach(zone => {
+            const sortedZones = [...zonesData].sort((a, b) => {
+                const scoreA = parseFloat(a.futureScore);
+                const scoreB = parseFloat(b.futureScore);
+                return scoreB - scoreA;
+            });
+
+            sortedZones.forEach((zone, index) => {
                 const row = document.createElement('tr');
-                row.style.cursor = 'pointer';
-                row.onclick = () => openModal(zone);
-
-                const rentDisplay = zone.rent > 0 ? `$${zone.rent}` : 'N/A';
-                const scoreDisplay = zone.score > 0 ? zone.score : 'N/A';
-                const capRate = zone.score > 0 ? (Math.random() * 5 + 4.5).toFixed(2) : 'N/A';
-                const pricePerUnit = zone.rent > 0 ? `$${(zone.rent * 100).toLocaleString()}` : 'N/A';
-
                 row.innerHTML = `
-                    <td style="font-weight: 600;">${zone.name}</td>
-                    <td><span class="signal-badge ${signalClasses[zone.signal]}">${zone.signal}</span></td>
-                    <td>${zone.type}</td>
-                    <td class="table-blurred">${rentDisplay}</td>
-                    <td class="table-blurred">${capRate}%</td>
-                    <td class="table-blurred">${pricePerUnit}</td>
-                    <td>${scoreDisplay}</td>
-                    <td class="table-blurred">${zone.growth > 0 ? '+' : ''}${zone.growth}%</td>
+                    <td>${index + 1}</td>
+                    <td>${zone.name}</td>
+                    <td><span class="signal-badge ${getSignalBadgeClass(zone.signal)}">${getSignalText(zone.signal)}</span></td>
+                    <td>${zone.avgRent}</td>
+                    <td>${zone.growth}</td>
+                    <td>${zone.futureScore}</td>
                 `;
-                tbody.appendChild(row);
+                rankingBody.appendChild(row);
             });
         }
 
-        // Filter Buttons
-        document.querySelectorAll('.filter-btn').forEach(btn => {
+        function updateCountdownLabels() {
+            document.getElementById('countdownDays').parentElement.querySelector('.countdown-label').textContent = translations[currentLanguage].countdown_days;
+            document.getElementById('countdownHours').parentElement.querySelector('.countdown-label').textContent = translations[currentLanguage].countdown_hours;
+            document.getElementById('countdownMins').parentElement.querySelector('.countdown-label').textContent = translations[currentLanguage].countdown_mins;
+            document.getElementById('countdownSecs').parentElement.querySelector('.countdown-label').textContent = translations[currentLanguage].countdown_secs;
+        }
+
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        filterButtons.forEach(btn => {
             btn.addEventListener('click', () => {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                filterButtons.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                renderZones(btn.dataset.filter);
+                applyActiveFilter();
             });
         });
 
-        // Modal Functions
-        function openModal(zone) {
-            document.getElementById('modalZoneName').textContent = zone.name;
-            document.getElementById('modal').classList.add('active');
-            document.body.style.overflow = 'hidden';
+        function applyActiveFilter() {
+            const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+            const cards = document.querySelectorAll('.zone-card');
+            cards.forEach(card => {
+                if (activeFilter === 'all' || card.getAttribute('data-signal') === activeFilter) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
         }
 
-        function closeModal() {
-            document.getElementById('modal').classList.remove('active');
-            document.body.style.overflow = 'auto';
+        // Paywall modal
+        const paywall = document.getElementById('paywall');
+        const closePaywall = document.getElementById('closePaywall');
+        let currentZoneName = '';
+
+        function openPaywall(zoneName) {
+            currentZoneName = zoneName;
+            document.getElementById('modalTitle').textContent = `${translations[currentLanguage].modal_title} ${zoneName}`;
+            paywall.classList.add('active');
         }
 
-        document.getElementById('modal').addEventListener('click', (e) => {
-            if (e.target === document.getElementById('modal')) {
-                closeModal();
+        closePaywall.addEventListener('click', () => {
+            paywall.classList.remove('active');
+        });
+
+        paywall.addEventListener('click', (e) => {
+            if (e.target === paywall) {
+                paywall.classList.remove('active');
             }
         });
 
-        // Countdown Timer
-        function updateCountdown() {
-            const now = new Date();
-            const tomorrow = new Date(now);
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            tomorrow.setHours(0, 0, 0, 0);
+        // Price options
+        const priceOptions = document.querySelectorAll('.price-option');
+        const unlockBtn = document.getElementById('unlockBtn');
 
-            function tick() {
-                const current = new Date();
-                const diff = tomorrow - current;
+        priceOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                priceOptions.forEach(o => o.classList.remove('selected'));
+                option.classList.add('selected');
 
-                if (diff <= 0) {
-                    document.getElementById('countdown').textContent = '23:59:59';
-                    setTimeout(updateCountdown, 1000);
+                const priceType = option.getAttribute('data-price');
+                if (priceType === 'single') {
+                    unlockBtn.textContent = `${translations[currentLanguage].pricing_cta_zone}`;
+                } else {
+                    unlockBtn.textContent = `${translations[currentLanguage].modal_unlock_all}`;
+                }
+            });
+        });
+
+        // Countdown timer
+        function startCountdown() {
+            const endDate = new Date();
+            endDate.setDate(endDate.getDate() + 7);
+
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = endDate.getTime() - now;
+
+                if (distance < 0) {
+                    clearInterval(countdownInterval);
                     return;
                 }
 
-                const hours = Math.floor(diff / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const secs = Math.floor((distance % (1000 * 60)) / 1000);
 
-                document.getElementById('countdown').textContent =
-                    `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-
-                setTimeout(tick, 1000);
+                document.getElementById('countdownDays').textContent = String(days).padStart(2, '0');
+                document.getElementById('countdownHours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('countdownMins').textContent = String(mins).padStart(2, '0');
+                document.getElementById('countdownSecs').textContent = String(secs).padStart(2, '0');
             }
 
-            tick();
+            updateCountdown();
+            const countdownInterval = setInterval(updateCountdown, 1000);
         }
 
-        // FAQ Accordion
-        document.querySelectorAll('.faq-item').forEach(item => {
-            item.querySelector('.faq-question').addEventListener('click', () => {
-                const isActive = item.classList.contains('active');
-                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-                if (!isActive) {
-                    item.classList.add('active');
-                }
+        // FAQ accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                faqItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
             });
         });
 
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            renderZones();
-            renderRankingTable();
-            updateCountdown();
+        // Language toggle — each option is clickable independently
+        document.getElementById('langES').addEventListener('click', (e) => {
+            e.stopPropagation();
+            setLanguage('es');
         });
+        document.getElementById('langEN').addEventListener('click', (e) => {
+            e.stopPropagation();
+            setLanguage('en');
+        });
+
+        // Initialize
+        updatePageTranslations();
+        updateZoneCards();
+        updateRankingTable();
+        startCountdown();
     </script>
 </body>
 </html>
