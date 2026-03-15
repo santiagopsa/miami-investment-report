@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Allow: /zones/
 Disallow: /reporte/
 
 Sitemap: https://miamimultifamilydata.com/sitemap.xml

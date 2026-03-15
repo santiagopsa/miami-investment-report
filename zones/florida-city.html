@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <title>Florida City Multifamily Investment Data 2026 | Miami-Dade Zone Analysis</title>
+    <meta name="description" content="Florida City multifamily investment analysis: 6.5-7.5% cap rates, $1,400/mo avg rent, 6% rent growth. Complete zone data for Miami-Dade investors.">
+    <meta name="keywords" content="Florida City multifamily, Florida City cap rate, Florida City investment, Miami-Dade multifamily, Florida City rent, Florida City real estate investment">
+    <link rel="canonical" href="https://miamimultifamilydata.com/zones/florida-city.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Florida City — Multifamily Investment Data 2026">
+    <meta property="og:description" content="Cap rates 6.5-7.5%, avg rent $1,400/mo, 105% 5yr appreciation. Full zone analysis.">
+    <meta property="og:url" content="https://miamimultifamilydata.com/zones/florida-city.html">
+    <meta property="og:type" content="article">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary-dark: #0a1628;
+            --primary-navy: #1a2744;
+            --accent-green: #00C853;
+            --white: #ffffff;
+            --light-gray: #f8f9fa;
+            --text-dark: #1a2744;
+            --text-muted: #718096;
+            --buy-strong: #00C853;
+            --buy: #4CAF50;
+            --hold: #FF9800;
+            --caution: #f44336;
+            --speculative: #9C27B0;
+            --trophy: #FFD700;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text-dark); line-height: 1.6; }
+
+        /* Nav */
+        nav { position: fixed; top: 0; width: 100%; background: rgba(10,22,40,0.98); backdrop-filter: blur(10px); z-index: 1000; padding: 1rem 2rem; border-bottom: 1px solid rgba(0,200,83,0.1); }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 600; color: var(--white); text-decoration: none; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; list-style: none; }
+        .nav-links a { color: var(--white); text-decoration: none; font-size: 0.95rem; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent-green); }
+        .btn-primary-nav { background: var(--accent-green); color: var(--primary-dark); padding: 0.75rem 1.5rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: all 0.3s; }
+        .btn-primary-nav:hover { transform: scale(1.05); box-shadow: 0 4px 12px rgba(0,200,83,0.3); }
+
+        /* Hero */
+        .hero { background: linear-gradient(135deg, #0a1628 0%, #1a2744 100%); color: var(--white); padding: 7rem 2rem 3rem; margin-top: 4rem; }
+        .hero-container { max-width: 1100px; margin: 0 auto; }
+        .hero-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; flex-wrap: wrap; }
+        .hero-text { flex: 1; min-width: 300px; }
+        .breadcrumb { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-bottom: 1rem; }
+        .breadcrumb a { color: rgba(255,255,255,0.7); text-decoration: none; }
+        .breadcrumb a:hover { color: var(--accent-green); }
+        .zone-type-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; }
+        h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.2; margin-bottom: 1rem; }
+        .hero-thesis { font-size: 1.1rem; color: rgba(255,255,255,0.8); line-height: 1.6; max-width: 600px; }
+        .signal-hero { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; border-radius: 2rem; font-weight: 700; font-size: 1rem; margin-bottom: 1rem; }
+        .signal-hero.buy-strong { background: rgba(0,200,83,0.15); color: #00C853; border: 2px solid #00C853; }
+        .signal-hero.buy { background: rgba(76,175,80,0.15); color: #4CAF50; border: 2px solid #4CAF50; }
+        .signal-hero.hold { background: rgba(255,152,0,0.15); color: #FF9800; border: 2px solid #FF9800; }
+        .signal-hero.caution { background: rgba(244,67,54,0.15); color: #f44336; border: 2px solid #f44336; }
+        .signal-hero.speculative { background: rgba(156,39,176,0.15); color: #9C27B0; border: 2px solid #9C27B0; }
+        .signal-hero.trophy { background: rgba(255,215,0,0.15); color: #FFD700; border: 2px solid #FFD700; }
+
+        /* Score card in hero */
+        .hero-score { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 1rem; padding: 1.5rem; min-width: 200px; text-align: center; }
+        .score-value { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 700; }
+        .score-label { font-size: 0.85rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 1px; }
+        .score-bar { width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; margin-top: 0.75rem; overflow: hidden; }
+        .score-fill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+
+        /* KPIs */
+        .kpi-strip { background: var(--white); border-bottom: 1px solid #e0e0e0; padding: 2rem; }
+        .kpi-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; text-align: center; }
+        .kpi-value { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--accent-green); }
+        .kpi-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 0.25rem; }
+
+        /* Data sections */
+        .section { padding: 4rem 2rem; }
+        .section.alt { background: var(--light-gray); }
+        .section-inner { max-width: 1100px; margin: 0 auto; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 2rem; color: var(--text-dark); }
+
+        .data-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .data-card { background: var(--white); border-radius: 0.75rem; padding: 1.5rem; border: 1px solid #e0e0e0; }
+        .section.alt .data-card { background: var(--white); }
+        .data-card h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 1rem; }
+        .data-row { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; border-bottom: 1px solid #f0f0f0; }
+        .data-row:last-child { border-bottom: none; }
+        .data-label { color: var(--text-muted); font-size: 0.9rem; }
+        .data-value { font-weight: 600; font-size: 1rem; }
+        .data-value.green { color: #00C853; }
+        .data-value.orange { color: #FF9800; }
+        .data-value.red { color: #f44336; }
+
+        /* Lead magnet */
+        .lead-magnet { background: linear-gradient(135deg, #0a1628 0%, #1a2744 100%); color: var(--white); padding: 4rem 2rem; text-align: center; }
+        .lead-inner { max-width: 600px; margin: 0 auto; }
+        .lead-magnet h2 { color: var(--white); font-size: 1.8rem; margin-bottom: 1rem; }
+        .lead-magnet p { color: rgba(255,255,255,0.8); margin-bottom: 2rem; font-size: 1.05rem; }
+        .lead-form { display: flex; gap: 0.75rem; max-width: 480px; margin: 0 auto; }
+        .lead-form input { flex: 1; padding: 1rem 1.25rem; border-radius: 0.5rem; border: 2px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: var(--white); font-size: 1rem; font-family: 'Inter', sans-serif; }
+        .lead-form input::placeholder { color: rgba(255,255,255,0.5); }
+        .lead-form input:focus { outline: none; border-color: var(--accent-green); }
+        .lead-form button { padding: 1rem 2rem; background: var(--accent-green); color: var(--primary-dark); border: none; border-radius: 0.5rem; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.3s; white-space: nowrap; }
+        .lead-form button:hover { transform: scale(1.05); box-shadow: 0 4px 16px rgba(0,200,83,0.4); }
+        .lead-note { font-size: 0.8rem; color: rgba(255,255,255,0.4); margin-top: 1rem; }
+        .lead-success { display: none; padding: 1.5rem; background: rgba(0,200,83,0.15); border: 1px solid rgba(0,200,83,0.3); border-radius: 0.75rem; margin-top: 1rem; }
+
+        /* Nearby zones */
+        .nearby-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+        .nearby-card { background: var(--white); border: 1px solid #e0e0e0; border-radius: 0.75rem; padding: 1.5rem; text-decoration: none; color: var(--text-dark); transition: all 0.3s; display: block; }
+        .nearby-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); border-color: var(--accent-green); }
+        .nearby-card h4 { font-family: 'Playfair Display', serif; font-size: 1.15rem; margin: 0.75rem 0 0.25rem; }
+        .nearby-type { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.75rem; }
+        .nearby-stats { display: flex; gap: 1rem; font-size: 0.9rem; font-weight: 500; }
+
+        .signal-badge { display: inline-block; padding: 0.3rem 0.75rem; border-radius: 1rem; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
+        .signal-badge.buy-strong { background: rgba(0,200,83,0.15); color: #00C853; }
+        .signal-badge.buy { background: rgba(76,175,80,0.15); color: #4CAF50; }
+        .signal-badge.hold { background: rgba(255,152,0,0.15); color: #FF9800; }
+        .signal-badge.caution { background: rgba(244,67,54,0.15); color: #f44336; }
+        .signal-badge.speculative { background: rgba(156,39,176,0.15); color: #9C27B0; }
+        .signal-badge.trophy { background: rgba(255,215,0,0.15); color: #FFD700; }
+
+        /* CTA bar */
+        .cta-bar { background: var(--accent-green); padding: 1.5rem 2rem; text-align: center; }
+        .cta-bar a { color: var(--primary-dark); font-weight: 700; font-size: 1.1rem; text-decoration: none; }
+        .cta-bar a:hover { text-decoration: underline; }
+
+        /* Footer */
+        footer { background: var(--primary-dark); color: rgba(255,255,255,0.6); padding: 2rem; text-align: center; font-size: 0.85rem; }
+        footer a { color: var(--accent-green); text-decoration: none; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero { padding: 6rem 1.5rem 2rem; }
+            .hero-top { flex-direction: column; }
+            .hero-score { width: 100%; }
+            .lead-form { flex-direction: column; }
+            .nav-links { display: none; }
+            .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* Schema markup hidden */
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+    </style>
+</head>
+<body>
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Florida City Multifamily Investment Data 2026",
+    "description": "Florida City multifamily zone analysis: cap rates, rents, insurance, appreciation data for Miami-Dade investors.",
+    "author": {
+        "@type": "Person",
+        "name": "Santiago Gonzalez"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Miami Dade Intelligence"
+    },
+    "datePublished": "2026-03-15",
+    "dateModified": "2026-03-15",
+    "mainEntityOfPage": "https://miamimultifamilydata.com/zones/florida-city.html"
+}
+</script>
+
+<nav>
+    <div class="nav-container">
+        <a href="/" class="nav-logo">Miami Invest</a>
+        <ul class="nav-links">
+            <li><a href="/#prueba">Zones</a></li>
+            <li><a href="/#ranking">Rankings</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+        </ul>
+        <a href="/#pricing" class="btn-primary-nav">Get Full Report</a>
+    </div>
+</nav>
+
+<div class="hero">
+    <div class="hero-container">
+        <div class="breadcrumb">
+            <a href="/">Home</a> &rarr; <a href="/#prueba">Zones</a> &rarr; Florida City
+        </div>
+        <div class="hero-top">
+            <div class="hero-text">
+                <div class="zone-type-label">Exurban</div>
+                <h1>Florida City</h1>
+                <div class="signal-hero speculative">Speculative Signal</div>
+                <p class="hero-thesis">LOWEST PRICES in the county ($110K/unit) with maximum cap rate (7.5%). But D+ crime grade is worst in county. Very high millage (24.0).</p>
+            </div>
+            <div class="hero-score">
+                <div class="score-value" style="color: #FF9800">52</div>
+                <div class="score-label">Future Score</div>
+                <div class="score-bar">
+                    <div class="score-fill" style="width: 52%; background: #FF9800"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="kpi-strip">
+    <div class="kpi-grid">
+        <div>
+            <div class="kpi-value">6.5-7.5%</div>
+            <div class="kpi-label">Cap Rate</div>
+        </div>
+        <div>
+            <div class="kpi-value">$1,400</div>
+            <div class="kpi-label">Avg Rent/Unit</div>
+        </div>
+        <div>
+            <div class="kpi-value">+105%</div>
+            <div class="kpi-label">5yr Appreciation</div>
+        </div>
+        <div>
+            <div class="kpi-value">6%</div>
+            <div class="kpi-label">Rent Growth</div>
+        </div>
+        <div>
+            <div class="kpi-value">$110K-$160K</div>
+            <div class="kpi-label">Price/Unit</div>
+        </div>
+        <div>
+            <div class="kpi-value">6%</div>
+            <div class="kpi-label">Vacancy</div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-inner">
+        <h2>Financial Metrics</h2>
+        <div class="data-grid">
+            <div class="data-card">
+                <h3>Returns & Pricing</h3>
+                <div class="data-row">
+                    <span class="data-label">Cap Rate Range</span>
+                    <span class="data-value">6.5% - 7.5%</span>
+                </div>
+                <div class="data-row">
+                    <span class="data-label">Price per Unit</span>
+                    <span class="data-value">$110K - $160K</span>
+                </div>
+                <div class="data-row">
+                    <span class="data-label">5yr Appreciation</span>
+                    <span class="data-value green">+105%</span>
+                </div>
+                <div class="data-row">
+                    <span class="data-label">Investment Signal</span>
+                    <span class="data-value"><span class="signal-badge speculative">Speculative</span></span>
+                </div>
+            </div>
+            <div class="data-card">
+                <h3>Rent & Occupancy</h3>
+                <div class="data-row">
+                    <span class="data-label">Average Rent</span>
+                    <span class="data-value">$1,400/mo</span>
+                </div>
+                <div class="data-row">
+                    <span class="data-label">Rent Growth (YoY)</span>
+                    <span class="data-value green">+6%</span>
+                </div>
+                <div class="data-row">
+                    <span class="data-label">Vacancy Rate</span>
+                    <span class="data-value">6%</span>
+                </div>
+                <div class="data-row">
+                    <span class="data-label">Pipeline (units)</span>
+                    <span class="data-value green">200</span>
+                </div>
+            </div>
+            <div class="data-card">
+                <h3>Expenses & Taxes</h3>
+                <div class="data-row">
+                    <span class="data-label">Operating Expenses</span>
+                    <span class="data-value">$8,200/unit/yr</span>
+                </div>
+                <div class="data-row">
+                    <span class="data-label">OpEx Ratio</span>
+                    <span class="data-value">42%</span>
+                </div>
+                <div class="data-row">
+                    <span class="data-label">Millage Rate</span>
+                    <span class="data-value">24</span>
+                </div>
+                <div class="data-row">
+                    <span class="data-label">Tax per Unit</span>
+                    <span class="data-value">$2,400/yr</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section alt">
+    <div class="section-inner">
+        <h2>Risk & Insurance</h2>
+        <div class="data-grid">
+            <div class="data-card">
+                <h3>Insurance & Flood</h3>
+                <div class="data-row">
+                    <span class="data-label">Insurance Cost</span>
+                    <span class="data-value">$1,100/unit/yr</span>
+                </div>
+                <div class="data-row">
+                    <span class="data-label">Insurance Risk</span>
+                    <span class="data-value" style="color: #00C853">LOW</span>
+                </div>
+                <div class="data-row">
+                    <span class="data-label">FEMA Flood Zone</span>
+                    <span class="data-value">X (Bajo)</span>
+                </div>
+            </div>
+            <div class="data-card">
+                <h3>Quality Scores</h3>
+                <div class="data-row">
+                    <span class="data-label">Walk Score</span>
+                    <span class="data-value">25/100</span>
+                </div>
+                <div class="data-row">
+                    <span class="data-label">Transit Score</span>
+                    <span class="data-value">10/100</span>
+                </div>
+                <div class="data-row">
+                    <span class="data-label">Crime Grade</span>
+                    <span class="data-value">D+</span>
+                </div>
+                <div class="data-row">
+                    <span class="data-label">School Grade</span>
+                    <span class="data-value">C-</span>
+                </div>
+            </div>
+            <div class="data-card">
+                <h3>Demographics</h3>
+                <div class="data-row">
+                    <span class="data-label">Population</span>
+                    <span class="data-value">12,000</span>
+                </div>
+                <div class="data-row">
+                    <span class="data-label">Median Income</span>
+                    <span class="data-value">$35,000</span>
+                </div>
+                <div class="data-row">
+                    <span class="data-label">Key Employers</span>
+                    <span class="data-value" style="font-size: 0.85rem">Agriculture, distribution, Homestead Air Reserve Base</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="lead-magnet" id="download">
+    <div class="lead-inner">
+        <h2>Get the Free Miami-Dade Cap Rate Map</h2>
+        <p>All 34 zones ranked by cap rate, rent growth, and future score — delivered to your inbox in 60 seconds.</p>
+        <form class="lead-form" id="leadForm" onsubmit="handleLead(event)">
+            <input type="email" id="leadEmail" placeholder="your@email.com" required>
+            <button type="submit">Send Me the Map</button>
+        </form>
+        <div class="lead-success" id="leadSuccess">
+            <strong>Check your inbox!</strong> The cap rate map is on its way. While you wait, <a href="/#pricing" style="color: var(--accent-green)">explore the full 34-zone report</a>.
+        </div>
+        <p class="lead-note">No spam. Unsubscribe anytime.</p>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-inner">
+        <h2>Explore Similar Zones</h2>
+        <div class="nearby-grid">
+            
+        <a href="/zones/homestead.html" class="nearby-card">
+            <span class="signal-badge buy-strong">Strong Buy</span>
+            <h4>Homestead</h4>
+            <p class="nearby-type">Exurban</p>
+            <div class="nearby-stats">
+                <span>Cap: 6-7%</span>
+                <span>Rent: $1,600</span>
+            </div>
+        </a>
+        <a href="/zones/brickell-financial-district.html" class="nearby-card">
+            <span class="signal-badge hold">Hold</span>
+            <h4>Brickell / Financial District</h4>
+            <p class="nearby-type">Urban Core</p>
+            <div class="nearby-stats">
+                <span>Cap: 4.5-4.8%</span>
+                <span>Rent: $3,585</span>
+            </div>
+        </a>
+        <a href="/zones/downtown-miami.html" class="nearby-card">
+            <span class="signal-badge caution">Caution</span>
+            <h4>Downtown Miami</h4>
+            <p class="nearby-type">Urban Core</p>
+            <div class="nearby-stats">
+                <span>Cap: 4.6-5%</span>
+                <span>Rent: $3,286</span>
+            </div>
+        </a>
+        </div>
+    </div>
+</div>
+
+<div class="cta-bar">
+    <a href="/#pricing">Want the full analysis for all 34 zones? Get the complete report &rarr;</a>
+</div>
+
+<footer>
+    <p>&copy; 2026 Miami Dade Intelligence. <a href="/">miamimultifamilydata.com</a></p>
+</footer>
+
+<script>
+function handleLead(e) {
+    e.preventDefault();
+    const email = document.getElementById('leadEmail').value;
+    const zone = "Florida City";
+
+    // EmailJS integration
+    if (typeof emailjs !== 'undefined') {
+        emailjs.send("service_miami", "template_leadmagnet", {
+            to_email: email,
+            zone_name: zone,
+            source_page: window.location.href
+        });
+    }
+
+    // Also store in localStorage for tracking
+    const leads = JSON.parse(localStorage.getItem('miami_leads') || '[]');
+    leads.push({ email, zone, date: new Date().toISOString(), page: window.location.pathname });
+    localStorage.setItem('miami_leads', JSON.stringify(leads));
+
+    // Show success
+    document.getElementById('leadForm').style.display = 'none';
+    document.getElementById('leadSuccess').style.display = 'block';
+
+    // Track conversion
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'lead_capture', { 'zone': zone, 'page': window.location.pathname });
+    }
+}
+</script>
+
+<!-- EmailJS SDK (replace with your actual service ID) -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+    if (typeof emailjs !== 'undefined') {
+        emailjs.init("YOUR_EMAILJS_PUBLIC_KEY");
+    }
+</script>
+
+</body>
+</html>
