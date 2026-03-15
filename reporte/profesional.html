@@ -1760,7 +1760,7 @@
     </style>
 
     <script>
-        let currentLang = 'es';
+        let currentLang = 'en';
         const translations = {
             es: {
                 investmentZones: 'Zonas de Inversión',
@@ -1779,7 +1779,20 @@
                 infrastructure: 'Infraestructura',
                 investment: 'Inversión',
                 close: 'Cerrar',
-                selectZone: 'Selecciona una zona'
+                selectZone: 'Selecciona una zona',
+                professionalBadge: 'ACCESO PROFESIONAL',
+                professionalBannerText: 'Bienvenido al nivel profesional. Tu acceso incluye beneficios exclusivos.',
+                investmentCalcTitle: 'Calculadora de Inversión',
+                scenarioComparatorTitle: 'Comparador de Escenarios',
+                dealAnalyzerTitle: 'Analizador de Oportunidades',
+                purchasePrice: 'Precio de Compra',
+                numberOfUnits: 'Número de Unidades',
+                cashFlow: 'Flujo de Caja',
+                capRate: 'Cap Rate',
+                calculate: 'Calcular',
+                scenarios: 'Escenarios',
+                projections: 'Proyecciones',
+                analyze: 'Analizar'
             },
             en: {
                 investmentZones: 'Investment Zones',
@@ -1798,11 +1811,24 @@
                 infrastructure: 'Infrastructure',
                 investment: 'Investment',
                 close: 'Close',
-                selectZone: 'Select a zone'
+                selectZone: 'Select a zone',
+                professionalBadge: 'PROFESSIONAL ACCESS',
+                professionalBannerText: 'Welcome to professional tier. Your access includes exclusive benefits.',
+                investmentCalcTitle: 'Investment Calculator',
+                scenarioComparatorTitle: 'Scenario Comparator',
+                dealAnalyzerTitle: 'Deal Analyzer',
+                purchasePrice: 'Purchase Price',
+                numberOfUnits: 'Number of Units',
+                cashFlow: 'Cash Flow',
+                capRate: 'Cap Rate',
+                calculate: 'Calculate',
+                scenarios: 'Scenarios',
+                projections: 'Projections',
+                analyze: 'Analyze'
             }
         };
         function t(key) {
-            return translations[currentLang][key] || translations.es[key] || key;
+            return translations[currentLang][key] || translations.en[key] || key;
         }
         function setLanguage(lang) {
             currentLang = lang;
@@ -1810,6 +1836,8 @@
                 const key = el.getAttribute('data-i18n');
                 if (el.tagName === 'INPUT') {
                     el.placeholder = t(key);
+                } else if (el.tagName === 'OPTION') {
+                    el.textContent = t(key);
                 } else {
                     el.textContent = t(key);
                 }
@@ -1849,7 +1877,7 @@
   emailjs.init('3_ockgNWEUD3xR9jO');
 
   // Check if already submitted
-  if(localStorage.getItem('miami_email_sent')) {
+  if(localStorage.getItem('miami_email_sent_professional')) {
     document.getElementById('welcomeBanner').style.display = 'none';
     return;
   }
@@ -1879,7 +1907,7 @@
       status.style.display = 'block';
       status.style.color = '#4cd37e';
       status.textContent = '✓ Email sent! Check your inbox.';
-      localStorage.setItem('miami_email_sent', 'true');
+      localStorage.setItem('miami_email_sent_professional', 'true');
       setTimeout(function(){ document.getElementById('welcomeBanner').style.display = 'none'; }, 2000);
     }, function(error){
       status.style.display = 'block';
@@ -1894,8 +1922,8 @@
 
     <!-- Professional Tier Banner -->
     <div class="professional-banner">
-        <div class="professional-badge">ACCESO PROFESIONAL</div>
-        <div class="professional-banner-text">Bienvenido al nivel profesional. Tu acceso incluye beneficios exclusivos.</div>
+        <div class="professional-badge" data-i18n="professionalBadge">PROFESSIONAL ACCESS</div>
+        <div class="professional-banner-text" data-i18n="professionalBannerText">Welcome to professional tier. Your access includes exclusive benefits.</div>
     </div>
 
     <!-- Navigation -->
@@ -1909,8 +1937,8 @@
             <li><a href="#methodology">Methodology</a></li>
         </ul>
         <div class="language-toggle">
-            <button class="lang-btn active" data-lang="es">🇪🇸 ES</button>
-            <button class="lang-btn" data-lang="en">🇺🇸 EN</button>
+            <button class="lang-btn" data-lang="es">🇪🇸 ES</button>
+            <button class="lang-btn active" data-lang="en">🇺🇸 EN</button>
         </div>
     </nav>
 
@@ -2219,7 +2247,7 @@
 
     <!-- Zone Comparison Section -->
     <section id="comparison" class="zone-comparison-section">
-        <h2>Comparador de Zonas</h2>
+        <h2 data-i18n="zoneComparator">Zone Comparator</h2>
         <p style="color:#718096;margin-bottom:1.5rem;">Selecciona dos zonas para comparar sus métricas lado a lado</p>
         <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:2rem;">
             <select id="compareZone1" style="flex:1;min-width:200px;padding:0.75rem 1rem;border:1px solid #e2e8f0;border-radius:8px;font-size:0.95rem;background:white;cursor:pointer;">

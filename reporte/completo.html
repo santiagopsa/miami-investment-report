@@ -1728,7 +1728,7 @@
         }
     </style>
     <script>
-        let currentLang = 'es';
+        let currentLang = 'en';
         const translations = {
             es: {
                 investmentZones: 'Zonas de Inversión',
@@ -1747,7 +1747,28 @@
                 infrastructure: 'Infraestructura',
                 investment: 'Inversión',
                 close: 'Cerrar',
-                selectZone: 'Selecciona una zona'
+                selectZone: 'Selecciona una zona',
+                zoneComparator: 'Comparador de Zonas',
+                zoneComparatorDesc: 'Selecciona dos zonas para comparar sus métricas lado a lado',
+                selectZone1: '— Seleccionar Zona 1 —',
+                selectZone2: '— Seleccionar Zona 2 —',
+                fullZoneRankings: 'Ranking Completo de Zonas',
+                buyersGuideTitle: 'Guía del Comprador de Multifamily en Miami-Dade',
+                dataSourcesMethodology: 'Fuentes de Datos & Metodología',
+                marketData: 'Datos de Mercado',
+                marketDataSources: 'CoStar, CBRE, Real Capital Analytics, análisis histórico MLS',
+                rentalMarket: 'Mercado de Alquileres',
+                rentalMarketSources: 'Zillow, Apartments.com, RPM Living, encuestas locales de administradores',
+                demographicsLabel: 'Demografía',
+                demographicsSources: 'Oficina del Censo, ESRI, Nielsen, Encuesta de la Comunidad Americana',
+                economicData: 'Datos Económicos',
+                economicDataSources: 'Oficina de Estadísticas Laborales, Reserva Federal, Datos Económicos del Estado de Florida',
+                infrastructureLabel: 'Infraestructura',
+                infrastructureSources: 'Miami-Dade County Planning, Citplan, Registros Públicos, Autoridad de Tránsito',
+                schoolsServices: 'Escuelas & Servicios',
+                schoolsSources: 'M-DCPS, GreatSchools.org, School Digger, Servicios del Condado Miami-Dade',
+                disclaimer: 'Aviso Legal:',
+                disclaimerText: 'Este reporte es solo para información. No constituye asesoramiento de inversión. Consultar a profesionales antes de tomar decisiones.'
             },
             en: {
                 investmentZones: 'Investment Zones',
@@ -1766,11 +1787,32 @@
                 infrastructure: 'Infrastructure',
                 investment: 'Investment',
                 close: 'Close',
-                selectZone: 'Select a zone'
+                selectZone: 'Select a zone',
+                zoneComparator: 'Zone Comparator',
+                zoneComparatorDesc: 'Select two zones to compare their metrics side by side',
+                selectZone1: '— Select Zone 1 —',
+                selectZone2: '— Select Zone 2 —',
+                fullZoneRankings: 'Full Zone Rankings',
+                buyersGuideTitle: 'Multifamily Buyer's Guide for Miami-Dade',
+                dataSourcesMethodology: 'Data Sources & Methodology',
+                marketData: 'Market Data',
+                marketDataSources: 'CoStar, CBRE, Real Capital Analytics, MLS historical analysis',
+                rentalMarket: 'Rental Market',
+                rentalMarketSources: 'Zillow, Apartments.com, RPM Living, local property management surveys',
+                demographicsLabel: 'Demographics',
+                demographicsSources: 'U.S. Census Bureau, ESRI, Nielsen, American Community Survey',
+                economicData: 'Economic Data',
+                economicDataSources: 'Bureau of Labor Statistics, Federal Reserve, State of Florida Economic Data',
+                infrastructureLabel: 'Infrastructure',
+                infrastructureSources: 'Miami-Dade County Planning, Citplan, Public Records, Transit Authority',
+                schoolsServices: 'Schools & Services',
+                schoolsSources: 'M-DCPS, GreatSchools.org, School Digger, Miami-Dade County Services',
+                disclaimer: 'Disclaimer:',
+                disclaimerText: 'This report is for informational purposes only. It does not constitute investment advice. Consult professionals before making decisions.'
             }
         };
         function t(key) {
-            return translations[currentLang][key] || translations.es[key] || key;
+            return translations[currentLang][key] || translations.en[key] || key;
         }
         function setLanguage(lang) {
             currentLang = lang;
@@ -1778,6 +1820,8 @@
                 const key = el.getAttribute('data-i18n');
                 if (el.tagName === 'INPUT') {
                     el.placeholder = t(key);
+                } else if (el.tagName === 'OPTION') {
+                    el.textContent = t(key);
                 } else {
                     el.textContent = t(key);
                 }
@@ -1817,7 +1861,7 @@
   emailjs.init('3_ockgNWEUD3xR9jO');
 
   // Check if already submitted
-  if(localStorage.getItem('miami_email_sent')) {
+  if(localStorage.getItem('miami_email_sent_investor')) {
     document.getElementById('welcomeBanner').style.display = 'none';
     return;
   }
@@ -1847,7 +1891,7 @@
       status.style.display = 'block';
       status.style.color = '#4cd37e';
       status.textContent = '✓ Email sent! Check your inbox.';
-      localStorage.setItem('miami_email_sent', 'true');
+      localStorage.setItem('miami_email_sent_investor', 'true');
       setTimeout(function(){ document.getElementById('welcomeBanner').style.display = 'none'; }, 2000);
     }, function(error){
       status.style.display = 'block';
@@ -1871,8 +1915,8 @@
             <li><a href="#methodology">Methodology</a></li>
         </ul>
         <div class="language-toggle">
-            <button class="lang-btn active" data-lang="es">🇪🇸 ES</button>
-            <button class="lang-btn" data-lang="en">🇺🇸 EN</button>
+            <button class="lang-btn" data-lang="es">🇪🇸 ES</button>
+            <button class="lang-btn active" data-lang="en">🇺🇸 EN</button>
         </div>
         <style>
             .language-toggle {
@@ -2015,14 +2059,14 @@
 
     <!-- Zone Comparison Section -->
     <section id="comparison" class="zone-comparison-section">
-        <h2>Comparador de Zonas</h2>
-        <p style="color:#718096;margin-bottom:1.5rem;">Selecciona dos zonas para comparar sus métricas lado a lado</p>
+        <h2 data-i18n="zoneComparator">Zone Comparator</h2>
+        <p style="color:#718096;margin-bottom:1.5rem;" data-i18n="zoneComparatorDesc">Select two zones to compare their metrics side by side</p>
         <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:2rem;">
             <select id="compareZone1" style="flex:1;min-width:200px;padding:0.75rem 1rem;border:1px solid #e2e8f0;border-radius:8px;font-size:0.95rem;background:white;cursor:pointer;">
-                <option value="">— Seleccionar Zona 1 —</option>
+                <option value="" data-i18n="selectZone1">— Select Zone 1 —</option>
             </select>
             <select id="compareZone2" style="flex:1;min-width:200px;padding:0.75rem 1rem;border:1px solid #e2e8f0;border-radius:8px;font-size:0.95rem;background:white;cursor:pointer;">
-                <option value="">— Seleccionar Zona 2 —</option>
+                <option value="" data-i18n="selectZone2">— Select Zone 2 —</option>
             </select>
         </div>
         <div id="comparisonResults">
@@ -2032,7 +2076,7 @@
 
     <!-- Ranking Table Section -->
     <section id="ranking" class="ranking-section">
-        <h2>Ranking Completo de Zonas</h2>
+        <h2 data-i18n="fullZoneRankings">Full Zone Rankings</h2>
         <div id="rankingTable" style="overflow-x:auto;">
             <!-- Table populated by JavaScript -->
         </div>
@@ -2040,7 +2084,7 @@
 
     <!-- Buyer's Guide Section -->
     <section id="guide" class="buyers-guide-section">
-        <h2>Guía del Comprador de Multifamily en Miami-Dade</h2>
+        <h2 data-i18n="buyersGuideTitle">Multifamily Buyer's Guide for Miami-Dade</h2>
         <div id="buyersGuide">
             <!-- Accordion cards populated by JavaScript -->
         </div>
@@ -2048,15 +2092,15 @@
 
     <!-- Methodology Section -->
     <section id="methodology" class="methodology-section">
-        <h2>Data Sources & Methodology</h2>
+        <h2 data-i18n="dataSourcesMethodology">Data Sources & Methodology</h2>
         <div class="sources-grid">
             <div class="source-card">
-                <h4>Market Data</h4>
-                <p>CoStar, CBRE, Real Capital Analytics, MLS historical pricing</p>
+                <h4 data-i18n="marketData">Market Data</h4>
+                <p data-i18n="marketDataSources">CoStar, CBRE, Real Capital Analytics, MLS historical analysis</p>
             </div>
             <div class="source-card">
-                <h4>Rental Market</h4>
-                <p>Zillow, Apartments.com, RPM Living, local property management surveys</p>
+                <h4 data-i18n="rentalMarket">Rental Market</h4>
+                <p data-i18n="rentalMarketSources">Zillow, Apartments.com, RPM Living, local property management surveys</p>
             </div>
             <div class="source-card">
                 <h4>Demographics</h4>
